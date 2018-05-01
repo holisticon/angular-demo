@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { lib } from '@luchsamapparat/cfha-lib';
 
 @Component({
   selector: 'cfha-root',
@@ -6,8 +7,6 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit() {}
+export class AppComponent {
+  test = lib;
 }

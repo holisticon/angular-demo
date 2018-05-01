@@ -18,6 +18,9 @@
     "paths": {
       "@luchsamapparat/*": [
         "libs/*"
+      ],
+      "@luchsamapparat/cfha-lib": [
+        "node_modules/@luchsamapparat/cfha-lib/dist"
       ]
     }
   },
