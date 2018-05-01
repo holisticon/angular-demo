@@ -57,6 +57,13 @@
       "tags": []
     },
     {
+      "name": "products",
+      "root": "libs/products/src",
+      "test": "../../../test.js",
+      "appRoot": "",
+      "tags": []
+    },
+    {
       "name": "$workspaceRoot",
       "root": ".",
       "appRoot": ""

@@ -8,7 +8,7 @@ import { RouterModule } from '@angular/router';
   imports: [
     BrowserModule,
     NxModule.forRoot(),
-    RouterModule.forRoot([], { initialNavigation: 'enabled' })
+    RouterModule.forRoot([{path: 'products', loadChildren: '@luchsamapparat/products#ProductsModule'}], { initialNavigation: 'enabled' })
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent]
