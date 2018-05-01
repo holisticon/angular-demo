@@ -71,13 +71,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "app",
+      "cfha",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "app",
+      "cfha",
       "kebab-case"
     ],
     "no-output-on-prefix": true,
