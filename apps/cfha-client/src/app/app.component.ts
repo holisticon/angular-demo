@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { lib } from '@luchsamapparat/cfha-lib';
+import { HypermediaClientService } from '@luchsamapparat/ngx-hypermedia-client';
 
 @Component({
   selector: 'cfha-root',
@@ -8,5 +9,13 @@ import { lib } from '@luchsamapparat/cfha-lib';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
-  test = lib;
+
+  simpleLib = lib;
+  angularLib = null;
+
+  constructor(
+    private hypermediaClient: HypermediaClientService
+  ) {
+    this.angularLib = hypermediaClient.test();
+  }
 }
