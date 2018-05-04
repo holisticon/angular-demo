@@ -1,0 +1,24 @@
+<ul class="list-unstyled">
+    <li class="row align-items-center mb-5" *ngFor="let product of products">
+        <figure class="figure col-2">
+            <img [src]="product.image" class="figure-img img-fluid rounded" alt="Product Image of {{ product.name }}">
+        </figure>
+
+        <div class="col-8">
+            <h2 class="h5 mb-1"><a>{{ product.name }}</a></h2>
+            <p class="mb-1"><small>{{ product.description }}</small></p>
+            <p><strong>{{ product.price.toFixed(2) }}</strong></p>
+        </div>
+
+        <div class="col-2">
+            <form class="form-inline">
+                <div class="input-group">
+                    <input type="text" name="quantity" value="1" class="form-control text-right">
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-primary">Add</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </li>
+</ul>

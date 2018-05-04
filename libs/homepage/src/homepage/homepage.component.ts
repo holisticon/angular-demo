@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { SearchProductsAction } from '@luchsamapparat/products/products-common';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'cfha-homepage',
@@ -6,8 +8,12 @@ import { Component } from '@angular/core';
 })
 export class HomepageComponent {
 
+    constructor(
+        private store: Store<void>
+    ) {}
+
     onProductSearch(query: string) {
-        console.log(query);
+        this.store.dispatch(new SearchProductsAction(query));
     }
 
 }
