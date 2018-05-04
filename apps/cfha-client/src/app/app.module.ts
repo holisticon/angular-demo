@@ -1,18 +1,25 @@
 import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { NxModule } from '@nrwl/nx';
 import { RouterModule } from '@angular/router';
-import { NgxHypermediaClientModule } from '@luchsamapparat/ngx-hypermedia-client';
+import { NxModule } from '@nrwl/nx';
+import { AppComponent } from './app.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    NxModule.forRoot(),
-    RouterModule.forRoot([{path: 'products', loadChildren: '@luchsamapparat/products#ProductsModule'}], { initialNavigation: 'enabled' }),
-    NgxHypermediaClientModule
-  ],
-  declarations: [AppComponent],
-  bootstrap: [AppComponent]
+    imports: [
+        BrowserModule,
+        NxModule.forRoot(),
+        RouterModule.forRoot([
+            { path: 'products', loadChildren: '@luchsamapparat/products#ProductsModule' },
+            { path: '', loadChildren: '@luchsamapparat/homepage#HomepageModule'}
+        ], { initialNavigation: 'enabled' })
+    ],
+    declarations: [
+        AppComponent,
+        NavbarComponent
+    ],
+    bootstrap: [
+        AppComponent
+    ]
 })
-export class AppModule {}
+export class AppModule { }
