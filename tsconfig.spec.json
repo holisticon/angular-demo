@@ -1,22 +1,17 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "./dist/out-tsc/spec",
+    "outDir": "../out-tsc/spec",
     "module": "commonjs",
     "target": "es5",
-    "types": [
-      "jasmine",
-      "node"
-    ]
+    "baseUrl": "",
+    "allowJs": true
   },
-  "include": [
-    "**/*.ts"
+  "files": [
+    "test.ts"
   ],
-  "exclude": [
-    "**/e2e/*.ts",
-    "**/*.e2e-spec.ts",
-    "**/*.po.ts",
-    "node_modules",
-    "tmp"
+  "include": [
+    "**/*.spec.ts",
+    "**/*.d.ts"
   ]
 }
