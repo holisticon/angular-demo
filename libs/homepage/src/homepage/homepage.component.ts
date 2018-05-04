@@ -4,4 +4,10 @@ import { Component } from '@angular/core';
   selector: 'cfha-homepage',
   templateUrl: './homepage.component.html'
 })
-export class HomepageComponent {}
+export class HomepageComponent {
+
+    onProductSearch(query: string) {
+        console.log(query);
+    }
+
+}

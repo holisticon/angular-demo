@@ -18,12 +18,6 @@
     "paths": {
       "@luchsamapparat/*": [
         "libs/*"
-      ],
-      "@luchsamapparat/cfha-lib": [
-        "node_modules/@luchsamapparat/cfha-lib/dist"
-      ],
-      "@luchsamapparat/ngx-hypermedia-client": [
-        "node_modules/ngx-hypermedia-client/dist/ngx-hypermedia-client"
       ]
     }
   },

@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { expectElementFromFixture } from 'ngx-test-helpers';
+import { HomepageModule } from '../homepage.module';
 import { HomepageComponent } from './homepage.component';
 
 
@@ -9,7 +10,9 @@ describe('HomepageComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [HomepageComponent]
+            imports: [
+                HomepageModule
+            ]
         })
             .compileComponents();
     }));
@@ -21,6 +24,6 @@ describe('HomepageComponent', () => {
     });
 
     it('renders a product search form', () => {
-        expectElementFromFixture(fixture, 'form').not.toBeNull();
+        expectElementFromFixture(fixture, 'cfha-product-search-form').not.toBeNull();
     });
 });

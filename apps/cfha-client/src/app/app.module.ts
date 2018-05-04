@@ -10,8 +10,9 @@ import { NavbarComponent } from './navbar/navbar.component';
         BrowserModule,
         NxModule.forRoot(),
         RouterModule.forRoot([
-            { path: 'products', loadChildren: '@luchsamapparat/products#ProductsModule' },
-            { path: '', loadChildren: '@luchsamapparat/homepage#HomepageModule'}
+            { path: 'products', loadChildren: '@luchsamapparat/products/products#ProductsModule' },
+            { path: '', loadChildren: '@luchsamapparat/homepage#HomepageModule'},
+            { path: 'shopping-cart', loadChildren: '@luchsamapparat/shopping-cart/shopping-cart#ShoppingCartModule' }
         ], { initialNavigation: 'enabled' })
     ],
     declarations: [
