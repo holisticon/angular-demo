@@ -1,17 +1,22 @@
 {
-  "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "outDir": "../out-tsc/spec",
-    "module": "commonjs",
-    "target": "es5",
-    "baseUrl": "",
-    "allowJs": true
-  },
-  "files": [
-    "test.ts"
-  ],
-  "include": [
-    "**/*.spec.ts",
-    "**/*.d.ts"
-  ]
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "outDir": "../out-tsc/spec",
+        "module": "commonjs",
+        "target": "es5",
+        "baseUrl": "",
+        "allowJs": true,
+        "paths": {
+            "@luchsamapparat/*": [
+                "libs/*"
+            ]
+        }
+    },
+    "files": [
+        "test.ts"
+    ],
+    "include": [
+        "**/*.spec.ts",
+        "**/*.d.ts"
+    ]
 }

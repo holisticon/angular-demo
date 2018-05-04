@@ -1,22 +1,22 @@
 {
-  "extends": "../../../tsconfig.json",
-  "compilerOptions": {
-    "outDir": "../../../dist/out-tsc/e2e/cfha-client",
-    "module": "commonjs",
-    "target": "es5",
-    "types": [
-      "jasmine",
-      "jasminewd2",
-      "node"
+    "extends": "../../../tsconfig.json",
+    "compilerOptions": {
+        "outDir": "../../../dist/out-tsc/e2e/cfha-client",
+        "module": "commonjs",
+        "target": "es5",
+        "types": [
+            "jasmine",
+            "jasminewd2",
+            "node"
+        ]
+    },
+    "include": [
+        "../**/*.ts",
+        "../../../libs/homepage/index.ts",
+        "../../../libs/products/products/index.ts",
+        "../../../libs/shopping-cart/shopping-cart/index.ts"
+    ],
+    "exclude": [
+        "**/*.spec.ts"
     ]
-  },
-  "include": [
-    "../**/*.ts"
-    , "../../../libs/homepage/index.ts"
-    , "../../../libs/products/products/index.ts"
-    , "../../../libs/shopping-cart/shopping-cart/index.ts"
-],
-  "exclude": [
-    "**/*.spec.ts"
-  ]
 }
