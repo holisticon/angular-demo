@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { expectElementFromFixture } from 'ngx-test-helpers';
-import { HomepageModule } from '../homepage.module';
+import { ProductsCommonModule } from '../products-common.module';
 import { ProductSearchFormComponent } from './product-search-form.component';
 
 describe('ProductSearchFormComponent', () => {
@@ -10,7 +10,9 @@ describe('ProductSearchFormComponent', () => {
     beforeEach(
         async(() => {
             TestBed.configureTestingModule({
-                imports: [HomepageModule]
+                imports: [
+                    ProductsCommonModule
+                ]
             }).compileComponents();
         })
     );
