@@ -34,8 +34,6 @@
     "@angular/platform-browser": "5.2.7",
     "@angular/platform-browser-dynamic": "5.2.7",
     "@angular/router": "5.2.7",
-    "@luchsamapparat/cfha-lib": "0.0.1",
-    "@luchsamapparat/ngx-hypermedia-client": "^0.0.1",
     "@ngrx/effects": "5.2.0",
     "@ngrx/router-store": "5.0.1",
     "@ngrx/store": "5.2.0",
@@ -54,8 +52,6 @@
     "@angular/language-service": "5.2.7",
     "@ngrx/schematics": "5.2.0",
     "@nrwl/schematics": "1.0.3",
-    "@types/jasmine": "~2.8.3",
-    "@types/jasminewd2": "~2.0.2",
     "@types/jest": "22.2.3",
     "@types/lodash-es": "4.17.0",
     "@types/node": "~6.0.60",
@@ -80,10 +76,10 @@
     "preset": "jest-preset-angular",
     "setupTestFrameworkScriptFile": "<rootDir>/setupJest.ts",
     "globals": {
-        "ts-jest": {
-            "tsConfigFile": "./tsconfig.spec.json"
-        },
-        "__TRANSFORM_HTML__": true
+      "ts-jest": {
+        "tsConfigFile": "./tsconfig.spec.json"
+      },
+      "__TRANSFORM_HTML__": true
     },
     "transformIgnorePatterns": [
       "<rootDir>/node_modules/(?!lodash-es/.*)"
