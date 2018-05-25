@@ -14,7 +14,8 @@
         "import-blacklist": [
             true,
             "rxjs",
-            "rxjs/Rx"
+            "rxjs/Rx",
+            "jasmine-marbles"
         ],
         "interface-over-type-literal": true,
         "member-access": false,

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProductsActionTypes, SearchProductsAction } from '@luchsamapparat/products/products-common';
+import { ProductsActionTypes, SearchProductsAction } from '@luchsamapparat/products-common';
 import { Actions, Effect } from '@ngrx/effects';
 import 'rxjs/add/operator/map';
 

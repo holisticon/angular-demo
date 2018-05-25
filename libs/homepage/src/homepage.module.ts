@@ -1,18 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { ProductsCommonModule } from '@luchsamapparat/products/products-common';
+import { ProductsCommonModule } from '@luchsamapparat/products-common';
+import { StoreModule } from '@ngrx/store';
 import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
     imports: [
         CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
         RouterModule.forChild([
-             { path: '', pathMatch: 'full', component: HomepageComponent }
+            { path: '', pathMatch: 'full', component: HomepageComponent }
         ]),
+        StoreModule.forFeature('homepage', {}),
         ProductsCommonModule
     ],
     declarations: [

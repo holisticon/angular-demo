@@ -18,9 +18,9 @@ import { RouterStateUrlSerializer } from './state/router-state-serializer';
         BrowserModule,
         NxModule.forRoot(),
         RouterModule.forRoot([
-            { path: 'products', loadChildren: '@luchsamapparat/products/products#ProductsModule' },
+            { path: 'products', loadChildren: '@luchsamapparat/products#ProductsModule' },
             { path: '', loadChildren: '@luchsamapparat/homepage#HomepageModule' },
-            { path: 'shopping-cart', loadChildren: '@luchsamapparat/shopping-cart/shopping-cart#ShoppingCartModule' }
+            { path: 'shopping-cart', loadChildren: '@luchsamapparat/shopping-cart#ShoppingCartModule' }
         ], { initialNavigation: 'enabled' }),
         StoreModule.forRoot(
             {},

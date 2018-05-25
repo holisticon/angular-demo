@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SearchProductsAction } from '@luchsamapparat/products/products-common';
+import { SearchProductsAction } from '@luchsamapparat/products-common';
 import { Store } from '@ngrx/store';
 
 @Component({

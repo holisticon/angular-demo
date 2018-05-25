@@ -60,7 +60,7 @@
     "jasmine-core": "~2.8.0",
     "jasmine-spec-reporter": "~4.2.1",
     "jest": "22.4.3",
-    "jest-marbles": "1.1.1",
+    "jest-marbles": "1.1.2",
     "jest-preset-angular": "5.2.2",
     "karma": "~2.0.0",
     "karma-chrome-launcher": "~2.2.0",
@@ -85,6 +85,9 @@
     },
     "transformIgnorePatterns": [
       "<rootDir>/node_modules/(?!lodash-es/.*)"
-    ]
+    ],
+    "moduleNameMapper": {
+      "^@luchsamapparat/(.*)": "<rootDir>/libs/$1"
+    }
   }
 }

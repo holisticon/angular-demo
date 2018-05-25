@@ -64,29 +64,29 @@
       "tags": []
     },
     {
-      "name": "products/products",
-      "root": "libs/products/products/src",
+      "name": "products",
+      "root": "libs/products/src",
       "test": "../../../../test.js",
       "appRoot": "",
       "tags": []
     },
     {
-      "name": "products/products-common",
-      "root": "libs/shopping-cart/shopping-cart-common/src",
+      "name": "products-common",
+      "root": "libs/products-common/src",
       "test": "../../../../test.js",
       "appRoot": "",
       "tags": []
     },
     {
-      "name": "shopping-cart/shopping-cart",
-      "root": "libs/shopping-cart/shopping-cart/src",
+      "name": "shopping-cart",
+      "root": "libs/shopping-cart/src",
       "test": "../../../../test.js",
       "appRoot": "",
       "tags": []
     },
     {
-      "name": "shopping-cart/shopping-cart-common",
-      "root": "libs/shopping-cart/shopping-cart-common/src",
+      "name": "shopping-cart-common",
+      "root": "libs/shopping-cart-common/src",
       "test": "../../../../test.js",
       "appRoot": "",
       "tags": []

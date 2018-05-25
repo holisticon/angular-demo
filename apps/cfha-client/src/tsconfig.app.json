@@ -7,8 +7,8 @@
     "include": [
         "**/*.ts",
         "../../../libs/homepage/index.ts",
-        "../../../libs/products/products/index.ts",
-        "../../../libs/shopping-cart/shopping-cart/index.ts"
+        "../../../libs/products/index.ts",
+        "../../../libs/shopping-cart/index.ts"
     ],
     "exclude": [
         "**/*.spec.ts"

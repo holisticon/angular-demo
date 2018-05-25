@@ -3,7 +3,7 @@ import { expectElementFromFixture } from 'ngx-test-helpers';
 import { NavbarComponent } from './navbar.component';
 
 
-describe('NavbarComponent', () => {
+fdescribe('NavbarComponent', () => {
     let component: NavbarComponent;
     let fixture: ComponentFixture<NavbarComponent>;
 
