@@ -1,4 +1,5 @@
 export interface ShoppingCart {
+    totalPrice: number;
     items: ShoppingCartItem[];
 }
 

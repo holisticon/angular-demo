@@ -18,6 +18,8 @@ describe('ProductListComponent', () => {
         price: 0
     };
 
+    const products = [product];
+
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [
@@ -35,12 +37,12 @@ describe('ProductListComponent', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(ProductListComponent);
         component = fixture.componentInstance;
-        component.products = (<any> [product]);
+        component.products = products;
         fixture.detectChanges();
     });
 
     it('renders a row for each product', () => {
-        expect(fixture.debugElement.queryAll(By.directive(ProductListEntryComponent))).toHaveLength(1);
+        expect(fixture.debugElement.queryAll(By.directive(ProductListEntryComponent))).toHaveLength(products.length);
     });
 
     it('emits an addToShoppingCart event when the form is submitted', async(() => {

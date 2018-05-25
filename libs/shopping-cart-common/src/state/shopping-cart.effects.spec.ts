@@ -1,6 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
-import { AddToShoppingCartAction, LoadShoppingCartAction, ShoppingCart, ShoppingCartLoadedAction } from '@luchsamapparat/shopping-cart-common';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { StoreModule } from '@ngrx/store';
 import { DataPersistence } from '@nrwl/nx';
@@ -9,7 +8,9 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/take';
+import { ShoppingCart } from '../shopping-cart.model';
 import { ShoppingCartService } from '../shopping-cart.service';
+import { AddToShoppingCartAction, LoadShoppingCartAction, ShoppingCartLoadedAction } from './shopping-cart.actions';
 import { ShoppingCartEffects } from './shopping-cart.effects';
 
 describe('ShoppingCartEffects', () => {
@@ -18,6 +19,7 @@ describe('ShoppingCartEffects', () => {
     let shoppingCartService: ShoppingCartService;
 
     const shoppingCart: ShoppingCart = {
+        totalPrice: 0,
         items: []
     };
 

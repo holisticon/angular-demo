@@ -8,6 +8,7 @@ describe('ShoppingCartService', () => {
     let httpController: HttpTestingController;
 
     const shoppingCart: ShoppingCart = {
+        totalPrice: 0,
         items: []
     };
 

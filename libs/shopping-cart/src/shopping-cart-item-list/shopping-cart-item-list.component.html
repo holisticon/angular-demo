@@ -1,0 +1,40 @@
+<table class="table table-hover" *ngIf="shoppingCart">
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let shoppingCartItem of shoppingCart.items">
+            <td>
+                <a href="" class="name">{{ shoppingCartItem.name }}</a><br />
+                <small class="description">{{ shoppingCartItem.description }}</small>
+            </td>
+            <td class="text-right" class="price">{{ shoppingCartItem.price | number:'1.2' }}</td>
+            <td style="width: 15%">
+                <form action="" method="POST" class="input-group update-quantity">
+                    <input type="hidden" name="_method" value="PATCH" />
+                    <input type="number" name="quantity" [value]="shoppingCartItem.quantity" class="form-control text-right quantity">
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+                </form>
+            </td>
+            <td>
+                <form action="" method="POST" class="remove">
+                    <input type="hidden" name="_method" value="DELETE" />
+                    <button type="submit" class="btn btn-danger">Remove</button>
+                </form>
+            </td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="2" class="text-right total-price">{{ shoppingCart.totalPrice | number:'1.2' }}</td>
+            <td colspan="2"></td>
+        </tr>
+    </tfoot>
+</table>

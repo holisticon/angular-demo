@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { RouterTestingModule } from '@angular/router/testing';
 import { ProductSearchFormComponent, SearchProductsAction } from '@luchsamapparat/products-common';
 import { Store, StoreModule } from '@ngrx/store';
 import { expectElementFromFixture } from 'ngx-test-helpers';
@@ -15,6 +16,7 @@ describe('HomepageComponent', () => {
         TestBed.configureTestingModule({
             imports: [
                 HomepageModule,
+                RouterTestingModule,
                 StoreModule.forRoot({})
             ]
         })
