@@ -1,7 +1,8 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { Product, getProductId } from '@luchsamapparat/products-common';
+import { Resource, addId, getId } from '@luchsamapparat/common';
+import { Product } from '@luchsamapparat/products-common';
 import 'rxjs/add/operator/take';
 import { ProductListEntryComponent } from './product-list-entry/product-list-entry.component';
 import { ProductListComponent } from './product-list.component';
@@ -10,13 +11,12 @@ describe('ProductListComponent', () => {
     let component: ProductListComponent;
     let fixture: ComponentFixture<ProductListComponent>;
 
-    const product: Product = <any> {
-        _id: 'id',
+    const product: Resource<Product> = addId({
         description: '',
         image: '',
         name: '',
         price: 0
-    };
+    }, 'id');
 
     const products = [product];
 
@@ -47,7 +47,7 @@ describe('ProductListComponent', () => {
 
     it('emits an addToShoppingCart event when the form is submitted', async(() => {
         const expectedAdditionToShoppingCart = {
-            product: getProductId(product),
+            product: getId(product),
             quantity: 2
         };
         const productListEntry: ProductListEntryComponent = fixture.debugElement.query(By.directive(ProductListEntryComponent)).componentInstance;

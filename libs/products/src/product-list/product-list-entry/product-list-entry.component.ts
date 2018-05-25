@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Product, getProductId } from '@luchsamapparat/products-common';
+import { getId } from '@luchsamapparat/common';
+import { Product } from '@luchsamapparat/products-common';
 import { AdditionToShoppingCart } from '@luchsamapparat/shopping-cart-common';
 import { toNumber } from 'lodash-es';
 
@@ -23,7 +24,7 @@ export class ProductListEntryComponent {
         event.preventDefault();
 
         this.addToShoppingCart.emit({
-            product: getProductId(this.product),
+            product: getId(this.product),
             quantity: toNumber(this.quantity.value)
         });
     }

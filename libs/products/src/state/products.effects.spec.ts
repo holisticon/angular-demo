@@ -1,5 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
+import { Resource, addId } from '@luchsamapparat/common';
 import { LoadSearchResultsAction, Product, SearchResultsLoadedAction } from '@luchsamapparat/products-common';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { StoreModule } from '@ngrx/store';
@@ -14,13 +15,12 @@ describe('ProductsEffects', () => {
     let effects$: ProductsEffects;
     let productService: ProductService;
 
-    const product: Product = <any> {
-        _id: 'id',
+    const product: Resource<Product> = addId({
         description: '',
         image: '',
         name: '',
         price: 0
-    };
+    }, 'id');
     const searchResults = [product];
 
     beforeEach(() => {

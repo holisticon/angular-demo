@@ -57,6 +57,13 @@
       "tags": []
     },
     {
+      "name": "common",
+      "root": "libs/common/src",
+      "test": "../../../test.js",
+      "appRoot": "",
+      "tags": []
+    },
+    {
       "name": "homepage",
       "root": "libs/homepage/src",
       "test": "../../../test.js",

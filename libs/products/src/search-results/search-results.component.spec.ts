@@ -1,7 +1,8 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { Product, getProductId } from '@luchsamapparat/products-common';
+import { Resource, addId, getId } from '@luchsamapparat/common';
+import { Product } from '@luchsamapparat/products-common';
 import { AddToShoppingCartAction } from '@luchsamapparat/shopping-cart-common';
 import { Store, StoreModule } from '@ngrx/store';
 import { expectElementFromFixture } from 'ngx-test-helpers';
@@ -14,13 +15,12 @@ describe('SearchResultsComponent', () => {
     let fixture: ComponentFixture<SearchResultsComponent>;
     let store: Store<void>;
 
-    const product: Product = <any> {
-        _id: 'id',
+    const product: Resource<Product> = addId({
         description: '',
         image: '',
         name: '',
         price: 0
-    };
+    }, 'id');
     const searchResults = [product];
 
     beforeEach(async(() => {
@@ -65,7 +65,7 @@ describe('SearchResultsComponent', () => {
 
     it('dispatches an AddToShoppingCartAction when the product list emits an addToShoppingCart event', async(() => {
         const additionToShoppingCart = {
-            product: getProductId(product),
+            product: getId(product),
             quantity: 2
         };
         const storeDispatchSpy = jest.spyOn(store, 'dispatch');

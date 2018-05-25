@@ -1,7 +1,8 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { Product, getProductId } from '@luchsamapparat/products-common';
+import { Resource, addId, getId } from '@luchsamapparat/common';
+import { Product } from '@luchsamapparat/products-common';
 import 'rxjs/add/operator/take';
 import { ProductListEntryComponent } from './product-list-entry.component';
 
@@ -9,13 +10,12 @@ describe('ProductListEntryComponent', () => {
     let component: ProductListEntryComponent;
     let fixture: ComponentFixture<ProductListEntryComponent>;
 
-    const product: Product = <any> {
-        _id: 'id',
+    const product: Resource<Product> = addId({
         description: '',
         image: '',
         name: '',
         price: 0
-    };
+    }, 'id');
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -46,7 +46,7 @@ describe('ProductListEntryComponent', () => {
             .take(1)
             .subscribe(additionToShoppingCart => {
                 expect(additionToShoppingCart).toEqual({
-                    product: getProductId(product),
+                    product: getId(product),
                     quantity: expectedQuantity
                 });
             })
