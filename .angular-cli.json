@@ -101,7 +101,14 @@
     {
       "name": "user-profile",
       "root": "libs/user-profile/src",
-      "test": "../../../test.js",
+      "test": "../../../../test.js",
+      "appRoot": "",
+      "tags": []
+    },
+    {
+      "name": "user-profile-common",
+      "root": "libs/user-profile-common/src",
+      "test": "../../../../test.js",
       "appRoot": "",
       "tags": []
     },
