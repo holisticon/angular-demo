@@ -99,6 +99,13 @@
       "tags": []
     },
     {
+      "name": "user-profile",
+      "root": "libs/user-profile/src",
+      "test": "../../../test.js",
+      "appRoot": "",
+      "tags": []
+    },
+    {
       "name": "$workspaceRoot",
       "root": ".",
       "appRoot": ""

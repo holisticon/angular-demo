@@ -20,7 +20,8 @@ import { RouterStateUrlSerializer } from './state/router-state-serializer';
         RouterModule.forRoot([
             { path: 'products', loadChildren: '@luchsamapparat/products#ProductsModule' },
             { path: '', loadChildren: '@luchsamapparat/homepage#HomepageModule' },
-            { path: 'shopping-cart', loadChildren: '@luchsamapparat/shopping-cart#ShoppingCartModule' }
+            { path: 'shopping-cart', loadChildren: '@luchsamapparat/shopping-cart#ShoppingCartModule' },
+            { path: 'user-profile', loadChildren: '@luchsamapparat/user-profile#UserProfileModule' }
         ], { initialNavigation: 'enabled' }),
         StoreModule.forRoot(
             {},
