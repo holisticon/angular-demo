@@ -3,8 +3,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { ResourceWith } from '@luchsamapparat/common';
 import { QuantityUpdate, ShoppingCartItem } from '@luchsamapparat/shopping-cart-common';
-import { UpdateQuantityFormComponent } from '@luchsamapparat/shopping-cart/src/shopping-cart-item-list/shopping-cart-item/update-quantity-form/update-quantity-form.component';
 import 'rxjs/add/operator/take';
+import { UpdateQuantityFormComponent } from '../../shopping-cart-item-list/shopping-cart-item/update-quantity-form/update-quantity-form.component';
 import { ShoppingCartItemComponent } from './shopping-cart-item.component';
 
 describe('ShoppingCartItemComponent', () => {

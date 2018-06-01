@@ -1,31 +1,20 @@
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { getId } from '@luchsamapparat/common';
+import { QuantityUpdate, ShoppingCart, ShoppingCartItem } from '@luchsamapparat/shopping-cart-common';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/empty';
 import 'rxjs/add/operator/switchMap';
-import { AdditionToShoppingCart, QuantityUpdate, ShoppingCart, ShoppingCartItem } from './shopping-cart.model';
 
 @Injectable()
 export class ShoppingCartService {
-
-    constructor(
-        private httpClient: HttpClient
-    ) { }
+    constructor(private httpClient: HttpClient) {}
 
     loadShoppingCart(): Observable<ShoppingCart> {
         return this.httpClient
-            .get<ShoppingCart>(`http://localhost/shoppingCart`);
-    }
-
-    addShoppingCartItem(additionToShoppingCart: AdditionToShoppingCart): Observable<ShoppingCart> {
-        return this.httpClient
-            .post(
-                `http://localhost/shoppingCart/items`,
-                additionToShoppingCart,
-                { responseType: 'text', observe: 'response' }
-            )
-            .switchMap(response => this.handleRedirect<ShoppingCart>(response));
+            .get<ShoppingCart>(
+                `http://localhost/shoppingCart`
+            );
     }
 
     updateShoppingCartItemQuantity(shoppingCartItem: ShoppingCartItem, quantityUpdate: QuantityUpdate): Observable<ShoppingCart> {
@@ -41,11 +30,6 @@ export class ShoppingCartService {
             .delete<ShoppingCart>(
                 `http://localhost/shoppingCart/items/${getId(shoppingCartItem)}`
             );
-    }
-
-    private handleRedirect<T>(response: HttpResponse<any>) {
-        return this.httpClient
-            .get<T>(response.headers.get('Location'));
     }
 
 }

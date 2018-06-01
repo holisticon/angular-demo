@@ -2,12 +2,13 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { ResourceWith } from '@luchsamapparat/common';
-import { QuantityUpdate, ShoppingCart, ShoppingCartAppState, ShoppingCartItem, UpdateShoppingCartItemQuantityAction } from '@luchsamapparat/shopping-cart-common';
-import { DeleteShoppingCartItemAction } from '@luchsamapparat/shopping-cart-common/src/state/shopping-cart.actions';
-import { ShoppingCartItemListComponent } from '@luchsamapparat/shopping-cart/src/shopping-cart-item-list/shopping-cart-item-list.component';
-import { ShoppingCartItemComponent } from '@luchsamapparat/shopping-cart/src/shopping-cart-item-list/shopping-cart-item/shopping-cart-item.component';
+import { QuantityUpdate, ShoppingCart, ShoppingCartItem } from '@luchsamapparat/shopping-cart-common';
 import { Store, StoreModule } from '@ngrx/store';
 import { expectElementFromFixture } from 'ngx-test-helpers';
+import { ShoppingCartItemListComponent } from '../shopping-cart-item-list/shopping-cart-item-list.component';
+import { ShoppingCartItemComponent } from '../shopping-cart-item-list/shopping-cart-item/shopping-cart-item.component';
+import { DeleteShoppingCartItemAction, UpdateShoppingCartItemQuantityAction } from '../state/shopping-cart.actions';
+import { ShoppingCartAppState } from '../state/shopping-cart.reducer';
 import { ShoppingCartComponent } from './shopping-cart.component';
 
 

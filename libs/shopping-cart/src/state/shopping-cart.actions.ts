@@ -1,33 +1,15 @@
 import { ResourceWith } from '@luchsamapparat/common';
+import { QuantityUpdate, ShoppingCartItem } from '@luchsamapparat/shopping-cart-common';
 import { Action } from '@ngrx/store';
-import { AdditionToShoppingCart, QuantityUpdate, ShoppingCart, ShoppingCartItem } from '../shopping-cart.model';
 
 export enum ShoppingCartActionTypes {
-    AddToShoppingCart = '[Shopping Cart] add to shopping cart',
     LoadShoppingCart = '[Shopping Cart] load shopping cart',
-    ShoppingCartLoaded = '[Shopping Cart] shopping cart loaded',
     UpdateShoppingCartItemQuantity = '[Shopping Cart] update shopping cart item quantity',
     DeleteShoppingCartItem = '[Shopping Cart] delete shopping cart item'
 }
 
-export class AddToShoppingCartAction implements Action {
-    readonly type = ShoppingCartActionTypes.AddToShoppingCart;
-
-    constructor(
-        public payload: AdditionToShoppingCart
-    ) {}
-}
-
 export class LoadShoppingCartAction implements Action {
     readonly type = ShoppingCartActionTypes.LoadShoppingCart;
-}
-
-export class ShoppingCartLoadedAction implements Action {
-    readonly type = ShoppingCartActionTypes.ShoppingCartLoaded;
-
-    constructor(
-        public payload: ShoppingCart
-    ) {}
 }
 
 export class UpdateShoppingCartItemQuantityAction implements Action {
@@ -35,7 +17,7 @@ export class UpdateShoppingCartItemQuantityAction implements Action {
 
     constructor(
         public payload: ResourceWith<QuantityUpdate>
-    ) {}
+    ) { }
 }
 
 export class DeleteShoppingCartItemAction implements Action {
@@ -43,7 +25,10 @@ export class DeleteShoppingCartItemAction implements Action {
 
     constructor(
         public payload: ShoppingCartItem
-    ) {}
+    ) { }
 }
 
-export type ShoppingCartActions = AddToShoppingCartAction | LoadShoppingCartAction | ShoppingCartLoadedAction | UpdateShoppingCartItemQuantityAction | DeleteShoppingCartItemAction;
+export type ShoppingCartActions =
+    | LoadShoppingCartAction
+    | UpdateShoppingCartItemQuantityAction
+    | DeleteShoppingCartItemAction;

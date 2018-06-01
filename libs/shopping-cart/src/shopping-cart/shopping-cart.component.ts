@@ -1,9 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ResourceWith } from '@luchsamapparat/common';
-import { QuantityUpdate, ShoppingCart, ShoppingCartAppState, ShoppingCartItem, UpdateShoppingCartItemQuantityAction, getShoppingCart } from '@luchsamapparat/shopping-cart-common';
-import { DeleteShoppingCartItemAction } from '@luchsamapparat/shopping-cart-common/src/state/shopping-cart.actions';
+import { QuantityUpdate, ShoppingCart, ShoppingCartItem } from '@luchsamapparat/shopping-cart-common';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
+import { DeleteShoppingCartItemAction, UpdateShoppingCartItemQuantityAction } from '../state/shopping-cart.actions';
+import { ShoppingCartAppState } from '../state/shopping-cart.reducer';
+import { getShoppingCart } from '../state/shopping-cart.selectors';
 
 @Component({
     selector: 'cfha-shopping-cart',

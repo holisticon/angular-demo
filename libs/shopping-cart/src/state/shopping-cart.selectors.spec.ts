@@ -1,9 +1,7 @@
 import { ShoppingCartAppState } from './shopping-cart.reducer';
 import { getShoppingCart } from './shopping-cart.selectors';
 
-
 describe('shoppingCartSelectors', () => {
-
     const state: ShoppingCartAppState = {
         shoppingCart: {
             shoppingCart: {
@@ -20,5 +18,4 @@ describe('shoppingCartSelectors', () => {
             expect(getShoppingCart()(state)).toBe(expectedValue);
         });
     });
-
 });

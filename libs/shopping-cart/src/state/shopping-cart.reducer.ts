@@ -1,5 +1,5 @@
-import { ShoppingCart } from '../shopping-cart.model';
-import { ShoppingCartActionTypes, ShoppingCartActions } from './shopping-cart.actions';
+import { ShoppingCart, ShoppingCartCommonActionTypes, ShoppingCartCommonActions } from '@luchsamapparat/shopping-cart-common';
+import { ShoppingCartActions } from './shopping-cart.actions';
 
 export interface ShoppingCartState {
     shoppingCart: ShoppingCart | null;
@@ -13,9 +13,9 @@ export const initialState: ShoppingCartState = {
     shoppingCart: null
 };
 
-export function shoppingCartReducer(state = initialState, action: ShoppingCartActions): ShoppingCartState {
+export function shoppingCartReducer(state = initialState, action: ShoppingCartActions | ShoppingCartCommonActions): ShoppingCartState {
     switch (action.type) {
-        case ShoppingCartActionTypes.ShoppingCartLoaded: {
+        case ShoppingCartCommonActionTypes.ShoppingCartLoaded: {
             return {
                 ...state,
                 shoppingCart: action.payload
