@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
-import { ResourceWith } from '@luchsamapparat/common';
+import { ResourceWith, addId } from '@luchsamapparat/common';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { StoreModule } from '@ngrx/store';
 import { DataPersistence } from '@nrwl/nx';
@@ -21,13 +21,13 @@ describe('ShoppingCartEffects', () => {
 
     const shoppingCart: ShoppingCart = {
         totalPrice: 1,
-        items: [{
+        items: [addId({
             name: '',
             description: '',
             price: 1,
             product: 'id',
             quantity: 1
-        }]
+        }, 'id')]
     };
 
     beforeEach(() => {
@@ -92,15 +92,15 @@ describe('ShoppingCartEffects', () => {
                 }
             };
 
-            const updateQuantitySpy = jest.spyOn(shoppingCartService, 'updateQuantity').mockImplementation(() => Observable.of(shoppingCart));
+            const updateQuantitySpy = jest.spyOn(shoppingCartService, 'updateShoppingCartItemQuantity').mockImplementation(() => Observable.of(shoppingCart));
 
             actions$ = hot('-a-|', { a: new UpdateShoppingCartItemQuantityAction(quantityUpdate) });
 
-            expect(effects$.updateQuantity$).toBeObservable(
+            expect(effects$.updateShoppingCartItemQuantity$).toBeObservable(
                 hot('-a-|', { a: new ShoppingCartLoadedAction(shoppingCart) })
             );
 
-            effects$.updateQuantity$
+            effects$.updateShoppingCartItemQuantity$
                 .take(1)
                 .subscribe(() => {
                     expect(updateQuantitySpy).toHaveBeenCalledWith(

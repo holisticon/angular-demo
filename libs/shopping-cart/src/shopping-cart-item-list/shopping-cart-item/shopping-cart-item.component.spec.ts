@@ -70,4 +70,16 @@ describe('ShoppingCartItemComponent', () => {
             })
     });
 
+    it('emits a delete event when the remove button is clicked', () => {
+        const removeButton: HTMLButtonElement = fixture.debugElement.query(By.css('.remove')).nativeElement;
+
+        fixture.componentInstance.delete
+            .take(1)
+            .subscribe(emittedShoppingCartItem => {
+                expect(emittedShoppingCartItem).toEqual(shoppingCartItem);
+            });
+
+        removeButton.dispatchEvent(new Event('click'));
+    });
+
 });

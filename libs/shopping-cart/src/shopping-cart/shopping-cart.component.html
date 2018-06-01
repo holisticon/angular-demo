@@ -3,4 +3,5 @@
 <cfha-shopping-cart-item-list
     [shoppingCart]="shoppingCart$ | async"
     (updateQuantity)="onUpdateQuantity($event)"
+    (delete)="onDelete($event)"
 ></cfha-shopping-cart-item-list>

@@ -60,22 +60,34 @@ describe('ShoppingCartItemListComponent', () => {
         expect(fixture.debugElement.query(By.css('.total-price')).nativeNode.textContent).toBe(shoppingCart.totalPrice.toFixed(2));
     });
 
-    it('emits an updateQuantity event when the update quantity form is emits one', () => {
-        const quantityUpdate: ResourceWith<QuantityUpdate, ShoppingCartItem> = {
-            resource: shoppingCart.items[0],
+    it('emits an updateQuantity event when the shopping cart item row is emits one', () => {
+        const shoppingCartItemRow: ShoppingCartItemComponent = fixture.debugElement.query(By.directive(ShoppingCartItemComponent)).componentInstance;
+
+        const expectedQuantityUpdate: ResourceWith<QuantityUpdate, ShoppingCartItem> = {
+            resource: shoppingCartItemRow.shoppingCartItem,
             with: {
                 quantity: 2
             }
         };
 
-        const shoppingCartItemRow: ShoppingCartItemComponent = fixture.debugElement.query(By.directive(ShoppingCartItemComponent)).componentInstance;
-
-        shoppingCartItemRow.updateQuantity.emit(quantityUpdate);
+        shoppingCartItemRow.updateQuantity.emit(expectedQuantityUpdate);
 
         fixture.componentInstance.updateQuantity
             .take(1)
-            .subscribe(expectedQuantityUpdate => {
-                expect(expectedQuantityUpdate).toEqual(expectedQuantityUpdate);
-            })
+            .subscribe(quantityUpdate => {
+                expect(quantityUpdate).toEqual(expectedQuantityUpdate);
+            });
+    });
+
+    it('emits an delete event when the shopping cart item row is emits one', () => {
+        const shoppingCartItemRow: ShoppingCartItemComponent = fixture.debugElement.query(By.directive(ShoppingCartItemComponent)).componentInstance;
+
+        shoppingCartItemRow.delete.emit(shoppingCartItemRow.shoppingCartItem);
+
+        fixture.componentInstance.delete
+            .take(1)
+            .subscribe(shoppingCartItem => {
+                expect(shoppingCartItem).toEqual(shoppingCartItemRow.shoppingCartItem);
+            });
     });
 });

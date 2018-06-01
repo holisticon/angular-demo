@@ -15,9 +15,16 @@ export class ShoppingCartItemComponent {
     shoppingCartItem: ShoppingCartItem;
 
     @Output()
-    updateQuantity = new EventEmitter<ResourceWith<QuantityUpdate>>();
+    updateQuantity = new EventEmitter<ResourceWith<QuantityUpdate, ShoppingCartItem>>();
+
+    @Output()
+    delete = new EventEmitter<ShoppingCartItem>();
 
     onUpdateQuantity(quantityUpdate: ResourceWith<QuantityUpdate>) {
         this.updateQuantity.emit(quantityUpdate);
+    }
+
+    onDelete() {
+        this.delete.emit(this.shoppingCartItem);
     }
 }

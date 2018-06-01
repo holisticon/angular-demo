@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { ResourceWith } from '@luchsamapparat/common';
 import { QuantityUpdate, ShoppingCart, ShoppingCartAppState, ShoppingCartItem, UpdateShoppingCartItemQuantityAction } from '@luchsamapparat/shopping-cart-common';
+import { DeleteShoppingCartItemAction } from '@luchsamapparat/shopping-cart-common/src/state/shopping-cart.actions';
 import { ShoppingCartItemListComponent } from '@luchsamapparat/shopping-cart/src/shopping-cart-item-list/shopping-cart-item-list.component';
 import { ShoppingCartItemComponent } from '@luchsamapparat/shopping-cart/src/shopping-cart-item-list/shopping-cart-item/shopping-cart-item.component';
 import { Store, StoreModule } from '@ngrx/store';
@@ -15,14 +16,16 @@ describe('ShoppingCartComponent', () => {
     let fixture: ComponentFixture<ShoppingCartComponent>;
     let store: Store<void>;
 
+    const shoppingCartItem = {
+        name: '',
+        description: '',
+        price: 1,
+        product: 'id',
+        quantity: 1
+    };
+
     const shoppingCart: ShoppingCart = {
-        items: [{
-            name: '',
-            description: '',
-            price: 1,
-            product: 'id',
-            quantity: 1
-        }],
+        items: [shoppingCartItem],
         totalPrice: 1
     };
 
@@ -68,7 +71,7 @@ describe('ShoppingCartComponent', () => {
 
     it('dispatches an UpdateShoppingCartItemQuantityAction when the shopping cart item list emits an updateQuantity event', async(() => {
         const quantityUpdate: ResourceWith<QuantityUpdate, ShoppingCartItem> = {
-            resource: shoppingCart.items[0],
+            resource: shoppingCartItem,
             with: {
                 quantity: 2
             }
@@ -81,5 +84,16 @@ describe('ShoppingCartComponent', () => {
         const dispatchedAction: UpdateShoppingCartItemQuantityAction = storeDispatchSpy.mock.calls[0][0];
         expect(dispatchedAction).toBeInstanceOf(UpdateShoppingCartItemQuantityAction);
         expect(dispatchedAction.payload).toBe(quantityUpdate);
+    }));
+
+    it('dispatches an DeleteShoppingCartItemAction when the shopping cart item list emits a delete event', async(() => {
+        const storeDispatchSpy = jest.spyOn(store, 'dispatch');
+        const shoppingCartItemList: ShoppingCartItemListComponent = fixture.debugElement.query(By.directive(ShoppingCartItemListComponent)).componentInstance;
+
+        shoppingCartItemList.delete.emit(shoppingCartItem);
+
+        const dispatchedAction: DeleteShoppingCartItemAction = storeDispatchSpy.mock.calls[0][0];
+        expect(dispatchedAction).toBeInstanceOf(DeleteShoppingCartItemAction);
+        expect(dispatchedAction.payload).toBe(shoppingCartItem);
     }));
 });

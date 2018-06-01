@@ -28,11 +28,18 @@ export class ShoppingCartService {
             .switchMap(response => this.handleRedirect<ShoppingCart>(response));
     }
 
-    updateQuantity(shoppingCartItem: ShoppingCartItem, quantityUpdate: QuantityUpdate): Observable<ShoppingCart> {
+    updateShoppingCartItemQuantity(shoppingCartItem: ShoppingCartItem, quantityUpdate: QuantityUpdate): Observable<ShoppingCart> {
         return this.httpClient
             .patch<ShoppingCart>(
                 `http://localhost/shoppingCart/items/${getId(shoppingCartItem)}`,
                 quantityUpdate
+            );
+    }
+
+    deleteShoppingCartItem(shoppingCartItem: ShoppingCartItem): Observable<ShoppingCart> {
+        return this.httpClient
+            .delete<ShoppingCart>(
+                `http://localhost/shoppingCart/items/${getId(shoppingCartItem)}`
             );
     }
 

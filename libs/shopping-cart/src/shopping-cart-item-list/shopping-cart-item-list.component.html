@@ -13,6 +13,7 @@
             shopping-cart-item-row
             [shoppingCartItem]="shoppingCartItem"
             (updateQuantity)="onUpdateQuantity($event)"
+            (delete)="onDelete($event)"
         ></tr>
     </tbody>
     <tfoot>

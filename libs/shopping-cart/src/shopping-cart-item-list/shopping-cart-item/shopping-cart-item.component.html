@@ -10,8 +10,5 @@
     ></cfha-update-quantity-form>
 </td>
 <td>
-    <form action="" method="POST" class="remove">
-        <input type="hidden" name="_method" value="DELETE" />
-        <button type="submit" class="btn btn-danger">Remove</button>
-    </form>
+    <button type="submit" class="btn btn-danger remove" (click)="onDelete()">Remove</button>
 </td>
