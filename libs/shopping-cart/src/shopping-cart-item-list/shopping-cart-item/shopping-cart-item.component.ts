@@ -4,7 +4,7 @@ import { QuantityUpdate, ShoppingCartItem } from '@luchsamapparat/shopping-cart-
 
 @Component({
   // tslint:disable-next-line:component-selector
-  selector: '[shopping-cart-item-row]',
+  selector: '[cfha-shopping-cart-item-row]',
   templateUrl: './shopping-cart-item.component.html',
   styleUrls: ['./shopping-cart-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
