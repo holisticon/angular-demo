@@ -1,19 +1,10 @@
 import { Product, ProductsActionTypes, ProductsActions } from '@luchsamapparat/products-common';
 
-/**
- * Interface for the 'Products' data used in
- *  - ProductsState, and
- *  - productsReducer
- */
 export interface ProductsState {
     query: string | null;
     searchResults: Product[];
 }
 
-/**
- * Interface to the part of the Store containing ProductsState
- * and other information related to ProductsData.
- */
 export interface ProductsAppState {
     readonly products: ProductsState;
 }

@@ -5,10 +5,6 @@ export interface ShoppingCartState {
     shoppingCart: ShoppingCart | null;
 }
 
-/**
- * Interface to the part of the Store containing ShoppingCartState
- * and other information related to ShoppingCartData.
- */
 export interface ShoppingCartAppState {
     readonly shoppingCart: ShoppingCartState;
 }

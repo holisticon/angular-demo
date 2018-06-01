@@ -5,6 +5,7 @@ import { initialState, shoppingCartReducer } from './shopping-cart.reducer';
 
 describe('shoppingCartReducer', () => {
     const shoppingCart: ShoppingCart = {
+        totalPrice: 0,
         items: []
     };
 
