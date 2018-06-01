@@ -7,7 +7,6 @@ import { isNull } from 'lodash-es';
 @Component({
     selector: 'cfha-update-quantity-form',
     templateUrl: './update-quantity-form.component.html',
-    styleUrls: ['./update-quantity-form.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UpdateQuantityFormComponent implements OnInit {
