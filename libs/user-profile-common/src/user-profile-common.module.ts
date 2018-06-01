@@ -3,6 +3,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { Store, StoreModule } from '@ngrx/store';
+import { AddressComponent } from './address/address.component';
+import { PaymentOptionComponent } from './payment-option/payment-option.component';
 import { LoadUserProfileAction } from './state/user-profile.actions';
 import { UserProfileEffects } from './state/user-profile.effects';
 import { UserProfileState, initialState as userProfileInitialState, userProfileReducer } from './state/user-profile.reducer';
@@ -19,7 +21,14 @@ import { UserProfileService } from './user-profile.service';
         UserProfileEffects,
         UserProfileService
     ],
-    declarations: []
+    declarations: [
+        AddressComponent,
+        PaymentOptionComponent
+    ],
+    exports: [
+        AddressComponent,
+        PaymentOptionComponent
+    ]
 })
 export class UserProfileCommonModule {
     constructor(
