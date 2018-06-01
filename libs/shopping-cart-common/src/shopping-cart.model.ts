@@ -15,3 +15,7 @@ export interface AdditionToShoppingCart {
     product: string;
     quantity: number;
 }
+
+export interface QuantityUpdate {
+    quantity: number;
+}

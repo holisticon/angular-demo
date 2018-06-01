@@ -59,6 +59,5 @@ describe('ProductListComponent', () => {
             })
 
         productListEntry.addToShoppingCart.emit(expectedAdditionToShoppingCart);
-
     }));
 });

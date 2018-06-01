@@ -1,5 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
+import { ResourceWith } from '@luchsamapparat/common';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { StoreModule } from '@ngrx/store';
 import { DataPersistence } from '@nrwl/nx';
@@ -8,9 +9,9 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/take';
-import { ShoppingCart } from '../shopping-cart.model';
+import { QuantityUpdate, ShoppingCart, ShoppingCartItem } from '../shopping-cart.model';
 import { ShoppingCartService } from '../shopping-cart.service';
-import { AddToShoppingCartAction, LoadShoppingCartAction, ShoppingCartLoadedAction } from './shopping-cart.actions';
+import { AddToShoppingCartAction, LoadShoppingCartAction, ShoppingCartLoadedAction, UpdateShoppingCartItemQuantityAction } from './shopping-cart.actions';
 import { ShoppingCartEffects } from './shopping-cart.effects';
 
 describe('ShoppingCartEffects', () => {
@@ -19,8 +20,14 @@ describe('ShoppingCartEffects', () => {
     let shoppingCartService: ShoppingCartService;
 
     const shoppingCart: ShoppingCart = {
-        totalPrice: 0,
-        items: []
+        totalPrice: 1,
+        items: [{
+            name: '',
+            description: '',
+            price: 1,
+            product: 'id',
+            quantity: 1
+        }]
     };
 
     beforeEach(() => {
@@ -72,6 +79,34 @@ describe('ShoppingCartEffects', () => {
                 .take(1)
                 .subscribe(() => {
                     expect(addShoppingCartItemSpy).toHaveBeenCalledWith(additionToShoppingCart);
+                })
+        });
+    });
+
+    describe('updateQuantity', () => {
+        it('calls the service with the given quantity update and dispatches a ShoppingCartLoadedAction with the updated shopping cart', () => {
+            const quantityUpdate: ResourceWith<QuantityUpdate, ShoppingCartItem> = {
+                resource: shoppingCart.items[0],
+                with: {
+                    quantity: 2
+                }
+            };
+
+            const updateQuantitySpy = jest.spyOn(shoppingCartService, 'updateQuantity').mockImplementation(() => Observable.of(shoppingCart));
+
+            actions$ = hot('-a-|', { a: new UpdateShoppingCartItemQuantityAction(quantityUpdate) });
+
+            expect(effects$.updateQuantity$).toBeObservable(
+                hot('-a-|', { a: new ShoppingCartLoadedAction(shoppingCart) })
+            );
+
+            effects$.updateQuantity$
+                .take(1)
+                .subscribe(() => {
+                    expect(updateQuantitySpy).toHaveBeenCalledWith(
+                        quantityUpdate.resource,
+                        quantityUpdate.with
+                    );
                 })
         });
     });

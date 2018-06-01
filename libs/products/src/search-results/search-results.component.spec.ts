@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Resource, addId, getId } from '@luchsamapparat/common';
 import { Product } from '@luchsamapparat/products-common';
-import { AddToShoppingCartAction } from '@luchsamapparat/shopping-cart-common';
+import { AddToShoppingCartAction, AdditionToShoppingCart } from '@luchsamapparat/shopping-cart-common';
 import { Store, StoreModule } from '@ngrx/store';
 import { expectElementFromFixture } from 'ngx-test-helpers';
 import { ProductListComponent } from '../product-list/product-list.component';
@@ -64,7 +64,7 @@ describe('SearchResultsComponent', () => {
     });
 
     it('dispatches an AddToShoppingCartAction when the product list emits an addToShoppingCart event', async(() => {
-        const additionToShoppingCart = {
+        const additionToShoppingCart: AdditionToShoppingCart = {
             product: getId(product),
             quantity: 2
         };

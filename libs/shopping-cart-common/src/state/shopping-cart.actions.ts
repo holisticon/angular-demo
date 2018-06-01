@@ -1,10 +1,12 @@
+import { ResourceWith } from '@luchsamapparat/common';
 import { Action } from '@ngrx/store';
-import { AdditionToShoppingCart, ShoppingCart } from '../shopping-cart.model';
+import { AdditionToShoppingCart, QuantityUpdate, ShoppingCart } from '../shopping-cart.model';
 
 export enum ShoppingCartActionTypes {
     AddToShoppingCart = '[Shopping Cart] add to shopping cart',
     LoadShoppingCart = '[Shopping Cart] load shopping cart',
-    ShoppingCartLoaded = '[Shopping Cart] shopping cart loaded'
+    ShoppingCartLoaded = '[Shopping Cart] shopping cart loaded',
+    UpdateShoppingCartItemQuantity = '[Shopping Cart] update shopping cart item quantity'
 }
 
 export class AddToShoppingCartAction implements Action {
@@ -27,4 +29,12 @@ export class ShoppingCartLoadedAction implements Action {
     ) {}
 }
 
-export type ShoppingCartActions = AddToShoppingCartAction | LoadShoppingCartAction | ShoppingCartLoadedAction;
+export class UpdateShoppingCartItemQuantityAction implements Action {
+    readonly type = ShoppingCartActionTypes.UpdateShoppingCartItemQuantity;
+
+    constructor(
+        public payload: ResourceWith<QuantityUpdate>
+    ) {}
+}
+
+export type ShoppingCartActions = AddToShoppingCartAction | LoadShoppingCartAction | ShoppingCartLoadedAction | UpdateShoppingCartItemQuantityAction;

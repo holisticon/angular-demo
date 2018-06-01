@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { ShoppingCart } from '@luchsamapparat/shopping-cart-common';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ResourceWith } from '@luchsamapparat/common';
+import { QuantityUpdate, ShoppingCart } from '@luchsamapparat/shopping-cart-common';
 
 @Component({
     selector: 'cfha-shopping-cart-item-list',
@@ -11,5 +12,12 @@ export class ShoppingCartItemListComponent {
 
     @Input()
     shoppingCart: ShoppingCart;
+
+    @Output()
+    updateQuantity = new EventEmitter<ResourceWith<QuantityUpdate>>();
+
+    onUpdateQuantity(quantityUpdate: ResourceWith<QuantityUpdate>) {
+        this.updateQuantity.emit(quantityUpdate);
+    }
 
 }

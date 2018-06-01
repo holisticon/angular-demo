@@ -1,0 +1,6 @@
+<form class="input-group update-quantity" (submit)="onSubmit($event)">
+    <input type="number" name="quantity" min="1" step="1" class="form-control text-right quantity" [formControl]="quantity">
+    <div class="input-group-append">
+        <button type="submit" class="btn btn-primary">Update</button>
+    </div>
+</form>

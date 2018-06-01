@@ -1,3 +1,6 @@
 <h1 class="mb-5">Shopping Cart</h1>
 
-<cfha-shopping-cart-item-list [shoppingCart]="shoppingCart$ | async"></cfha-shopping-cart-item-list>
+<cfha-shopping-cart-item-list
+    [shoppingCart]="shoppingCart$ | async"
+    (updateQuantity)="onUpdateQuantity($event)"
+></cfha-shopping-cart-item-list>

@@ -1,9 +1,10 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { getId } from '@luchsamapparat/common';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/empty';
 import 'rxjs/add/operator/switchMap';
-import { AdditionToShoppingCart, ShoppingCart } from './shopping-cart.model';
+import { AdditionToShoppingCart, QuantityUpdate, ShoppingCart, ShoppingCartItem } from './shopping-cart.model';
 
 @Injectable()
 export class ShoppingCartService {
@@ -24,12 +25,20 @@ export class ShoppingCartService {
                 additionToShoppingCart,
                 { responseType: 'text', observe: 'response' }
             )
-                .switchMap(response => this.handleRedirect<ShoppingCart>(response));
-  }
+            .switchMap(response => this.handleRedirect<ShoppingCart>(response));
+    }
 
-  private handleRedirect<T>(response: HttpResponse<any>) {
-      return this.httpClient
-        .get<T>(response.headers.get('Location'));
-  }
+    updateQuantity(shoppingCartItem: ShoppingCartItem, quantityUpdate: QuantityUpdate): Observable<ShoppingCart> {
+        return this.httpClient
+            .patch<ShoppingCart>(
+                `http://localhost/shoppingCart/items/${getId(shoppingCartItem)}`,
+                quantityUpdate
+            );
+    }
+
+    private handleRedirect<T>(response: HttpResponse<any>) {
+        return this.httpClient
+            .get<T>(response.headers.get('Location'));
+    }
 
 }
