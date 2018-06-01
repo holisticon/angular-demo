@@ -1,35 +1,7 @@
 <h1 class="mb-5">Orders</h1>
 
 <ul class="list-unstyled">
-    <!-- <% orders.forEach(function (order, index) { -->
-    <li class="row align-items-center mb-5">
-        <div class="col">
-            <h2 class="h5 mb-1">
-                <!-- <a href="links.order[index]"> -->
-                    <!-- new Date(order.date).toLocaleDateString() new Date(order.date).toLocaleTimeString() -->
-                <!-- </a> -->
-                order.date
-            </h2>
-            <p class="mt-2"><span class="badge badge-secondary">order.status</span></p>
-        </div>
-
-        <div class="col-12 mt-2 row">
-            <address class="col-3">
-                <h3 class="h6">Billing Address</h3>
-                order.billingAddress.name<br />
-                <small>order.billingAddress.street, order.billingAddress.city</small>
-            </address>
-            <address class="col-3">
-                <h3 class="h6">Shipping Address</h3>
-                order.shippingAddress.name<br />
-                <small>order.shippingAddress.street, order.shippingAddress.city</small>
-            </address>
-            <div class="payment col-3">
-                <h3 class="h6">Payment</h3>
-                order.payment.accountOwner<br />
-                <small>order.payment.iban</small>
-            </div>
-        </div>
+    <li class="row align-items-center mb-5" *ngFor="let order of (orders | async)">
+        <cfha-order [order]="order"></cfha-order>
     </li>
-    <!-- <% }) -->
 </ul>
