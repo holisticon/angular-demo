@@ -9,7 +9,8 @@
         "../../../libs/homepage/index.ts",
         "../../../libs/products/index.ts",
         "../../../libs/shopping-cart/index.ts",
-        "../../../libs/user-profile/index.ts"
+        "../../../libs/user-profile/index.ts",
+        "../../../libs/orders/index.ts"
     ],
     "exclude": [
         "**/*.spec.ts"

@@ -21,7 +21,8 @@ import { RouterStateUrlSerializer } from './state/router-state-serializer';
             { path: 'products', loadChildren: '@luchsamapparat/products#ProductsModule' },
             { path: '', loadChildren: '@luchsamapparat/homepage#HomepageModule' },
             { path: 'shopping-cart', loadChildren: '@luchsamapparat/shopping-cart#ShoppingCartModule' },
-            { path: 'user-profile', loadChildren: '@luchsamapparat/user-profile#UserProfileModule' }
+            { path: 'user-profile', loadChildren: '@luchsamapparat/user-profile#UserProfileModule' },
+            { path: 'orders', loadChildren: '@luchsamapparat/orders#OrdersModule' }
         ], { initialNavigation: 'enabled' }),
         StoreModule.forRoot(
             {},

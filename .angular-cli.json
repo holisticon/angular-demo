@@ -71,6 +71,20 @@
       "tags": []
     },
     {
+      "name": "orders",
+      "root": "libs/orders/src",
+      "test": "../../../test.js",
+      "appRoot": "",
+      "tags": []
+    },
+    {
+      "name": "orders-common",
+      "root": "libs/orders-common/src",
+      "test": "../../../test.js",
+      "appRoot": "",
+      "tags": []
+    },
+    {
       "name": "products",
       "root": "libs/products/src",
       "test": "../../../../test.js",
