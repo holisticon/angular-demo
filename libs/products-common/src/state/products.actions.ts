@@ -31,4 +31,7 @@ export class SearchResultsLoadedAction implements Action {
     ) {}
 }
 
-export type ProductsActions = SearchProductsAction | LoadSearchResultsAction | SearchResultsLoadedAction;
+export type ProductsActions =
+    | SearchProductsAction
+    | LoadSearchResultsAction
+    | SearchResultsLoadedAction;

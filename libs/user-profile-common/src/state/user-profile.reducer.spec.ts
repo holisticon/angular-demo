@@ -1,5 +1,5 @@
-import { UserProfile } from '@luchsamapparat/user-profile-common/src/user-profile.model';
 import { Action } from '@ngrx/store';
+import { UserProfile } from '../user-profile.model';
 import { UserProfileLoadedAction } from './user-profile.actions';
 import { initialState, userProfileReducer } from './user-profile.reducer';
 

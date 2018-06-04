@@ -1,5 +1,5 @@
-import { UserProfile } from '@luchsamapparat/user-profile-common/src/user-profile.model';
 import { Action } from '@ngrx/store';
+import { UserProfile } from '../user-profile.model';
 
 export enum UserProfileActionTypes {
     LoadUserProfile = '[UserProfile] load user profile',
@@ -18,4 +18,6 @@ export class UserProfileLoadedAction implements Action {
     ) {}
 }
 
-export type UserProfileActions = LoadUserProfileAction | UserProfileLoadedAction;
+export type UserProfileActions =
+    | LoadUserProfileAction
+    | UserProfileLoadedAction;

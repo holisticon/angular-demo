@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { UserProfile } from '@luchsamapparat/user-profile-common/src/user-profile.model';
 import { Observable } from 'rxjs/Observable';
+import { UserProfile } from './user-profile.model';
 
 @Injectable()
 export class UserProfileService {

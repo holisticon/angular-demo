@@ -1,7 +1,7 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { addId } from '@luchsamapparat/common';
-import { UserProfile } from '@luchsamapparat/user-profile-common/src/user-profile.model';
+import { UserProfile } from './user-profile.model';
 import { UserProfileService } from './user-profile.service';
 
 describe('UserProfileService', () => {

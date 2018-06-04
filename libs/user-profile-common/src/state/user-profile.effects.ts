@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { UserProfileService } from '@luchsamapparat/user-profile-common/src/user-profile.service';
 import { Actions, Effect } from '@ngrx/effects';
 import { DataPersistence } from '@nrwl/nx';
+import { UserProfileService } from '../user-profile.service';
 import { LoadUserProfileAction, UserProfileActionTypes, UserProfileLoadedAction } from './user-profile.actions';
 import { UserProfileState } from './user-profile.reducer';
 

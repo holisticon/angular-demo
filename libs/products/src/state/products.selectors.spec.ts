@@ -1,5 +1,5 @@
-import { getSearchResults } from "@luchsamapparat/products/src/state/products.selectors";
 import { ProductsAppState } from "./products.reducer";
+import { getSearchResults } from "./products.selectors";
 
 describe('productsSelectors', () => {
 

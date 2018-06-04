@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 import { Params } from '@angular/router';
 import { LoadSearchResultsAction } from '@luchsamapparat/products-common';
-import { ProductsNavigationEffects } from '@luchsamapparat/products/src/products-navigation.effects';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { ROUTER_NAVIGATION, RouterNavigationAction } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
 import { cold, hot } from 'jest-marbles';
 import { Observable } from 'rxjs/Observable';
+import { ProductsNavigationEffects } from './products-navigation.effects';
 
 describe('ProductsNavigationEffects', () => {
     let actions$: Observable<any>;
