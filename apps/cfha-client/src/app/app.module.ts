@@ -7,11 +7,16 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { NxModule } from '@nrwl/nx';
 import { storeFreeze } from 'ngrx-store-freeze';
+import { storeLogger } from 'ngrx-store-logger';
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AppEffects } from './state/app.effects';
 import { RouterStateUrlSerializer } from './state/router-state-serializer';
+
+export function logger(reducer) {
+    return storeLogger()(reducer);
+}
 
 @NgModule({
     imports: [
@@ -26,7 +31,7 @@ import { RouterStateUrlSerializer } from './state/router-state-serializer';
         ], { initialNavigation: 'enabled' }),
         StoreModule.forRoot(
             {},
-            { metaReducers: !environment.production ? [storeFreeze] : [] }
+            { metaReducers: !environment.production ? [logger, storeFreeze] : [] }
         ),
         EffectsModule.forRoot([AppEffects]),
         !environment.production ? StoreDevtoolsModule.instrument() : [],

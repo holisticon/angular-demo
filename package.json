@@ -43,6 +43,7 @@
     "core-js": "^2.4.1",
     "lodash-es": "4.17.10",
     "ngrx-store-freeze": "^0.2.1",
+    "ngrx-store-logger": "0.2.2",
     "rxjs": "^5.5.6",
     "viz": "^0.0.1",
     "zone.js": "^0.8.19"
