@@ -11,7 +11,7 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/take';
 import { ShoppingCartService } from '../shopping-cart.service';
-import { LoadShoppingCartAction, UpdateShoppingCartItemQuantityAction } from './shopping-cart.actions';
+import { DeleteShoppingCartItemAction, LoadShoppingCartAction, UpdateShoppingCartItemQuantityAction } from './shopping-cart.actions';
 import { ShoppingCartEffects } from './shopping-cart.effects';
 
 describe('ShoppingCartEffects', () => {
@@ -19,17 +19,17 @@ describe('ShoppingCartEffects', () => {
     let effects$: ShoppingCartEffects;
     let shoppingCartService: ShoppingCartService;
 
+    const shoppingCartItem: ShoppingCartItem = addId({
+        name: '',
+        description: '',
+        price: 1,
+        product: 'id',
+        quantity: 1
+    }, 'id');
+
     const shoppingCart: ShoppingCart = {
         totalPrice: 1,
-        items: [
-            addId({
-                name: '',
-                description: '',
-                price: 1,
-                product: 'id',
-                quantity: 1
-            }, 'id')
-        ]
+        items: [shoppingCartItem]
     };
 
     beforeEach(() => {
@@ -67,7 +67,7 @@ describe('ShoppingCartEffects', () => {
     describe('updateQuantity', () => {
         it('calls the service with the given quantity update and dispatches a ShoppingCartLoadedAction with the updated shopping cart', () => {
             const quantityUpdate: ResourceWith<QuantityUpdate, ShoppingCartItem> = {
-                resource: shoppingCart.items[0],
+                resource: shoppingCartItem,
                 with: {
                     quantity: 2
                 }
@@ -85,12 +85,36 @@ describe('ShoppingCartEffects', () => {
                 hot('-a-|', { a: new ShoppingCartLoadedAction(shoppingCart) })
             );
 
-            effects$.updateShoppingCartItemQuantity$.take(1).subscribe(() => {
-                expect(updateQuantitySpy).toHaveBeenCalledWith(
-                    quantityUpdate.resource,
-                    quantityUpdate.with
-                );
+            effects$.updateShoppingCartItemQuantity$
+                .take(1)
+                .subscribe(() => {
+                    expect(updateQuantitySpy).toHaveBeenCalledWith(
+                        quantityUpdate.resource,
+                        quantityUpdate.with
+                    );
+                });
+        });
+    });
+
+    describe('deleteShoppingCartItem', () => {
+        it('calls the service with the given shopping cart item and dispatches a ShoppingCartLoadedAction with the updated shopping cart', () => {
+            const deleteShoppingCartItemSpy = jest
+                .spyOn(shoppingCartService, 'deleteShoppingCartItem')
+                .mockImplementation(() => Observable.of(shoppingCart));
+
+            actions$ = hot('-a-|', {
+                a: new DeleteShoppingCartItemAction(shoppingCartItem)
             });
+
+            expect(effects$.deleteShoppingCartItemQuantity$).toBeObservable(
+                hot('-a-|', { a: new ShoppingCartLoadedAction(shoppingCart) })
+            );
+
+            effects$.deleteShoppingCartItemQuantity$
+                .take(1)
+                .subscribe(() => {
+                    expect(deleteShoppingCartItemSpy).toHaveBeenCalledWith(shoppingCartItem);
+                });
         });
     });
 });
