@@ -64,10 +64,6 @@ describe('OrderComponent', () => {
     });
 
     it('renders the shipping address as cfha-address', () => {
-        // const shippingAddress: AddressComponent = fixture.debugElement.queryAll(By.directive(AddressComponent))
-        //     .find(address => address.parent.nativeElement.classList.contains('shipping-address'))
-        //     .componentInstance;
-
         const addresses = fixture.debugElement.queryAll(By.directive(AddressComponent));
         const shippingAddressComponent = addresses
             .find(address => address.parent.nativeElement.classList.contains('shipping-address'));

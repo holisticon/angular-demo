@@ -8,7 +8,10 @@ import 'rxjs/add/operator/switchMap';
 
 @Injectable()
 export class ShoppingCartService {
-    constructor(private httpClient: HttpClient) {}
+
+    constructor(
+        private httpClient: HttpClient
+    ) {}
 
     loadShoppingCart(): Observable<ShoppingCart> {
         return this.httpClient

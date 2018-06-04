@@ -23,8 +23,12 @@ describe('ShoppingCartService', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [HttpClientTestingModule],
-            providers: [ShoppingCartService]
+            imports: [
+                HttpClientTestingModule
+            ],
+            providers: [
+                ShoppingCartService
+            ]
         });
 
         shoppingCartService = TestBed.get(ShoppingCartService);

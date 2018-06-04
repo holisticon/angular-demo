@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { Order } from '@luchsamapparat/orders-common/src/order.model';
+import { Order } from '@luchsamapparat/orders-common';
 
 @Component({
     selector: 'cfha-order',
