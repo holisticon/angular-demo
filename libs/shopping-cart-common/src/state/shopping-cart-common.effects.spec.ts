@@ -10,13 +10,13 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/take';
-import { AddToShoppingCartService } from '../add-to-shopping-cart.service';
+import { ShoppingCartCommonService } from '../shopping-cart-common.service';
 import { ShoppingCartCommonEffects } from './shopping-cart-common.effects';
 
 describe('ShoppingCartCommonEffects', () => {
     let actions$: Observable<any>;
     let effects$: ShoppingCartCommonEffects;
-    let addToShoppingCartService: AddToShoppingCartService;
+    let shoppingCartCommonService: ShoppingCartCommonService;
 
     const shoppingCart: ShoppingCart = {
         totalPrice: 1,
@@ -39,14 +39,14 @@ describe('ShoppingCartCommonEffects', () => {
             ],
             providers: [
                 ShoppingCartCommonEffects,
-                AddToShoppingCartService,
+                ShoppingCartCommonService,
                 DataPersistence,
                 provideMockActions(() => actions$)
             ]
         });
 
         effects$ = TestBed.get(ShoppingCartCommonEffects);
-        addToShoppingCartService = TestBed.get(AddToShoppingCartService);
+        shoppingCartCommonService = TestBed.get(ShoppingCartCommonService);
     });
 
     describe('addToShoppingCart', () => {
@@ -56,8 +56,8 @@ describe('ShoppingCartCommonEffects', () => {
                 quantity: 2
             };
 
-            const addProductSpy = jest
-                .spyOn(addToShoppingCartService, 'addProduct')
+            const addToShoppingCartSpy = jest
+                .spyOn(shoppingCartCommonService, 'addToShoppingCart')
                 .mockImplementation(() => Observable.of(shoppingCart));
 
             actions$ = hot('-a-|', {
@@ -68,9 +68,11 @@ describe('ShoppingCartCommonEffects', () => {
                 hot('-a-|', { a: new ShoppingCartLoadedAction(shoppingCart) })
             );
 
-            effects$.addToShoppingCart$.take(1).subscribe(() => {
-                expect(addProductSpy).toHaveBeenCalledWith(additionToShoppingCart);
-            });
+            effects$.addToShoppingCart$
+                .take(1)
+                .subscribe(() => {
+                    expect(addToShoppingCartSpy).toHaveBeenCalledWith(additionToShoppingCart);
+                });
         });
     });
 

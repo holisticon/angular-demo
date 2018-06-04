@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import { DataPersistence } from '@nrwl/nx';
-import { AddToShoppingCartService } from '../add-to-shopping-cart.service';
+import { ShoppingCartCommonService } from '../shopping-cart-common.service';
 import { AddToShoppingCartAction, ShoppingCartCommonActionTypes, ShoppingCartLoadedAction } from './shopping-cart-common.actions';
 
 @Injectable()
@@ -12,8 +12,8 @@ export class ShoppingCartCommonEffects {
         ShoppingCartCommonActionTypes.AddToShoppingCart,
         {
             run: (action, state) => {
-                return this.addToShoppingCartService
-                    .addProduct(action.payload)
+                return this.shoppingCartCommonService
+                    .addToShoppingCart(action.payload)
                     .map(shoppingCart => new ShoppingCartLoadedAction(shoppingCart));
             },
 
@@ -26,6 +26,6 @@ export class ShoppingCartCommonEffects {
     constructor(
         private actions$: Actions,
         private dataPersistence: DataPersistence<void>,
-        private addToShoppingCartService: AddToShoppingCartService
+        private shoppingCartCommonService: ShoppingCartCommonService
     ) {}
 }

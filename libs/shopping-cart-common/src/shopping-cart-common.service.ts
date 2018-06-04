@@ -5,13 +5,13 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
 
 @Injectable()
-export class AddToShoppingCartService {
+export class ShoppingCartCommonService {
 
     constructor(
         private httpClient: HttpClient
     ) { }
 
-    addProduct(additionToShoppingCart: AdditionToShoppingCart): Observable<ShoppingCart> {
+    addToShoppingCart(additionToShoppingCart: AdditionToShoppingCart): Observable<ShoppingCart> {
         return this.httpClient
             .post(
                 `http://localhost/shoppingCart/items`,

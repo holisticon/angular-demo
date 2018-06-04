@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
-import { AddToShoppingCartService } from './add-to-shopping-cart.service';
+import { ShoppingCartCommonService } from './shopping-cart-common.service';
 import { ShoppingCartCommonEffects } from './state/shopping-cart-common.effects';
 
 @NgModule({
@@ -13,7 +13,7 @@ import { ShoppingCartCommonEffects } from './state/shopping-cart-common.effects'
     ],
     providers: [
         ShoppingCartCommonEffects,
-        AddToShoppingCartService
+        ShoppingCartCommonService
     ],
     declarations: []
 })

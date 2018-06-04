@@ -2,10 +2,10 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { TestBed } from '@angular/core/testing';
 import { addId } from '@luchsamapparat/common';
 import { AdditionToShoppingCart, ShoppingCart } from '@luchsamapparat/shopping-cart-common';
-import { AddToShoppingCartService } from './add-to-shopping-cart.service';
+import { ShoppingCartCommonService } from './shopping-cart-common.service';
 
-describe('AddToShoppingCartService', () => {
-    let shoppingCartService: AddToShoppingCartService;
+describe('ShoppingCartCommonService', () => {
+    let shoppingCartCommonService: ShoppingCartCommonService;
     let httpController: HttpTestingController;
 
     const shoppingCartItem = addId({
@@ -24,22 +24,22 @@ describe('AddToShoppingCartService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [HttpClientTestingModule],
-            providers: [AddToShoppingCartService]
+            providers: [ShoppingCartCommonService]
         });
 
-        shoppingCartService = TestBed.get(AddToShoppingCartService);
+        shoppingCartCommonService = TestBed.get(ShoppingCartCommonService);
         httpController = TestBed.get(HttpTestingController);
     });
 
-    describe('addProduct', () => {
+    describe('addToShoppingCart', () => {
         it('submits the given addition to the shopping cart to the backend', () => {
             const additionToShoppingCart: AdditionToShoppingCart = {
                 product: 'id',
                 quantity: 2
             };
 
-            shoppingCartService
-                .addProduct(additionToShoppingCart)
+            shoppingCartCommonService
+                .addToShoppingCart(additionToShoppingCart)
                 .subscribe(returnedShoppingCart => {
                     expect(returnedShoppingCart).toBe(shoppingCart);
                 });
