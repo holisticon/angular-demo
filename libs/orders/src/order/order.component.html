@@ -1,22 +1,24 @@
-<div class="col">
-    <h2 class="h5 mb-1">{{ order.date | date:'medium' }}</h2>
-    <p class="mt-2"><span class="badge badge-secondary status">{{ order.status }}</span></p>
-</div>
-
-<div class="col-12 mt-2 row">
-    <div class="col-3 billing-address">
-        <h3 class="h6">Billing Address</h3>
-
-        <cfha-address [address]="order.billingAddress"></cfha-address>
+<div class="row">
+    <div class="col">
+        <h2 class="h5 mb-1">Order {{ order.date | date:'dd.MM.yyyy HH:mm:ss' }}</h2>
+        <p class="mt-2"><span class="badge badge-secondary status">{{ order.status }}</span></p>
     </div>
-    <div class="col-3 shipping-address">
-        <h3 class="h6">Shipping Address</h3>
 
-        <cfha-address [address]="order.shippingAddress"></cfha-address>
-    </div>
-    <div class="col-3 payment">
-        <h3 class="h6">Payment</h3>
+    <div class="col-12 mt-2 row">
+        <div class="col-3 billing-address">
+            <h3 class="h6">Billing Address</h3>
 
-        <cfha-payment-option [paymentOption]="order.payment"></cfha-payment-option>
+            <cfha-address [address]="order.billingAddress"></cfha-address>
+        </div>
+        <div class="col-3 shipping-address">
+            <h3 class="h6">Shipping Address</h3>
+
+            <cfha-address [address]="order.shippingAddress"></cfha-address>
+        </div>
+        <div class="col-3 payment">
+            <h3 class="h6">Payment</h3>
+
+            <cfha-payment-option [paymentOption]="order.payment"></cfha-payment-option>
+        </div>
     </div>
 </div>
