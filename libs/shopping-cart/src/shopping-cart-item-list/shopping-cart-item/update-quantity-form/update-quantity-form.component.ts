@@ -1,17 +1,17 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Resource, ResourceWith } from '@luchsamapparat/common';
+import { OnNonNullChange, Resource, ResourceWith } from '@luchsamapparat/common';
 import { QuantityUpdate, ShoppingCartItem } from '@luchsamapparat/shopping-cart-common';
-import { isNull } from 'lodash-es';
 
 @Component({
     selector: 'cfha-update-quantity-form',
     templateUrl: './update-quantity-form.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class UpdateQuantityFormComponent implements OnInit {
+export class UpdateQuantityFormComponent {
 
     @Input()
+    @OnNonNullChange()
     shoppingCartItem: Resource<ShoppingCartItem>;
 
     @Output()
@@ -19,18 +19,16 @@ export class UpdateQuantityFormComponent implements OnInit {
 
     quantity = new FormControl();
 
-    ngOnInit() {
-        if (!isNull(this.shoppingCartItem)) {
-            this.quantity.setValue(this.shoppingCartItem.quantity);
-        }
-    }
-
     onSubmit(event: Event) {
         event.preventDefault();
         this.updateQuantity.emit({
             resource: this.shoppingCartItem,
             with: { quantity: this.quantity.value }
         });
+    }
+
+    private onChangeShoppingCartItem(shoppingCartItem: ShoppingCartItem) {
+        this.quantity.setValue(shoppingCartItem.quantity);
     }
 
 }
