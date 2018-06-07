@@ -1,3 +1,5 @@
+import 'element-closest';
+
 const mock = () => {
     let storage = {};
     return {

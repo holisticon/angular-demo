@@ -1,0 +1,40 @@
+<form class="mt-5 row align-items-start" [formGroup]="form" (submit)="onSubmit($event)">
+    <h2 class="col-12 h3 mb-4">Place Order</h2>
+
+    <div class="form-group col-4 billing-address">
+        <label class="form-control-label h6 mb-3" for="billingAddress">Billing Address</label>
+
+        <div class="form-check mb-3" *ngFor="let address of addresses; let i = index">
+            <input class="form-check-input" type="radio" formControlName="billingAddress" id="billingAddress-{{ i }}" [value]="address" />
+            <label class="form-check-label" for="billingAddress-{{ i }}">
+                <cfha-address [address]="address"></cfha-address>
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group col-4 shipping-address">
+        <label class="form-control-label h6 mb-3" for="shippingAddress">Shipping Address</label>
+
+        <div class="form-check mb-3" *ngFor="let address of addresses; let i = index">
+            <input class="form-check-input" type="radio" formControlName="shippingAddress" id="shippingAddress-{{ i }}" [value]="address" />
+            <label class="form-check-label" for="shippingAddress-{{ i }}">
+                <cfha-address [address]="address"></cfha-address>
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group col-2 payment">
+        <label class="form-control-label h6 mb-3" for="payment">Payment</label>
+
+        <div class="form-check mb-3" *ngFor="let paymentOption of paymentOptions; let i = index">
+            <input class="form-check-input" type="radio" formControlName="payment" id="payment-{{ i }}" [value]="paymentOption" />
+            <label class="form-check-label" for="payment-{{ i }}">
+                <cfha-payment-option [paymentOption]="paymentOption"></cfha-payment-option>
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group col-2 text-right">
+        <button type="submit" class="btn btn-primary">Place Order</button>
+    </div>
+</form>

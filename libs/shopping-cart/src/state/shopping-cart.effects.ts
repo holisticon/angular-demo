@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { OrdersCommonActionTypes } from '@luchsamapparat/orders-common';
 import { ShoppingCartLoadedAction } from '@luchsamapparat/shopping-cart-common';
 import { Actions, Effect } from '@ngrx/effects';
 import { DataPersistence } from '@nrwl/nx';
@@ -59,6 +60,11 @@ export class ShoppingCartEffects {
             }
         }
     );
+
+    @Effect()
+    reloadShoppingCart$ = this.actions$
+        .ofType(OrdersCommonActionTypes.OrderPlaced)
+        .map(() => new LoadShoppingCartAction());
 
     constructor(
         private actions$: Actions,
