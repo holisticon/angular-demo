@@ -1,0 +1,19 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc/apps/cfha-client",
+    "module": "es2015"
+  },
+  "include": [
+    "**/*.ts",
+    "../../libs/homepage/src/index.ts",
+    "../../libs/products/src/index.ts",
+    "../../libs/shopping-cart/src/index.ts",
+    "../../libs/user-profile/src/index.ts",
+    "../../libs/orders/src/index.ts"
+  ],
+  "exclude": [
+    "**/*.spec.ts",
+    "src/test.ts"
+  ]
+}
