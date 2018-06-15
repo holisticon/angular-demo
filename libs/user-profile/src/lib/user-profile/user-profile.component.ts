@@ -9,14 +9,14 @@ import { Observable } from 'rxjs/Observable';
 })
 export class UserProfileComponent {
 
-    addresses: Observable<Address[]>;
-    paymentOptions: Observable<PaymentOption[]>;
+    addresses$: Observable<Address[]>;
+    paymentOptions$: Observable<PaymentOption[]>;
 
     constructor(
         private userProfileStore: UserProfileStore
     ) {
-        this.addresses = userProfileStore.getAddresses();
-        this.paymentOptions = userProfileStore.getPaymentOptions();
+        this.addresses$ = userProfileStore.getAddresses();
+        this.paymentOptions$ = userProfileStore.getPaymentOptions();
     }
 
 }

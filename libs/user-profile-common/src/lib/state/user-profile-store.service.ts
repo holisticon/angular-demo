@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { StoreSelector } from '@luchsamapparat/common';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { UserProfileAppState } from './state/user-profile.reducer';
-import { getAddresses, getPaymentOptions, getUserProfile } from './state/user-profile.selectors';
-import { Address, PaymentOption, UserProfile } from './user-profile.model';
+import { Address, PaymentOption, UserProfile } from '../user-profile.model';
+import { UserProfileAppState } from './user-profile.reducer';
+import { getAddresses, getPaymentOptions, getUserProfile } from './user-profile.selectors';
 
 @Injectable({
     providedIn: 'root'

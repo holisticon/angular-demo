@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Product } from '@luchsamapparat/products-common';
-import { AddToShoppingCartAction, AdditionToShoppingCart } from '@luchsamapparat/shopping-cart-common';
+import { AdditionToShoppingCart, AddToShoppingCartAction } from '@luchsamapparat/shopping-cart-common';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
+import { ProductsStore } from '../state/products-store.service';
 import { ProductsAppState } from '../state/products.reducer';
-import { getSearchResults } from '../state/products.selectors';
 
 @Component({
   selector: 'cfha-search-results',
@@ -16,9 +16,10 @@ export class SearchResultsComponent {
     products$: Observable<Product[]>;
 
     constructor(
-        private store: Store<ProductsAppState>
+        private store: Store<ProductsAppState>,
+        private productsStore: ProductsStore
     ) {
-        this.products$ = this.store.select(getSearchResults());
+        this.products$ = productsStore.getSearchResults();
     }
 
     onAddToShoppingCart(additionToShoppingCart: AdditionToShoppingCart) {

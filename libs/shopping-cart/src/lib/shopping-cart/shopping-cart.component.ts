@@ -5,9 +5,8 @@ import { QuantityUpdate, ShoppingCart, ShoppingCartItem } from '@luchsamapparat/
 import { UserProfile, UserProfileStore } from '@luchsamapparat/user-profile-common';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
+import { ShoppingCartStore } from '../state/shopping-cart-store.service';
 import { DeleteShoppingCartItemAction, UpdateShoppingCartItemQuantityAction } from '../state/shopping-cart.actions';
-import { ShoppingCartAppState } from '../state/shopping-cart.reducer';
-import { getShoppingCart } from '../state/shopping-cart.selectors';
 
 @Component({
     selector: 'cfha-shopping-cart',
@@ -20,10 +19,11 @@ export class ShoppingCartComponent {
     userProfile$: Observable<UserProfile>;
 
     constructor(
-        private store: Store<ShoppingCartAppState>,
+        private store: Store<void>,
+        private shoppingCartStore: ShoppingCartStore,
         private userProfileStore: UserProfileStore
     ) {
-        this.shoppingCart$ = this.store.select(getShoppingCart());
+        this.shoppingCart$ = shoppingCartStore.getShoppingCart();
         this.userProfile$ = userProfileStore.getUserProfile();
     }
 
