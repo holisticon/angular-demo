@@ -1,9 +1,9 @@
-import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { ResourceWith } from '@luchsamapparat/common';
 import { QuantityUpdate, ShoppingCartItem } from '@luchsamapparat/shopping-cart-common';
-import 'rxjs/add/operator/take';
+import { take } from 'rxjs/operators';
 import { UpdateQuantityFormComponent } from '../../shopping-cart-item-list/shopping-cart-item/update-quantity-form/update-quantity-form.component';
 import { ShoppingCartItemComponent } from './shopping-cart-item.component';
 
@@ -64,7 +64,7 @@ describe('ShoppingCartItemComponent', () => {
         updateQuantityForm.updateQuantity.emit(quantityUpdate);
 
         fixture.componentInstance.updateQuantity
-            .take(1)
+            .pipe(take(1))
             .subscribe(expectedQuantityUpdate => {
                 expect(expectedQuantityUpdate).toEqual(expectedQuantityUpdate);
             })
@@ -74,7 +74,7 @@ describe('ShoppingCartItemComponent', () => {
         const removeButton: HTMLButtonElement = fixture.debugElement.query(By.css('.remove')).nativeElement;
 
         fixture.componentInstance.delete
-            .take(1)
+            .pipe(take(1))
             .subscribe(emittedShoppingCartItem => {
                 expect(emittedShoppingCartItem).toEqual(shoppingCartItem);
             });

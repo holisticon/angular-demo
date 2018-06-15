@@ -7,9 +7,7 @@ import { NewOrder, PlaceOrderAction, PlaceOrderFormComponent } from '@luchsamapp
 import { QuantityUpdate, ShoppingCart, ShoppingCartItem } from '@luchsamapparat/shopping-cart-common';
 import { UserProfile, UserProfileStore } from '@luchsamapparat/user-profile-common';
 import { Store, StoreModule } from '@ngrx/store';
-import { BehaviorSubject } from 'rxjs';
-import 'rxjs/add/observable/of';
-import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject, Observable, of as observableOf } from 'rxjs';
 import { ShoppingCartItemListComponent } from '../shopping-cart-item-list/shopping-cart-item-list.component';
 import { ShoppingCartItemComponent } from '../shopping-cart-item-list/shopping-cart-item/shopping-cart-item.component';
 import { ShoppingCartStore } from '../state/shopping-cart-store.service';
@@ -92,7 +90,7 @@ describe('ShoppingCartComponent', () => {
         jest.spyOn(shoppingCartStore, 'getShoppingCart').mockImplementation(() => shoppingCart$);
 
         const userProfileStore = TestBed.get(UserProfileStore);
-        jest.spyOn(userProfileStore, 'getUserProfile').mockImplementation(() => Observable.of(userProfile));
+        jest.spyOn(userProfileStore, 'getUserProfile').mockImplementation(() => observableOf(userProfile));
     }));
 
     beforeEach(() => {

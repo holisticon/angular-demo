@@ -4,8 +4,7 @@ import { addId } from '@luchsamapparat/common';
 import { Order, OrderStatus } from '@luchsamapparat/orders-common';
 import { AddressComponent, PaymentOptionComponent } from '@luchsamapparat/user-profile-common';
 import { StoreModule } from '@ngrx/store';
-import 'rxjs/add/observable/of';
-import { Observable } from 'rxjs/Observable';
+import { of as observableOf } from 'rxjs';
 import { OrderComponent } from '../order/order.component';
 import { OrdersStore } from '../state/orders-store.service';
 import { OrdersComponent } from './orders.component';
@@ -54,7 +53,7 @@ describe('OrdersComponent', () => {
             .compileComponents();
 
         const ordersStore = TestBed.get(OrdersStore);
-        jest.spyOn(ordersStore, 'getOrders').mockImplementation(() => Observable.of(orders));
+        jest.spyOn(ordersStore, 'getOrders').mockImplementation(() => observableOf(orders));
     }));
 
     beforeEach(() => {

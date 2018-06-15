@@ -6,10 +6,8 @@ import { provideMockActions } from '@ngrx/effects/testing';
 import { StoreModule } from '@ngrx/store';
 import { DataPersistence } from '@nrwl/nx';
 import { hot } from 'jest-marbles';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/take';
+import { Observable, of as observableOf } from 'rxjs';
+import { take } from 'rxjs/operators';
 import { OrdersCommonService } from '../orders-common.service';
 import { OrderPlacedAction, PlaceOrderAction } from './orders-common.actions';
 import { OrdersCommonEffects } from './orders-common.effects';
@@ -98,7 +96,7 @@ describe('OrdersCommonEffects', () => {
         it('calls the service with the given new order and dispatches a OrderPlacedAction with the created order', () => {
             const placeOrderSpy = jest
                 .spyOn(ordersCommonService, 'placeOrder')
-                .mockImplementation(() => Observable.of(order));
+                .mockImplementation(() => observableOf(order));
 
             actions$ = hot('-a-|', {
                 a: new PlaceOrderAction(newOrder)
@@ -109,7 +107,7 @@ describe('OrdersCommonEffects', () => {
             );
 
             effects$.placeOrder$
-                .take(1)
+                .pipe(take(1))
                 .subscribe(() => {
                     expect(placeOrderSpy).toHaveBeenCalledWith(newOrder);
                 });

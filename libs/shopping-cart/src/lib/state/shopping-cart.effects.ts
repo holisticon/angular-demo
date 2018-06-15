@@ -3,6 +3,7 @@ import { OrdersCommonActionTypes } from '@luchsamapparat/orders-common';
 import { ShoppingCartLoadedAction } from '@luchsamapparat/shopping-cart-common';
 import { Actions, Effect } from '@ngrx/effects';
 import { DataPersistence } from '@nrwl/nx';
+import { map } from 'rxjs/operators';
 import { ShoppingCartService } from '../shopping-cart.service';
 import { DeleteShoppingCartItemAction, LoadShoppingCartAction, ShoppingCartActionTypes, UpdateShoppingCartItemQuantityAction } from './shopping-cart.actions';
 import { ShoppingCartState } from './shopping-cart.reducer';
@@ -17,7 +18,7 @@ export class ShoppingCartEffects {
             run: (action, state) => {
                 return this.shoppingCartService
                     .loadShoppingCart()
-                    .map(shoppingCart => new ShoppingCartLoadedAction(shoppingCart));
+                    .pipe(map(shoppingCart => new ShoppingCartLoadedAction(shoppingCart)));
             },
 
             onError: (action, error) => {
@@ -36,7 +37,7 @@ export class ShoppingCartEffects {
                         action.payload.resource,
                         action.payload.with
                     )
-                    .map(shoppingCart => new ShoppingCartLoadedAction(shoppingCart));
+                    .pipe(map(shoppingCart => new ShoppingCartLoadedAction(shoppingCart)));
             },
 
             onError: (action, error) => {
@@ -52,7 +53,7 @@ export class ShoppingCartEffects {
             run: (action, state) => {
                 return this.shoppingCartService
                     .deleteShoppingCartItem(action.payload)
-                    .map(shoppingCart => new ShoppingCartLoadedAction(shoppingCart));
+                    .pipe(map(shoppingCart => new ShoppingCartLoadedAction(shoppingCart)));
             },
 
             onError: (action, error) => {
@@ -64,7 +65,7 @@ export class ShoppingCartEffects {
     @Effect()
     reloadShoppingCart$ = this.actions$
         .ofType(OrdersCommonActionTypes.OrderPlaced)
-        .map(() => new LoadShoppingCartAction());
+        .pipe(map(() => new LoadShoppingCartAction()));
 
     constructor(
         private actions$: Actions,

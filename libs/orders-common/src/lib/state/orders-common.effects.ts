@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import { DataPersistence } from '@nrwl/nx';
+import { map } from 'rxjs/operators';
 import { OrdersCommonService } from '../orders-common.service';
 import { OrderPlacedAction, OrdersCommonActionTypes, PlaceOrderAction } from './orders-common.actions';
 
@@ -14,7 +15,7 @@ export class OrdersCommonEffects {
             run: (action, state) => {
                 return this.ordersCommonService
                     .placeOrder(action.payload)
-                    .map(shoppingCart => new OrderPlacedAction(shoppingCart));
+                    .pipe(map(shoppingCart => new OrderPlacedAction(shoppingCart)));
             },
 
             onError: (action, error) => {

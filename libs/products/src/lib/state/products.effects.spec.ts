@@ -1,12 +1,12 @@
 import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
-import { Resource, addId } from '@luchsamapparat/common';
+import { addId, Resource } from '@luchsamapparat/common';
 import { LoadSearchResultsAction, Product, SearchResultsLoadedAction } from '@luchsamapparat/products-common';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { StoreModule } from '@ngrx/store';
 import { DataPersistence } from '@nrwl/nx';
 import { hot } from 'jest-marbles';
-import { Observable } from 'rxjs/Observable';
+import { Observable, of as observableOf } from 'rxjs';
 import { ProductService } from '../product.service';
 import { ProductsEffects } from './products.effects';
 
@@ -44,7 +44,7 @@ describe('ProductsEffects', () => {
     describe('loadSearchResults', () => {
         it('dispatches a SearchResultsLoadedAction with the search results returned by the service', () => {
             const expectedQuery = 'query';
-            jest.spyOn(productService, 'searchProducts').mockImplementation(() => Observable.of(searchResults));
+            jest.spyOn(productService, 'searchProducts').mockImplementation(() => observableOf(searchResults));
 
             actions$ = hot('-a-|', { a: new LoadSearchResultsAction(expectedQuery) });
 

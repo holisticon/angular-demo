@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Product } from '@luchsamapparat/products-common';
 import { AdditionToShoppingCart, AddToShoppingCartAction } from '@luchsamapparat/shopping-cart-common';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { ProductsStore } from '../state/products-store.service';
 import { ProductsAppState } from '../state/products.reducer';
 

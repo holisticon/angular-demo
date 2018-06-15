@@ -7,7 +7,7 @@ import { NewOrder } from '@luchsamapparat/orders-common';
 import { ShoppingCart } from '@luchsamapparat/shopping-cart-common';
 import { AddressComponent, PaymentOptionComponent, UserProfile } from '@luchsamapparat/user-profile-common';
 import { isNull } from 'lodash-es';
-import 'rxjs/add/operator/take';
+import { take } from 'rxjs/operators';
 import { PlaceOrderFormComponent } from './place-order-form.component';
 
 describe('PlaceOrderFormComponent', () => {
@@ -123,7 +123,7 @@ describe('PlaceOrderFormComponent', () => {
         const form = fixture.debugElement.query(By.css('form'));
 
         fixture.componentInstance.placeOrder
-            .take(1)
+            .pipe(take(1))
             .subscribe(newOrder => {
                 expect(newOrder).toEqual(expectedOrder);
             })

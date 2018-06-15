@@ -5,9 +5,7 @@ import { provideMockActions } from '@ngrx/effects/testing';
 import { StoreModule } from '@ngrx/store';
 import { DataPersistence } from '@nrwl/nx';
 import { hot } from 'jest-marbles';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/map';
+import { Observable, of as observableOf } from 'rxjs';
 import { UserProfile } from '../user-profile.model';
 import { UserProfileService } from '../user-profile.service';
 import { LoadUserProfileAction, UserProfileLoadedAction } from './user-profile.actions';
@@ -43,7 +41,7 @@ describe('UserProfileEffects', () => {
 
     describe('loadUserProfile', () => {
         it('dispatches a UserProfileLoadedAction with the user profile returned by the service', () => {
-            jest.spyOn(userProfileService, 'loadUserProfile').mockImplementation(() => Observable.of(userProfile));
+            jest.spyOn(userProfileService, 'loadUserProfile').mockImplementation(() => observableOf(userProfile));
 
             actions$ = hot('-a-|', { a: new LoadUserProfileAction() });
 

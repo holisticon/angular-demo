@@ -4,7 +4,7 @@ import { NewOrder, PlaceOrderAction } from '@luchsamapparat/orders-common';
 import { QuantityUpdate, ShoppingCart, ShoppingCartItem } from '@luchsamapparat/shopping-cart-common';
 import { UserProfile, UserProfileStore } from '@luchsamapparat/user-profile-common';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { ShoppingCartStore } from '../state/shopping-cart-store.service';
 import { DeleteShoppingCartItemAction, UpdateShoppingCartItemQuantityAction } from '../state/shopping-cart.actions';
 

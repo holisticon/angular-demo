@@ -1,7 +1,7 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import 'rxjs/add/operator/switchMap';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 import { toNewOrderRequest } from './new-order-request.mapper';
 import { NewOrder, Order } from './order.model';
 
@@ -21,7 +21,9 @@ export class OrdersCommonService {
                 toNewOrderRequest(newOrder),
                 { responseType: 'text', observe: 'response' }
             )
-            .switchMap(response => this.handleRedirect<Order>(response));
+            .pipe(
+                switchMap(response => this.handleRedirect<Order>(response))
+            );
     }
 
     private handleRedirect<T>(response: HttpResponse<any>) {

@@ -1,8 +1,8 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AdditionToShoppingCart, ShoppingCart } from '@luchsamapparat/shopping-cart-common';
-import 'rxjs/add/operator/switchMap';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -20,7 +20,9 @@ export class ShoppingCartCommonService {
                 additionToShoppingCart,
                 { responseType: 'text', observe: 'response' }
             )
-            .switchMap(response => this.handleRedirect<ShoppingCart>(response));
+            .pipe(
+                switchMap(response => this.handleRedirect<ShoppingCart>(response))
+            );
     }
 
     private handleRedirect<T>(response: HttpResponse<any>) {

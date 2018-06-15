@@ -6,8 +6,7 @@ import { Product } from '@luchsamapparat/products-common';
 import { AdditionToShoppingCart, AddToShoppingCartAction } from '@luchsamapparat/shopping-cart-common';
 import { Store, StoreModule } from '@ngrx/store';
 import { expectElementFromFixture } from 'ngx-test-helpers';
-import 'rxjs/add/observable/of';
-import { Observable } from 'rxjs/Observable';
+import { of as observableOf } from 'rxjs';
 import { ProductListComponent } from '../product-list/product-list.component';
 import { ProductsStore } from '../state/products-store.service';
 import { SearchResultsComponent } from './search-results.component';
@@ -43,7 +42,7 @@ describe('SearchResultsComponent', () => {
         store = TestBed.get(Store);
 
         const productsStore = TestBed.get(ProductsStore);
-        jest.spyOn(productsStore, 'getSearchResults').mockImplementation(() => Observable.of(searchResults));
+        jest.spyOn(productsStore, 'getSearchResults').mockImplementation(() => observableOf(searchResults));
     }));
 
     beforeEach(() => {

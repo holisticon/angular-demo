@@ -1,5 +1,4 @@
-import 'rxjs/add/observable/of';
-import { Observable } from 'rxjs/Observable';
+import { Observable, of as observableOf } from 'rxjs';
 import { StoreSelector } from './store-selector.decorators';
 
 describe('StoreSelectorDecorators', () => {
@@ -18,7 +17,7 @@ describe('StoreSelectorDecorators', () => {
         ) {}
 
         select(selector) {
-            return Observable.of(selector(this.storeState));
+            return observableOf(selector(this.storeState));
         }
     }
 

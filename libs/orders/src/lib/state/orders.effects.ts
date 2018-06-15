@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { OrderService } from '../order.service';
 import { Actions, Effect } from '@ngrx/effects';
 import { DataPersistence } from '@nrwl/nx';
+import { map } from 'rxjs/operators';
+import { OrderService } from '../order.service';
 import { LoadOrdersAction, OrdersActionTypes, OrdersLoadedAction } from './orders.actions';
 import { OrdersAppState } from './orders.reducer';
 
@@ -15,7 +16,7 @@ export class OrdersEffects {
             run: (action, state) => {
                 return this.orderService
                     .loadOrders()
-                    .map(orders => new OrdersLoadedAction(orders));
+                    .pipe(map(orders => new OrdersLoadedAction(orders)));
             },
 
             onError: (action, error) => {

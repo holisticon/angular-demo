@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { StoreSelector } from '@luchsamapparat/common';
 import { Order } from '@luchsamapparat/orders-common';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { OrdersAppState } from './orders.reducer';
 import { getOrders } from './orders.selectors';
 

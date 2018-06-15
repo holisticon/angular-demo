@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import { DataPersistence } from '@nrwl/nx';
+import { map } from 'rxjs/operators';
 import { UserProfileService } from '../user-profile.service';
 import { LoadUserProfileAction, UserProfileActionTypes, UserProfileLoadedAction } from './user-profile.actions';
 import { UserProfileState } from './user-profile.reducer';
@@ -15,7 +16,7 @@ export class UserProfileEffects {
             run: (action, state) => {
                 return this.userProfileService
                     .loadUserProfile()
-                    .map(userProfile => new UserProfileLoadedAction(userProfile));
+                    .pipe(map(userProfile => new UserProfileLoadedAction(userProfile)));
             },
 
             onError: (action, error) => {

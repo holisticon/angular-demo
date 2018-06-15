@@ -7,10 +7,8 @@ import { provideMockActions } from '@ngrx/effects/testing';
 import { StoreModule } from '@ngrx/store';
 import { DataPersistence } from '@nrwl/nx';
 import { hot } from 'jest-marbles';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/take';
-import { Observable } from 'rxjs/Observable';
+import { Observable, of as observableOf } from 'rxjs';
+import { take } from 'rxjs/operators';
 import { ShoppingCartService } from '../shopping-cart.service';
 import { DeleteShoppingCartItemAction, LoadShoppingCartAction, UpdateShoppingCartItemQuantityAction } from './shopping-cart.actions';
 import { ShoppingCartEffects } from './shopping-cart.effects';
@@ -80,7 +78,7 @@ describe('ShoppingCartEffects', () => {
         it('dispatches a ShoppingCartLoadedAction with the shopping cart returned by the service', () => {
             jest
                 .spyOn(shoppingCartService, 'loadShoppingCart')
-                .mockImplementation(() => Observable.of(shoppingCart));
+                .mockImplementation(() => observableOf(shoppingCart));
 
             actions$ = hot('-a-|', { a: new LoadShoppingCartAction() });
 
@@ -101,7 +99,7 @@ describe('ShoppingCartEffects', () => {
 
             const updateQuantitySpy = jest
                 .spyOn(shoppingCartService, 'updateShoppingCartItemQuantity')
-                .mockImplementation(() => Observable.of(shoppingCart));
+                .mockImplementation(() => observableOf(shoppingCart));
 
             actions$ = hot('-a-|', {
                 a: new UpdateShoppingCartItemQuantityAction(quantityUpdate)
@@ -112,7 +110,7 @@ describe('ShoppingCartEffects', () => {
             );
 
             effects$.updateShoppingCartItemQuantity$
-                .take(1)
+                .pipe(take(1))
                 .subscribe(() => {
                     expect(updateQuantitySpy).toHaveBeenCalledWith(
                         quantityUpdate.resource,
@@ -126,7 +124,7 @@ describe('ShoppingCartEffects', () => {
         it('calls the service with the given shopping cart item and dispatches a ShoppingCartLoadedAction with the updated shopping cart', () => {
             const deleteShoppingCartItemSpy = jest
                 .spyOn(shoppingCartService, 'deleteShoppingCartItem')
-                .mockImplementation(() => Observable.of(shoppingCart));
+                .mockImplementation(() => observableOf(shoppingCart));
 
             actions$ = hot('-a-|', {
                 a: new DeleteShoppingCartItemAction(shoppingCartItem)
@@ -137,7 +135,7 @@ describe('ShoppingCartEffects', () => {
             );
 
             effects$.deleteShoppingCartItemQuantity$
-                .take(1)
+                .pipe(take(1))
                 .subscribe(() => {
                     expect(deleteShoppingCartItemSpy).toHaveBeenCalledWith(shoppingCartItem);
                 });

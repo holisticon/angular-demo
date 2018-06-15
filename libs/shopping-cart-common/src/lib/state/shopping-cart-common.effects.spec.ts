@@ -6,10 +6,8 @@ import { provideMockActions } from '@ngrx/effects/testing';
 import { StoreModule } from '@ngrx/store';
 import { DataPersistence } from '@nrwl/nx';
 import { hot } from 'jest-marbles';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/take';
+import { Observable, of as observableOf } from 'rxjs';
+import { take } from 'rxjs/operators';
 import { ShoppingCartCommonService } from '../shopping-cart-common.service';
 import { ShoppingCartCommonEffects } from './shopping-cart-common.effects';
 
@@ -58,7 +56,7 @@ describe('ShoppingCartCommonEffects', () => {
 
             const addToShoppingCartSpy = jest
                 .spyOn(shoppingCartCommonService, 'addToShoppingCart')
-                .mockImplementation(() => Observable.of(shoppingCart));
+                .mockImplementation(() => observableOf(shoppingCart));
 
             actions$ = hot('-a-|', {
                 a: new AddToShoppingCartAction(additionToShoppingCart)
@@ -69,7 +67,7 @@ describe('ShoppingCartCommonEffects', () => {
             );
 
             effects$.addToShoppingCart$
-                .take(1)
+                .pipe(take(1))
                 .subscribe(() => {
                     expect(addToShoppingCartSpy).toHaveBeenCalledWith(additionToShoppingCart);
                 });

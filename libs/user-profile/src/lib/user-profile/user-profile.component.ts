@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Address, PaymentOption, UserProfileStore } from '@luchsamapparat/user-profile-common';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'cfha-user-profile',

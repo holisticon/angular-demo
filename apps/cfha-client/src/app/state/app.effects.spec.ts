@@ -1,3 +1,4 @@
+
 import { TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -6,8 +7,8 @@ import { provideMockActions } from '@ngrx/effects/testing';
 import { StoreModule } from '@ngrx/store';
 import { DataPersistence } from '@nrwl/nx';
 import { hot } from 'jest-marbles';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/take';
+import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
 import { AppEffects } from './app.effects';
 
 describe('AppEffects', () => {
@@ -40,7 +41,7 @@ describe('AppEffects', () => {
             actions$ = hot('-a-|', { a: new SearchProductsAction(expectedQuery) });
 
             appEffects.navigateToProductSearchResults$
-                .take(1)
+                .pipe(take(1))
                 .subscribe(() => {
                     expect(navigateSpy).toHaveBeenCalledWith(
                         ['products'],

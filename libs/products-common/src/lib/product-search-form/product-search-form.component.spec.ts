@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { expectElementFromFixture } from 'ngx-test-helpers';
-import 'rxjs/add/operator/take';
+import { take } from 'rxjs/operators';
 import { ProductSearchFormComponent } from './product-search-form.component';
 
 describe('ProductSearchFormComponent', () => {
@@ -39,7 +39,7 @@ describe('ProductSearchFormComponent', () => {
         const quantityFormControl = fixture.componentInstance.query.setValue(expectedQuery);
 
         fixture.componentInstance.search
-            .take(1)
+            .pipe(take(1))
             .subscribe(query => {
                 expect(query).toBe(expectedQuery);
             })

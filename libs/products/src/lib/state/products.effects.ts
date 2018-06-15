@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { LoadSearchResultsAction, ProductsActionTypes, SearchResultsLoadedAction } from '@luchsamapparat/products-common';
 import { Actions, Effect } from '@ngrx/effects';
 import { DataPersistence } from '@nrwl/nx';
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/map';
+import { map } from 'rxjs/operators';
 import { ProductService } from '../product.service';
 import { ProductsAppState } from './products.reducer';
 
@@ -17,7 +16,9 @@ export class ProductsEffects {
             run: (action: LoadSearchResultsAction, state: ProductsAppState) => {
                 return this.productService
                     .searchProducts(action.payload)
-                    .map(products => new SearchResultsLoadedAction(products));
+                    .pipe(
+                        map(products => new SearchResultsLoadedAction(products))
+                    );
             },
 
             onError: (action: LoadSearchResultsAction, error) => {
