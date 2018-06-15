@@ -3,7 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { UserProfile } from './user-profile.model';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class UserProfileService {
 
     constructor(

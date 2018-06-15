@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
@@ -21,6 +22,7 @@ export function logger(reducer) {
 @NgModule({
     imports: [
         BrowserModule,
+        HttpClientModule, // see https://github.com/angular/angular-cli/issues/10170
         NxModule.forRoot(),
         RouterModule.forRoot([
             { path: 'products', loadChildren: '@luchsamapparat/products#ProductsModule' },

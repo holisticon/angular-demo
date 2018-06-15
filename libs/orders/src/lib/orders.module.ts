@@ -4,12 +4,11 @@ import { RouterModule } from '@angular/router';
 import { UserProfileCommonModule } from '@luchsamapparat/user-profile-common';
 import { EffectsModule } from '@ngrx/effects';
 import { Store, StoreModule } from '@ngrx/store';
-import { OrderService } from './order.service';
 import { OrderComponent } from './order/order.component';
 import { OrdersComponent } from './orders/orders.component';
 import { LoadOrdersAction } from './state/orders.actions';
 import { OrdersEffects } from './state/orders.effects';
-import { OrdersState, initialState as ordersInitialState, ordersReducer } from './state/orders.reducer';
+import { initialState as ordersInitialState, ordersReducer, OrdersState } from './state/orders.reducer';
 
 @NgModule({
     imports: [
@@ -26,8 +25,7 @@ import { OrdersState, initialState as ordersInitialState, ordersReducer } from '
         OrderComponent
     ],
     providers: [
-        OrdersEffects,
-        OrderService
+        OrdersEffects
     ]
 })
 export class OrdersModule {

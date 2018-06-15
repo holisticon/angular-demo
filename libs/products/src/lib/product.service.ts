@@ -2,10 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from '@luchsamapparat/products-common';
 import { isNull } from 'lodash-es';
-import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
+import { Observable } from 'rxjs/Observable';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class ProductService {
 
     constructor(

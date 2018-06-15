@@ -1,11 +1,13 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
+import { Observable } from 'rxjs/Observable';
 import { toNewOrderRequest } from './new-order-request.mapper';
 import { NewOrder, Order } from './order.model';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class OrdersCommonService {
 
     constructor(

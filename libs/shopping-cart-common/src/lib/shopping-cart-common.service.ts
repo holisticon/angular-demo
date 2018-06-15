@@ -1,10 +1,12 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AdditionToShoppingCart, ShoppingCart } from '@luchsamapparat/shopping-cart-common';
-import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
+import { Observable } from 'rxjs/Observable';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class ShoppingCartCommonService {
 
     constructor(

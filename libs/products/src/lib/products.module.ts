@@ -8,7 +8,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { ProductListEntryComponent } from './product-list/product-list-entry/product-list-entry.component';
 import { ProductListComponent } from './product-list/product-list.component';
-import { ProductService } from './product.service';
 import { ProductsNavigationEffects } from './products-navigation.effects';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { ProductsEffects } from './state/products.effects';
@@ -37,8 +36,7 @@ import { initialState as productsInitialState, productsReducer } from './state/p
     ],
     providers: [
         ProductsEffects,
-        ProductsNavigationEffects,
-        ProductService
+        ProductsNavigationEffects
     ]
 })
 export class ProductsModule {}
