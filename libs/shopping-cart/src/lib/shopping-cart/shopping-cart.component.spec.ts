@@ -5,14 +5,15 @@ import { By } from '@angular/platform-browser';
 import { addId, ResourceWith } from '@luchsamapparat/common';
 import { NewOrder, PlaceOrderAction, PlaceOrderFormComponent } from '@luchsamapparat/orders-common';
 import { QuantityUpdate, ShoppingCart, ShoppingCartItem } from '@luchsamapparat/shopping-cart-common';
-import { UserProfile } from '@luchsamapparat/user-profile-common';
+import { UserProfile, UserProfileStore } from '@luchsamapparat/user-profile-common';
 import { Store, StoreModule } from '@ngrx/store';
-import { getAppState } from 'ngx-test-helpers';
+import { BehaviorSubject } from 'rxjs';
 import 'rxjs/add/observable/of';
+import { Observable } from 'rxjs/Observable';
 import { ShoppingCartItemListComponent } from '../shopping-cart-item-list/shopping-cart-item-list.component';
 import { ShoppingCartItemComponent } from '../shopping-cart-item-list/shopping-cart-item/shopping-cart-item.component';
+import { ShoppingCartStore } from '../state/shopping-cart-store.service';
 import { DeleteShoppingCartItemAction, UpdateShoppingCartItemQuantityAction } from '../state/shopping-cart.actions';
-import { ShoppingCartAppState } from '../state/shopping-cart.reducer';
 import { ShoppingCartIsEmptyPipe } from './shopping-cart-is-empty.pipe';
 import { ShoppingCartComponent } from './shopping-cart.component';
 
@@ -20,7 +21,6 @@ describe('ShoppingCartComponent', () => {
     let component: ShoppingCartComponent;
     let fixture: ComponentFixture<ShoppingCartComponent>;
     let store: Store<void>;
-    let appState: ShoppingCartAppState;
 
     const shoppingCartItem = addId({
         name: '',
@@ -62,19 +62,12 @@ describe('ShoppingCartComponent', () => {
         shoppingCart
     };
 
+    let shoppingCart$: Observable<ShoppingCart>;
+
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [
-                // TODO: replace with UserStore mock
-                StoreModule.forRoot<ShoppingCartAppState & any>({
-                    shoppingCart: state => state,
-                    userProfile: state => state
-                }, {
-                    initialState: {
-                        shoppingCart: { shoppingCart },
-                        userProfile: { userProfile }
-                    }
-                }),
+                StoreModule.forRoot({}),
                 FormsModule,
                 ReactiveFormsModule
             ],
@@ -93,7 +86,13 @@ describe('ShoppingCartComponent', () => {
 
         store = TestBed.get(Store);
 
-        getAppState(state => appState = state);
+        shoppingCart$ = new BehaviorSubject(shoppingCart);
+
+        const shoppingCartStore = TestBed.get(ShoppingCartStore);
+        jest.spyOn(shoppingCartStore, 'getShoppingCart').mockImplementation(() => shoppingCart$);
+
+        const userProfileStore = TestBed.get(UserProfileStore);
+        jest.spyOn(userProfileStore, 'getUserProfile').mockImplementation(() => Observable.of(userProfile));
     }));
 
     beforeEach(() => {
@@ -116,8 +115,8 @@ describe('ShoppingCartComponent', () => {
     });
 
     it('does not render the place order form when the shopping cart is empty', fakeAsync(() => {
-        appState.shoppingCart.shoppingCart = emptyShoppingCart;
-        store.dispatch({ type: 'some-action' });
+        shoppingCart$.next(emptyShoppingCart);
+
         fixture.detectChanges();
 
         const placeOrderForm = fixture.debugElement.query(By.directive(PlaceOrderFormComponent));

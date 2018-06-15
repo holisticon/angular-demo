@@ -1,4 +1,4 @@
-import { TestBed, async } from '@angular/core/testing';
+import { async, TestBed } from '@angular/core/testing';
 import { Store, StoreModule } from '@ngrx/store';
 import { ShoppingCartModule } from './shopping-cart.module';
 import { LoadShoppingCartAction } from './state/shopping-cart.actions';
@@ -10,7 +10,9 @@ describe('ShoppingCartModule', () => {
     beforeEach(
         async(() => {
             TestBed.configureTestingModule({
-                imports: [StoreModule.forRoot({})]
+                imports: [
+                    StoreModule.forRoot({})
+                ]
             });
 
             store = TestBed.get(Store);

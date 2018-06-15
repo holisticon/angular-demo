@@ -1,7 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { AddressComponent, PaymentOptionComponent, UserProfile } from '@luchsamapparat/user-profile-common';
+import { AddressComponent, PaymentOptionComponent, UserProfile, UserProfileStore } from '@luchsamapparat/user-profile-common';
 import { StoreModule } from '@ngrx/store';
+import 'rxjs/add/observable/of';
+import { Observable } from 'rxjs/Observable';
 import { UserProfileComponent } from './user-profile.component';
 
 describe('UserProfileComponent', () => {
@@ -26,14 +28,7 @@ describe('UserProfileComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [
-                // TODO: replace with UserStore mock
-                StoreModule.forRoot<any>({
-                    userProfile: state => state
-                }, {
-                    initialState: {
-                        userProfile: { userProfile }
-                    }
-                }),
+                StoreModule.forRoot({})
             ],
             declarations: [
                 UserProfileComponent,
@@ -42,6 +37,10 @@ describe('UserProfileComponent', () => {
             ]
         })
             .compileComponents();
+
+        const userProfileStore = TestBed.get(UserProfileStore);
+        jest.spyOn(userProfileStore, 'getAddresses').mockImplementation(() => Observable.of(userProfile.addresses));
+        jest.spyOn(userProfileStore, 'getPaymentOptions').mockImplementation(() => Observable.of(userProfile.paymentOptions));
     }));
 
     beforeEach(() => {

@@ -1,13 +1,15 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { Resource, addId, getId } from '@luchsamapparat/common';
+import { addId, getId, Resource } from '@luchsamapparat/common';
 import { Product } from '@luchsamapparat/products-common';
-import { AddToShoppingCartAction, AdditionToShoppingCart } from '@luchsamapparat/shopping-cart-common';
+import { AdditionToShoppingCart, AddToShoppingCartAction } from '@luchsamapparat/shopping-cart-common';
 import { Store, StoreModule } from '@ngrx/store';
 import { expectElementFromFixture } from 'ngx-test-helpers';
+import 'rxjs/add/observable/of';
+import { Observable } from 'rxjs/Observable';
 import { ProductListComponent } from '../product-list/product-list.component';
-import { ProductsAppState } from '../state/products.reducer';
+import { ProductsStore } from '../state/products-store.service';
 import { SearchResultsComponent } from './search-results.component';
 
 describe('SearchResultsComponent', () => {
@@ -26,16 +28,7 @@ describe('SearchResultsComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [
-                StoreModule.forRoot<ProductsAppState>({
-                    products: state => state
-                }, {
-                    initialState: {
-                        products: {
-                            query: 'query',
-                            searchResults: searchResults
-                        }
-                    }
-                }),
+                StoreModule.forRoot({}),
             ],
             declarations: [
                 ProductListComponent,
@@ -47,7 +40,10 @@ describe('SearchResultsComponent', () => {
         })
             .compileComponents();
 
-            store = TestBed.get(Store);
+        store = TestBed.get(Store);
+
+        const productsStore = TestBed.get(ProductsStore);
+        jest.spyOn(productsStore, 'getSearchResults').mockImplementation(() => Observable.of(searchResults));
     }));
 
     beforeEach(() => {

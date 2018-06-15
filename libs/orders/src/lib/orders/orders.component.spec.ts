@@ -1,13 +1,14 @@
-import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { addId } from '@luchsamapparat/common';
 import { Order, OrderStatus } from '@luchsamapparat/orders-common';
 import { AddressComponent, PaymentOptionComponent } from '@luchsamapparat/user-profile-common';
 import { StoreModule } from '@ngrx/store';
+import 'rxjs/add/observable/of';
+import { Observable } from 'rxjs/Observable';
 import { OrderComponent } from '../order/order.component';
-import { OrdersAppState } from '../state/orders.reducer';
+import { OrdersStore } from '../state/orders-store.service';
 import { OrdersComponent } from './orders.component';
-
 
 describe('OrdersComponent', () => {
     let component: OrdersComponent;
@@ -41,15 +42,7 @@ describe('OrdersComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [
-                StoreModule.forRoot<OrdersAppState>({
-                    orders: state => state
-                }, {
-                    initialState: {
-                        orders: {
-                            orders
-                        }
-                    }
-                }),
+                StoreModule.forRoot({}),
             ],
             declarations: [
                 OrdersComponent,
@@ -59,6 +52,9 @@ describe('OrdersComponent', () => {
             ]
         })
             .compileComponents();
+
+        const ordersStore = TestBed.get(OrdersStore);
+        jest.spyOn(ordersStore, 'getOrders').mockImplementation(() => Observable.of(orders));
     }));
 
     beforeEach(() => {

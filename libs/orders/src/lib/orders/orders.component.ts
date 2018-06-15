@@ -1,9 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Order } from '@luchsamapparat/orders-common';
-import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { OrdersAppState } from '../state/orders.reducer';
-import { getOrders } from '../state/orders.selectors';
+import { OrdersStore } from '../state/orders-store.service';
 
 @Component({
     selector: 'cfha-orders',
@@ -15,9 +13,9 @@ export class OrdersComponent {
     orders$: Observable<Order[]>;
 
     constructor(
-        private store: Store<OrdersAppState>
+        private ordersStore: OrdersStore
     ) {
-        this.orders$ = this.store.select(getOrders());
+        this.orders$ = this.ordersStore.getOrders();
     }
 
 }
