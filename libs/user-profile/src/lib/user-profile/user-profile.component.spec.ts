@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { AddressComponent, PaymentOptionComponent, UserProfile, UserProfileAppState } from '@luchsamapparat/user-profile-common';
+import { AddressComponent, PaymentOptionComponent, UserProfile } from '@luchsamapparat/user-profile-common';
 import { StoreModule } from '@ngrx/store';
 import { UserProfileComponent } from './user-profile.component';
 
@@ -26,7 +26,8 @@ describe('UserProfileComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [
-                StoreModule.forRoot<UserProfileAppState>({
+                // TODO: replace with UserStore mock
+                StoreModule.forRoot<any>({
                     userProfile: state => state
                 }, {
                     initialState: {

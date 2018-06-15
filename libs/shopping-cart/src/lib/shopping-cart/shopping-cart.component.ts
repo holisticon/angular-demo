@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ResourceWith } from '@luchsamapparat/common';
 import { NewOrder, PlaceOrderAction } from '@luchsamapparat/orders-common';
 import { QuantityUpdate, ShoppingCart, ShoppingCartItem } from '@luchsamapparat/shopping-cart-common';
-import { UserProfile, UserProfileAppState, getUserProfile } from '@luchsamapparat/user-profile-common';
+import { UserProfile, UserProfileStore } from '@luchsamapparat/user-profile-common';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { DeleteShoppingCartItemAction, UpdateShoppingCartItemQuantityAction } from '../state/shopping-cart.actions';
@@ -20,10 +20,11 @@ export class ShoppingCartComponent {
     userProfile$: Observable<UserProfile>;
 
     constructor(
-        private store: Store<ShoppingCartAppState & UserProfileAppState>
+        private store: Store<ShoppingCartAppState>,
+        private userProfileStore: UserProfileStore
     ) {
         this.shoppingCart$ = this.store.select(getShoppingCart());
-        this.userProfile$ = this.store.select(getUserProfile());
+        this.userProfile$ = userProfileStore.getUserProfile();
     }
 
     onUpdateQuantity(quantityUpdate: ResourceWith<QuantityUpdate>) {

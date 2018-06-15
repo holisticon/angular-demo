@@ -5,7 +5,7 @@ import { By } from '@angular/platform-browser';
 import { addId, ResourceWith } from '@luchsamapparat/common';
 import { NewOrder, PlaceOrderAction, PlaceOrderFormComponent } from '@luchsamapparat/orders-common';
 import { QuantityUpdate, ShoppingCart, ShoppingCartItem } from '@luchsamapparat/shopping-cart-common';
-import { UserProfile, UserProfileAppState } from '@luchsamapparat/user-profile-common';
+import { UserProfile } from '@luchsamapparat/user-profile-common';
 import { Store, StoreModule } from '@ngrx/store';
 import { getAppState } from 'ngx-test-helpers';
 import 'rxjs/add/observable/of';
@@ -65,7 +65,8 @@ describe('ShoppingCartComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [
-                StoreModule.forRoot<ShoppingCartAppState & UserProfileAppState>({
+                // TODO: replace with UserStore mock
+                StoreModule.forRoot<ShoppingCartAppState & any>({
                     shoppingCart: state => state,
                     userProfile: state => state
                 }, {
