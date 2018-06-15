@@ -1,0 +1,46 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "outDir": "../out-tsc/spec",
+        "module": "commonjs",
+        "target": "es5",
+        "baseUrl": "",
+        "allowJs": true,
+        "paths": {
+            "@luchsamapparat/common": [
+                "libs/common/src/index.ts"
+            ],
+            "@luchsamapparat/homepage": [
+                "libs/homepage/src/index.ts"
+            ],
+            "@luchsamapparat/orders": [
+                "libs/orders/src/index.ts"
+            ],
+            "@luchsamapparat/orders-common": [
+                "libs/orders-common/src/index.ts"
+            ],
+            "@luchsamapparat/products": [
+                "libs/products/src/index.ts"
+            ],
+            "@luchsamapparat/products-common": [
+                "libs/products-common/src/index.ts"
+            ],
+            "@luchsamapparat/shopping-cart": [
+                "libs/shopping-cart/src/index.ts"
+            ],
+            "@luchsamapparat/shopping-cart-common": [
+                "libs/shopping-cart-common/src/index.ts"
+            ],
+            "@luchsamapparat/user-profile": [
+                "libs/user-profile/src/index.ts"
+            ],
+            "@luchsamapparat/user-profile-common": [
+                "libs/user-profile-common/src/index.ts"
+            ]
+        }
+    },
+    "include": [
+        "**/*.spec.ts",
+        "**/*.d.ts"
+    ]
+}

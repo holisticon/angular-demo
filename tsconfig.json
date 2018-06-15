@@ -16,9 +16,6 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@luchsamapparat/*": [
-        "libs/*"
-      ],
       "@luchsamapparat/common": [
         "libs/common/src/index.ts"
       ],

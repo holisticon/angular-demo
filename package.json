@@ -94,7 +94,7 @@
       "<rootDir>/node_modules/(?!lodash-es/.*)"
     ],
     "moduleNameMapper": {
-      "^@luchsamapparat/(.*)": "<rootDir>/libs/$1"
+      "^@luchsamapparat/(.*)$": "<rootDir>/libs/$1/src"
     }
   }
 }
