@@ -1,8 +1,8 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { addId } from '@luchsamapparat/common';
 import { Order, OrderStatus } from '@luchsamapparat/orders-common';
-import { AddressComponent, PaymentOptionComponent } from '@luchsamapparat/user-profile-common';
 import { StoreModule } from '@ngrx/store';
 import { of as observableOf } from 'rxjs';
 import { OrderComponent } from '../order/order.component';
@@ -45,9 +45,10 @@ describe('OrdersComponent', () => {
             ],
             declarations: [
                 OrdersComponent,
-                OrderComponent,
-                AddressComponent,
-                PaymentOptionComponent
+                OrderComponent
+            ],
+            schemas: [
+                NO_ERRORS_SCHEMA
             ]
         })
             .compileComponents();
