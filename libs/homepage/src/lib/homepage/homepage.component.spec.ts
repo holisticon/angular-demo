@@ -1,10 +1,10 @@
-import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ProductSearchFormComponent, SearchProductsAction } from '@luchsamapparat/products-common';
 import { Store, StoreModule } from '@ngrx/store';
 import { expectElementFromFixture } from 'ngx-test-helpers';
-import { HomepageModule } from '../homepage.module';
 import { HomepageComponent } from './homepage.component';
 
 describe('HomepageComponent', () => {
@@ -15,9 +15,15 @@ describe('HomepageComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [
-                HomepageModule,
                 RouterTestingModule,
                 StoreModule.forRoot({})
+            ],
+            declarations: [
+                HomepageComponent,
+                ProductSearchFormComponent
+            ],
+            schemas: [
+                NO_ERRORS_SCHEMA
             ]
         })
             .compileComponents();
