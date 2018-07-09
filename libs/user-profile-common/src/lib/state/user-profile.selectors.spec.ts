@@ -7,9 +7,27 @@ describe('userProfileSelectors', () => {
     const state: UserProfileAppState = {
         userProfile: {
             userProfile: {
-                addresses: [],
-                paymentOptions: []
+                addresses: [{
+                    city: '',
+                    country: '',
+                    name: '',
+                    street: '',
+                    zipCode: ''
+                }],
+                paymentOptions: [{
+                    accountOwner: '',
+                    bic: '',
+                    iban: ''
+                }]
             }
+        }
+    };
+
+    const stateWithoutUserProfile = {
+        ...state,
+        userProfile: {
+            ...state.userProfile,
+            userProfile: null
         }
     };
 
@@ -27,6 +45,13 @@ describe('userProfileSelectors', () => {
 
             expect(getAddresses()(state)).toBe(expectedValue);
         });
+
+        it('returns the same empty array when the user profile has not been loaded yet', () => {
+            const returnedValue = getAddresses()(stateWithoutUserProfile);
+
+            expect(returnedValue).toEqual([]);
+            expect(getAddresses()(stateWithoutUserProfile)).toBe(returnedValue);
+        });
     });
 
     describe('getPaymentOptions', () => {
@@ -34,6 +59,13 @@ describe('userProfileSelectors', () => {
             const expectedValue = state.userProfile.userProfile.paymentOptions;
 
             expect(getPaymentOptions()(state)).toBe(expectedValue);
+        });
+
+        it('returns the same empty array when the user profile has not been loaded yet', () => {
+            const returnedValue = getPaymentOptions()(stateWithoutUserProfile);
+
+            expect(returnedValue).toEqual([]);
+            expect(getPaymentOptions()(stateWithoutUserProfile)).toBe(returnedValue);
         });
     });
 
