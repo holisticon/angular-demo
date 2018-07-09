@@ -1,4 +1,4 @@
-import { TestBed, async } from '@angular/core/testing';
+import { async, TestBed } from '@angular/core/testing';
 import { Store, StoreModule } from '@ngrx/store';
 import { OrdersModule } from './orders.module';
 import { LoadOrdersAction } from './state/orders.actions';
