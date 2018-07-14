@@ -44,7 +44,7 @@ describe('ShoppingCartCommonService', () => {
                     expect(returnedShoppingCart).toBe(shoppingCart);
                 });
 
-            const postRequest = httpController.expectOne(`http://localhost/shoppingCart/items`);
+            const postRequest = httpController.expectOne(`http://hypercontract.herokuapp.com/shoppingCart/items`);
 
             expect(postRequest.request.method).toEqual('POST');
             expect(postRequest.request.body).toEqual(additionToShoppingCart);
@@ -53,11 +53,11 @@ describe('ShoppingCartCommonService', () => {
                 status: 201,
                 statusText: 'Created',
                 headers: {
-                    Location: 'http://localhost/shoppingCart'
+                    Location: 'http://hypercontract.herokuapp.com/shoppingCart'
                 }
             });
 
-            const getRequest = httpController.expectOne(`http://localhost/shoppingCart`);
+            const getRequest = httpController.expectOne(`http://hypercontract.herokuapp.com/shoppingCart`);
 
             expect(getRequest.request.method).toEqual('GET');
 

@@ -14,7 +14,7 @@ export class UserProfileService {
 
     loadUserProfile(): Observable<UserProfile> {
         return this.httpClient
-            .get<UserProfile>(`http://localhost/userProfile`);
+            .get<UserProfile>(`http://hypercontract.herokuapp.com/userProfile`);
     }
 
 }

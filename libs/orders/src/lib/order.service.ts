@@ -15,7 +15,7 @@ export class OrderService {
     loadOrders(): Observable<Order[]> {
         return this.httpClient
             .get<Order[]>(
-                `http://localhost/orders`
+                `http://hypercontract.herokuapp.com/orders`
             );
     }
 

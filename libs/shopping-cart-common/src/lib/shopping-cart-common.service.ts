@@ -16,7 +16,7 @@ export class ShoppingCartCommonService {
     addToShoppingCart(additionToShoppingCart: AdditionToShoppingCart): Observable<ShoppingCart> {
         return this.httpClient
             .post(
-                `http://localhost/shoppingCart/items`,
+                `http://hypercontract.herokuapp.com/shoppingCart/items`,
                 additionToShoppingCart,
                 { responseType: 'text', observe: 'response' }
             )

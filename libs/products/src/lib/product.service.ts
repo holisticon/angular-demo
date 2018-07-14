@@ -16,7 +16,7 @@ export class ProductService {
     searchProducts(query: string): Observable<Product[]> {
         const queryString = isNull(query) ? '' : `?query=${encodeURIComponent(query)}`
         return this.httpClient
-            .get<Product[]>(`http://localhost/products${queryString}`);
+            .get<Product[]>(`http://hypercontract.herokuapp.com/products${queryString}`);
     }
 
 }

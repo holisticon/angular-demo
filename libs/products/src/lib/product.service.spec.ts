@@ -1,6 +1,6 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { Resource, addId } from '@luchsamapparat/common';
+import { addId, Resource } from '@luchsamapparat/common';
 import { Product } from '@luchsamapparat/products-common';
 import { ProductService } from './product.service';
 
@@ -39,7 +39,7 @@ describe('ProductService', () => {
                     expect(searchResults).toBe(products);
                 });
 
-            const request = httpController.expectOne(`http://localhost/products?query=${query}`);
+            const request = httpController.expectOne(`http://hypercontract.herokuapp.com/products?query=${query}`);
 
             expect(request.request.method).toEqual('GET');
 
