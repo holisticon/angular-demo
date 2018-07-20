@@ -1,21 +1,17 @@
 import { Injectable } from '@angular/core';
-import { StoreSelector } from '@luchsamapparat/common';
 import { Product } from '@luchsamapparat/products-common';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { ProductsAppState } from './products.reducer';
 import { getSearchResults } from './products.selectors';
+import { Selector, StoreService } from '@ngx-patterns/store-service';
 
 @Injectable({
     providedIn: 'root'
 })
-export class ProductsStore {
+export class ProductsStore extends StoreService<ProductsAppState> {
 
-    constructor(
-        private store: Store<ProductsAppState>
-    ) { }
-
-    @StoreSelector(getSearchResults)
+    @Selector(getSearchResults)
     getSearchResults: () => Observable<Product[]>;
 
 }

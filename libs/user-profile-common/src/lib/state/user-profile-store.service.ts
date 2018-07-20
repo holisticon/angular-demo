@@ -1,27 +1,23 @@
 import { Injectable } from '@angular/core';
-import { StoreSelector } from '@luchsamapparat/common';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Address, PaymentOption, UserProfile } from '../user-profile.model';
 import { UserProfileAppState } from './user-profile.reducer';
 import { getAddresses, getPaymentOptions, getUserProfile } from './user-profile.selectors';
+import { Selector, StoreService } from '@ngx-patterns/store-service';
 
 @Injectable({
     providedIn: 'root'
 })
-export class UserProfileStore {
+export class UserProfileStore extends StoreService<UserProfileAppState> {
 
-    constructor(
-        private store: Store<UserProfileAppState>
-    ) { }
-
-    @StoreSelector(getUserProfile)
+    @Selector(getUserProfile)
     getUserProfile: () => Observable<UserProfile>;
 
-    @StoreSelector(getAddresses)
+    @Selector(getAddresses)
     getAddresses: () => Observable<Address[]>;
 
-    @StoreSelector(getPaymentOptions)
+    @Selector(getPaymentOptions)
     getPaymentOptions: () => Observable<PaymentOption[]>;
 
 }
