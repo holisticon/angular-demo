@@ -3,9 +3,9 @@ import { async, ComponentFixture, fakeAsync, TestBed } from '@angular/core/testi
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { addId, ResourceWith } from '@luchsamapparat/common';
-import { NewOrder, PlaceOrderAction, PlaceOrderFormComponent } from '@luchsamapparat/orders-common';
+import { NewOrder, PlaceOrderAction, PlaceOrderFormComponent, OrdersCommonStore } from '@luchsamapparat/orders-common';
 import { QuantityUpdate, ShoppingCart, ShoppingCartItem } from '@luchsamapparat/shopping-cart-common';
-import { UserProfile, UserProfileStore } from '@luchsamapparat/user-profile-common';
+import { UserProfile, UserProfileCommonStore } from '@luchsamapparat/user-profile-common';
 import { Store, StoreModule } from '@ngrx/store';
 import { BehaviorSubject, Observable, of as observableOf } from 'rxjs';
 import { ShoppingCartItemListComponent } from '../shopping-cart-item-list/shopping-cart-item-list.component';
@@ -14,11 +14,11 @@ import { ShoppingCartStore } from '../state/shopping-cart-store.service';
 import { DeleteShoppingCartItemAction, UpdateShoppingCartItemQuantityAction } from '../state/shopping-cart.actions';
 import { ShoppingCartIsEmptyPipe } from './shopping-cart-is-empty.pipe';
 import { ShoppingCartComponent } from './shopping-cart.component';
+import { provideStoreServiceMock, StoreServiceMock } from '@ngx-patterns/store-service/testing';
 
 describe('ShoppingCartComponent', () => {
     let component: ShoppingCartComponent;
     let fixture: ComponentFixture<ShoppingCartComponent>;
-    let store: Store<void>;
 
     const shoppingCartItem = addId({
         name: '',
@@ -60,7 +60,8 @@ describe('ShoppingCartComponent', () => {
         shoppingCart
     };
 
-    let shoppingCart$: Observable<ShoppingCart>;
+    let ordersCommonStore: StoreServiceMock<OrdersCommonStore>;
+    let shoppingCartStore: StoreServiceMock<ShoppingCartStore>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -76,21 +77,23 @@ describe('ShoppingCartComponent', () => {
                 ShoppingCartIsEmptyPipe,
                 PlaceOrderFormComponent
             ],
+            providers: [
+                provideStoreServiceMock(OrdersCommonStore),
+                provideStoreServiceMock(ShoppingCartStore, {
+                    getShoppingCart: shoppingCart
+                }),
+                provideStoreServiceMock(UserProfileCommonStore, {
+                    getUserProfile: userProfile
+                })
+            ],
             schemas: [
                 CUSTOM_ELEMENTS_SCHEMA
             ]
         })
             .compileComponents();
 
-        store = TestBed.get(Store);
-
-        shoppingCart$ = new BehaviorSubject(shoppingCart);
-
-        const shoppingCartStore = TestBed.get(ShoppingCartStore);
-        jest.spyOn(shoppingCartStore, 'getShoppingCart').mockImplementation(() => shoppingCart$);
-
-        const userProfileStore = TestBed.get(UserProfileStore);
-        jest.spyOn(userProfileStore, 'getUserProfile').mockImplementation(() => observableOf(userProfile));
+        ordersCommonStore = TestBed.get(OrdersCommonStore);
+        shoppingCartStore = TestBed.get(ShoppingCartStore);
     }));
 
     beforeEach(() => {
@@ -113,7 +116,7 @@ describe('ShoppingCartComponent', () => {
     });
 
     it('does not render the place order form when the shopping cart is empty', fakeAsync(() => {
-        shoppingCart$.next(emptyShoppingCart);
+        shoppingCartStore.getShoppingCart().next(emptyShoppingCart);
 
         fixture.detectChanges();
 
@@ -129,35 +132,29 @@ describe('ShoppingCartComponent', () => {
                 quantity: 2
             }
         };
-        const storeDispatchSpy = jest.spyOn(store, 'dispatch');
+        const updateShoppingCartItemQuantitySpy = jest.spyOn(shoppingCartStore, 'updateShoppingCartItemQuantity');
         const shoppingCartItemList: ShoppingCartItemListComponent = fixture.debugElement.query(By.directive(ShoppingCartItemListComponent)).componentInstance;
 
         shoppingCartItemList.updateQuantity.emit(quantityUpdate);
 
-        const dispatchedAction: UpdateShoppingCartItemQuantityAction = storeDispatchSpy.mock.calls[0][0];
-        expect(dispatchedAction).toBeInstanceOf(UpdateShoppingCartItemQuantityAction);
-        expect(dispatchedAction.payload).toBe(quantityUpdate);
+        expect(updateShoppingCartItemQuantitySpy).toHaveBeenCalledWith(quantityUpdate);
     }));
 
     it('dispatches an DeleteShoppingCartItemAction when the shopping cart item list emits a delete event', async(() => {
-        const storeDispatchSpy = jest.spyOn(store, 'dispatch');
+        const deleteShoppingCartItemSpy = jest.spyOn(shoppingCartStore, 'deleteShoppingCartItem');
         const shoppingCartItemList: ShoppingCartItemListComponent = fixture.debugElement.query(By.directive(ShoppingCartItemListComponent)).componentInstance;
 
         shoppingCartItemList.delete.emit(shoppingCartItem);
 
-        const dispatchedAction: DeleteShoppingCartItemAction = storeDispatchSpy.mock.calls[0][0];
-        expect(dispatchedAction).toBeInstanceOf(DeleteShoppingCartItemAction);
-        expect(dispatchedAction.payload).toBe(shoppingCartItem);
+        expect(deleteShoppingCartItemSpy).toHaveBeenCalledWith(shoppingCartItem);
     }));
 
     it('dispatches a PlaceOrderAction when the place order form emits a placeOrder event', async(() => {
-        const storeDispatchSpy = jest.spyOn(store, 'dispatch');
+        const placeOrderSpy = jest.spyOn(ordersCommonStore, 'placeOrder');
         const placeOrderForm: PlaceOrderFormComponent = fixture.debugElement.query(By.directive(PlaceOrderFormComponent)).componentInstance;
 
         placeOrderForm.placeOrder.emit(newOrder);
 
-        const dispatchedAction: PlaceOrderAction = storeDispatchSpy.mock.calls[0][0];
-        expect(dispatchedAction).toBeInstanceOf(PlaceOrderAction);
-        expect(dispatchedAction.payload).toBe(newOrder);
+        expect(placeOrderSpy).toHaveBeenCalledWith(newOrder);
     }));
 });

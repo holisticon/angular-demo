@@ -8,6 +8,7 @@ import { of as observableOf } from 'rxjs';
 import { OrderComponent } from '../order/order.component';
 import { OrdersStore } from '../state/orders-store.service';
 import { OrdersComponent } from './orders.component';
+import { provideStoreServiceMock } from '@ngx-patterns/store-service/testing';
 
 describe('OrdersComponent', () => {
     let component: OrdersComponent;
@@ -47,14 +48,16 @@ describe('OrdersComponent', () => {
                 OrdersComponent,
                 OrderComponent
             ],
+            providers: [
+                provideStoreServiceMock(OrdersStore, {
+                    getOrders: orders
+                })
+            ],
             schemas: [
                 NO_ERRORS_SCHEMA
             ]
         })
             .compileComponents();
-
-        const ordersStore = TestBed.get(OrdersStore);
-        jest.spyOn(ordersStore, 'getOrders').mockImplementation(() => observableOf(orders));
     }));
 
     beforeEach(() => {

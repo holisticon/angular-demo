@@ -9,6 +9,7 @@ import { LoadUserProfileAction } from './state/user-profile.actions';
 import { UserProfileEffects } from './state/user-profile.effects';
 import { UserProfileState, initialState as userProfileInitialState, userProfileReducer } from './state/user-profile.reducer';
 import { UserProfileService } from './user-profile.service';
+import { UserProfileCommonStore } from './state/user-profile-common-store.service';
 
 @NgModule({
     imports: [
@@ -32,8 +33,8 @@ import { UserProfileService } from './user-profile.service';
 })
 export class UserProfileCommonModule {
     constructor(
-        store: Store<UserProfileState>
+        userProfileCommonStore: UserProfileCommonStore
     ) {
-        store.dispatch(new LoadUserProfileAction());
+        userProfileCommonStore.loadUserProfile();
     }
 }

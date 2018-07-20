@@ -3,18 +3,19 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { addId, getId, Resource } from '@luchsamapparat/common';
 import { Product } from '@luchsamapparat/products-common';
-import { AdditionToShoppingCart, AddToShoppingCartAction } from '@luchsamapparat/shopping-cart-common';
+import { AdditionToShoppingCart, AddToShoppingCartAction, ShoppingCartCommonStore } from '@luchsamapparat/shopping-cart-common';
 import { Store, StoreModule } from '@ngrx/store';
 import { expectElementFromFixture } from 'ngx-test-helpers';
 import { of as observableOf } from 'rxjs';
 import { ProductListComponent } from '../product-list/product-list.component';
 import { ProductsStore } from '../state/products-store.service';
 import { SearchResultsComponent } from './search-results.component';
+import { provideStoreServiceMock } from '@ngx-patterns/store-service/testing';
 
 describe('SearchResultsComponent', () => {
     let component: SearchResultsComponent;
     let fixture: ComponentFixture<SearchResultsComponent>;
-    let store: Store<void>;
+    let shoppingCartCommonStore: ShoppingCartCommonStore;
 
     const product: Resource<Product> = addId({
         description: '',
@@ -35,14 +36,17 @@ describe('SearchResultsComponent', () => {
             ],
             schemas: [
                 CUSTOM_ELEMENTS_SCHEMA
+            ],
+            providers: [
+                provideStoreServiceMock(ProductsStore, {
+                    getSearchResults: searchResults
+                }),
+                provideStoreServiceMock(ShoppingCartCommonStore)
             ]
         })
             .compileComponents();
 
-        store = TestBed.get(Store);
-
-        const productsStore = TestBed.get(ProductsStore);
-        jest.spyOn(productsStore, 'getSearchResults').mockImplementation(() => observableOf(searchResults));
+        shoppingCartCommonStore = TestBed.get(ShoppingCartCommonStore);
     }));
 
     beforeEach(() => {
@@ -58,18 +62,16 @@ describe('SearchResultsComponent', () => {
         expect(productList.products).toEqual(searchResults);
     });
 
-    it('dispatches an AddToShoppingCartAction when the product list emits an addToShoppingCart event', async(() => {
+    it('adds the product to the shopping cart when the product list emits an addToShoppingCart event', async(() => {
         const additionToShoppingCart: AdditionToShoppingCart = {
             product: getId(product),
             quantity: 2
         };
-        const storeDispatchSpy = jest.spyOn(store, 'dispatch');
+        const addToShoppingCartSpy = jest.spyOn(shoppingCartCommonStore, 'addToShoppingCart');
         const productList: ProductListComponent = fixture.debugElement.query(By.directive(ProductListComponent)).componentInstance;
 
         productList.addToShoppingCart.emit(additionToShoppingCart);
 
-        const dispatchedAction: AddToShoppingCartAction = storeDispatchSpy.mock.calls[0][0];
-        expect(dispatchedAction).toBeInstanceOf(AddToShoppingCartAction);
-        expect(dispatchedAction.payload).toBe(additionToShoppingCart);
+        expect(addToShoppingCartSpy).toHaveBeenCalledWith(additionToShoppingCart);
     }));
 });

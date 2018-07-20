@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SearchProductsAction } from '@luchsamapparat/products-common';
+import { SearchProductsAction, ProductsCommonStore } from '@luchsamapparat/products-common';
 import { Store } from '@ngrx/store';
 
 @Component({
@@ -9,11 +9,11 @@ import { Store } from '@ngrx/store';
 export class HomepageComponent {
 
     constructor(
-        private store: Store<void>
+        private productsCommonStore: ProductsCommonStore
     ) {}
 
     onProductSearch(query: string) {
-        this.store.dispatch(new SearchProductsAction(query));
+        this.productsCommonStore.searchProducts(query);
     }
 
 }

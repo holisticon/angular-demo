@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ResourceWith } from '@luchsamapparat/common';
-import { NewOrder, PlaceOrderAction } from '@luchsamapparat/orders-common';
+import { NewOrder, PlaceOrderAction, OrdersCommonStore } from '@luchsamapparat/orders-common';
 import { QuantityUpdate, ShoppingCart, ShoppingCartItem } from '@luchsamapparat/shopping-cart-common';
-import { UserProfile, UserProfileStore } from '@luchsamapparat/user-profile-common';
+import { UserProfile, UserProfileCommonStore } from '@luchsamapparat/user-profile-common';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { ShoppingCartStore } from '../state/shopping-cart-store.service';
@@ -19,30 +19,24 @@ export class ShoppingCartComponent {
     userProfile$: Observable<UserProfile>;
 
     constructor(
-        private store: Store<void>,
+        private ordersCommonStore: OrdersCommonStore,
         private shoppingCartStore: ShoppingCartStore,
-        private userProfileStore: UserProfileStore
+        private userProfileStore: UserProfileCommonStore
     ) {
         this.shoppingCart$ = shoppingCartStore.getShoppingCart();
         this.userProfile$ = userProfileStore.getUserProfile();
     }
 
     onUpdateQuantity(quantityUpdate: ResourceWith<QuantityUpdate>) {
-        this.store.dispatch(
-            new UpdateShoppingCartItemQuantityAction(quantityUpdate)
-        );
+        this.shoppingCartStore.updateShoppingCartItemQuantity(quantityUpdate);
     }
 
     onDelete(shoppingCartItem: ShoppingCartItem) {
-        this.store.dispatch(
-            new DeleteShoppingCartItemAction(shoppingCartItem)
-        );
+        this.shoppingCartStore.deleteShoppingCartItem(shoppingCartItem);
     }
 
     onPlaceOrder(newOrder: NewOrder) {
-        this.store.dispatch(
-            new PlaceOrderAction(newOrder)
-        );
+        this.ordersCommonStore.placeOrder(newOrder);
     }
 
 }

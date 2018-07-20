@@ -25,8 +25,8 @@ export function logger(reducer) {
         HttpClientModule, // see https://github.com/angular/angular-cli/issues/10170
         NxModule.forRoot(),
         RouterModule.forRoot([
-            { path: 'products', loadChildren: '@luchsamapparat/products#ProductsModule' },
             { path: '', loadChildren: '@luchsamapparat/homepage#HomepageModule' },
+            { path: 'products', loadChildren: '@luchsamapparat/products#ProductsModule' },
             { path: 'shopping-cart', loadChildren: '@luchsamapparat/shopping-cart#ShoppingCartModule' },
             { path: 'user-profile', loadChildren: '@luchsamapparat/user-profile#UserProfileModule' },
             { path: 'orders', loadChildren: '@luchsamapparat/orders#OrdersModule' }

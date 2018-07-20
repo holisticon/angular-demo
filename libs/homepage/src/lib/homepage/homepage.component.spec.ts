@@ -2,15 +2,16 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
-import { ProductSearchFormComponent, SearchProductsAction } from '@luchsamapparat/products-common';
+import { ProductSearchFormComponent, SearchProductsAction, ProductsCommonStore } from '@luchsamapparat/products-common';
 import { Store, StoreModule } from '@ngrx/store';
 import { expectElementFromFixture } from 'ngx-test-helpers';
 import { HomepageComponent } from './homepage.component';
+import { provideStoreServiceMock } from '@ngx-patterns/store-service/testing';
 
 describe('HomepageComponent', () => {
     let component: HomepageComponent;
     let fixture: ComponentFixture<HomepageComponent>;
-    let store: Store<void>;
+    let productsCommonStore: ProductsCommonStore;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -22,13 +23,16 @@ describe('HomepageComponent', () => {
                 HomepageComponent,
                 ProductSearchFormComponent
             ],
+            providers: [
+                provideStoreServiceMock(ProductsCommonStore),
+            ],
             schemas: [
                 NO_ERRORS_SCHEMA
             ]
         })
             .compileComponents();
 
-        store = TestBed.get(Store);
+        productsCommonStore = TestBed.get(ProductsCommonStore);
     }));
 
     beforeEach(() => {
@@ -41,15 +45,13 @@ describe('HomepageComponent', () => {
         expectElementFromFixture(fixture, 'cfha-product-search-form').not.toBeNull();
     });
 
-    it('dispatches a SearchProductsAction with the provided query when the product search form emits a search event', () => {
+    it('triggers a search for products with the provided query when the product search form emits a search event', () => {
         const expectedQuery = 'query';
-        const storeDispatchSpy = jest.spyOn(store, 'dispatch');
+        const searchProductsSpy = jest.spyOn(productsCommonStore, 'searchProducts');
         const productSearchForm: ProductSearchFormComponent = fixture.debugElement.query(By.directive(ProductSearchFormComponent)).componentInstance;
 
         productSearchForm.search.emit(expectedQuery);
 
-        const dispatchedAction: SearchProductsAction = storeDispatchSpy.mock.calls[0][0];
-        expect(dispatchedAction).toBeInstanceOf(SearchProductsAction);
-        expect(dispatchedAction.payload).toBe(expectedQuery);
+        expect(searchProductsSpy).toHaveBeenCalledWith(expectedQuery);
     });
 });

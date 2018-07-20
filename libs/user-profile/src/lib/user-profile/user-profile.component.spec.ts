@@ -1,9 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { AddressComponent, PaymentOptionComponent, UserProfile, UserProfileStore } from '@luchsamapparat/user-profile-common';
+import { AddressComponent, PaymentOptionComponent, UserProfile, UserProfileCommonStore } from '@luchsamapparat/user-profile-common';
 import { StoreModule } from '@ngrx/store';
 import { of as observableOf } from 'rxjs';
 import { UserProfileComponent } from './user-profile.component';
+import { provideStoreServiceMock, StoreServiceMock } from '@ngx-patterns/store-service/testing';
 
 describe('UserProfileComponent', () => {
     let component: UserProfileComponent;
@@ -33,13 +34,15 @@ describe('UserProfileComponent', () => {
                 UserProfileComponent,
                 AddressComponent,
                 PaymentOptionComponent
+            ],
+            providers: [
+                provideStoreServiceMock(UserProfileCommonStore, {
+                    getAddresses: userProfile.addresses,
+                    getPaymentOptions: userProfile.paymentOptions
+                })
             ]
         })
             .compileComponents();
-
-        const userProfileStore = TestBed.get(UserProfileStore);
-        jest.spyOn(userProfileStore, 'getAddresses').mockImplementation(() => observableOf(userProfile.addresses));
-        jest.spyOn(userProfileStore, 'getPaymentOptions').mockImplementation(() => observableOf(userProfile.paymentOptions));
     }));
 
     beforeEach(() => {

@@ -9,6 +9,7 @@ import { OrdersComponent } from './orders/orders.component';
 import { LoadOrdersAction } from './state/orders.actions';
 import { OrdersEffects } from './state/orders.effects';
 import { initialState as ordersInitialState, ordersReducer, OrdersState } from './state/orders.reducer';
+import { OrdersStore } from './state/orders-store.service';
 
 @NgModule({
     imports: [
@@ -30,8 +31,8 @@ import { initialState as ordersInitialState, ordersReducer, OrdersState } from '
 })
 export class OrdersModule {
     constructor(
-        store: Store<OrdersState>
+        ordersStore: OrdersStore
     ) {
-        store.dispatch(new LoadOrdersAction());
+        ordersStore.loadOrders();
     }
 }

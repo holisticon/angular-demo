@@ -3,29 +3,16 @@ import { Store, StoreModule } from '@ngrx/store';
 import { ShoppingCartModule } from './shopping-cart.module';
 import { LoadShoppingCartAction } from './state/shopping-cart.actions';
 import { ShoppingCartState } from './state/shopping-cart.reducer';
+import { createStoreServiceMock } from '@ngx-patterns/store-service/testing';
+import { ShoppingCartStore } from './state/shopping-cart-store.service';
 
 describe('ShoppingCartModule', () => {
-    let store: Store<ShoppingCartState>;
-
-    beforeEach(
-        async(() => {
-            TestBed.configureTestingModule({
-                imports: [
-                    StoreModule.forRoot({})
-                ]
-            });
-
-            store = TestBed.get(Store);
-        })
-    );
-
     it('dispatches a LoadShoppingCartAction on initialization', async(() => {
-            const storeDispatchSpy = jest.spyOn(store, 'dispatch');
+        const shoppingCartStore = createStoreServiceMock(ShoppingCartStore);
+        const loadShoppingCartSpy = jest.spyOn(shoppingCartStore, 'loadShoppingCart');
 
-            const shoppingCartModule = new ShoppingCartModule(store);
+        const ordersModule = new ShoppingCartModule(shoppingCartStore);
 
-            const dispatchedAction: LoadShoppingCartAction = storeDispatchSpy.mock.calls[0][0];
-            expect(dispatchedAction).toBeInstanceOf(LoadShoppingCartAction);
-        })
-    );
+        expect(loadShoppingCartSpy).toHaveBeenCalled();
+    }));
 });

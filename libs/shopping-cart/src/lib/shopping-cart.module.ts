@@ -16,6 +16,7 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { LoadShoppingCartAction } from './state/shopping-cart.actions';
 import { ShoppingCartEffects } from './state/shopping-cart.effects';
 import { initialState as shoppingCartInitialState, shoppingCartReducer, ShoppingCartState } from './state/shopping-cart.reducer';
+import { ShoppingCartStore } from './state/shopping-cart-store.service';
 
 @NgModule({
     imports: [
@@ -45,8 +46,8 @@ import { initialState as shoppingCartInitialState, shoppingCartReducer, Shopping
 })
 export class ShoppingCartModule {
     constructor(
-        store: Store<ShoppingCartState>
+        shoppingCartStore: ShoppingCartStore
     ) {
-        store.dispatch(new LoadShoppingCartAction());
+        shoppingCartStore.loadShoppingCart();
     }
 }
