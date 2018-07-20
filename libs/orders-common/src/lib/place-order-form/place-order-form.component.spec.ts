@@ -3,12 +3,12 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { addId } from '@luchsamapparat/common';
-import { NewOrder } from '@luchsamapparat/orders-common';
 import { ShoppingCart } from '@luchsamapparat/shopping-cart-common';
 import { AddressComponent, PaymentOptionComponent, UserProfile } from '@luchsamapparat/user-profile-common';
 import { isNull } from 'lodash-es';
 import { take } from 'rxjs/operators';
 import { PlaceOrderFormComponent } from './place-order-form.component';
+import { NewOrder } from '../order.model';
 
 describe('PlaceOrderFormComponent', () => {
     let component: PlaceOrderFormComponent;

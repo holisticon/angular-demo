@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { OnNonNullChange } from '@luchsamapparat/common';
-import { NewOrder } from '@luchsamapparat/orders-common';
 import { ShoppingCart } from '@luchsamapparat/shopping-cart-common';
 import { UserProfile } from '@luchsamapparat/user-profile-common';
 import { defaultTo, isNull } from 'lodash-es';
+import { NewOrder } from '../order.model';
 
 @Component({
     selector: 'cfha-place-order-form',

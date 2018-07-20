@@ -1,7 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { addId } from '@luchsamapparat/common';
-import { AddToShoppingCartAction, ShoppingCart, ShoppingCartLoadedAction } from '@luchsamapparat/shopping-cart-common';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { StoreModule } from '@ngrx/store';
 import { DataPersistence } from '@nrwl/nx';
@@ -10,6 +9,8 @@ import { Observable, of as observableOf } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { ShoppingCartCommonService } from '../shopping-cart-common.service';
 import { ShoppingCartCommonEffects } from './shopping-cart-common.effects';
+import { ShoppingCart } from '../shopping-cart.model';
+import { AddToShoppingCartAction, ShoppingCartLoadedAction } from './shopping-cart-common.actions';
 
 describe('ShoppingCartCommonEffects', () => {
     let actions$: Observable<any>;

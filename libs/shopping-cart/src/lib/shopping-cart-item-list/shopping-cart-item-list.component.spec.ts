@@ -4,7 +4,7 @@ import { By } from '@angular/platform-browser';
 import { ResourceWith } from '@luchsamapparat/common';
 import { QuantityUpdate, ShoppingCart, ShoppingCartItem } from '@luchsamapparat/shopping-cart-common';
 import { take } from 'rxjs/operators';
-import { ShoppingCartItemComponent } from '../shopping-cart-item-list/shopping-cart-item/shopping-cart-item.component';
+import { ShoppingCartItemComponent } from './shopping-cart-item/shopping-cart-item.component';
 import { ShoppingCartItemListComponent } from './shopping-cart-item-list.component';
 import { UpdateQuantityFormComponent } from './shopping-cart-item/update-quantity-form/update-quantity-form.component';
 
