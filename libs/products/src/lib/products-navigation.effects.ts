@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { Params } from '@angular/router';
 import { LoadSearchResultsAction } from '@luchsamapparat/products-common';
-import { Actions, Effect } from '@ngrx/effects';
+import { Actions, Effect, ofType } from '@ngrx/effects';
 import { RouterNavigationAction, ROUTER_NAVIGATION } from '@ngrx/router-store';
 import { defaultTo } from 'lodash-es';
 import { filter, map } from 'rxjs/operators';
@@ -11,16 +11,15 @@ import { filter, map } from 'rxjs/operators';
 export class ProductsNavigationEffects {
 
     @Effect()
-    loadSearchResultsOnNavigate$ = this.actions$
-        .ofType(ROUTER_NAVIGATION)
-        .pipe(
-            map((action: RouterNavigationAction<RouterStateUrl>) => action.payload),
-            map(routerNavigationPayload => routerNavigationPayload.routerState),
-            filter(routerState => routerState.url.startsWith('/products')),
-            map(routerState => routerState.queryParams.query),
-            map(query => defaultTo(query, null)),
-            map(query => new LoadSearchResultsAction(query))
-        );
+    loadSearchResultsOnNavigate$ = this.actions$.pipe(
+        ofType(ROUTER_NAVIGATION),
+        map((action: RouterNavigationAction<RouterStateUrl>) => action.payload),
+        map(routerNavigationPayload => routerNavigationPayload.routerState),
+        filter(routerState => routerState.url.startsWith('/products')),
+        map(routerState => routerState.queryParams.query),
+        map(query => defaultTo(query, null)),
+        map(query => new LoadSearchResultsAction(query))
+    );
 
     constructor(
         private actions$: Actions
