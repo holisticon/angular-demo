@@ -13,8 +13,7 @@
         },
         "import-blacklist": [
             true,
-            "rxjs/Rx",
-            "jasmine-marbles"
+            "rxjs/Rx"
         ],
         "interface-over-type-literal": true,
         "member-access": false,
