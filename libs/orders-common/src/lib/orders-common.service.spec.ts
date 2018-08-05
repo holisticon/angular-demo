@@ -28,7 +28,7 @@ describe('OrdersCommonService', () => {
                     expect(createdOrder).toBe(order);
                 });
 
-            const postRequest = httpController.expectOne(`http://hypercontract.herokuapp.com/orders`);
+            const postRequest = httpController.expectOne(`http://example.hypercontract.org/orders`);
 
             expect(postRequest.request.method).toEqual('POST');
             expect(postRequest.request.body).toEqual(toNewOrderRequest(newOrder));
@@ -37,11 +37,11 @@ describe('OrdersCommonService', () => {
                 status: 201,
                 statusText: 'Created',
                 headers: {
-                    Location: `http://hypercontract.herokuapp.com/orders/${getId(order)}`
+                    Location: `http://example.hypercontract.org/orders/${getId(order)}`
                 }
             });
 
-            const getRequest = httpController.expectOne(`http://hypercontract.herokuapp.com/orders/${getId(order)}`);
+            const getRequest = httpController.expectOne(`http://example.hypercontract.org/orders/${getId(order)}`);
 
             expect(getRequest.request.method).toEqual('GET');
 

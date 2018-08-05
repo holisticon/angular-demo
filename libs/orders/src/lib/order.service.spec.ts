@@ -31,7 +31,7 @@ describe('OrderService', () => {
                     expect(returnedOrders).toBe(orders);
                 });
 
-            const request = httpController.expectOne(`http://hypercontract.herokuapp.com/orders`);
+            const request = httpController.expectOne(`http://example.hypercontract.org/orders`);
 
             expect(request.request.method).toEqual('GET');
 

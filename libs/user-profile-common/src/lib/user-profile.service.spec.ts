@@ -29,7 +29,7 @@ describe('UserProfileService', () => {
                     expect(returnedUserProfile).toBe(userProfile);
                 });
 
-            const request = httpController.expectOne(`http://hypercontract.herokuapp.com/userProfile`);
+            const request = httpController.expectOne(`http://example.hypercontract.org/userProfile`);
 
             expect(request.request.method).toEqual('GET');
 

@@ -16,14 +16,14 @@ export class ShoppingCartService {
     loadShoppingCart(): Observable<ShoppingCart> {
         return this.httpClient
             .get<ShoppingCart>(
-                `http://hypercontract.herokuapp.com/shoppingCart`
+                `http://example.hypercontract.org/shoppingCart`
             );
     }
 
     updateShoppingCartItemQuantity(shoppingCartItem: ShoppingCartItem, quantityUpdate: QuantityUpdate): Observable<ShoppingCart> {
         return this.httpClient
             .patch<ShoppingCart>(
-                `http://hypercontract.herokuapp.com/shoppingCart/items/${getId(shoppingCartItem)}`,
+                `http://example.hypercontract.org/shoppingCart/items/${getId(shoppingCartItem)}`,
                 quantityUpdate
             );
     }
@@ -31,7 +31,7 @@ export class ShoppingCartService {
     deleteShoppingCartItem(shoppingCartItem: ShoppingCartItem): Observable<ShoppingCart> {
         return this.httpClient
             .delete<ShoppingCart>(
-                `http://hypercontract.herokuapp.com/shoppingCart/items/${getId(shoppingCartItem)}`
+                `http://example.hypercontract.org/shoppingCart/items/${getId(shoppingCartItem)}`
             );
     }
 
