@@ -9,7 +9,7 @@ import { UserProfileCommonStore } from './state/user-profile-common-store.servic
 describe('UserProfileCommonModule', () => {
     it('dispatches a LoadUserProfileAction on initialization', async(() => {
         const userProfileCommonStore = createStoreServiceMock(UserProfileCommonStore);
-        const loadUserProfileSpy = jest.spyOn(userProfileCommonStore, 'loadUserProfile');
+        const loadUserProfileSpy = spyOn(userProfileCommonStore, 'loadUserProfile');
 
         const ordersModule = new UserProfileCommonModule(userProfileCommonStore);
 

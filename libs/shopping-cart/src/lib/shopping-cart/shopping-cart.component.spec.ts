@@ -132,7 +132,7 @@ describe('ShoppingCartComponent', () => {
                 quantity: 2
             }
         };
-        const updateShoppingCartItemQuantitySpy = jest.spyOn(shoppingCartStore, 'updateShoppingCartItemQuantity');
+        const updateShoppingCartItemQuantitySpy = spyOn(shoppingCartStore, 'updateShoppingCartItemQuantity');
         const shoppingCartItemList: ShoppingCartItemListComponent = fixture.debugElement.query(By.directive(ShoppingCartItemListComponent)).componentInstance;
 
         shoppingCartItemList.updateQuantity.emit(quantityUpdate);
@@ -141,7 +141,7 @@ describe('ShoppingCartComponent', () => {
     }));
 
     it('dispatches an DeleteShoppingCartItemAction when the shopping cart item list emits a delete event', async(() => {
-        const deleteShoppingCartItemSpy = jest.spyOn(shoppingCartStore, 'deleteShoppingCartItem');
+        const deleteShoppingCartItemSpy = spyOn(shoppingCartStore, 'deleteShoppingCartItem');
         const shoppingCartItemList: ShoppingCartItemListComponent = fixture.debugElement.query(By.directive(ShoppingCartItemListComponent)).componentInstance;
 
         shoppingCartItemList.delete.emit(shoppingCartItem);
@@ -150,7 +150,7 @@ describe('ShoppingCartComponent', () => {
     }));
 
     it('dispatches a PlaceOrderAction when the place order form emits a placeOrder event', async(() => {
-        const placeOrderSpy = jest.spyOn(ordersCommonStore, 'placeOrder');
+        const placeOrderSpy = spyOn(ordersCommonStore, 'placeOrder');
         const placeOrderForm: PlaceOrderFormComponent = fixture.debugElement.query(By.directive(PlaceOrderFormComponent)).componentInstance;
 
         placeOrderForm.placeOrder.emit(newOrder);

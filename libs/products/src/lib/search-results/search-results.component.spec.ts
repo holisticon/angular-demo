@@ -5,7 +5,7 @@ import { addId, getId, Resource } from '@luchsamapparat/common';
 import { Product } from '@luchsamapparat/products-common';
 import { AdditionToShoppingCart, AddToShoppingCartAction, ShoppingCartCommonStore } from '@luchsamapparat/shopping-cart-common';
 import { Store, StoreModule } from '@ngrx/store';
-import { expectElementFromFixture } from 'ngx-test-helpers';
+import { expectElementFromFixture } from '@luchsamapparat/common/testing';
 import { of as observableOf } from 'rxjs';
 import { ProductListComponent } from '../product-list/product-list.component';
 import { ProductsStore } from '../state/products-store.service';
@@ -67,7 +67,7 @@ describe('SearchResultsComponent', () => {
             product: getId(product),
             quantity: 2
         };
-        const addToShoppingCartSpy = jest.spyOn(shoppingCartCommonStore, 'addToShoppingCart');
+        const addToShoppingCartSpy = spyOn(shoppingCartCommonStore, 'addToShoppingCart');
         const productList: ProductListComponent = fixture.debugElement.query(By.directive(ProductListComponent)).componentInstance;
 
         productList.addToShoppingCart.emit(additionToShoppingCart);

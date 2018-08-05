@@ -52,10 +52,10 @@ describe('UserProfileComponent', () => {
     });
 
     it('renders a cfha-address for each address', () => {
-        expect(fixture.debugElement.queryAll(By.directive(AddressComponent))).toHaveLength(userProfile.addresses.length);
+        expect(fixture.debugElement.queryAll(By.directive(AddressComponent)).length).toBe(userProfile.addresses.length);
     });
 
     it('renders a cfha-payment-option for each payment option', () => {
-        expect(fixture.debugElement.queryAll(By.directive(PaymentOptionComponent))).toHaveLength(userProfile.paymentOptions.length);
+        expect(fixture.debugElement.queryAll(By.directive(PaymentOptionComponent)).length).toBe(userProfile.paymentOptions.length);
     });
 });

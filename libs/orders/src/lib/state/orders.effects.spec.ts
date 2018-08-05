@@ -5,7 +5,7 @@ import { Order, OrderStatus } from '@luchsamapparat/orders-common';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { StoreModule } from '@ngrx/store';
 import { DataPersistence } from '@nrwl/nx';
-import { hot } from 'jest-marbles';
+import { hot } from 'jasmine-marbles';
 import { Observable, of as observableOf } from 'rxjs';
 import { OrderService } from '../order.service';
 import { LoadOrdersAction, OrdersLoadedAction } from './orders.actions';
@@ -61,9 +61,7 @@ describe('OrdersEffects', () => {
 
     describe('loadOrder', () => {
         it('dispatches a OrderLoadedAction with the orders returned by the service', () => {
-            jest
-                .spyOn(orderService, 'loadOrders')
-                .mockImplementation(() => observableOf(orders));
+            spyOn(orderService, 'loadOrders').and.returnValue(observableOf(orders));
 
             actions$ = hot('-a-|', { a: new LoadOrdersAction() });
 

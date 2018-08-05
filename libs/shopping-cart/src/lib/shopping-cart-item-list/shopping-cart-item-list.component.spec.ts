@@ -48,7 +48,7 @@ describe('ShoppingCartItemListComponent', () => {
     it('renders a row for each shopping cart item', () => {
         const shoppingCartItemRows = fixture.debugElement.queryAll(By.directive(ShoppingCartItemComponent));
 
-        expect(shoppingCartItemRows).toHaveLength(shoppingCart.items.length);
+        expect(shoppingCartItemRows.length).toBe(shoppingCart.items.length);
 
         shoppingCart.items.forEach((shoppingCartItem, index) => {
             const shoppingCartItemRow: ShoppingCartItemComponent = shoppingCartItemRows[index].componentInstance;

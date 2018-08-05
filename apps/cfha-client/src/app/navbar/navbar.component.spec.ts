@@ -1,9 +1,8 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
-import { expectElementFromFixture } from 'ngx-test-helpers';
+import { expectElementFromFixture } from '@luchsamapparat/common/testing';
 import { NavbarComponent } from './navbar.component';
 
-
-fdescribe('NavbarComponent', () => {
+describe('NavbarComponent', () => {
     let component: NavbarComponent;
     let fixture: ComponentFixture<NavbarComponent>;
 

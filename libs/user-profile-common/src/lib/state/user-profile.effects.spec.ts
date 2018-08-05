@@ -4,7 +4,7 @@ import { addId } from '@luchsamapparat/common';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { StoreModule } from '@ngrx/store';
 import { DataPersistence } from '@nrwl/nx';
-import { hot } from 'jest-marbles';
+import { hot } from 'jasmine-marbles';
 import { Observable, of as observableOf } from 'rxjs';
 import { UserProfile } from '../user-profile.model';
 import { UserProfileService } from '../user-profile.service';
@@ -41,7 +41,7 @@ describe('UserProfileEffects', () => {
 
     describe('loadUserProfile', () => {
         it('dispatches a UserProfileLoadedAction with the user profile returned by the service', () => {
-            jest.spyOn(userProfileService, 'loadUserProfile').mockImplementation(() => observableOf(userProfile));
+            spyOn(userProfileService, 'loadUserProfile').and.returnValue(observableOf(userProfile));
 
             actions$ = hot('-a-|', { a: new LoadUserProfileAction() });
 

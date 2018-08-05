@@ -6,7 +6,7 @@ import { SearchProductsAction } from '@luchsamapparat/products-common';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { StoreModule } from '@ngrx/store';
 import { DataPersistence } from '@nrwl/nx';
-import { hot } from 'jest-marbles';
+import { hot } from 'jasmine-marbles';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { AppEffects } from './app.effects';
@@ -36,7 +36,7 @@ describe('AppEffects', () => {
     describe('navigateToProductSearchResults', () => {
         it('redirects to the products view passing the query as query param', () => {
             const expectedQuery = 'query';
-            const navigateSpy = jest.spyOn(router, 'navigate').mockImplementation(() => null);
+            const navigateSpy = spyOn(router, 'navigate');
 
             actions$ = hot('-a-|', { a: new SearchProductsAction(expectedQuery) });
 

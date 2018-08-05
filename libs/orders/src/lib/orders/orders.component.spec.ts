@@ -69,7 +69,7 @@ describe('OrdersComponent', () => {
     it('renders a cfha-order for each order', () => {
         const orderComponents = fixture.debugElement.queryAll(By.directive(OrderComponent));
 
-        expect(orderComponents).toHaveLength(orderComponents.length);
+        expect(orderComponents.length).toBe(orderComponents.length);
 
         orders.forEach((order, index) => {
             const orderComponent: OrderComponent = orderComponents[index].componentInstance;

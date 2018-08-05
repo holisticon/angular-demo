@@ -92,7 +92,9 @@
         "nx-enforce-module-boundaries": [
             true,
             {
-                "allow": [],
+                "allow": [
+                    "@luchsamapparat/common/testing"
+                ],
                 "depConstraints": [
                     {
                         "sourceTag": "*",

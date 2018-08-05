@@ -42,7 +42,7 @@ describe('ProductListComponent', () => {
     });
 
     it('renders a row for each product', () => {
-        expect(fixture.debugElement.queryAll(By.directive(ProductListEntryComponent))).toHaveLength(products.length);
+        expect(fixture.debugElement.queryAll(By.directive(ProductListEntryComponent)).length).toBe(products.length);
     });
 
     it('emits an addToShoppingCart event when the form is submitted', async(() => {

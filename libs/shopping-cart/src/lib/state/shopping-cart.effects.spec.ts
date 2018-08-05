@@ -6,7 +6,7 @@ import { QuantityUpdate, ShoppingCart, ShoppingCartItem, ShoppingCartLoadedActio
 import { provideMockActions } from '@ngrx/effects/testing';
 import { StoreModule } from '@ngrx/store';
 import { DataPersistence } from '@nrwl/nx';
-import { hot } from 'jest-marbles';
+import { hot } from 'jasmine-marbles';
 import { Observable, of as observableOf } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { ShoppingCartService } from '../shopping-cart.service';
@@ -76,9 +76,7 @@ describe('ShoppingCartEffects', () => {
 
     describe('loadShoppingCart', () => {
         it('dispatches a ShoppingCartLoadedAction with the shopping cart returned by the service', () => {
-            jest
-                .spyOn(shoppingCartService, 'loadShoppingCart')
-                .mockImplementation(() => observableOf(shoppingCart));
+            spyOn(shoppingCartService, 'loadShoppingCart').and.returnValue(observableOf(shoppingCart));
 
             actions$ = hot('-a-|', { a: new LoadShoppingCartAction() });
 
@@ -97,9 +95,7 @@ describe('ShoppingCartEffects', () => {
                 }
             };
 
-            const updateQuantitySpy = jest
-                .spyOn(shoppingCartService, 'updateShoppingCartItemQuantity')
-                .mockImplementation(() => observableOf(shoppingCart));
+            const updateQuantitySpy = spyOn(shoppingCartService, 'updateShoppingCartItemQuantity').and.returnValue(observableOf(shoppingCart));
 
             actions$ = hot('-a-|', {
                 a: new UpdateShoppingCartItemQuantityAction(quantityUpdate)
@@ -122,9 +118,7 @@ describe('ShoppingCartEffects', () => {
 
     describe('deleteShoppingCartItem', () => {
         it('calls the service with the given shopping cart item and dispatches a ShoppingCartLoadedAction with the updated shopping cart', () => {
-            const deleteShoppingCartItemSpy = jest
-                .spyOn(shoppingCartService, 'deleteShoppingCartItem')
-                .mockImplementation(() => observableOf(shoppingCart));
+            const deleteShoppingCartItemSpy = spyOn(shoppingCartService, 'deleteShoppingCartItem').and.returnValue(observableOf(shoppingCart));
 
             actions$ = hot('-a-|', {
                 a: new DeleteShoppingCartItemAction(shoppingCartItem)

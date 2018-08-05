@@ -4,7 +4,7 @@ import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ProductSearchFormComponent, SearchProductsAction, ProductsCommonStore } from '@luchsamapparat/products-common';
 import { Store, StoreModule } from '@ngrx/store';
-import { expectElementFromFixture } from 'ngx-test-helpers';
+import { expectElementFromFixture } from '@luchsamapparat/common/testing';
 import { HomepageComponent } from './homepage.component';
 import { provideStoreServiceMock } from '@ngx-patterns/store-service/testing';
 
@@ -47,7 +47,7 @@ describe('HomepageComponent', () => {
 
     it('triggers a search for products with the provided query when the product search form emits a search event', () => {
         const expectedQuery = 'query';
-        const searchProductsSpy = jest.spyOn(productsCommonStore, 'searchProducts');
+        const searchProductsSpy = spyOn(productsCommonStore, 'searchProducts');
         const productSearchForm: ProductSearchFormComponent = fixture.debugElement.query(By.directive(ProductSearchFormComponent)).componentInstance;
 
         productSearchForm.search.emit(expectedQuery);

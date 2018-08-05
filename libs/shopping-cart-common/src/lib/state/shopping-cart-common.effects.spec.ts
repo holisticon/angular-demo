@@ -4,7 +4,7 @@ import { addId } from '@luchsamapparat/common';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { StoreModule } from '@ngrx/store';
 import { DataPersistence } from '@nrwl/nx';
-import { hot } from 'jest-marbles';
+import { hot } from 'jasmine-marbles';
 import { Observable, of as observableOf } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { ShoppingCartCommonService } from '../shopping-cart-common.service';
@@ -55,9 +55,7 @@ describe('ShoppingCartCommonEffects', () => {
                 quantity: 2
             };
 
-            const addToShoppingCartSpy = jest
-                .spyOn(shoppingCartCommonService, 'addToShoppingCart')
-                .mockImplementation(() => observableOf(shoppingCart));
+            const addToShoppingCartSpy = spyOn(shoppingCartCommonService, 'addToShoppingCart').and.returnValue(observableOf(shoppingCart));
 
             actions$ = hot('-a-|', {
                 a: new AddToShoppingCartAction(additionToShoppingCart)

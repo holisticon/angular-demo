@@ -4,7 +4,7 @@ import { addId } from '@luchsamapparat/common';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { StoreModule } from '@ngrx/store';
 import { DataPersistence } from '@nrwl/nx';
-import { hot } from 'jest-marbles';
+import { hot } from 'jasmine-marbles';
 import { Observable, of as observableOf } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { OrdersCommonService } from '../orders-common.service';
@@ -94,9 +94,7 @@ describe('OrdersCommonEffects', () => {
 
     describe('placeOrder', () => {
         it('calls the service with the given new order and dispatches a OrderPlacedAction with the created order', () => {
-            const placeOrderSpy = jest
-                .spyOn(ordersCommonService, 'placeOrder')
-                .mockImplementation(() => observableOf(order));
+            const placeOrderSpy = spyOn(ordersCommonService, 'placeOrder').and.returnValue(observableOf(order));
 
             actions$ = hot('-a-|', {
                 a: new PlaceOrderAction(newOrder)

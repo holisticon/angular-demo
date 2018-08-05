@@ -9,7 +9,7 @@ import { ShoppingCartStore } from './state/shopping-cart-store.service';
 describe('ShoppingCartModule', () => {
     it('dispatches a LoadShoppingCartAction on initialization', async(() => {
         const shoppingCartStore = createStoreServiceMock(ShoppingCartStore);
-        const loadShoppingCartSpy = jest.spyOn(shoppingCartStore, 'loadShoppingCart');
+        const loadShoppingCartSpy = spyOn(shoppingCartStore, 'loadShoppingCart');
 
         const ordersModule = new ShoppingCartModule(shoppingCartStore);
 

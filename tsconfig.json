@@ -19,6 +19,9 @@
       "@luchsamapparat/common": [
         "libs/common/src/index.ts"
       ],
+      "@luchsamapparat/common/testing": [
+        "libs/common/src/test/index.ts"
+      ],
       "@luchsamapparat/homepage": [
         "libs/homepage/src/index.ts"
       ],

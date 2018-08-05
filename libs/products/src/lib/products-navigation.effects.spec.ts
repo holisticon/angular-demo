@@ -4,7 +4,7 @@ import { LoadSearchResultsAction } from '@luchsamapparat/products-common';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { RouterNavigationAction, ROUTER_NAVIGATION } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
-import { cold, hot } from 'jest-marbles';
+import { cold, hot } from 'jasmine-marbles';
 import { Observable } from 'rxjs';
 import { ProductsNavigationEffects } from './products-navigation.effects';
 
