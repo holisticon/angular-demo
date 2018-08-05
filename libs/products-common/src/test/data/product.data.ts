@@ -10,8 +10,7 @@ const productBlueprint: Blueprint<Product> = {
     price: () => faker.random.number({ min: 0.01, max: 99.99, precision: 0.01 }),
     image: () => `${faker.image.food()}?${faker.random.uuid()}`
 };
-debugger;
 export const productBuilder = createResourceBlueprintBuilder(productBlueprint);
 
-export const product: Resource<Product> = productBuilder().build();
-export const products: Resource<Product>[] = productBuilder().buildMany(100);
+export const product: Resource<Product> = productBuilder().freeze().build();
+export const products: Resource<Product>[] = productBuilder().freeze().buildMany(100);

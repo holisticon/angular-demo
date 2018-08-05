@@ -11,5 +11,5 @@ const paymentOptionBlueprint: Blueprint<PaymentOption> = {
 };
 export const paymentOptionBuilder = createResourceBlueprintBuilder(paymentOptionBlueprint);
 
-export const paymentOption: Resource<PaymentOption> = paymentOptionBuilder().build();
-export const paymentOptions: Resource<PaymentOption>[] = paymentOptionBuilder().buildMany(5);
+export const paymentOption: Resource<PaymentOption> = paymentOptionBuilder().freeze().build();
+export const paymentOptions: Resource<PaymentOption>[] = paymentOptionBuilder().freeze().buildMany(5);

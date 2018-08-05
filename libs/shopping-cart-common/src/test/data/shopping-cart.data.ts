@@ -11,7 +11,7 @@ const minItemCount = 1;
 const maxItemCount = 3;
 
 const shoppingCartBlueprintFactory: BlueprintFactory<ShoppingCart> = () => {
-    const items = shoppingCartItemBuilder().buildMany(random(minItemCount, maxItemCount));
+    const items = shoppingCartItemBuilder().freeze().buildMany(random(minItemCount, maxItemCount));
 
     const totalPrice = items.reduce(
         (total, item) => total + (item.price * item.quantity),
@@ -25,8 +25,8 @@ const shoppingCartBlueprintFactory: BlueprintFactory<ShoppingCart> = () => {
 };
 export const shoppingCartBuilder = createResourceBlueprintBuilder(shoppingCartBlueprintFactory);
 
-export const shoppingCart: Resource<ShoppingCart> = shoppingCartBuilder().build();
+export const shoppingCart: Resource<ShoppingCart> = shoppingCartBuilder().freeze().build();
 export const emptyShoppingCart: Resource<ShoppingCart> = shoppingCartBuilder()
     .items([])
     .totalPrice(0)
-    .build();
+    .freeze().build();

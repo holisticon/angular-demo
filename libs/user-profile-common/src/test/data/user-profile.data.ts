@@ -12,4 +12,4 @@ const userProfileBlueprint: Blueprint<UserProfile> = {
 };
 export const userProfileBuilder = createResourceBlueprintBuilder(userProfileBlueprint);
 
-export const userProfile: Resource<UserProfile> = userProfileBuilder().build();
+export const userProfile: Resource<UserProfile> = userProfileBuilder().freeze().build();

@@ -10,7 +10,7 @@ const minItemQty = 1;
 const maxItemQty = 5;
 
 const orderItemBlueprintFactory: BlueprintFactory<LineItem> = () => {
-    const product = productBuilder().build();
+    const product = productBuilder().freeze().build();
     return {
         name: () => product.name,
         description: () => product.description,
@@ -21,4 +21,4 @@ const orderItemBlueprintFactory: BlueprintFactory<LineItem> = () => {
 };
 export const orderItemBuilder = createResourceBlueprintBuilder(orderItemBlueprintFactory);
 
-export const orderItem: Resource<LineItem> = orderItemBuilder().build();
+export const orderItem: Resource<LineItem> = orderItemBuilder().freeze().build();

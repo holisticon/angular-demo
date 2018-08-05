@@ -13,5 +13,5 @@ const addressBlueprint: Blueprint<Address> = {
 };
 export const addressBuilder = createResourceBlueprintBuilder(addressBlueprint);
 
-export const address: Resource<Address> = addressBuilder().build();
-export const addresses: Resource<Address>[] = addressBuilder().buildMany(5);
+export const address: Resource<Address> = addressBuilder().freeze().build();
+export const addresses: Resource<Address>[] = addressBuilder().freeze().buildMany(5);

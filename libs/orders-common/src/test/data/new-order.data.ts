@@ -21,5 +21,5 @@ const newOrderBlueprint: BlueprintFactory<NewOrder> = () => {
 
 export const newOrderBuilder = createResourceBlueprintBuilder(newOrderBlueprint);
 
-export const newOrder: Resource<NewOrder> = newOrderBuilder().build();
-export const newOrders: Resource<NewOrder>[] = newOrderBuilder().buildMany(20);
+export const newOrder: Resource<NewOrder> = newOrderBuilder().freeze().build();
+export const newOrders: Resource<NewOrder>[] = newOrderBuilder().freeze().buildMany(20);

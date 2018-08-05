@@ -11,7 +11,7 @@ const minItemCount = 1;
 const maxItemCount = 3;
 
 const orderBlueprint: BlueprintFactory<Order> = () => {
-    const items = orderItemBuilder().buildMany(random(minItemCount, maxItemCount));
+    const items = orderItemBuilder().freeze().buildMany(random(minItemCount, maxItemCount));
     return {
         billingAddress: () => addressBuilder().build(),
         date: () => faker.date.past().toISOString(),
@@ -24,5 +24,5 @@ const orderBlueprint: BlueprintFactory<Order> = () => {
 
 export const orderBuilder = createResourceBlueprintBuilder(orderBlueprint);
 
-export const order: Resource<Order> = orderBuilder().build();
-export const orders: Resource<Order>[] = orderBuilder().buildMany(20);
+export const order: Resource<Order> = orderBuilder().freeze().build();
+export const orders: Resource<Order>[] = orderBuilder().freeze().buildMany(20);

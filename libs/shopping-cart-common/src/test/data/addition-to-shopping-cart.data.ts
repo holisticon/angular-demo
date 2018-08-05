@@ -16,4 +16,4 @@ const additionToShoppingCartBlueprintFactory: Blueprint<AdditionToShoppingCart> 
 };
 export const additionToShoppingCartBuilder = createResourceBlueprintBuilder(additionToShoppingCartBlueprintFactory);
 
-export const additionToShoppingCart: Resource<AdditionToShoppingCart> = additionToShoppingCartBuilder().build();
+export const additionToShoppingCart: Resource<AdditionToShoppingCart> = additionToShoppingCartBuilder().freeze().build();

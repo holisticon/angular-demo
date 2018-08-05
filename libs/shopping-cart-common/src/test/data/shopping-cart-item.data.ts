@@ -10,7 +10,7 @@ const minItemQty = 1;
 const maxItemQty = 5;
 
 const shoppingCartItemBlueprintFactory: BlueprintFactory<LineItem> = () => {
-    const product = productBuilder().build();
+    const product = productBuilder().freeze().build();
     return {
         name: () => product.name,
         description: () => product.description,
@@ -21,4 +21,4 @@ const shoppingCartItemBlueprintFactory: BlueprintFactory<LineItem> = () => {
 };
 export const shoppingCartItemBuilder = createResourceBlueprintBuilder(shoppingCartItemBlueprintFactory);
 
-export const shoppingCartItem: Resource<LineItem> = shoppingCartItemBuilder().build();
+export const shoppingCartItem: Resource<LineItem> = shoppingCartItemBuilder().freeze().build();
