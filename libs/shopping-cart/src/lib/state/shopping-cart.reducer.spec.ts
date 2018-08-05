@@ -1,13 +1,9 @@
 import { ShoppingCart, ShoppingCartLoadedAction } from '@luchsamapparat/shopping-cart-common';
 import { Action } from '@ngrx/store';
 import { initialState, shoppingCartReducer } from './shopping-cart.reducer';
+import { shoppingCart } from '@luchsamapparat/shopping-cart-common/test';
 
 describe('shoppingCartReducer', () => {
-    const shoppingCart: ShoppingCart = {
-        totalPrice: 0,
-        items: []
-    };
-
     it('returns the same state if the action is not applicable', () => {
         const action: Action = { type: 'some-action' };
         const state = shoppingCartReducer(initialState, <any>action);

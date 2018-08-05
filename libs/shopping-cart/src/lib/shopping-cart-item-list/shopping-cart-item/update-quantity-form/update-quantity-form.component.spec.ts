@@ -1,22 +1,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { addId, Resource } from '@luchsamapparat/common';
+import { Resource } from '@luchsamapparat/common';
 import { ShoppingCartItem } from '@luchsamapparat/shopping-cart-common';
 import { take } from 'rxjs/operators';
 import { UpdateQuantityFormComponent } from './update-quantity-form.component';
+import { shoppingCartItem } from '@luchsamapparat/shopping-cart-common/test';
 
 describe('UpdateQuantityFormComponent', () => {
     let component: UpdateQuantityFormComponent;
     let fixture: ComponentFixture<UpdateQuantityFormComponent>;
-
-    const shoppingCartItem: Resource<ShoppingCartItem> = addId({
-        name: '',
-        description: '',
-        price: 1,
-        product: 'id',
-        quantity: 1
-    }, 'id');
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({

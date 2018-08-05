@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
-import { addId, Resource } from '@luchsamapparat/common';
+import { Resource } from '@luchsamapparat/common';
 import { LoadSearchResultsAction, Product, SearchResultsLoadedAction } from '@luchsamapparat/products-common';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { StoreModule } from '@ngrx/store';
@@ -9,19 +9,14 @@ import { hot } from 'jasmine-marbles';
 import { Observable, of as observableOf } from 'rxjs';
 import { ProductService } from '../product.service';
 import { ProductsEffects } from './products.effects';
+import { products } from '@luchsamapparat/products-common/test';
 
 describe('ProductsEffects', () => {
     let actions$: Observable<any>;
     let effects$: ProductsEffects;
     let productService: ProductService;
 
-    const product: Resource<Product> = addId({
-        description: '',
-        image: '',
-        name: '',
-        price: 0
-    }, 'id');
-    const searchResults = [product];
+    const searchResults = products;
 
     beforeEach(() => {
         TestBed.configureTestingModule({

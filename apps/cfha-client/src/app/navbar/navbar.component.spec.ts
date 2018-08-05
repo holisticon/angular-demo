@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
-import { expectElementFromFixture } from '@luchsamapparat/common/testing';
+import { expectElementFromFixture } from '@luchsamapparat/common/test';
 import { NavbarComponent } from './navbar.component';
 
 describe('NavbarComponent', () => {

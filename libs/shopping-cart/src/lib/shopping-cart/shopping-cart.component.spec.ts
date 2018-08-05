@@ -2,7 +2,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { addId, ResourceWith } from '@luchsamapparat/common';
+import { ResourceWith } from '@luchsamapparat/common';
 import { NewOrder, PlaceOrderAction, PlaceOrderFormComponent, OrdersCommonStore } from '@luchsamapparat/orders-common';
 import { QuantityUpdate, ShoppingCart, ShoppingCartItem } from '@luchsamapparat/shopping-cart-common';
 import { UserProfile, UserProfileCommonStore } from '@luchsamapparat/user-profile-common';
@@ -15,50 +15,13 @@ import { DeleteShoppingCartItemAction, UpdateShoppingCartItemQuantityAction } fr
 import { ShoppingCartIsEmptyPipe } from './shopping-cart-is-empty.pipe';
 import { ShoppingCartComponent } from './shopping-cart.component';
 import { provideStoreServiceMock, StoreServiceMock } from '@ngx-patterns/store-service/testing';
+import { shoppingCart, emptyShoppingCart, shoppingCartItem } from '@luchsamapparat/shopping-cart-common/test';
+import { userProfile } from '@luchsamapparat/user-profile-common/test';
+import { newOrder } from '@luchsamapparat/orders-common/test';
 
 describe('ShoppingCartComponent', () => {
     let component: ShoppingCartComponent;
     let fixture: ComponentFixture<ShoppingCartComponent>;
-
-    const shoppingCartItem = addId({
-        name: '',
-        description: '',
-        price: 1,
-        product: 'id',
-        quantity: 1
-    }, 'id');
-
-    const shoppingCart: ShoppingCart = {
-        items: [shoppingCartItem],
-        totalPrice: 1
-    };
-
-    const emptyShoppingCart: ShoppingCart = {
-        items: [],
-        totalPrice: 0
-    };
-
-    const userProfile: UserProfile = {
-        addresses: [addId({
-            city: '',
-            country: '',
-            name: '',
-            street: '',
-            zipCode: ''
-        }, 'id')],
-        paymentOptions: [addId({
-            accountOwner: '',
-            bic: '',
-            iban: ''
-        }, 'id')]
-    };
-
-    const newOrder: NewOrder = {
-        billingAddress: userProfile.addresses[0],
-        shippingAddress: userProfile.addresses[0],
-        payment: userProfile.paymentOptions[0],
-        shoppingCart
-    };
 
     let ordersCommonStore: StoreServiceMock<OrdersCommonStore>;
     let shoppingCartStore: StoreServiceMock<ShoppingCartStore>;

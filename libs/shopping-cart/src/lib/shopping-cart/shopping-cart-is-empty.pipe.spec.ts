@@ -1,24 +1,9 @@
 import { ShoppingCart, shoppingCartIsEmpty } from '@luchsamapparat/shopping-cart-common';
 import { ShoppingCartIsEmptyPipe } from './shopping-cart-is-empty.pipe';
+import { shoppingCartBuilder, shoppingCart, emptyShoppingCart } from '@luchsamapparat/shopping-cart-common/test';
 
 describe('ShoppingCartIsEmptyPipe', () => {
     let pipe: ShoppingCartIsEmptyPipe;
-
-    const shoppingCart: ShoppingCart = {
-        items: [{
-            description: '',
-            name: '',
-            price: 1,
-            product: '',
-            quantity: 1
-        }],
-        totalPrice: 1
-    };
-
-    const emptyShoppingCart: ShoppingCart = {
-        items: [],
-        totalPrice: 0
-    };
 
     beforeEach(() => {
         pipe = new ShoppingCartIsEmptyPipe();

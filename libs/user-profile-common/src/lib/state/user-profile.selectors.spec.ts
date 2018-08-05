@@ -1,25 +1,11 @@
 import { UserProfileAppState } from './user-profile.reducer';
 import { getAddresses, getPaymentOptions, getUserProfile } from './user-profile.selectors';
-
+import { userProfile } from '@luchsamapparat/user-profile-common/test';
 
 describe('userProfileSelectors', () => {
-
     const state: UserProfileAppState = {
         userProfile: {
-            userProfile: {
-                addresses: [{
-                    city: '',
-                    country: '',
-                    name: '',
-                    street: '',
-                    zipCode: ''
-                }],
-                paymentOptions: [{
-                    accountOwner: '',
-                    bic: '',
-                    iban: ''
-                }]
-            }
+            userProfile
         }
     };
 

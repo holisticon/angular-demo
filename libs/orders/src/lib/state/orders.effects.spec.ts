@@ -1,6 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
-import { addId } from '@luchsamapparat/common';
 import { Order, OrderStatus } from '@luchsamapparat/orders-common';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { StoreModule } from '@ngrx/store';
@@ -10,36 +9,12 @@ import { Observable, of as observableOf } from 'rxjs';
 import { OrderService } from '../order.service';
 import { LoadOrdersAction, OrdersLoadedAction } from './orders.actions';
 import { OrdersEffects } from './orders.effects';
+import { orders } from '@luchsamapparat/orders-common/test';
 
 describe('OrdersEffects', () => {
     let actions$: Observable<any>;
     let effects$: OrdersEffects;
     let orderService: OrderService;
-
-    const orders: Order[] = [addId({
-        billingAddress: {
-            city: '',
-            country: '',
-            name: '',
-            street: '',
-            zipCode: ''
-        },
-        date: new Date().toISOString(),
-        items: [],
-        payment: {
-            accountOwner: '',
-            bic: '',
-            iban: ''
-        },
-        shippingAddress: {
-            city: '',
-            country: '',
-            name: '',
-            street: '',
-            zipCode: ''
-        },
-        status: OrderStatus.Processing
-    }, 'id')];
 
     beforeEach(() => {
         TestBed.configureTestingModule({

@@ -1,70 +1,14 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { addId, getId } from '@luchsamapparat/common';
+import { getId } from '@luchsamapparat/common';
 import { toNewOrderRequest } from './new-order-request.mapper';
 import { NewOrder, Order, OrderStatus } from './order.model';
 import { OrdersCommonService } from './orders-common.service';
+import { newOrder, order } from '@luchsamapparat/orders-common/test';
 
 describe('OrdersCommonService', () => {
     let ordersCommonService: OrdersCommonService;
     let httpController: HttpTestingController;
-
-    const newOrder: NewOrder = {
-        shoppingCart: {
-            items: [addId({
-                name: '',
-                description: '',
-                price: 1,
-                product: 'id',
-                quantity: 1
-            }, 'id')],
-            totalPrice: 1
-        },
-        billingAddress: addId({
-            city: '',
-            country: '',
-            name: '',
-            street: '',
-            zipCode: ''
-        }, 'id'),
-        shippingAddress: addId({
-            city: '',
-            country: '',
-            name: '',
-            street: '',
-            zipCode: ''
-        }, 'id'),
-        payment: addId({
-            accountOwner: '',
-            bic: '',
-            iban: ''
-        }, 'id')
-    };
-
-    const order: Order = {
-        billingAddress: {
-            city: '',
-            country: '',
-            name: '',
-            street: '',
-            zipCode: ''
-        },
-        date: new Date().toISOString(),
-        items: [],
-        payment: {
-            accountOwner: '',
-            bic: '',
-            iban: ''
-        },
-        shippingAddress: {
-            city: '',
-            country: '',
-            name: '',
-            street: '',
-            zipCode: ''
-        },
-        status: OrderStatus.Processing
-    };
 
     beforeEach(() => {
         TestBed.configureTestingModule({

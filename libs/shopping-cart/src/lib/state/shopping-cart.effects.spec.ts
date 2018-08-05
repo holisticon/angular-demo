@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
-import { addId, ResourceWith } from '@luchsamapparat/common';
+import { ResourceWith } from '@luchsamapparat/common';
 import { Order, OrderPlacedAction, OrderStatus } from '@luchsamapparat/orders-common';
 import { QuantityUpdate, ShoppingCart, ShoppingCartItem, ShoppingCartLoadedAction } from '@luchsamapparat/shopping-cart-common';
 import { provideMockActions } from '@ngrx/effects/testing';
@@ -12,49 +12,13 @@ import { take } from 'rxjs/operators';
 import { ShoppingCartService } from '../shopping-cart.service';
 import { DeleteShoppingCartItemAction, LoadShoppingCartAction, UpdateShoppingCartItemQuantityAction } from './shopping-cart.actions';
 import { ShoppingCartEffects } from './shopping-cart.effects';
+import { shoppingCart, shoppingCartItem } from '@luchsamapparat/shopping-cart-common/test';
+import { order } from '@luchsamapparat/orders-common/test';
 
 describe('ShoppingCartEffects', () => {
     let actions$: Observable<any>;
     let effects$: ShoppingCartEffects;
     let shoppingCartService: ShoppingCartService;
-
-    const shoppingCartItem: ShoppingCartItem = addId({
-        name: '',
-        description: '',
-        price: 1,
-        product: 'id',
-        quantity: 1
-    }, 'id');
-
-    const shoppingCart: ShoppingCart = {
-        totalPrice: 1,
-        items: [shoppingCartItem]
-    };
-
-    const order: Order = addId({
-        billingAddress: {
-            city: '',
-            country: '',
-            name: '',
-            street: '',
-            zipCode: ''
-        },
-        date: new Date().toISOString(),
-        items: [],
-        payment: {
-            accountOwner: '',
-            bic: '',
-            iban: ''
-        },
-        shippingAddress: {
-            city: '',
-            country: '',
-            name: '',
-            street: '',
-            zipCode: ''
-        },
-        status: OrderStatus.Processing
-    }, 'id');
 
     beforeEach(() => {
         TestBed.configureTestingModule({

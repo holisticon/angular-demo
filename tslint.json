@@ -93,7 +93,11 @@
             true,
             {
                 "allow": [
-                    "@luchsamapparat/common/testing"
+                    "@luchsamapparat/common/test",
+                    "@luchsamapparat/orders-common/test",
+                    "@luchsamapparat/products-common/test",
+                    "@luchsamapparat/shopping-cart-common/test",
+                    "@luchsamapparat/user-profile-common/test"
                 ],
                 "depConstraints": [
                     {

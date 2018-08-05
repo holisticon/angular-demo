@@ -1,6 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
-import { addId } from '@luchsamapparat/common';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { StoreModule } from '@ngrx/store';
 import { DataPersistence } from '@nrwl/nx';
@@ -10,16 +9,12 @@ import { UserProfile } from '../user-profile.model';
 import { UserProfileService } from '../user-profile.service';
 import { LoadUserProfileAction, UserProfileLoadedAction } from './user-profile.actions';
 import { UserProfileEffects } from './user-profile.effects';
+import { userProfile } from '@luchsamapparat/user-profile-common/test';
 
 describe('UserProfileEffects', () => {
     let actions$: Observable<any>;
     let effects$: UserProfileEffects;
     let userProfileService: UserProfileService;
-
-    const userProfile: UserProfile = addId({
-        addresses: [],
-        paymentOptions: []
-    }, 'id');
 
     beforeEach(() => {
         TestBed.configureTestingModule({

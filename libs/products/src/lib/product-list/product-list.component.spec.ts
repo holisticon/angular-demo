@@ -1,24 +1,16 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { addId, getId, Resource } from '@luchsamapparat/common';
+import { getId, Resource } from '@luchsamapparat/common';
 import { Product } from '@luchsamapparat/products-common';
 import { take } from 'rxjs/operators';
 import { ProductListEntryComponent } from './product-list-entry/product-list-entry.component';
 import { ProductListComponent } from './product-list.component';
+import { products, product } from '@luchsamapparat/products-common/test';
 
 describe('ProductListComponent', () => {
     let component: ProductListComponent;
     let fixture: ComponentFixture<ProductListComponent>;
-
-    const product: Resource<Product> = addId({
-        description: '',
-        image: '',
-        name: '',
-        price: 0
-    }, 'id');
-
-    const products = [product];
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({

@@ -7,21 +7,11 @@ import { take } from 'rxjs/operators';
 import { ShoppingCartItemComponent } from './shopping-cart-item/shopping-cart-item.component';
 import { ShoppingCartItemListComponent } from './shopping-cart-item-list.component';
 import { UpdateQuantityFormComponent } from './shopping-cart-item/update-quantity-form/update-quantity-form.component';
+import { shoppingCart } from '@luchsamapparat/shopping-cart-common/test';
 
 describe('ShoppingCartItemListComponent', () => {
     let component: ShoppingCartItemListComponent;
     let fixture: ComponentFixture<ShoppingCartItemListComponent>;
-
-    const shoppingCart: ShoppingCart = {
-        items: [{
-            name: '',
-            description: '',
-            price: 1,
-            product: 'id',
-            quantity: 1
-        }],
-        totalPrice: 1
-    };
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({

@@ -4,7 +4,7 @@ import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ProductSearchFormComponent, SearchProductsAction, ProductsCommonStore } from '@luchsamapparat/products-common';
 import { Store, StoreModule } from '@ngrx/store';
-import { expectElementFromFixture } from '@luchsamapparat/common/testing';
+import { expectElementFromFixture } from '@luchsamapparat/common/test';
 import { HomepageComponent } from './homepage.component';
 import { provideStoreServiceMock } from '@ngx-patterns/store-service/testing';
 

@@ -1,18 +1,12 @@
-import { Resource, addId } from '@luchsamapparat/common';
+import { Resource } from '@luchsamapparat/common';
 import { LoadSearchResultsAction, Product, SearchResultsLoadedAction } from '@luchsamapparat/products-common';
 import { Action } from '@ngrx/store';
 import { ProductsState, initialState, productsReducer } from './products.reducer';
+import { products } from '@luchsamapparat/products-common/test';
 
 describe('productsReducer', () => {
     const query = 'query';
-    const searchResults: Resource<Product>[] = [
-        addId({
-            description: '',
-            image: '',
-            name: '',
-            price: 0
-        }, 'id')
-    ];
+    const searchResults = products;
 
     it('returns the same state if the action is not applicable', () => {
         const action: Action = { type: 'some-action' };

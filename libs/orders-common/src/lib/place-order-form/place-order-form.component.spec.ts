@@ -2,43 +2,18 @@ import { DebugElement } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { addId } from '@luchsamapparat/common';
 import { ShoppingCart } from '@luchsamapparat/shopping-cart-common';
 import { AddressComponent, PaymentOptionComponent, UserProfile } from '@luchsamapparat/user-profile-common';
 import { isNull } from 'lodash-es';
 import { take } from 'rxjs/operators';
 import { PlaceOrderFormComponent } from './place-order-form.component';
 import { NewOrder } from '../order.model';
+import { shoppingCart } from '@luchsamapparat/shopping-cart-common/test';
+import { userProfile } from '@luchsamapparat/user-profile-common/test';
 
 describe('PlaceOrderFormComponent', () => {
     let component: PlaceOrderFormComponent;
     let fixture: ComponentFixture<PlaceOrderFormComponent>;
-
-    const shoppingCart: ShoppingCart = {
-        items: [addId({
-            name: '',
-            description: '',
-            price: 1,
-            product: 'id',
-            quantity: 1
-        }, 'id')],
-        totalPrice: 1
-    };
-
-    const userProfile: UserProfile = {
-        addresses: [addId({
-            city: '',
-            country: '',
-            name: '',
-            street: '',
-            zipCode: ''
-        }, 'id')],
-        paymentOptions: [addId({
-            accountOwner: '',
-            bic: '',
-            iban: ''
-        }, 'id')]
-    };
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({

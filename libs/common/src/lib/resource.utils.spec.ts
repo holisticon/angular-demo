@@ -1,5 +1,5 @@
-import { Resource } from './resource.model';
-import { addId, getId } from './resource.utils';
+import { getId } from './resource.utils';
+import { Resource } from '@luchsamapparat/common';
 
 describe('resourceUtils', () => {
     interface SomeType {
@@ -20,11 +20,4 @@ describe('resourceUtils', () => {
             expect(getId(resource)).toBe(resource['_id']);
         });
     });
-
-    describe('addId', () => {
-        it('returns the given object as resource with the given ID', () => {
-            expect(addId(object, resource._id)).toEqual(resource);
-        });
-    });
-
 });

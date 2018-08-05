@@ -1,6 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
-import { addId } from '@luchsamapparat/common';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { StoreModule } from '@ngrx/store';
 import { DataPersistence } from '@nrwl/nx';
@@ -11,68 +10,12 @@ import { OrdersCommonService } from '../orders-common.service';
 import { OrderPlacedAction, PlaceOrderAction } from './orders-common.actions';
 import { OrdersCommonEffects } from './orders-common.effects';
 import { NewOrder, Order, OrderStatus } from '../order.model';
+import { orderBuilder, order, newOrder } from '@luchsamapparat/orders-common/test';
 
 describe('OrdersCommonEffects', () => {
     let actions$: Observable<any>;
     let effects$: OrdersCommonEffects;
     let ordersCommonService: OrdersCommonService;
-
-    const newOrder: NewOrder = {
-        shoppingCart: {
-            items: [addId({
-                name: '',
-                description: '',
-                price: 1,
-                product: 'id',
-                quantity: 1
-            }, 'id')],
-            totalPrice: 1
-        },
-        billingAddress: addId({
-            city: '',
-            country: '',
-            name: '',
-            street: '',
-            zipCode: ''
-        }, 'id'),
-        shippingAddress: addId({
-            city: '',
-            country: '',
-            name: '',
-            street: '',
-            zipCode: ''
-        }, 'id'),
-        payment: addId({
-            accountOwner: '',
-            bic: '',
-            iban: ''
-        }, 'id')
-    };
-
-    const order: Order = {
-        billingAddress: {
-            city: '',
-            country: '',
-            name: '',
-            street: '',
-            zipCode: ''
-        },
-        date: new Date().toISOString(),
-        items: [],
-        payment: {
-            accountOwner: '',
-            bic: '',
-            iban: ''
-        },
-        shippingAddress: {
-            city: '',
-            country: '',
-            name: '',
-            street: '',
-            zipCode: ''
-        },
-        status: OrderStatus.Processing
-    };
 
     beforeEach(() => {
         TestBed.configureTestingModule({

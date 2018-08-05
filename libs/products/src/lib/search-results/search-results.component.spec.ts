@@ -1,29 +1,24 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { addId, getId, Resource } from '@luchsamapparat/common';
+import { getId, Resource } from '@luchsamapparat/common';
 import { Product } from '@luchsamapparat/products-common';
 import { AdditionToShoppingCart, AddToShoppingCartAction, ShoppingCartCommonStore } from '@luchsamapparat/shopping-cart-common';
 import { Store, StoreModule } from '@ngrx/store';
-import { expectElementFromFixture } from '@luchsamapparat/common/testing';
+import { expectElementFromFixture } from '@luchsamapparat/common/test';
 import { of as observableOf } from 'rxjs';
 import { ProductListComponent } from '../product-list/product-list.component';
 import { ProductsStore } from '../state/products-store.service';
 import { SearchResultsComponent } from './search-results.component';
 import { provideStoreServiceMock } from '@ngx-patterns/store-service/testing';
+import { products, product } from '@luchsamapparat/products-common/test';
 
 describe('SearchResultsComponent', () => {
     let component: SearchResultsComponent;
     let fixture: ComponentFixture<SearchResultsComponent>;
     let shoppingCartCommonStore: ShoppingCartCommonStore;
 
-    const product: Resource<Product> = addId({
-        description: '',
-        image: '',
-        name: '',
-        price: 0
-    }, 'id');
-    const searchResults = [product];
+    const searchResults = products;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({

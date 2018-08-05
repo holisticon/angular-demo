@@ -5,25 +5,11 @@ import { StoreModule } from '@ngrx/store';
 import { of as observableOf } from 'rxjs';
 import { UserProfileComponent } from './user-profile.component';
 import { provideStoreServiceMock, StoreServiceMock } from '@ngx-patterns/store-service/testing';
+import { userProfile } from '@luchsamapparat/user-profile-common/test';
 
 describe('UserProfileComponent', () => {
     let component: UserProfileComponent;
     let fixture: ComponentFixture<UserProfileComponent>;
-
-    const userProfile: UserProfile = {
-        addresses: [{
-            city: '',
-            country: '',
-            name: '',
-            street: '',
-            zipCode: ''
-        }],
-        paymentOptions: [{
-            accountOwner: '',
-            bic: '',
-            iban: ''
-        }]
-    };
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({

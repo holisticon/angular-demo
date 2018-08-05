@@ -1,25 +1,12 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { addId } from '@luchsamapparat/common';
 import { ShoppingCartCommonService } from './shopping-cart-common.service';
 import { ShoppingCart, AdditionToShoppingCart } from './shopping-cart.model';
+import { shoppingCart, additionToShoppingCart } from '@luchsamapparat/shopping-cart-common/test';
 
 describe('ShoppingCartCommonService', () => {
     let shoppingCartCommonService: ShoppingCartCommonService;
     let httpController: HttpTestingController;
-
-    const shoppingCartItem = addId({
-        name: '',
-        description: '',
-        price: 1,
-        product: 'id',
-        quantity: 1
-    }, 'id');
-
-    const shoppingCart: ShoppingCart = {
-        totalPrice: 1,
-        items: [shoppingCartItem]
-    };
 
     beforeEach(() => {
         TestBed.configureTestingModule({
@@ -33,11 +20,6 @@ describe('ShoppingCartCommonService', () => {
 
     describe('addToShoppingCart', () => {
         it('submits the given addition to the shopping cart to the backend', () => {
-            const additionToShoppingCart: AdditionToShoppingCart = {
-                product: 'id',
-                quantity: 2
-            };
-
             shoppingCartCommonService
                 .addToShoppingCart(additionToShoppingCart)
                 .subscribe(returnedShoppingCart => {

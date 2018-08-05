@@ -1,22 +1,15 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { addId, Resource } from '@luchsamapparat/common';
+import { Resource } from '@luchsamapparat/common';
 import { Product } from '@luchsamapparat/products-common';
 import { ProductService } from './product.service';
+import { products } from '@luchsamapparat/products-common/test';
 
 describe('ProductService', () => {
     let productService: ProductService;
     let httpController: HttpTestingController;
 
     const query = 'query';
-    const products: Resource<Product>[] =  [
-        addId({
-            description: '',
-            image: '',
-            name: '',
-            price: 0
-        }, 'id')
-    ];
 
     beforeEach(() => {
         TestBed.configureTestingModule({

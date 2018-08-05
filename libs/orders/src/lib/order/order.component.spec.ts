@@ -3,35 +3,11 @@ import { By } from '@angular/platform-browser';
 import { Order, OrderStatus } from '@luchsamapparat/orders-common';
 import { AddressComponent, PaymentOptionComponent } from '@luchsamapparat/user-profile-common';
 import { OrderComponent } from './order.component';
+import { order } from '@luchsamapparat/orders-common/test';
 
 describe('OrderComponent', () => {
     let component: OrderComponent;
     let fixture: ComponentFixture<OrderComponent>;
-
-    const order: Order = {
-        billingAddress: {
-            city: '',
-            country: '',
-            name: '',
-            street: '',
-            zipCode: ''
-        },
-        date: new Date().toISOString(),
-        items: [],
-        payment: {
-            accountOwner: '',
-            bic: '',
-            iban: ''
-        },
-        shippingAddress: {
-            city: '',
-            country: '',
-            name: '',
-            street: '',
-            zipCode: ''
-        },
-        status: OrderStatus.Processing
-    }
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({

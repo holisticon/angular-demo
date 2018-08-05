@@ -1,18 +1,12 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { addId } from '@luchsamapparat/common';
 import { UserProfile } from './user-profile.model';
 import { UserProfileService } from './user-profile.service';
+import { userProfile } from '@luchsamapparat/user-profile-common/test';
 
 describe('UserProfileService', () => {
-
     let userProfileService: UserProfileService;
     let httpController: HttpTestingController;
-
-    const userProfile: UserProfile = addId({
-        addresses: [],
-        paymentOptions: []
-    }, 'id');
 
     beforeEach(() => {
         TestBed.configureTestingModule({

@@ -1,25 +1,13 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { addId, getId } from '@luchsamapparat/common';
+import { getId } from '@luchsamapparat/common';
 import { QuantityUpdate, ShoppingCart } from '@luchsamapparat/shopping-cart-common';
 import { ShoppingCartService } from './shopping-cart.service';
+import { shoppingCart, shoppingCartItem } from '@luchsamapparat/shopping-cart-common/test';
 
 describe('ShoppingCartService', () => {
     let shoppingCartService: ShoppingCartService;
     let httpController: HttpTestingController;
-
-    const shoppingCartItem = addId({
-        name: '',
-        description: '',
-        price: 1,
-        product: 'id',
-        quantity: 1
-    }, 'id');
-
-    const shoppingCart: ShoppingCart = {
-        totalPrice: 1,
-        items: [shoppingCartItem]
-    };
 
     beforeEach(() => {
         TestBed.configureTestingModule({
