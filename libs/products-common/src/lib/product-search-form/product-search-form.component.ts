@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angul
 import { FormControl } from '@angular/forms';
 
 @Component({
-    selector: 'cfha-product-search-form',
+    selector: 'ngxp-product-search-form',
     templateUrl: './product-search-form.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })

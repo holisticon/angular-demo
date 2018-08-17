@@ -1,8 +1,8 @@
-import { Resource } from '@luchsamapparat/common';
-import { LoadSearchResultsAction, Product, SearchResultsLoadedAction } from '@luchsamapparat/products-common';
+import { Resource } from '@ngxp/common';
+import { LoadSearchResultsAction, Product, SearchResultsLoadedAction } from '@ngxp/products-common';
 import { Action } from '@ngrx/store';
 import { ProductsState, initialState, productsReducer } from './products.reducer';
-import { products } from '@luchsamapparat/products-common/test';
+import { products } from '@ngxp/products-common/test';
 
 describe('productsReducer', () => {
     const query = 'query';

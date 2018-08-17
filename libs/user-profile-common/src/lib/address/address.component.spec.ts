@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
-import { Address } from '@luchsamapparat/user-profile-common';
+import { Address } from '@ngxp/user-profile-common';
 import { AddressComponent } from './address.component';
-import { address } from '@luchsamapparat/user-profile-common/test';
+import { address } from '@ngxp/user-profile-common/test';
 
 describe('AddressComponent', () => {
     let component: AddressComponent;

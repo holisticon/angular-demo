@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { OrdersCommonActionTypes } from '@luchsamapparat/orders-common';
-import { ShoppingCartLoadedAction } from '@luchsamapparat/shopping-cart-common';
+import { OrdersCommonActionTypes } from '@ngxp/orders-common';
+import { ShoppingCartLoadedAction } from '@ngxp/shopping-cart-common';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { DataPersistence } from '@nrwl/nx';
 import { map } from 'rxjs/operators';

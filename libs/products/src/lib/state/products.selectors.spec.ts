@@ -1,6 +1,6 @@
 import { ProductsAppState } from "./products.reducer";
 import { getSearchResults } from "./products.selectors";
-import { products } from "@luchsamapparat/products-common/test";
+import { products } from "@ngxp/products-common/test";
 
 describe('productsSelectors', () => {
 

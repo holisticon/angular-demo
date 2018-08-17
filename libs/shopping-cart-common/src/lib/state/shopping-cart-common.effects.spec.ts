@@ -10,7 +10,7 @@ import { ShoppingCartCommonService } from '../shopping-cart-common.service';
 import { ShoppingCartCommonEffects } from './shopping-cart-common.effects';
 import { ShoppingCart } from '../shopping-cart.model';
 import { AddToShoppingCartAction, ShoppingCartLoadedAction } from './shopping-cart-common.actions';
-import { shoppingCart, additionToShoppingCart } from '@luchsamapparat/shopping-cart-common/test';
+import { shoppingCart, additionToShoppingCart } from '@ngxp/shopping-cart-common/test';
 
 describe('ShoppingCartCommonEffects', () => {
     let actions$: Observable<any>;

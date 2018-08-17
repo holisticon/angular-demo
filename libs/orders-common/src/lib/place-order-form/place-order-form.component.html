@@ -7,7 +7,7 @@
         <div class="form-check mb-3" *ngFor="let address of addresses; let i = index">
             <input class="form-check-input" type="radio" formControlName="billingAddress" id="billingAddress-{{ i }}" [value]="address" />
             <label class="form-check-label" for="billingAddress-{{ i }}">
-                <cfha-address [address]="address"></cfha-address>
+                <ngxp-address [address]="address"></ngxp-address>
             </label>
         </div>
     </div>
@@ -18,7 +18,7 @@
         <div class="form-check mb-3" *ngFor="let address of addresses; let i = index">
             <input class="form-check-input" type="radio" formControlName="shippingAddress" id="shippingAddress-{{ i }}" [value]="address" />
             <label class="form-check-label" for="shippingAddress-{{ i }}">
-                <cfha-address [address]="address"></cfha-address>
+                <ngxp-address [address]="address"></ngxp-address>
             </label>
         </div>
     </div>
@@ -29,7 +29,7 @@
         <div class="form-check mb-3" *ngFor="let paymentOption of paymentOptions; let i = index">
             <input class="form-check-input" type="radio" formControlName="payment" id="payment-{{ i }}" [value]="paymentOption" />
             <label class="form-check-label" for="payment-{{ i }}">
-                <cfha-payment-option [paymentOption]="paymentOption"></cfha-payment-option>
+                <ngxp-payment-option [paymentOption]="paymentOption"></ngxp-payment-option>
             </label>
         </div>
     </div>

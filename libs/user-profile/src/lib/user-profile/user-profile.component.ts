@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Address, PaymentOption, UserProfileCommonStore } from '@luchsamapparat/user-profile-common';
+import { Address, PaymentOption, UserProfileCommonStore } from '@ngxp/user-profile-common';
 import { Observable } from 'rxjs';
 
 @Component({
-    selector: 'cfha-user-profile',
+    selector: 'ngxp-user-profile',
     templateUrl: './user-profile.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })

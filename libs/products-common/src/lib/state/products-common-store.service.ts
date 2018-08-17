@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Selector, StoreService, Action } from '@ngx-patterns/store-service';
-import { ResourceWith } from '@luchsamapparat/common';
+import { ResourceWith } from '@ngxp/common';
 import { SearchProductsAction } from './products.actions';
 
 @Injectable({

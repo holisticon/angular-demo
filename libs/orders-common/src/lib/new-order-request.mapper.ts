@@ -1,4 +1,4 @@
-import { getId } from "@luchsamapparat/common";
+import { getId } from "@ngxp/common";
 import { NewOrder, NewOrderRequest } from "./order.model";
 
 export function toNewOrderRequest(newOrder: NewOrder): NewOrderRequest {

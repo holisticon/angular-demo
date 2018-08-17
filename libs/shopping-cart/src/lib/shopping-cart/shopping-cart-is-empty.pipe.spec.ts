@@ -1,6 +1,6 @@
-import { ShoppingCart, shoppingCartIsEmpty } from '@luchsamapparat/shopping-cart-common';
+import { ShoppingCart, shoppingCartIsEmpty } from '@ngxp/shopping-cart-common';
 import { ShoppingCartIsEmptyPipe } from './shopping-cart-is-empty.pipe';
-import { shoppingCartBuilder, shoppingCart, emptyShoppingCart } from '@luchsamapparat/shopping-cart-common/test';
+import { shoppingCartBuilder, shoppingCart, emptyShoppingCart } from '@ngxp/shopping-cart-common/test';
 
 describe('ShoppingCartIsEmptyPipe', () => {
     let pipe: ShoppingCartIsEmptyPipe;

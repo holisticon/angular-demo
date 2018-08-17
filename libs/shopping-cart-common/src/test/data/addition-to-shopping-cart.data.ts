@@ -2,10 +2,10 @@ import { Blueprint, createBlueprintBuilder, BlueprintFactory } from '@ngx-patter
 import * as faker from 'faker';
 import { repeat } from "rxjs/operators";
 import { random, times, isUndefined } from "lodash-es";
-import { createResourceBlueprintBuilder } from "@luchsamapparat/common/test";
-import { Resource, getId } from "@luchsamapparat/common";
-import { AdditionToShoppingCart } from '@luchsamapparat/shopping-cart-common';
-import { productBuilder } from '@luchsamapparat/products-common/test';
+import { createResourceBlueprintBuilder } from "@ngxp/common/test";
+import { Resource, getId } from "@ngxp/common";
+import { AdditionToShoppingCart } from '@ngxp/shopping-cart-common';
+import { productBuilder } from '@ngxp/products-common/test';
 
 const minItemQty = 1;
 const maxItemQty = 5;

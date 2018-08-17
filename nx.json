@@ -1,10 +1,10 @@
 {
-  "npmScope": "luchsamapparat",
+  "npmScope": "ngxp",
   "projects": {
-    "cfha-client": {
+    "demo": {
       "tags": []
     },
-    "cfha-client-e2e": {
+    "demo-e2e": {
       "tags": []
     },
     "common": {

@@ -9,7 +9,7 @@ import { UserProfile } from '../user-profile.model';
 import { UserProfileService } from '../user-profile.service';
 import { LoadUserProfileAction, UserProfileLoadedAction } from './user-profile.actions';
 import { UserProfileEffects } from './user-profile.effects';
-import { userProfile } from '@luchsamapparat/user-profile-common/test';
+import { userProfile } from '@ngxp/user-profile-common/test';
 
 describe('UserProfileEffects', () => {
     let actions$: Observable<any>;

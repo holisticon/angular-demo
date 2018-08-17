@@ -1,15 +1,15 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ResourceWith } from '@luchsamapparat/common';
-import { NewOrder, PlaceOrderAction, OrdersCommonStore } from '@luchsamapparat/orders-common';
-import { QuantityUpdate, ShoppingCart, ShoppingCartItem } from '@luchsamapparat/shopping-cart-common';
-import { UserProfile, UserProfileCommonStore } from '@luchsamapparat/user-profile-common';
+import { ResourceWith } from '@ngxp/common';
+import { NewOrder, PlaceOrderAction, OrdersCommonStore } from '@ngxp/orders-common';
+import { QuantityUpdate, ShoppingCart, ShoppingCartItem } from '@ngxp/shopping-cart-common';
+import { UserProfile, UserProfileCommonStore } from '@ngxp/user-profile-common';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { ShoppingCartStore } from '../state/shopping-cart-store.service';
 import { DeleteShoppingCartItemAction, UpdateShoppingCartItemQuantityAction } from '../state/shopping-cart.actions';
 
 @Component({
-    selector: 'cfha-shopping-cart',
+    selector: 'ngxp-shopping-cart',
     templateUrl: './shopping-cart.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })

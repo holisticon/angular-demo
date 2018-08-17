@@ -1,4 +1,4 @@
-import { LineItem } from "@luchsamapparat/common";
+import { LineItem } from "@ngxp/common";
 
 export interface ShoppingCart {
     totalPrice: number;

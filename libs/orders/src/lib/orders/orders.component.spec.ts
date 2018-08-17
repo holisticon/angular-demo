@@ -1,14 +1,14 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { Order, OrderStatus } from '@luchsamapparat/orders-common';
+import { Order, OrderStatus } from '@ngxp/orders-common';
 import { StoreModule } from '@ngrx/store';
 import { of as observableOf } from 'rxjs';
 import { OrderComponent } from '../order/order.component';
 import { OrdersStore } from '../state/orders-store.service';
 import { OrdersComponent } from './orders.component';
 import { provideStoreServiceMock } from '@ngx-patterns/store-service/testing';
-import { orders } from '@luchsamapparat/orders-common/test';
+import { orders } from '@ngxp/orders-common/test';
 
 describe('OrdersComponent', () => {
     let component: OrdersComponent;
@@ -41,7 +41,7 @@ describe('OrdersComponent', () => {
         fixture.detectChanges();
     });
 
-    it('renders a cfha-order for each order', () => {
+    it('renders a ngxp-order for each order', () => {
         const orderComponents = fixture.debugElement.queryAll(By.directive(OrderComponent));
 
         expect(orderComponents.length).toBe(orderComponents.length);

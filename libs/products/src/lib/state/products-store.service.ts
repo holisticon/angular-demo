@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Product } from '@luchsamapparat/products-common';
+import { Product } from '@ngxp/products-common';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { ProductsAppState } from './products.reducer';

@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Order } from '@luchsamapparat/orders-common';
+import { Order } from '@ngxp/orders-common';
 import { Observable } from 'rxjs';
 import { OrdersStore } from '../state/orders-store.service';
 
 @Component({
-    selector: 'cfha-orders',
+    selector: 'ngxp-orders',
     templateUrl: './orders.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })

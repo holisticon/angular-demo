@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ProductsCommonModule } from '@luchsamapparat/products-common';
+import { ProductsCommonModule } from '@ngxp/products-common';
 import { StoreModule } from '@ngrx/store';
 import { HomepageComponent } from './homepage/homepage.component';
 

@@ -1,9 +1,9 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { Resource } from '@luchsamapparat/common';
-import { Product } from '@luchsamapparat/products-common';
+import { Resource } from '@ngxp/common';
+import { Product } from '@ngxp/products-common';
 import { ProductService } from './product.service';
-import { products } from '@luchsamapparat/products-common/test';
+import { products } from '@ngxp/products-common/test';
 
 describe('ProductService', () => {
     let productService: ProductService;

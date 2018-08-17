@@ -1,8 +1,8 @@
-import { Product } from "@luchsamapparat/products-common";
+import { Product } from "@ngxp/products-common";
 import { Blueprint, createBlueprintBuilder } from '@ngx-patterns/builder';
 import * as faker from 'faker';
-import { Resource } from "@luchsamapparat/common";
-import { createResourceBlueprintBuilder } from "@luchsamapparat/common/test";
+import { Resource } from "@ngxp/common";
+import { createResourceBlueprintBuilder } from "@ngxp/common/test";
 
 const productBlueprint: Blueprint<Product> = {
     name: () => faker.commerce.productName(),

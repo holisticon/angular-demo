@@ -1,8 +1,8 @@
-import { Order, OrderStatus } from '@luchsamapparat/orders-common';
+import { Order, OrderStatus } from '@ngxp/orders-common';
 import { Action } from '@ngrx/store';
 import { OrdersLoadedAction } from './orders.actions';
 import { initialState, ordersReducer } from './orders.reducer';
-import { orders } from '@luchsamapparat/orders-common/test';
+import { orders } from '@ngxp/orders-common/test';
 
 describe('ordersReducer', () => {
     it('returns the same state if the action is not applicable', () => {

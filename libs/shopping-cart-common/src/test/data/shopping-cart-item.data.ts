@@ -1,10 +1,10 @@
-import { productBuilder, products } from '@luchsamapparat/products-common/test';
+import { productBuilder, products } from '@ngxp/products-common/test';
 import { Blueprint, createBlueprintBuilder, BlueprintBuilder, BlueprintFactory, createBuilder } from '@ngx-patterns/builder';
 import * as faker from 'faker';
-import { Product } from '@luchsamapparat/products-common';
+import { Product } from '@ngxp/products-common';
 import { isUndefined, random, sample } from 'lodash-es';
-import { getId, LineItem, Resource } from '@luchsamapparat/common';
-import { createResourceBlueprintBuilder } from '@luchsamapparat/common/test';
+import { getId, LineItem, Resource } from '@ngxp/common';
+import { createResourceBlueprintBuilder } from '@ngxp/common/test';
 
 const minItemQty = 1;
 const maxItemQty = 5;

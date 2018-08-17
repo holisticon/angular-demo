@@ -1,4 +1,4 @@
-import { NewOrder, Order } from '@luchsamapparat/orders-common';
+import { NewOrder, Order } from '@ngxp/orders-common';
 import { Action } from '@ngrx/store';
 
 export enum OrdersCommonActionTypes {

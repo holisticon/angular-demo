@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { SearchProductsAction, ProductsCommonStore } from '@luchsamapparat/products-common';
+import { SearchProductsAction, ProductsCommonStore } from '@ngxp/products-common';
 import { Store } from '@ngrx/store';
 
 @Component({
-  selector: 'cfha-homepage',
+  selector: 'ngxp-homepage',
   templateUrl: './homepage.component.html'
 })
 export class HomepageComponent {

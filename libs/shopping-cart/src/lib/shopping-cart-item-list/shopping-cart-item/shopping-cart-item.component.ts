@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { ResourceWith } from '@luchsamapparat/common';
-import { QuantityUpdate, ShoppingCartItem } from '@luchsamapparat/shopping-cart-common';
+import { ResourceWith } from '@ngxp/common';
+import { QuantityUpdate, ShoppingCartItem } from '@ngxp/shopping-cart-common';
 
 @Component({
   // tslint:disable-next-line:component-selector
-  selector: '[cfha-shopping-cart-item-row]',
+  selector: '[ngxp-shopping-cart-item-row]',
   templateUrl: './shopping-cart-item.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })

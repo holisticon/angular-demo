@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { PaymentOption } from '@luchsamapparat/user-profile-common';
+import { PaymentOption } from '@ngxp/user-profile-common';
 
 @Component({
-    selector: 'cfha-payment-option',
+    selector: 'ngxp-payment-option',
     templateUrl: './payment-option.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })

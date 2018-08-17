@@ -1,6 +1,6 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AdditionToShoppingCart, ShoppingCart } from '@luchsamapparat/shopping-cart-common';
+import { AdditionToShoppingCart, ShoppingCart } from '@ngxp/shopping-cart-common';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 

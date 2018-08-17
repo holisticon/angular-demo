@@ -2,7 +2,7 @@ import { Action } from '@ngrx/store';
 import { UserProfile } from '../user-profile.model';
 import { UserProfileLoadedAction } from './user-profile.actions';
 import { initialState, userProfileReducer } from './user-profile.reducer';
-import { userProfile } from '@luchsamapparat/user-profile-common/test';
+import { userProfile } from '@ngxp/user-profile-common/test';
 
 describe('userProfileReducer', () => {
     it('returns the same state if the action is not applicable', () => {

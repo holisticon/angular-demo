@@ -70,13 +70,13 @@
         "directive-selector": [
             true,
             "attribute",
-            "cfha",
+            "ngxp",
             "camelCase"
         ],
         "component-selector": [
             true,
             "element",
-            "cfha",
+            "ngxp",
             "kebab-case"
         ],
         "no-output-on-prefix": true,
@@ -93,11 +93,11 @@
             true,
             {
                 "allow": [
-                    "@luchsamapparat/common/test",
-                    "@luchsamapparat/orders-common/test",
-                    "@luchsamapparat/products-common/test",
-                    "@luchsamapparat/shopping-cart-common/test",
-                    "@luchsamapparat/user-profile-common/test"
+                    "@ngxp/common/test",
+                    "@ngxp/orders-common/test",
+                    "@ngxp/products-common/test",
+                    "@ngxp/shopping-cart-common/test",
+                    "@ngxp/user-profile-common/test"
                 ],
                 "depConstraints": [
                     {

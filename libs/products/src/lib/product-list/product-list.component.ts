@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Product } from '@luchsamapparat/products-common';
-import { AdditionToShoppingCart } from '@luchsamapparat/shopping-cart-common';
+import { Product } from '@ngxp/products-common';
+import { AdditionToShoppingCart } from '@ngxp/shopping-cart-common';
 
 @Component({
-  selector: 'cfha-product-list',
+  selector: 'ngxp-product-list',
   templateUrl: './product-list.component.html'
 })
 export class ProductListComponent {

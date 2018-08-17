@@ -10,7 +10,7 @@ import { OrdersCommonService } from '../orders-common.service';
 import { OrderPlacedAction, PlaceOrderAction } from './orders-common.actions';
 import { OrdersCommonEffects } from './orders-common.effects';
 import { NewOrder, Order, OrderStatus } from '../order.model';
-import { orderBuilder, order, newOrder } from '@luchsamapparat/orders-common/test';
+import { orderBuilder, order, newOrder } from '@ngxp/orders-common/test';
 
 describe('OrdersCommonEffects', () => {
     let actions$: Observable<any>;

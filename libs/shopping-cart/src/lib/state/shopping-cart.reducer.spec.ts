@@ -1,7 +1,7 @@
-import { ShoppingCart, ShoppingCartLoadedAction } from '@luchsamapparat/shopping-cart-common';
+import { ShoppingCart, ShoppingCartLoadedAction } from '@ngxp/shopping-cart-common';
 import { Action } from '@ngrx/store';
 import { initialState, shoppingCartReducer } from './shopping-cart.reducer';
-import { shoppingCart } from '@luchsamapparat/shopping-cart-common/test';
+import { shoppingCart } from '@ngxp/shopping-cart-common/test';
 
 describe('shoppingCartReducer', () => {
     it('returns the same state if the action is not applicable', () => {

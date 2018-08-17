@@ -1,5 +1,5 @@
 import { getId } from './resource.utils';
-import { Resource } from '@luchsamapparat/common';
+import { Resource } from '@ngxp/common';
 
 describe('resourceUtils', () => {
     interface SomeType {

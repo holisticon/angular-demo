@@ -1,4 +1,4 @@
-import { ShoppingCart, ShoppingCartCommonActionTypes, ShoppingCartCommonActions } from '@luchsamapparat/shopping-cart-common';
+import { ShoppingCart, ShoppingCartCommonActionTypes, ShoppingCartCommonActions } from '@ngxp/shopping-cart-common';
 import { ShoppingCartActions } from './shopping-cart.actions';
 
 export interface ShoppingCartState {

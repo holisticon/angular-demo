@@ -25,11 +25,11 @@ export function logger(reducer) {
         HttpClientModule, // see https://github.com/angular/angular-cli/issues/10170
         NxModule.forRoot(),
         RouterModule.forRoot([
-            { path: '', loadChildren: '@luchsamapparat/homepage#HomepageModule' },
-            { path: 'products', loadChildren: '@luchsamapparat/products#ProductsModule' },
-            { path: 'shopping-cart', loadChildren: '@luchsamapparat/shopping-cart#ShoppingCartModule' },
-            { path: 'user-profile', loadChildren: '@luchsamapparat/user-profile#UserProfileModule' },
-            { path: 'orders', loadChildren: '@luchsamapparat/orders#OrdersModule' }
+            { path: '', loadChildren: '@ngxp/homepage#HomepageModule' },
+            { path: 'products', loadChildren: '@ngxp/products#ProductsModule' },
+            { path: 'shopping-cart', loadChildren: '@ngxp/shopping-cart#ShoppingCartModule' },
+            { path: 'user-profile', loadChildren: '@ngxp/user-profile#UserProfileModule' },
+            { path: 'orders', loadChildren: '@ngxp/orders#OrdersModule' }
         ], { initialNavigation: 'enabled' }),
         StoreModule.forRoot(
             {},

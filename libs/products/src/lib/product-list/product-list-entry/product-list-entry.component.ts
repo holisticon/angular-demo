@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { getId } from '@luchsamapparat/common';
-import { Product } from '@luchsamapparat/products-common';
-import { AdditionToShoppingCart } from '@luchsamapparat/shopping-cart-common';
+import { getId } from '@ngxp/common';
+import { Product } from '@ngxp/products-common';
+import { AdditionToShoppingCart } from '@ngxp/shopping-cart-common';
 import { toNumber } from 'lodash-es';
 
 @Component({
-    selector: 'cfha-product-list-entry',
+    selector: 'ngxp-product-list-entry',
     templateUrl: './product-list-entry.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })

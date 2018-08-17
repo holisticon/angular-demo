@@ -1,11 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { Resource } from '@luchsamapparat/common';
-import { ShoppingCartItem } from '@luchsamapparat/shopping-cart-common';
+import { Resource } from '@ngxp/common';
+import { ShoppingCartItem } from '@ngxp/shopping-cart-common';
 import { take } from 'rxjs/operators';
 import { UpdateQuantityFormComponent } from './update-quantity-form.component';
-import { shoppingCartItem } from '@luchsamapparat/shopping-cart-common/test';
+import { shoppingCartItem } from '@ngxp/shopping-cart-common/test';
 
 describe('UpdateQuantityFormComponent', () => {
     let component: UpdateQuantityFormComponent;

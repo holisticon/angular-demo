@@ -1,6 +1,6 @@
-import { LineItem, ResourceId } from "@luchsamapparat/common";
-import { ShoppingCart } from "@luchsamapparat/shopping-cart-common";
-import { Address, PaymentOption } from "@luchsamapparat/user-profile-common";
+import { LineItem, ResourceId } from "@ngxp/common";
+import { ShoppingCart } from "@ngxp/shopping-cart-common";
+import { Address, PaymentOption } from "@ngxp/user-profile-common";
 
 export interface Order {
     status: OrderStatus;

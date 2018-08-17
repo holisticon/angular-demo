@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { ShoppingCart, QuantityUpdate, ShoppingCartItem } from '@luchsamapparat/shopping-cart-common';
+import { ShoppingCart, QuantityUpdate, ShoppingCartItem } from '@ngxp/shopping-cart-common';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { ShoppingCartAppState } from './shopping-cart.reducer';
 import { getShoppingCart } from './shopping-cart.selectors';
 import { Selector, StoreService, Action } from '@ngx-patterns/store-service';
 import { UpdateShoppingCartItemQuantityAction, DeleteShoppingCartItemAction, LoadShoppingCartAction } from './shopping-cart.actions';
-import { ResourceWith } from '@luchsamapparat/common';
+import { ResourceWith } from '@ngxp/common';
 
 @Injectable({
     providedIn: 'root'

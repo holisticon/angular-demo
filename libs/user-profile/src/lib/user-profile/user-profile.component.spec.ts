@@ -1,11 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { AddressComponent, PaymentOptionComponent, UserProfile, UserProfileCommonStore } from '@luchsamapparat/user-profile-common';
+import { AddressComponent, PaymentOptionComponent, UserProfile, UserProfileCommonStore } from '@ngxp/user-profile-common';
 import { StoreModule } from '@ngrx/store';
 import { of as observableOf } from 'rxjs';
 import { UserProfileComponent } from './user-profile.component';
 import { provideStoreServiceMock, StoreServiceMock } from '@ngx-patterns/store-service/testing';
-import { userProfile } from '@luchsamapparat/user-profile-common/test';
+import { userProfile } from '@ngxp/user-profile-common/test';
 
 describe('UserProfileComponent', () => {
     let component: UserProfileComponent;
@@ -37,11 +37,11 @@ describe('UserProfileComponent', () => {
         fixture.detectChanges();
     });
 
-    it('renders a cfha-address for each address', () => {
+    it('renders a ngxp-address for each address', () => {
         expect(fixture.debugElement.queryAll(By.directive(AddressComponent)).length).toBe(userProfile.addresses.length);
     });
 
-    it('renders a cfha-payment-option for each payment option', () => {
+    it('renders a ngxp-payment-option for each payment option', () => {
         expect(fixture.debugElement.queryAll(By.directive(PaymentOptionComponent)).length).toBe(userProfile.paymentOptions.length);
     });
 });

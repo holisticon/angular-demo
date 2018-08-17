@@ -8,17 +8,17 @@
         <div class="col-3 billing-address">
             <h3 class="h6">Billing Address</h3>
 
-            <cfha-address [address]="order.billingAddress"></cfha-address>
+            <ngxp-address [address]="order.billingAddress"></ngxp-address>
         </div>
         <div class="col-3 shipping-address">
             <h3 class="h6">Shipping Address</h3>
 
-            <cfha-address [address]="order.shippingAddress"></cfha-address>
+            <ngxp-address [address]="order.shippingAddress"></ngxp-address>
         </div>
         <div class="col-3 payment">
             <h3 class="h6">Payment</h3>
 
-            <cfha-payment-option [paymentOption]="order.payment"></cfha-payment-option>
+            <ngxp-payment-option [paymentOption]="order.payment"></ngxp-payment-option>
         </div>
     </div>
 </div>

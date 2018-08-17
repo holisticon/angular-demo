@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { Order } from '@luchsamapparat/orders-common';
+import { Order } from '@ngxp/orders-common';
 
 @Component({
-    selector: 'cfha-order',
+    selector: 'ngxp-order',
     templateUrl: './order.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })

@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { Address } from '@luchsamapparat/user-profile-common';
+import { Address } from '@ngxp/user-profile-common';
 
 @Component({
-    selector: 'cfha-address',
+    selector: 'ngxp-address',
     templateUrl: './address.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })

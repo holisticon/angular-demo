@@ -1,14 +1,14 @@
 <h1 class="mb-5">Shopping Cart</h1>
 
-<cfha-shopping-cart-item-list
+<ngxp-shopping-cart-item-list
     [shoppingCart]="shoppingCart$ | async"
     (updateQuantity)="onUpdateQuantity($event)"
     (delete)="onDelete($event)"
-></cfha-shopping-cart-item-list>
+></ngxp-shopping-cart-item-list>
 
-<cfha-place-order-form
+<ngxp-place-order-form
     [shoppingCart]="shoppingCart$ | async"
     [userProfile]="userProfile$ | async"
     (placeOrder)="onPlaceOrder($event)"
     *ngIf="!((shoppingCart$ | async) | shoppingCartIsEmpty)"
-></cfha-place-order-form>
+></ngxp-place-order-form>

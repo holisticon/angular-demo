@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../dist/out-tsc/apps/cfha-client",
+    "outDir": "../../dist/out-tsc/apps/demo",
     "types": [
       "jasmine",
       "node"

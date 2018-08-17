@@ -1,9 +1,9 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { Order, OrderStatus } from '@luchsamapparat/orders-common';
-import { AddressComponent, PaymentOptionComponent } from '@luchsamapparat/user-profile-common';
+import { Order, OrderStatus } from '@ngxp/orders-common';
+import { AddressComponent, PaymentOptionComponent } from '@ngxp/user-profile-common';
 import { OrderComponent } from './order.component';
-import { order } from '@luchsamapparat/orders-common/test';
+import { order } from '@ngxp/orders-common/test';
 
 describe('OrderComponent', () => {
     let component: OrderComponent;
@@ -31,7 +31,7 @@ describe('OrderComponent', () => {
         expect(fixture.debugElement.query(By.css('.status')).nativeElement.textContent).toBe(order.status);
     });
 
-    it('renders the billing address as cfha-address', () => {
+    it('renders the billing address as ngxp-address', () => {
         const billingAddress: AddressComponent = fixture.debugElement.queryAll(By.directive(AddressComponent))
             .find(address => address.parent.nativeElement.classList.contains('billing-address'))
             .componentInstance;
@@ -39,7 +39,7 @@ describe('OrderComponent', () => {
         expect(billingAddress.address).toBe(order.billingAddress);
     });
 
-    it('renders the shipping address as cfha-address', () => {
+    it('renders the shipping address as ngxp-address', () => {
         const addresses = fixture.debugElement.queryAll(By.directive(AddressComponent));
         const shippingAddressComponent = addresses
             .find(address => address.parent.nativeElement.classList.contains('shipping-address'));
@@ -48,7 +48,7 @@ describe('OrderComponent', () => {
         expect(shippingAddress.address).toBe(order.shippingAddress);
     });
 
-    it('renders the payent as cfha-payent-option', () => {
+    it('renders the payent as ngxp-payent-option', () => {
         const paymentOption: PaymentOptionComponent = fixture.debugElement.query(By.directive(PaymentOptionComponent)).componentInstance;
 
         expect(paymentOption.paymentOption).toBe(order.payment);

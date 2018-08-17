@@ -1,8 +1,8 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { Order, OrderStatus } from '@luchsamapparat/orders-common';
+import { Order, OrderStatus } from '@ngxp/orders-common';
 import { OrderService } from './order.service';
-import { orders } from '@luchsamapparat/orders-common/test';
+import { orders } from '@ngxp/orders-common/test';
 
 
 describe('OrderService', () => {

@@ -1,10 +1,10 @@
-import { Order, OrderStatus } from "@luchsamapparat/orders-common";
-import { addressBuilder, paymentOptionBuilder } from "@luchsamapparat/user-profile-common/test";
+import { Order, OrderStatus } from "@ngxp/orders-common";
+import { addressBuilder, paymentOptionBuilder } from "@ngxp/user-profile-common/test";
 import { Blueprint, createBlueprintBuilder, BlueprintFactory } from '@ngx-patterns/builder';
 import * as faker from 'faker';
 import { random, sample } from "lodash-es";
-import { getRandomValue, createResourceBlueprintBuilder } from "@luchsamapparat/common/test";
-import { Resource } from "@luchsamapparat/common";
+import { getRandomValue, createResourceBlueprintBuilder } from "@ngxp/common/test";
+import { Resource } from "@ngxp/common";
 import { orderItemBuilder } from "./order-item.data";
 
 const minItemCount = 1;

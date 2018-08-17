@@ -1,6 +1,6 @@
 import { UserProfileAppState } from './user-profile.reducer';
 import { getAddresses, getPaymentOptions, getUserProfile } from './user-profile.selectors';
-import { userProfile } from '@luchsamapparat/user-profile-common/test';
+import { userProfile } from '@ngxp/user-profile-common/test';
 
 describe('userProfileSelectors', () => {
     const state: UserProfileAppState = {

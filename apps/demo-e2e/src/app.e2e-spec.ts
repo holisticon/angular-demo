@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('cfha-client App', () => {
+describe('demo App', () => {
   let page: AppPage;
 
   beforeEach(() => {

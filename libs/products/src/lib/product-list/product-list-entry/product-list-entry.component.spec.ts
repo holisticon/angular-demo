@@ -1,11 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { getId, Resource } from '@luchsamapparat/common';
-import { Product } from '@luchsamapparat/products-common';
+import { getId, Resource } from '@ngxp/common';
+import { Product } from '@ngxp/products-common';
 import { take } from 'rxjs/operators';
 import { ProductListEntryComponent } from './product-list-entry.component';
-import { product } from '@luchsamapparat/products-common/test';
+import { product } from '@ngxp/products-common/test';
 
 describe('ProductListEntryComponent', () => {
     let component: ProductListEntryComponent;

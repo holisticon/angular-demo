@@ -16,49 +16,49 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@luchsamapparat/common": [
+      "@ngxp/common": [
         "libs/common/src/index.ts"
       ],
-      "@luchsamapparat/common/test": [
+      "@ngxp/common/test": [
         "libs/common/src/test/index.ts"
       ],
-      "@luchsamapparat/homepage": [
+      "@ngxp/homepage": [
         "libs/homepage/src/index.ts"
       ],
-      "@luchsamapparat/orders": [
+      "@ngxp/orders": [
         "libs/orders/src/index.ts"
       ],
-      "@luchsamapparat/orders-common": [
+      "@ngxp/orders-common": [
         "libs/orders-common/src/index.ts"
       ],
-      "@luchsamapparat/orders-common/test": [
+      "@ngxp/orders-common/test": [
         "libs/orders-common/src/test/index.ts"
       ],
-      "@luchsamapparat/products": [
+      "@ngxp/products": [
         "libs/products/src/index.ts"
       ],
-      "@luchsamapparat/products-common": [
+      "@ngxp/products-common": [
         "libs/products-common/src/index.ts"
       ],
-      "@luchsamapparat/products-common/test": [
+      "@ngxp/products-common/test": [
         "libs/products-common/src/test/index.ts"
       ],
-      "@luchsamapparat/shopping-cart": [
+      "@ngxp/shopping-cart": [
         "libs/shopping-cart/src/index.ts"
       ],
-      "@luchsamapparat/shopping-cart-common": [
+      "@ngxp/shopping-cart-common": [
         "libs/shopping-cart-common/src/index.ts"
       ],
-      "@luchsamapparat/shopping-cart-common/test": [
+      "@ngxp/shopping-cart-common/test": [
         "libs/shopping-cart-common/src/test/index.ts"
       ],
-      "@luchsamapparat/user-profile": [
+      "@ngxp/user-profile": [
         "libs/user-profile/src/index.ts"
       ],
-      "@luchsamapparat/user-profile-common": [
+      "@ngxp/user-profile-common": [
         "libs/user-profile-common/src/index.ts"
       ],
-      "@luchsamapparat/user-profile-common/test": [
+      "@ngxp/user-profile-common/test": [
         "libs/user-profile-common/src/test/index.ts"
       ]
     }

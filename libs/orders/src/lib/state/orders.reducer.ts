@@ -1,4 +1,4 @@
-import { Order } from '@luchsamapparat/orders-common';
+import { Order } from '@ngxp/orders-common';
 import { OrdersActionTypes, OrdersActions } from './orders.actions';
 
 export interface OrdersState {

@@ -1,8 +1,8 @@
 import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
-import { ResourceWith } from '@luchsamapparat/common';
-import { Order, OrderPlacedAction, OrderStatus } from '@luchsamapparat/orders-common';
-import { QuantityUpdate, ShoppingCart, ShoppingCartItem, ShoppingCartLoadedAction } from '@luchsamapparat/shopping-cart-common';
+import { ResourceWith } from '@ngxp/common';
+import { Order, OrderPlacedAction, OrderStatus } from '@ngxp/orders-common';
+import { QuantityUpdate, ShoppingCart, ShoppingCartItem, ShoppingCartLoadedAction } from '@ngxp/shopping-cart-common';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { StoreModule } from '@ngrx/store';
 import { DataPersistence } from '@nrwl/nx';
@@ -12,8 +12,8 @@ import { take } from 'rxjs/operators';
 import { ShoppingCartService } from '../shopping-cart.service';
 import { DeleteShoppingCartItemAction, LoadShoppingCartAction, UpdateShoppingCartItemQuantityAction } from './shopping-cart.actions';
 import { ShoppingCartEffects } from './shopping-cart.effects';
-import { shoppingCart, shoppingCartItem } from '@luchsamapparat/shopping-cart-common/test';
-import { order } from '@luchsamapparat/orders-common/test';
+import { shoppingCart, shoppingCartItem } from '@ngxp/shopping-cart-common/test';
+import { order } from '@ngxp/orders-common/test';
 
 describe('ShoppingCartEffects', () => {
     let actions$: Observable<any>;

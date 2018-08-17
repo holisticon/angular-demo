@@ -3,7 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { ShoppingCartCommonModule } from '@luchsamapparat/shopping-cart-common';
+import { ShoppingCartCommonModule } from '@ngxp/shopping-cart-common';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { ProductListEntryComponent } from './product-list/product-list-entry/product-list-entry.component';

@@ -1,5 +1,5 @@
-import { ResourceWith } from '@luchsamapparat/common';
-import { QuantityUpdate, ShoppingCartItem } from '@luchsamapparat/shopping-cart-common';
+import { ResourceWith } from '@ngxp/common';
+import { QuantityUpdate, ShoppingCartItem } from '@ngxp/shopping-cart-common';
 import { Action } from '@ngrx/store';
 
 export enum ShoppingCartActionTypes {

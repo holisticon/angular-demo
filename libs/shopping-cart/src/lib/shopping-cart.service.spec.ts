@@ -1,9 +1,9 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { getId } from '@luchsamapparat/common';
-import { QuantityUpdate, ShoppingCart } from '@luchsamapparat/shopping-cart-common';
+import { getId } from '@ngxp/common';
+import { QuantityUpdate, ShoppingCart } from '@ngxp/shopping-cart-common';
 import { ShoppingCartService } from './shopping-cart.service';
-import { shoppingCart, shoppingCartItem } from '@luchsamapparat/shopping-cart-common/test';
+import { shoppingCart, shoppingCartItem } from '@ngxp/shopping-cart-common/test';
 
 describe('ShoppingCartService', () => {
     let shoppingCartService: ShoppingCartService;

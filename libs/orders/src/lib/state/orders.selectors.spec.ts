@@ -1,7 +1,7 @@
-import { OrderStatus } from '@luchsamapparat/orders-common';
+import { OrderStatus } from '@ngxp/orders-common';
 import { OrdersAppState } from './orders.reducer';
 import { getOrders } from './orders.selectors';
-import { orders } from '@luchsamapparat/orders-common/test';
+import { orders } from '@ngxp/orders-common/test';
 
 describe('ordersSelectors', () => {
     const state: OrdersAppState = {

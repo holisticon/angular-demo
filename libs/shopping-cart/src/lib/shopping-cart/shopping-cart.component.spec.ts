@@ -2,10 +2,10 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { ResourceWith } from '@luchsamapparat/common';
-import { NewOrder, PlaceOrderAction, PlaceOrderFormComponent, OrdersCommonStore } from '@luchsamapparat/orders-common';
-import { QuantityUpdate, ShoppingCart, ShoppingCartItem } from '@luchsamapparat/shopping-cart-common';
-import { UserProfile, UserProfileCommonStore } from '@luchsamapparat/user-profile-common';
+import { ResourceWith } from '@ngxp/common';
+import { NewOrder, PlaceOrderAction, PlaceOrderFormComponent, OrdersCommonStore } from '@ngxp/orders-common';
+import { QuantityUpdate, ShoppingCart, ShoppingCartItem } from '@ngxp/shopping-cart-common';
+import { UserProfile, UserProfileCommonStore } from '@ngxp/user-profile-common';
 import { Store, StoreModule } from '@ngrx/store';
 import { BehaviorSubject, Observable, of as observableOf } from 'rxjs';
 import { ShoppingCartItemListComponent } from '../shopping-cart-item-list/shopping-cart-item-list.component';
@@ -15,9 +15,9 @@ import { DeleteShoppingCartItemAction, UpdateShoppingCartItemQuantityAction } fr
 import { ShoppingCartIsEmptyPipe } from './shopping-cart-is-empty.pipe';
 import { ShoppingCartComponent } from './shopping-cart.component';
 import { provideStoreServiceMock, StoreServiceMock } from '@ngx-patterns/store-service/testing';
-import { shoppingCart, emptyShoppingCart, shoppingCartItem } from '@luchsamapparat/shopping-cart-common/test';
-import { userProfile } from '@luchsamapparat/user-profile-common/test';
-import { newOrder } from '@luchsamapparat/orders-common/test';
+import { shoppingCart, emptyShoppingCart, shoppingCartItem } from '@ngxp/shopping-cart-common/test';
+import { userProfile } from '@ngxp/user-profile-common/test';
+import { newOrder } from '@ngxp/orders-common/test';
 
 describe('ShoppingCartComponent', () => {
     let component: ShoppingCartComponent;
@@ -65,7 +65,7 @@ describe('ShoppingCartComponent', () => {
         fixture.detectChanges();
     });
 
-    it('renders the shopping cart as cfha-shopping-cart-item-list', () => {
+    it('renders the shopping cart as ngxp-shopping-cart-item-list', () => {
         const shoppingCartItemList: ShoppingCartItemListComponent = fixture.debugElement.query(By.directive(ShoppingCartItemListComponent)).componentInstance;
 
         expect(shoppingCartItemList.shoppingCart).toEqual(shoppingCart);

@@ -1,10 +1,10 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { getId } from '@luchsamapparat/common';
+import { getId } from '@ngxp/common';
 import { toNewOrderRequest } from './new-order-request.mapper';
 import { NewOrder, Order, OrderStatus } from './order.model';
 import { OrdersCommonService } from './orders-common.service';
-import { newOrder, order } from '@luchsamapparat/orders-common/test';
+import { newOrder, order } from '@ngxp/orders-common/test';
 
 describe('OrdersCommonService', () => {
     let ordersCommonService: OrdersCommonService;

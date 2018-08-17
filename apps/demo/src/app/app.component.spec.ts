@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { expectElementFromFixture } from '@luchsamapparat/common/test';
+import { expectElementFromFixture } from '@ngxp/common/test';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
@@ -29,6 +29,6 @@ describe('AppComponent', () => {
     });
 
     it('renders the navbar', () => {
-        expectElementFromFixture(fixture, 'cfha-navbar').not.toBeNull();
+        expectElementFromFixture(fixture, 'ngxp-navbar').not.toBeNull();
     });
 });

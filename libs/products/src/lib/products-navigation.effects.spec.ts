@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { Params } from '@angular/router';
-import { LoadSearchResultsAction } from '@luchsamapparat/products-common';
+import { LoadSearchResultsAction } from '@ngxp/products-common';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { RouterNavigationAction, ROUTER_NAVIGATION } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';

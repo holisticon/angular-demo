@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
-import { Order, OrderStatus } from '@luchsamapparat/orders-common';
+import { Order, OrderStatus } from '@ngxp/orders-common';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { StoreModule } from '@ngrx/store';
 import { DataPersistence } from '@nrwl/nx';
@@ -9,7 +9,7 @@ import { Observable, of as observableOf } from 'rxjs';
 import { OrderService } from '../order.service';
 import { LoadOrdersAction, OrdersLoadedAction } from './orders.actions';
 import { OrdersEffects } from './orders.effects';
-import { orders } from '@luchsamapparat/orders-common/test';
+import { orders } from '@ngxp/orders-common/test';
 
 describe('OrdersEffects', () => {
     let actions$: Observable<any>;

@@ -1,4 +1,4 @@
-import { Product, ProductsActionTypes, ProductsActions } from '@luchsamapparat/products-common';
+import { Product, ProductsActionTypes, ProductsActions } from '@ngxp/products-common';
 
 export interface ProductsState {
     query: string | null;

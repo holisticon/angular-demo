@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-    selector: 'cfha-navbar',
+    selector: 'ngxp-navbar',
     templateUrl: './navbar.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })

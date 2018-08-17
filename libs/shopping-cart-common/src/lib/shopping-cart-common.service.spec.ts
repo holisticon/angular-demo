@@ -2,7 +2,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { TestBed } from '@angular/core/testing';
 import { ShoppingCartCommonService } from './shopping-cart-common.service';
 import { ShoppingCart, AdditionToShoppingCart } from './shopping-cart.model';
-import { shoppingCart, additionToShoppingCart } from '@luchsamapparat/shopping-cart-common/test';
+import { shoppingCart, additionToShoppingCart } from '@ngxp/shopping-cart-common/test';
 
 describe('ShoppingCartCommonService', () => {
     let shoppingCartCommonService: ShoppingCartCommonService;

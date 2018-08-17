@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { OnNonNullChange, Resource, ResourceWith } from '@luchsamapparat/common';
-import { QuantityUpdate, ShoppingCartItem } from '@luchsamapparat/shopping-cart-common';
+import { OnNonNullChange, Resource, ResourceWith } from '@ngxp/common';
+import { QuantityUpdate, ShoppingCartItem } from '@ngxp/shopping-cart-common';
 
 @Component({
-    selector: 'cfha-update-quantity-form',
+    selector: 'ngxp-update-quantity-form',
     templateUrl: './update-quantity-form.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })

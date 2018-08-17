@@ -1,7 +1,7 @@
 
 import { Injectable } from '@angular/core';
 import { Params } from '@angular/router';
-import { LoadSearchResultsAction } from '@luchsamapparat/products-common';
+import { LoadSearchResultsAction } from '@ngxp/products-common';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { RouterNavigationAction, ROUTER_NAVIGATION } from '@ngrx/router-store';
 import { defaultTo } from 'lodash-es';

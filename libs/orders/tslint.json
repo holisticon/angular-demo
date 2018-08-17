@@ -4,13 +4,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "cfha",
+      "ngxp",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "cfha",
+      "ngxp",
       "kebab-case"
     ]
   }

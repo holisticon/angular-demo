@@ -1,17 +1,17 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { getId, Resource } from '@luchsamapparat/common';
-import { Product } from '@luchsamapparat/products-common';
-import { AdditionToShoppingCart, AddToShoppingCartAction, ShoppingCartCommonStore } from '@luchsamapparat/shopping-cart-common';
+import { getId, Resource } from '@ngxp/common';
+import { Product } from '@ngxp/products-common';
+import { AdditionToShoppingCart, AddToShoppingCartAction, ShoppingCartCommonStore } from '@ngxp/shopping-cart-common';
 import { Store, StoreModule } from '@ngrx/store';
-import { expectElementFromFixture } from '@luchsamapparat/common/test';
+import { expectElementFromFixture } from '@ngxp/common/test';
 import { of as observableOf } from 'rxjs';
 import { ProductListComponent } from '../product-list/product-list.component';
 import { ProductsStore } from '../state/products-store.service';
 import { SearchResultsComponent } from './search-results.component';
 import { provideStoreServiceMock } from '@ngx-patterns/store-service/testing';
-import { products, product } from '@luchsamapparat/products-common/test';
+import { products, product } from '@ngxp/products-common/test';
 
 describe('SearchResultsComponent', () => {
     let component: SearchResultsComponent;
@@ -50,10 +50,10 @@ describe('SearchResultsComponent', () => {
         fixture.detectChanges();
     });
 
-    it('renders the search results as cfha-product-list', () => {
+    it('renders the search results as ngxp-product-list', () => {
         const productList: ProductListComponent = fixture.debugElement.query(By.directive(ProductListComponent)).componentInstance
 
-        expectElementFromFixture(fixture, 'cfha-product-list').not.toBeNull();
+        expectElementFromFixture(fixture, 'ngxp-product-list').not.toBeNull();
         expect(productList.products).toEqual(searchResults);
     });
 
