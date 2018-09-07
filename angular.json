@@ -18,7 +18,8 @@
             "polyfills": "apps/demo/src/polyfills.ts",
             "assets": [
               "apps/demo/src/assets",
-              "apps/demo/src/favicon.ico"
+              "apps/demo/src/favicon.ico",
+              "apps/demo/src/manifest.json"
             ],
             "styles": [
               "apps/demo/src/styles.scss"
@@ -41,7 +42,8 @@
                   "replace": "apps/demo/src/environments/environment.ts",
                   "with": "apps/demo/src/environments/environment.prod.ts"
                 }
-              ]
+              ],
+              "serviceWorker": true
             }
           }
         },
@@ -75,7 +77,8 @@
             ],
             "assets": [
               "apps/demo/src/assets",
-              "apps/demo/src/favicon.ico"
+              "apps/demo/src/favicon.ico",
+              "apps/demo/src/manifest.json"
             ]
           }
         },

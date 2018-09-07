@@ -14,6 +14,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AppEffects } from './state/app.effects';
 import { RouterStateUrlSerializer } from './state/router-state-serializer';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 export function logger(reducer) {
     return storeLogger()(reducer);
@@ -37,7 +38,8 @@ export function logger(reducer) {
         ),
         EffectsModule.forRoot([AppEffects]),
         !environment.production ? StoreDevtoolsModule.instrument() : [],
-        StoreRouterConnectingModule
+        StoreRouterConnectingModule,
+        ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
     ],
     declarations: [
         AppComponent,
