@@ -6,7 +6,7 @@ import { ProductSearchFormComponent, SearchProductsAction, ProductsCommonStore }
 import { Store, StoreModule } from '@ngrx/store';
 import { expectElementFromFixture } from '@ngxp/common/test';
 import { HomepageComponent } from './homepage.component';
-import { provideStoreServiceMock } from '@ngx-patterns/store-service/testing';
+import { provideStoreServiceMock } from '@ngxp/store-service/testing';
 
 describe('HomepageComponent', () => {
     let component: HomepageComponent;

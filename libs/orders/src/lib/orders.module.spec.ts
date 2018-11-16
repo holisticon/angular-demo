@@ -3,7 +3,7 @@ import { Store, StoreModule } from '@ngrx/store';
 import { OrdersModule } from './orders.module';
 import { LoadOrdersAction } from './state/orders.actions';
 import { OrdersState } from './state/orders.reducer';
-import { createStoreServiceMock } from '@ngx-patterns/store-service/testing';
+import { createStoreServiceMock } from '@ngxp/store-service/testing';
 import { OrdersStore } from './state/orders-store.service';
 
 describe('OrdersModule', () => {

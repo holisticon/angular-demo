@@ -1,21 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Order } from '@ngxp/orders-common';
-import { Store } from '@ngrx/store';
+import { Dispatch, Select, StoreService } from '@ngxp/store-service';
 import { Observable } from 'rxjs';
+import { LoadOrdersAction } from './orders.actions';
 import { OrdersAppState } from './orders.reducer';
 import { getOrders } from './orders.selectors';
-import { Selector, StoreService, Action } from '@ngx-patterns/store-service';
-import { LoadOrdersAction } from './orders.actions';
 
 @Injectable({
     providedIn: 'root'
 })
 export class OrdersStore extends StoreService<OrdersAppState> {
 
-    @Selector(getOrders)
+    @Select(getOrders)
     getOrders: () => Observable<Order[]>;
 
-    @Action(LoadOrdersAction)
+    @Dispatch(LoadOrdersAction)
     loadOrders: () => void;
 
 }

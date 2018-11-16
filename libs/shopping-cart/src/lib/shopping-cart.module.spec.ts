@@ -3,7 +3,7 @@ import { Store, StoreModule } from '@ngrx/store';
 import { ShoppingCartModule } from './shopping-cart.module';
 import { LoadShoppingCartAction } from './state/shopping-cart.actions';
 import { ShoppingCartState } from './state/shopping-cart.reducer';
-import { createStoreServiceMock } from '@ngx-patterns/store-service/testing';
+import { createStoreServiceMock } from '@ngxp/store-service/testing';
 import { ShoppingCartStore } from './state/shopping-cart-store.service';
 
 describe('ShoppingCartModule', () => {

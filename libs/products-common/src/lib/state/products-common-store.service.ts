@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { Selector, StoreService, Action } from '@ngx-patterns/store-service';
-import { ResourceWith } from '@ngxp/common';
+import { Dispatch, StoreService } from '@ngxp/store-service';
 import { SearchProductsAction } from './products.actions';
 
 @Injectable({
@@ -10,7 +7,7 @@ import { SearchProductsAction } from './products.actions';
 })
 export class ProductsCommonStore extends StoreService<void> {
 
-    @Action(SearchProductsAction)
+    @Dispatch(SearchProductsAction)
     searchProducts: (query: string) => void;
 
 }

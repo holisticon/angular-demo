@@ -10,7 +10,7 @@ import { of as observableOf } from 'rxjs';
 import { ProductListComponent } from '../product-list/product-list.component';
 import { ProductsStore } from '../state/products-store.service';
 import { SearchResultsComponent } from './search-results.component';
-import { provideStoreServiceMock } from '@ngx-patterns/store-service/testing';
+import { provideStoreServiceMock } from '@ngxp/store-service/testing';
 import { products, product } from '@ngxp/products-common/test';
 
 describe('SearchResultsComponent', () => {

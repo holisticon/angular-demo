@@ -1,28 +1,27 @@
 import { Injectable } from '@angular/core';
-import { ShoppingCart, QuantityUpdate, ShoppingCartItem } from '@ngxp/shopping-cart-common';
-import { Store } from '@ngrx/store';
+import { ResourceWith } from '@ngxp/common';
+import { QuantityUpdate, ShoppingCart, ShoppingCartItem } from '@ngxp/shopping-cart-common';
+import { Dispatch, Select, StoreService } from '@ngxp/store-service';
 import { Observable } from 'rxjs';
+import { DeleteShoppingCartItemAction, LoadShoppingCartAction, UpdateShoppingCartItemQuantityAction } from './shopping-cart.actions';
 import { ShoppingCartAppState } from './shopping-cart.reducer';
 import { getShoppingCart } from './shopping-cart.selectors';
-import { Selector, StoreService, Action } from '@ngx-patterns/store-service';
-import { UpdateShoppingCartItemQuantityAction, DeleteShoppingCartItemAction, LoadShoppingCartAction } from './shopping-cart.actions';
-import { ResourceWith } from '@ngxp/common';
 
 @Injectable({
     providedIn: 'root'
 })
 export class ShoppingCartStore extends StoreService<ShoppingCartAppState> {
 
-    @Selector(getShoppingCart)
+    @Select(getShoppingCart)
     getShoppingCart: () => Observable<ShoppingCart>;
 
-    @Action(LoadShoppingCartAction)
+    @Dispatch(LoadShoppingCartAction)
     loadShoppingCart: () => void;
 
-    @Action(UpdateShoppingCartItemQuantityAction)
+    @Dispatch(UpdateShoppingCartItemQuantityAction)
     updateShoppingCartItemQuantity: (quantityUpdate: ResourceWith<QuantityUpdate>) => void;
 
-    @Action(DeleteShoppingCartItemAction)
+    @Dispatch(DeleteShoppingCartItemAction)
     deleteShoppingCartItem: (shoppingCartItem: ShoppingCartItem) => void;
 
 }

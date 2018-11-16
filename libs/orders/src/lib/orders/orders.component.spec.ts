@@ -7,7 +7,7 @@ import { of as observableOf } from 'rxjs';
 import { OrderComponent } from '../order/order.component';
 import { OrdersStore } from '../state/orders-store.service';
 import { OrdersComponent } from './orders.component';
-import { provideStoreServiceMock } from '@ngx-patterns/store-service/testing';
+import { provideStoreServiceMock } from '@ngxp/store-service/testing';
 import { orders } from '@ngxp/orders-common/test';
 
 describe('OrdersComponent', () => {

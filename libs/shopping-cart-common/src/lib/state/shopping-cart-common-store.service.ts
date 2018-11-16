@@ -1,16 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { Selector, StoreService, Action } from '@ngx-patterns/store-service';
-import { AddToShoppingCartAction } from './shopping-cart-common.actions';
+import { Dispatch, StoreService } from '@ngxp/store-service';
 import { AdditionToShoppingCart } from '../shopping-cart.model';
+import { AddToShoppingCartAction } from './shopping-cart-common.actions';
 
 @Injectable({
     providedIn: 'root'
 })
 export class ShoppingCartCommonStore extends StoreService<void> {
 
-    @Action(AddToShoppingCartAction)
+    @Dispatch(AddToShoppingCartAction)
     addToShoppingCart: (additionToShoppingCart: AdditionToShoppingCart) => void;
 
 }

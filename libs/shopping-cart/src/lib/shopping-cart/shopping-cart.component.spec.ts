@@ -14,7 +14,7 @@ import { ShoppingCartStore } from '../state/shopping-cart-store.service';
 import { DeleteShoppingCartItemAction, UpdateShoppingCartItemQuantityAction } from '../state/shopping-cart.actions';
 import { ShoppingCartIsEmptyPipe } from './shopping-cart-is-empty.pipe';
 import { ShoppingCartComponent } from './shopping-cart.component';
-import { provideStoreServiceMock, StoreServiceMock } from '@ngx-patterns/store-service/testing';
+import { provideStoreServiceMock, StoreServiceMock } from '@ngxp/store-service/testing';
 import { shoppingCart, emptyShoppingCart, shoppingCartItem } from '@ngxp/shopping-cart-common/test';
 import { userProfile } from '@ngxp/user-profile-common/test';
 import { newOrder } from '@ngxp/orders-common/test';

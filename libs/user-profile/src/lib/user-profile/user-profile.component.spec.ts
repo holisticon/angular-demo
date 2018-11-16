@@ -4,7 +4,7 @@ import { AddressComponent, PaymentOptionComponent, UserProfile, UserProfileCommo
 import { StoreModule } from '@ngrx/store';
 import { of as observableOf } from 'rxjs';
 import { UserProfileComponent } from './user-profile.component';
-import { provideStoreServiceMock, StoreServiceMock } from '@ngx-patterns/store-service/testing';
+import { provideStoreServiceMock, StoreServiceMock } from '@ngxp/store-service/testing';
 import { userProfile } from '@ngxp/user-profile-common/test';
 
 describe('UserProfileComponent', () => {

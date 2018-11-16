@@ -3,7 +3,7 @@ import { Store, StoreModule } from '@ngrx/store';
 import { LoadUserProfileAction } from './state/user-profile.actions';
 import { UserProfileState } from './state/user-profile.reducer';
 import { UserProfileCommonModule } from './user-profile-common.module';
-import { createStoreServiceMock } from '@ngx-patterns/store-service/testing';
+import { createStoreServiceMock } from '@ngxp/store-service/testing';
 import { UserProfileCommonStore } from './state/user-profile-common-store.service';
 
 describe('UserProfileCommonModule', () => {
