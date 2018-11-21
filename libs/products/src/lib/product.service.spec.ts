@@ -1,9 +1,7 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { Resource } from '@ngxp/common';
-import { Product } from '@ngxp/products-common';
-import { ProductService } from './product.service';
 import { products } from '@ngxp/products-common/test';
+import { ProductService } from './product.service';
 
 describe('ProductService', () => {
     let productService: ProductService;
@@ -32,7 +30,7 @@ describe('ProductService', () => {
                     expect(searchResults).toBe(products);
                 });
 
-            const request = httpController.expectOne(`http://example.hypercontract.org/products?query=${query}`);
+            const request = httpController.expectOne(`https://example.hypercontract.org/products?query=${query}`);
 
             expect(request.request.method).toEqual('GET');
 

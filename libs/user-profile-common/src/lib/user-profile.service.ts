@@ -14,7 +14,7 @@ export class UserProfileService {
 
     loadUserProfile(): Observable<UserProfile> {
         return this.httpClient
-            .get<UserProfile>(`http://example.hypercontract.org/userProfile`);
+            .get<UserProfile>(`https://example.hypercontract.org/userProfile`);
     }
 
 }

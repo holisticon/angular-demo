@@ -1,8 +1,7 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { UserProfile } from './user-profile.model';
-import { UserProfileService } from './user-profile.service';
 import { userProfile } from '@ngxp/user-profile-common/test';
+import { UserProfileService } from './user-profile.service';
 
 describe('UserProfileService', () => {
     let userProfileService: UserProfileService;
@@ -29,7 +28,7 @@ describe('UserProfileService', () => {
                     expect(returnedUserProfile).toBe(userProfile);
                 });
 
-            const request = httpController.expectOne(`http://example.hypercontract.org/userProfile`);
+            const request = httpController.expectOne(`https://example.hypercontract.org/userProfile`);
 
             expect(request.request.method).toEqual('GET');
 

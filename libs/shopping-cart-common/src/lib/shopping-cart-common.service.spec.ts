@@ -1,8 +1,7 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
+import { additionToShoppingCart, shoppingCart } from '@ngxp/shopping-cart-common/test';
 import { ShoppingCartCommonService } from './shopping-cart-common.service';
-import { ShoppingCart, AdditionToShoppingCart } from './shopping-cart.model';
-import { shoppingCart, additionToShoppingCart } from '@ngxp/shopping-cart-common/test';
 
 describe('ShoppingCartCommonService', () => {
     let shoppingCartCommonService: ShoppingCartCommonService;
@@ -26,7 +25,7 @@ describe('ShoppingCartCommonService', () => {
                     expect(returnedShoppingCart).toBe(shoppingCart);
                 });
 
-            const postRequest = httpController.expectOne(`http://example.hypercontract.org/shoppingCart/items`);
+            const postRequest = httpController.expectOne(`https://example.hypercontract.org/shoppingCart/items`);
 
             expect(postRequest.request.method).toEqual('POST');
             expect(postRequest.request.body).toEqual(additionToShoppingCart);
@@ -35,11 +34,11 @@ describe('ShoppingCartCommonService', () => {
                 status: 201,
                 statusText: 'Created',
                 headers: {
-                    Location: 'http://example.hypercontract.org/shoppingCart'
+                    Location: 'https://example.hypercontract.org/shoppingCart'
                 }
             });
 
-            const getRequest = httpController.expectOne(`http://example.hypercontract.org/shoppingCart`);
+            const getRequest = httpController.expectOne(`https://example.hypercontract.org/shoppingCart`);
 
             expect(getRequest.request.method).toEqual('GET');
 

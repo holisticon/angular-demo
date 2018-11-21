@@ -1,9 +1,9 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { getId } from '@ngxp/common';
-import { QuantityUpdate, ShoppingCart } from '@ngxp/shopping-cart-common';
-import { ShoppingCartService } from './shopping-cart.service';
+import { QuantityUpdate } from '@ngxp/shopping-cart-common';
 import { shoppingCart, shoppingCartItem } from '@ngxp/shopping-cart-common/test';
+import { ShoppingCartService } from './shopping-cart.service';
 
 describe('ShoppingCartService', () => {
     let shoppingCartService: ShoppingCartService;
@@ -31,7 +31,7 @@ describe('ShoppingCartService', () => {
                     expect(returnedShoppingCart).toBe(shoppingCart);
                 });
 
-            const request = httpController.expectOne(`http://example.hypercontract.org/shoppingCart`);
+            const request = httpController.expectOne(`https://example.hypercontract.org/shoppingCart`);
 
             expect(request.request.method).toEqual('GET');
 
@@ -57,7 +57,7 @@ describe('ShoppingCartService', () => {
                 });
 
             const patchRequest = httpController.expectOne(
-                `http://example.hypercontract.org/shoppingCart/items/${getId(shoppingCartItem)}`
+                `https://example.hypercontract.org/shoppingCart/items/${getId(shoppingCartItem)}`
             );
 
             expect(patchRequest.request.method).toEqual('PATCH');
@@ -78,7 +78,7 @@ describe('ShoppingCartService', () => {
                 });
 
             const deleteRequest = httpController.expectOne(
-                `http://example.hypercontract.org/shoppingCart/items/${getId(shoppingCartItem)}`
+                `https://example.hypercontract.org/shoppingCart/items/${getId(shoppingCartItem)}`
             );
 
             expect(deleteRequest.request.method).toEqual('DELETE');
