@@ -452,7 +452,7 @@ export function getPaymentOptions() {
 }
 ```
 
-### Keep Components as stateless
+### Keep Components stateless
 Components should be kept as stateless as possible, especially in regards to business data. Components that receive their data via `Input()` properties should not mutate this data. Instead they should communicate any data changes via events and wait for their input bindings to provide the updated data. Similarly, components that have a dependency on the ngrx store should dispatch actions to inform the application about state changes.
 
 There are cases where it makes sense that a component manages its own state, but these cases should be the exception rather than the rule and mostly apply to UI state.
