@@ -22,6 +22,6 @@ export class ShoppingCartLoadedAction implements Action {
     ) { }
 }
 
-export type ShoppingCartCommonActions =
+export type ShoppingCartCommonAction =
     | AddToShoppingCartAction
     | ShoppingCartLoadedAction;

@@ -1,4 +1,4 @@
-import { ShoppingCart, ShoppingCartCommonActions, ShoppingCartCommonActionTypes } from '@ngxp/shopping-cart-common';
+import { ShoppingCart, ShoppingCartCommonAction, ShoppingCartCommonActionTypes } from '@ngxp/shopping-cart-common';
 import { ShoppingCartAction } from './shopping-cart.actions';
 
 export const SHOPPING_CART_FEATURE_KEY = 'shoppingCart';
@@ -15,7 +15,7 @@ export const initialState: ShoppingCartState = {
     shoppingCart: null
 };
 
-export function shoppingCartReducer(state = initialState, action: ShoppingCartAction | ShoppingCartCommonActions): ShoppingCartState {
+export function shoppingCartReducer(state = initialState, action: ShoppingCartAction | ShoppingCartCommonAction): ShoppingCartState {
     switch (action.type) {
 
         case ShoppingCartCommonActionTypes.ShoppingCartLoaded: {
