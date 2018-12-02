@@ -22,6 +22,6 @@ export class OrderPlacedAction implements Action {
     ) { }
 }
 
-export type OrdersCommonActions =
+export type OrdersCommonAction =
     | PlaceOrderAction
     | OrderPlacedAction;

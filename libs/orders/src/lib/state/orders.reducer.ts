@@ -15,10 +15,7 @@ export const initialState: OrdersState = {
     orders: []
 };
 
-export function ordersReducer(
-    state = initialState,
-    action: OrdersAction
-): OrdersState {
+export function ordersReducer(state = initialState, action: OrdersAction): OrdersState {
     switch (action.type) {
 
         case OrdersActionTypes.OrdersLoaded: {
@@ -28,7 +25,7 @@ export function ordersReducer(
             };
         }
 
+        default:
+            return state;
     }
-
-    return state;
 }
