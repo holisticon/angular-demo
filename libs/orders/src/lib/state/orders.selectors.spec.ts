@@ -1,10 +1,10 @@
 import { OrderStatus } from '@ngxp/orders-common';
-import { OrdersAppState } from './orders.reducer';
+import { OrdersPartialState } from './orders.reducer';
 import { getOrders } from './orders.selectors';
 import { orders } from '@ngxp/orders-common/test';
 
 describe('ordersSelectors', () => {
-    const state: OrdersAppState = {
+    const state: OrdersPartialState = {
         orders: {
             orders
         }
@@ -14,7 +14,7 @@ describe('ordersSelectors', () => {
         it('returns the search results', () => {
             const expectedValue = state.orders.orders;
 
-            expect(getOrders()(state)).toBe(expectedValue);
+            expect(getOrders(state)).toBe(expectedValue);
         });
     });
 });

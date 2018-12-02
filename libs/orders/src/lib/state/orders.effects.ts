@@ -4,7 +4,7 @@ import { DataPersistence } from '@nrwl/nx';
 import { map } from 'rxjs/operators';
 import { OrderService } from '../order.service';
 import { LoadOrdersAction, OrdersActionTypes, OrdersLoadedAction } from './orders.actions';
-import { OrdersAppState } from './orders.reducer';
+import { OrdersPartialState } from './orders.reducer';
 
 @Injectable()
 export class OrdersEffects {
@@ -27,7 +27,7 @@ export class OrdersEffects {
 
     constructor(
         private actions$: Actions,
-        private dataPersistence: DataPersistence<OrdersAppState>,
+        private dataPersistence: DataPersistence<OrdersPartialState>,
         private orderService: OrderService
     ) {}
 }

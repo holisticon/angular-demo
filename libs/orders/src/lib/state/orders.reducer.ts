@@ -1,19 +1,24 @@
 import { Order } from '@ngxp/orders-common';
-import { OrdersActionTypes, OrdersActions } from './orders.actions';
+import { OrdersActionTypes, OrdersAction } from './orders.actions';
+
+export const ORDERS_FEATURE_KEY = 'orders';
 
 export interface OrdersState {
     orders: Order[]
 }
 
-export interface OrdersAppState {
-    readonly orders: OrdersState;
+export interface OrdersPartialState {
+    readonly [ORDERS_FEATURE_KEY]: OrdersState;
 }
 
 export const initialState: OrdersState = {
     orders: []
 };
 
-export function ordersReducer(state = initialState, action: OrdersActions): OrdersState {
+export function ordersReducer(
+    state = initialState,
+    action: OrdersAction
+): OrdersState {
     switch (action.type) {
 
         case OrdersActionTypes.OrdersLoaded: {
@@ -23,7 +28,7 @@ export function ordersReducer(state = initialState, action: OrdersActions): Orde
             };
         }
 
-        default:
-            return state;
     }
+
+    return state;
 }

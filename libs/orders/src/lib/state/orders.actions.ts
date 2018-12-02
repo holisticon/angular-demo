@@ -18,6 +18,6 @@ export class OrdersLoadedAction implements Action {
     ) {}
 }
 
-export type OrdersActions =
+export type OrdersAction =
     | LoadOrdersAction
     | OrdersLoadedAction;
