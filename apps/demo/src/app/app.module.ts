@@ -39,7 +39,9 @@ export function logger(reducer) {
         EffectsModule.forRoot([AppEffects]),
         !environment.production ? StoreDevtoolsModule.instrument() : [],
         StoreRouterConnectingModule,
-        ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
+        ServiceWorkerModule.register('/ngsw-worker.js', {
+            enabled: environment.production
+        })
     ],
     declarations: [
         AppComponent,
