@@ -4,15 +4,15 @@ import { QuantityUpdate, ShoppingCart, ShoppingCartItem } from '@ngxp/shopping-c
 import { Dispatch, Select, StoreService } from '@ngxp/store-service';
 import { Observable } from 'rxjs';
 import { DeleteShoppingCartItemAction, LoadShoppingCartAction, UpdateShoppingCartItemQuantityAction } from './shopping-cart.actions';
-import { ShoppingCartAppState } from './shopping-cart.reducer';
+import { ShoppingCartPartialState } from './shopping-cart.reducer';
 import { getShoppingCart } from './shopping-cart.selectors';
 
 @Injectable({
     providedIn: 'root'
 })
-export class ShoppingCartStore extends StoreService<ShoppingCartAppState> {
+export class ShoppingCartStore extends StoreService<ShoppingCartPartialState> {
 
-    @Select(getShoppingCart)
+    @Select(() => getShoppingCart)
     getShoppingCart: () => Observable<ShoppingCart>;
 
     @Dispatch(LoadShoppingCartAction)

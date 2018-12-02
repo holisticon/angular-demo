@@ -1,6 +1,6 @@
+import { Action } from '@ngrx/store';
 import { ResourceWith } from '@ngxp/common';
 import { QuantityUpdate, ShoppingCartItem } from '@ngxp/shopping-cart-common';
-import { Action } from '@ngrx/store';
 
 export enum ShoppingCartActionTypes {
     LoadShoppingCart = '[Shopping Cart] load shopping cart',
@@ -28,7 +28,7 @@ export class DeleteShoppingCartItemAction implements Action {
     ) { }
 }
 
-export type ShoppingCartActions =
+export type ShoppingCartAction =
     | LoadShoppingCartAction
     | UpdateShoppingCartItemQuantityAction
     | DeleteShoppingCartItemAction;
