@@ -4,7 +4,7 @@ import { Actions, Effect } from '@ngrx/effects';
 import { DataPersistence } from '@nrwl/nx';
 import { map } from 'rxjs/operators';
 import { ProductService } from '../product.service';
-import { ProductsAppState } from './products.reducer';
+import { ProductsPartialState } from './products.reducer';
 
 @Injectable()
 export class ProductsEffects {
@@ -13,7 +13,7 @@ export class ProductsEffects {
     loadSearchResults$ = this.dataPersistence.fetch(
         ProductsActionTypes.LoadSearchResults,
         {
-            run: (action: LoadSearchResultsAction, state: ProductsAppState) => {
+            run: (action: LoadSearchResultsAction, state: ProductsPartialState) => {
                 return this.productService
                     .searchProducts(action.payload)
                     .pipe(
@@ -29,7 +29,7 @@ export class ProductsEffects {
 
     constructor(
         private actions$: Actions,
-        private dataPersistence: DataPersistence<ProductsAppState>,
+        private dataPersistence: DataPersistence<ProductsPartialState>,
         private productService: ProductService
     ) {}
 }

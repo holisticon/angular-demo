@@ -1,5 +1,9 @@
-import { ProductsAppState } from "../state/products.reducer";
+import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { ProductsState, PRODUCTS_FEATURE_KEY } from "../state/products.reducer";
 
-export function getSearchResults() {
-    return ((state: ProductsAppState) => state.products.searchResults);
-}
+const getProductsState = createFeatureSelector<ProductsState>(PRODUCTS_FEATURE_KEY);
+
+export const getSearchResults = createSelector(
+    getProductsState,
+    state => state.searchResults
+);

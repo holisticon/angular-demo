@@ -1,12 +1,14 @@
-import { Product, ProductsActionTypes, ProductsActions } from '@ngxp/products-common';
+import { Product, ProductsAction, ProductsActionTypes } from '@ngxp/products-common';
+
+export const PRODUCTS_FEATURE_KEY = 'products';
 
 export interface ProductsState {
     query: string | null;
     searchResults: Product[];
 }
 
-export interface ProductsAppState {
-    readonly products: ProductsState;
+export interface ProductsPartialState {
+    readonly [PRODUCTS_FEATURE_KEY]: ProductsState;
 }
 
 export const initialState: ProductsState = {
@@ -14,8 +16,9 @@ export const initialState: ProductsState = {
     searchResults: []
 };
 
-export function productsReducer(state = initialState, action: ProductsActions): ProductsState {
+export function productsReducer(state = initialState, action: ProductsAction): ProductsState {
     switch (action.type) {
+
         case ProductsActionTypes.LoadSearchResults: {
             return {
                 ...state,

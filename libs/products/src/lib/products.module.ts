@@ -11,7 +11,7 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ProductsNavigationEffects } from './products-navigation.effects';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { ProductsEffects } from './state/products.effects';
-import { initialState as productsInitialState, productsReducer } from './state/products.reducer';
+import { initialState as productsInitialState, productsReducer, PRODUCTS_FEATURE_KEY } from './state/products.reducer';
 
 @NgModule({
     imports: [
@@ -22,7 +22,7 @@ import { initialState as productsInitialState, productsReducer } from './state/p
         RouterModule.forChild([
             { path: '', pathMatch: 'full', component: SearchResultsComponent }
         ]),
-        StoreModule.forFeature('products', productsReducer, { initialState: productsInitialState }),
+        StoreModule.forFeature(PRODUCTS_FEATURE_KEY, productsReducer, { initialState: productsInitialState }),
         EffectsModule.forFeature([
             ProductsEffects,
             ProductsNavigationEffects

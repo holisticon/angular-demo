@@ -4,7 +4,7 @@ import { AdditionToShoppingCart, AddToShoppingCartAction, ShoppingCartCommonStor
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { ProductsStore } from '../state/products-store.service';
-import { ProductsAppState } from '../state/products.reducer';
+import { ProductsPartialState } from '../state/products.reducer';
 
 @Component({
   selector: 'ngxp-search-results',

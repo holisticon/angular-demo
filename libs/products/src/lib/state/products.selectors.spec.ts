@@ -1,10 +1,10 @@
-import { ProductsAppState } from "./products.reducer";
-import { getSearchResults } from "./products.selectors";
 import { products } from "@ngxp/products-common/test";
+import { ProductsPartialState } from "./products.reducer";
+import { getSearchResults } from "./products.selectors";
 
 describe('productsSelectors', () => {
 
-    const state: ProductsAppState = {
+    const state: ProductsPartialState = {
         products: {
             query: 'query',
             searchResults: products
@@ -15,7 +15,7 @@ describe('productsSelectors', () => {
         it('returns the search results', () => {
             const expectedValue = state.products.searchResults;
 
-            expect(getSearchResults()(state)).toBe(expectedValue);
+            expect(getSearchResults(state)).toBe(expectedValue);
         });
     });
 
