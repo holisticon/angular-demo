@@ -18,6 +18,6 @@ export class UserProfileLoadedAction implements Action {
     ) {}
 }
 
-export type UserProfileActions =
+export type UserProfileAction =
     | LoadUserProfileAction
     | UserProfileLoadedAction;
