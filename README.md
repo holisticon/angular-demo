@@ -350,7 +350,7 @@ Moving even simple logic into separate functions provides a couple of benefits.
 
 * Functions that are free of any Angular-specific dependencies are easy to test as not testing module has to be initialized.
 * The component itself can be unit-tested without going into all the specifics of the business logic.
-* Instead of being bound to a component, the logic can now be used in all kinds of contexts (e.g. ngrx reducers, effects and selectors, services, RxJS streams and templates (see below)) and it can also be easily changed for the whole application.
+* Instead of being bound to a component, the logic can now be used in all kinds of contexts (e.g. NgRx reducers, effects and selectors, services, RxJS streams and templates (see below)) and it can also be easily changed for the whole application.
 * By separating the logic from any Angular-specific dependencies, they may be moved in to shared libraries which can also be used in non-Angular projects.
 * The function is not bound to how the data is retrieved.
 
@@ -408,9 +408,9 @@ export abstract class FunctionPipe implements PipeTransform {
 }
 ```
 
-#### Move Business Logic into ngrx Selectors
+#### Move Business Logic into NgRx Selectors
 
-ngrx Selectors can be used to transform or filter data into the form that the component needs. This has the nice side-effect, that the component is less dependent on how the actual data looks like.
+NgRx Selectors can be used to transform or filter data into the form that the component needs. This has the nice side-effect, that the component is less dependent on how the actual data looks like.
 
 In the following example the `UserProfileComponent` renders the addresses and payment options of the current user. Instead of retrieving the user profile and then extracting the needed data from the object, this logic is delegated to the selectors.
 
@@ -423,8 +423,8 @@ export class UserProfileComponent {
     constructor(
         private store: Store<UserProfileAppState>
     ) {
-        this.addresses = this.store.select(getAddresses());
-        this.paymentOptions = this.store.select(getPaymentOptions());
+        this.addresses = this.store.select(getAddresses);
+        this.paymentOptions = this.store.select(getPaymentOptions);
     }
 }
 ```
@@ -433,27 +433,26 @@ Notice that the selectors also take care of the case in which the user profile i
 
 ```ts
 // user-profile.selectors.ts
-export function getUserProfile() {
-    return ((state: UserProfileAppState) => state.userProfile.userProfile);
-}
+const getUserProfileState = createFeatureSelector<UserProfileState>(USER_PROFILE_FEATURE_KEY);
 
-export function getAddresses() {
-    return ((state: UserProfileAppState) => {
-        const userProfile = getUserProfile()(state);
-        return isNull(userProfile) ? [] : userProfile.addresses;
-    });
-}
+export const getUserProfile = createSelector(
+    getUserProfileState,
+    state => state.userProfile
+);
 
-export function getPaymentOptions() {
-    return ((state: UserProfileAppState) => {
-        const userProfile = getUserProfile()(state);
-        return isNull(userProfile) ? [] : userProfile.paymentOptions;
-    });
-}
+export const getAddresses = createSelector(
+    getUserProfile,
+    userProfile => isNull(userProfile) ? [] : userProfile.addresses
+);
+
+export const getPaymentOptions = createSelector(
+    getUserProfile,
+    userProfile => isNull(userProfile) ? [] : userProfile.paymentOptions
+);
 ```
 
 ### Keep Components stateless
-Components should be kept as stateless as possible, especially in regards to business data. Components that receive their data via `Input()` properties should not mutate this data. Instead they should communicate any data changes via events and wait for their input bindings to provide the updated data. Similarly, components that have a dependency on the ngrx store should dispatch actions to inform the application about state changes.
+Components should be kept as stateless as possible, especially in regards to business data. Components that receive their data via `Input()` properties should not mutate this data. Instead they should communicate any data changes via events and wait for their input bindings to provide the updated data. Similarly, components that have a dependency on the NgRx store should dispatch actions to inform the application about state changes.
 
 There are cases where it makes sense that a component manages its own state, but these cases should be the exception rather than the rule and mostly apply to UI state.
 
@@ -465,10 +464,10 @@ Returning to the shopping cart example, the `ShoppingCartComponent` acts as a co
 ![Presentational and Container Components](./docs/presentational_components.png)
 
 #### Presentational Components
-Presentational components are concerned with how things look. They should work similar to pure functions in functional programming: As long as you provide them with the same properties (via their `@Input` bindings), they should render the same markup. They are kept as stateless as possible and should not have dependencies on application-wide business services or the ngrx store. Instead, they emit events which are then handled by higher-up container components.
+Presentational components are concerned with how things look. They should work similar to pure functions in functional programming: As long as you provide them with the same properties (via their `@Input` bindings), they should render the same markup. They are kept as stateless as possible and should not have dependencies on application-wide business services or the NgRx store. Instead, they emit events which are then handled by higher-up container components.
 
 #### Container Components
-Container components are concerned with how things work by combining presentational components and wiring them up with the rest of the application. They know about the application state via the ngrx store, business services and the routing and pass the data they receive from those sources to presentational child components. They also listen to the events the presentational components emit and act upon them, for example by dispatching actions. Container components are often the components that are referenced in the routing configuration, but may also appear in other places such as modal overlays.
+Container components are concerned with how things work by combining presentational components and wiring them up with the rest of the application. They know about the application state via the NgRx store, business services and the routing and pass the data they receive from those sources to presentational child components. They also listen to the events the presentational components emit and act upon them, for example by dispatching actions. Container components are often the components that are referenced in the routing configuration, but may also appear in other places such as modal overlays.
 
 **Further Reading**
 * [Stateful and stateless components, the missing manual](https://toddmotto.com/stateful-stateless-components)
@@ -481,12 +480,12 @@ State in a web application comes in a variety of forms and is often stored in di
 
 While an application grows in size and complexity, it becomes increasingly difficult to manage its state. UI components may need to be informed about state changes to render accordingly. Bugs can be hard to fix when the cause for a state change is not clear. Asynchronous or failing operations may lead to inconsistent data. And often state has to be synchronized across different parts of the application.
 
-ngrx has been developed to specifically meet these challenges by implementing a unidirectional data flow that keeps the application state in a centralized store. 
+NgRx has been developed to specifically meet these challenges by implementing a unidirectional data flow that keeps the application state in a centralized store. 
 
 ![State Management](./docs/state_management.png)
 
 ### Retrieving State
-Components retrieve application state from the store directly using selectors or preferably via a store service (see below). In both cases selector functions should process the state to the form in which the component requires it.
+Components retrieve application state from the store directly using selectors. In both cases selector functions should process the state to the form in which the component requires it.
 
 ```ts
 // user-profile.component.ts
@@ -505,26 +504,24 @@ The `UserProfileComponent` uses the `getAddress` selector to retrieve the user's
 
 ```ts
 // user-profile.selectors.ts
-import { isNull } from "lodash-es";
-import { UserProfileAppState } from "./user-profile.reducer";
+const getUserProfileState = createFeatureSelector<UserProfileState>(USER_PROFILE_FEATURE_KEY);
 
-const emptyArray = [];
+export const getUserProfile = createSelector(
+    getUserProfileState,
+    state => state.userProfile
+);
 
-export function getUserProfile() {
-    return ((state: UserProfileAppState) => state.userProfile.userProfile);
-}
-
-export function getAddresses() {
-    return ((state: UserProfileAppState) => {
-        const userProfile = getUserProfile()(state);
-        return isNull(userProfile) ? emptyArray : userProfile.addresses;
-    });
-}
+export const getAddresses = createSelector(
+    getUserProfile,
+    userProfile => isNull(userProfile) ? [] : userProfile.addresses
+);
 ```
 
 Being pure functions, is is easy to build selectors that build upon each other promoting code reuse and avoiding duplication of logic. In the example `getAddresses` selector delegates to the `getUserProfile` selector to retrieve the user profile from the application state. It then returns the addresses from the user profile.
 
 As illustrated by the example, selectors can also be used to provide default values, for example when data has not been loaded yet. By falling back to an empty array when the user profile is `null`, the selector provides the consuming component with a consistent data type and thus keeps the component implementation simple.
+
+Using the `createFeatureSelector` and `createSelector` helpers functions of NgRx to create and combine selectors automatically memoizes the selector functions. This means, that the selector keeps track of the arguments with it was called the last time and remembers the value it has calculated and returned. As long as the selector is called with the same arguments, it will not recompute its return value and instead return the cached one.   
 
 Apart from filtering and transforming state for consumption by components, selector functions are also an important abstraction layer over the structure of the store. The way data is organized within the store can easily be changed without affecting its consumers as long as the selector functions return the same data.
 
@@ -636,7 +633,7 @@ While there is only one store for the whole application, it is possible to defin
         RouterModule.forChild([
             { path: '', pathMatch: 'full', component: SearchResultsComponent }
         ]),
-        StoreModule.forFeature('products', productsReducer, { initialState: productsInitialState }),
+        StoreModule.forFeature(PRODUCTS_FEATURE_KEY, productsReducer, { initialState: productsInitialState }),
         EffectsModule.forFeature([
             ProductsEffects,
             ProductsNavigationEffects
@@ -743,6 +740,7 @@ export class SearchResultsComponent {
 
 **Further Reading**
 * [Using NgRx 4 to Manage State in Angular Applications](https://blog.nrwl.io/using-ngrx-4-to-manage-state-in-angular-applications-64e7a1f84b7b)
+* [NgRx: Selectors](https://ngrx.io/guide/store/selectors)
 * [NgRx: Patterns and Techniques](https://blog.nrwl.io/ngrx-patterns-and-techniques-f46126e2b1e5)
 * [Nx Guide: Setting Up NgRx](https://nrwl.io/nx/guide-setting-up-ngrx)
 
