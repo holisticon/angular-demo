@@ -1,6 +1,9 @@
 {
   "npmScope": "ngxp",
   "projects": {
+    "all": {
+      "tags": []
+    },
     "demo": {
       "tags": []
     },
