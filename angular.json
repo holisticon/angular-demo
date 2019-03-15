@@ -4,7 +4,7 @@
   "newProjectRoot": "",
   "projects": {
     "all": {
-      "root": "./",
+      "root": "./apps/demo",
       "projectType": "application",
       "architect": {
         "test": {
