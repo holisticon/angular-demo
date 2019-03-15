@@ -1,4 +1,4 @@
-import { sample } from "lodash-es";
+import { sample } from 'lodash-es';
 
 export function getAllValues<T>(enumeration: T): T[keyof T][] {
     return Object

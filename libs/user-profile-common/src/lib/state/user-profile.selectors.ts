@@ -1,6 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { isNull } from "lodash-es";
-import { UserProfileState, USER_PROFILE_FEATURE_KEY } from "./user-profile.reducer";
+import { isNull } from 'lodash-es';
+import { UserProfileState, USER_PROFILE_FEATURE_KEY } from './user-profile.reducer';
 
 const getUserProfileState = createFeatureSelector<UserProfileState>(USER_PROFILE_FEATURE_KEY);
 

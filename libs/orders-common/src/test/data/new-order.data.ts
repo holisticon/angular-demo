@@ -1,11 +1,11 @@
-import { addressBuilder, paymentOptionBuilder, userProfile } from "@ngxp/user-profile-common/test";
+import { addressBuilder, paymentOptionBuilder, userProfile } from '@ngxp/user-profile-common/test';
 import { Blueprint, createBlueprintBuilder, BlueprintFactory } from '@ngx-patterns/builder';
 import * as faker from 'faker';
-import { random, sample } from "lodash-es";
-import { getRandomValue, createResourceBlueprintBuilder } from "@ngxp/common/test";
-import { Resource } from "@ngxp/common";
-import { NewOrder } from "@ngxp/orders-common";
-import { shoppingCartBuilder } from "@ngxp/shopping-cart-common/test";
+import { random, sample } from 'lodash-es';
+import { getRandomValue, createResourceBlueprintBuilder } from '@ngxp/common/test';
+import { Resource } from '@ngxp/common';
+import { NewOrder } from '@ngxp/orders-common';
+import { shoppingCartBuilder } from '@ngxp/shopping-cart-common/test';
 
 const minItemCount = 1;
 const maxItemCount = 3;

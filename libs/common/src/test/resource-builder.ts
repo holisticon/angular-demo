@@ -1,7 +1,7 @@
-import { Blueprint, BlueprintFactory, BlueprintBuilder, createBlueprintBuilder } from "@ngx-patterns/builder";
-import { isFunction } from "lodash-es";
+import { Blueprint, BlueprintFactory, BlueprintBuilder, createBlueprintBuilder } from '@ngx-patterns/builder';
+import { isFunction } from 'lodash-es';
 import * as faker from 'faker';
-import { Resource } from "@ngxp/common";
+import { Resource } from '@ngxp/common';
 
 export function createResourceBlueprintBuilder<T>(blueprint: Blueprint<T> | BlueprintFactory<T>) {
     return createBlueprintBuilder(toResourceBlueprint(blueprint));

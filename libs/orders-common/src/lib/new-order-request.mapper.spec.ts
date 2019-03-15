@@ -1,7 +1,7 @@
-import { toNewOrderRequest } from "./new-order-request.mapper";
-import { NewOrder } from "./order.model";
-import { newOrder } from "@ngxp/orders-common/test";
-import { getId } from "@ngxp/common";
+import { toNewOrderRequest } from './new-order-request.mapper';
+import { NewOrder } from './order.model';
+import { newOrder } from '@ngxp/orders-common/test';
+import { getId } from '@ngxp/common';
 
 describe('toNewOrderRequest', () => {
     it('maps the given new order to an order request', () => {

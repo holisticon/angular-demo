@@ -31,7 +31,7 @@ describe('ShoppingCartService', () => {
                     expect(returnedShoppingCart).toBe(shoppingCart);
                 });
 
-            const request = httpController.expectOne(`https://example.hypercontract.org/shoppingCart`);
+            const request = httpController.expectOne('https://example.hypercontract.org/shoppingCart');
 
             expect(request.request.method).toEqual('GET');
 

@@ -1,5 +1,5 @@
-import { ShoppingCart, shoppingCartIsEmpty } from "@ngxp/shopping-cart-common";
-import { emptyShoppingCart, shoppingCart } from "@ngxp/shopping-cart-common/test";
+import { ShoppingCart, shoppingCartIsEmpty } from '@ngxp/shopping-cart-common';
+import { emptyShoppingCart, shoppingCart } from '@ngxp/shopping-cart-common/test';
 
 describe('shoppingCartUtil', () => {
     describe('shoppingCartIsEmpty', () => {

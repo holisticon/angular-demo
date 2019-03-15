@@ -1,4 +1,4 @@
-import { isFunction, isNull, isUndefined, upperFirst } from "lodash-es";
+import { isFunction, isNull, isUndefined, upperFirst } from 'lodash-es';
 
 export function OnNonNullChange(onNonNullChange?: string | Function) {
     return function (target: any, key: string) {

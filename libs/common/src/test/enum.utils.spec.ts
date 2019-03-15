@@ -1,4 +1,4 @@
-import { getAllValues, getRandomValue } from "./enum.utils";
+import { getAllValues, getRandomValue } from './enum.utils';
 
 describe('enumUtils', () => {
 

@@ -17,7 +17,7 @@ export class OrdersCommonService {
     placeOrder(newOrder: NewOrder): Observable<Order> {
         return this.httpClient
             .post(
-                `https://example.hypercontract.org/orders`,
+                'https://example.hypercontract.org/orders',
                 toNewOrderRequest(newOrder),
                 { responseType: 'text', observe: 'response' }
             )

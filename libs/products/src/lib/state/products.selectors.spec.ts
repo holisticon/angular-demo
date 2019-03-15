@@ -1,6 +1,6 @@
-import { products } from "@ngxp/products-common/test";
-import { ProductsPartialState } from "./products.reducer";
-import { getSearchResults } from "./products.selectors";
+import { products } from '@ngxp/products-common/test';
+import { ProductsPartialState } from './products.reducer';
+import { getSearchResults } from './products.selectors';
 
 describe('productsSelectors', () => {
 

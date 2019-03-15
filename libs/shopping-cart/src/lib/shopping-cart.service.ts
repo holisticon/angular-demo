@@ -16,7 +16,7 @@ export class ShoppingCartService {
     loadShoppingCart(): Observable<ShoppingCart> {
         return this.httpClient
             .get<ShoppingCart>(
-                `https://example.hypercontract.org/shoppingCart`
+                'https://example.hypercontract.org/shoppingCart'
             );
     }
 

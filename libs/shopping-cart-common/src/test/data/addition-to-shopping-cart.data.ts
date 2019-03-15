@@ -1,9 +1,9 @@
 import { Blueprint, createBlueprintBuilder, BlueprintFactory } from '@ngx-patterns/builder';
 import * as faker from 'faker';
-import { repeat } from "rxjs/operators";
-import { random, times, isUndefined } from "lodash-es";
-import { createResourceBlueprintBuilder } from "@ngxp/common/test";
-import { Resource, getId } from "@ngxp/common";
+import { repeat } from 'rxjs/operators';
+import { random, times, isUndefined } from 'lodash-es';
+import { createResourceBlueprintBuilder } from '@ngxp/common/test';
+import { Resource, getId } from '@ngxp/common';
 import { AdditionToShoppingCart } from '@ngxp/shopping-cart-common';
 import { productBuilder } from '@ngxp/products-common/test';
 

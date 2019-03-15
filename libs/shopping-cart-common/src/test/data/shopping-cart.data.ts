@@ -1,11 +1,11 @@
-import { ShoppingCart, ShoppingCartItem } from "@ngxp/shopping-cart-common";
+import { ShoppingCart, ShoppingCartItem } from '@ngxp/shopping-cart-common';
 import { Blueprint, createBlueprintBuilder, BlueprintFactory } from '@ngx-patterns/builder';
 import * as faker from 'faker';
-import { repeat } from "rxjs/operators";
-import { random, times, isUndefined } from "lodash-es";
-import { createResourceBlueprintBuilder } from "@ngxp/common/test";
-import { Resource } from "@ngxp/common";
-import { shoppingCartItemBuilder } from "./shopping-cart-item.data";
+import { repeat } from 'rxjs/operators';
+import { random, times, isUndefined } from 'lodash-es';
+import { createResourceBlueprintBuilder } from '@ngxp/common/test';
+import { Resource } from '@ngxp/common';
+import { shoppingCartItemBuilder } from './shopping-cart-item.data';
 
 const minItemCount = 1;
 const maxItemCount = 3;

@@ -1,5 +1,5 @@
-import { isEmpty, isNull } from "lodash-es";
-import { ShoppingCart } from "./shopping-cart.model";
+import { isEmpty, isNull } from 'lodash-es';
+import { ShoppingCart } from './shopping-cart.model';
 
 export function shoppingCartIsEmpty(shoppingCart: ShoppingCart) {
     if (isNull(shoppingCart)) {

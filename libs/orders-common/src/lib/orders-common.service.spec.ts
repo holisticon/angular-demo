@@ -27,7 +27,7 @@ describe('OrdersCommonService', () => {
                     expect(createdOrder).toBe(order);
                 });
 
-            const postRequest = httpController.expectOne(`https://example.hypercontract.org/orders`);
+            const postRequest = httpController.expectOne('https://example.hypercontract.org/orders');
 
             expect(postRequest.request.method).toEqual('POST');
             expect(postRequest.request.body).toEqual(toNewOrderRequest(newOrder));

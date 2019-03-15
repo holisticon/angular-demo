@@ -1,5 +1,5 @@
-import { getId } from "@ngxp/common";
-import { NewOrder, NewOrderRequest } from "./order.model";
+import { getId } from '@ngxp/common';
+import { NewOrder, NewOrderRequest } from './order.model';
 
 export function toNewOrderRequest(newOrder: NewOrder): NewOrderRequest {
     return {
