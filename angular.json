@@ -3,6 +3,21 @@
   "version": 1,
   "newProjectRoot": "",
   "projects": {
+    "all": {
+      "root": "./",
+      "projectType": "application",
+      "architect": {
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "./test.ts",
+            "polyfills": "./polyfills.ts",
+            "tsConfig": "./tsconfig.spec.json",
+            "karmaConfig": "./karma.conf.js"
+          }
+        }
+      }
+    },
     "demo": {
       "root": "apps/demo",
       "sourceRoot": "apps/demo/src",
