@@ -40,7 +40,7 @@
     "@ngrx/entity": "7.3.0",
     "@ngrx/router-store": "7.3.0",
     "@ngrx/store": "7.3.0",
-    "@ngx-patterns/builder": "0.4.1",
+    "@ngxp/builder": "1.0.0",
     "@ngxp/store-service": "5.0.1",
     "@nrwl/nx": "7.7.1",
     "core-js": "^2.6.5",

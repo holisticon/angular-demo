@@ -1,5 +1,5 @@
 import { Product } from '@ngxp/products-common';
-import { Blueprint, createBlueprintBuilder } from '@ngx-patterns/builder';
+import { Blueprint, createBlueprintBuilder } from '@ngxp/builder';
 import * as faker from 'faker';
 import { Resource } from '@ngxp/common';
 import { createResourceBlueprintBuilder } from '@ngxp/common/test';

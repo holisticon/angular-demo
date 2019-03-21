@@ -1,5 +1,5 @@
 import { productBuilder, products } from '@ngxp/products-common/test';
-import { Blueprint, createBlueprintBuilder, BlueprintBuilder, BlueprintFactory, createBuilder } from '@ngx-patterns/builder';
+import { Blueprint, createBlueprintBuilder, BlueprintBuilder, BlueprintFactory, createBuilder } from '@ngxp/builder';
 import * as faker from 'faker';
 import { Product } from '@ngxp/products-common';
 import { isUndefined, random, sample } from 'lodash-es';

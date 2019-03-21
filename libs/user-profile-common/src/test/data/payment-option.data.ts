@@ -1,4 +1,4 @@
-import { Blueprint, createBlueprintBuilder } from '@ngx-patterns/builder';
+import { Blueprint, createBlueprintBuilder } from '@ngxp/builder';
 import * as faker from 'faker';
 import { PaymentOption } from '@ngxp/user-profile-common';
 import { Resource } from '@ngxp/common';

@@ -1,4 +1,4 @@
-import { Blueprint, createBlueprintBuilder } from '@ngx-patterns/builder';
+import { Blueprint, createBlueprintBuilder } from '@ngxp/builder';
 import { Address } from '@ngxp/user-profile-common';
 import * as faker from 'faker';
 import { Resource } from '@ngxp/common';

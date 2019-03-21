@@ -1,4 +1,4 @@
-import { Blueprint, BlueprintFactory, BlueprintBuilder, createBlueprintBuilder } from '@ngx-patterns/builder';
+import { Blueprint, BlueprintFactory, BlueprintBuilder, createBlueprintBuilder } from '@ngxp/builder';
 import { isFunction } from 'lodash-es';
 import * as faker from 'faker';
 import { Resource } from '@ngxp/common';

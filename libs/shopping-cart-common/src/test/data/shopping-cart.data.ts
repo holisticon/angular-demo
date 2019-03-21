@@ -1,5 +1,5 @@
 import { ShoppingCart, ShoppingCartItem } from '@ngxp/shopping-cart-common';
-import { Blueprint, createBlueprintBuilder, BlueprintFactory } from '@ngx-patterns/builder';
+import { Blueprint, createBlueprintBuilder, BlueprintFactory } from '@ngxp/builder';
 import * as faker from 'faker';
 import { repeat } from 'rxjs/operators';
 import { random, times, isUndefined } from 'lodash-es';
