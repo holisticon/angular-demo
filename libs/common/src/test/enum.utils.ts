@@ -1,4 +1,4 @@
-import { sample } from 'lodash-es';
+import { isUndefined, sample } from 'lodash-es';
 
 export function getAllValues<T>(enumeration: T): T[keyof T][] {
     return Object
@@ -7,5 +7,11 @@ export function getAllValues<T>(enumeration: T): T[keyof T][] {
 }
 
 export function getRandomValue<T>(enumeration: T): T[keyof T] {
-    return sample(getAllValues(enumeration));
+    const randomValue = sample(getAllValues(enumeration));
+
+    if (isUndefined(randomValue)) {
+        throw new Error('The given enumeration contains no values, cannot extract a random value');
+    }
+
+    return randomValue;
 }

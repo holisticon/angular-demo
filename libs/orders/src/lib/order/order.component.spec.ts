@@ -1,9 +1,10 @@
-import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+// tslint:disable: no-non-null-assertion
+
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { Order, OrderStatus } from '@ngxp/orders-common';
+import { order } from '@ngxp/orders-common/test';
 import { AddressComponent, PaymentOptionComponent } from '@ngxp/user-profile-common';
 import { OrderComponent } from './order.component';
-import { order } from '@ngxp/orders-common/test';
 
 describe('OrderComponent', () => {
     let component: OrderComponent;
@@ -33,7 +34,7 @@ describe('OrderComponent', () => {
 
     it('renders the billing address as ngxp-address', () => {
         const billingAddress: AddressComponent = fixture.debugElement.queryAll(By.directive(AddressComponent))
-            .find(address => address.parent.nativeElement.classList.contains('billing-address'))
+            .find(address => address.parent!.nativeElement.classList.contains('billing-address'))!
             .componentInstance;
 
         expect(billingAddress.address).toBe(order.billingAddress);
@@ -42,7 +43,7 @@ describe('OrderComponent', () => {
     it('renders the shipping address as ngxp-address', () => {
         const addresses = fixture.debugElement.queryAll(By.directive(AddressComponent));
         const shippingAddressComponent = addresses
-            .find(address => address.parent.nativeElement.classList.contains('shipping-address'));
+            .find(address => address.parent!.nativeElement.classList.contains('shipping-address'))!;
         const shippingAddress: AddressComponent = shippingAddressComponent.componentInstance;
 
         expect(shippingAddress.address).toBe(order.shippingAddress);

@@ -1,5 +1,8 @@
 import { OnAssignment, OnChange, OnNonNullChange } from './property.decorators';
 
+type NumberOrNull = (number | null);
+type TestMethodParams = [NumberOrNull, NumberOrNull];
+
 describe('PropertyDecorators', () => {
     const oldValue = 1;
     const newValue = 2;
@@ -12,11 +15,11 @@ describe('PropertyDecorators', () => {
         onChangeProp = oldValue;
 
         @OnNonNullChange('testMethod')
-        onNonNullChangeProp = oldValue;
+        onNonNullChangeProp: number | null = oldValue;
 
-        testMethodParams = null;
+        testMethodParams: TestMethodParams | null = null;
 
-        testMethod(...args) {
+        testMethod(...args: TestMethodParams) {
             this.testMethodParams = args;
         }
     }
@@ -51,9 +54,9 @@ describe('PropertyDecorators', () => {
                 @OnNonNullChange()
                 testProp = oldValue;
 
-                testMethodParams = null;
+                testMethodParams: TestMethodParams | null = null;
 
-                onChangeTestProp(...args) {
+                onChangeTestProp(...args: TestMethodParams) {
                     this.testMethodParams = args;
                 }
             }
@@ -73,9 +76,9 @@ describe('PropertyDecorators', () => {
                 @OnNonNullChange('invalid')
                 testProp = oldValue;
 
-                testMethodParams = null;
+                testMethodParams: TestMethodParams | null = null;
 
-                testMethod(...args) {
+                testMethod(...args: TestMethodParams) {
                     this.testMethodParams = args;
                 }
             }
@@ -109,9 +112,9 @@ describe('PropertyDecorators', () => {
                 @OnChange('invalid')
                 testProp = oldValue;
 
-                testMethodParams = null;
+                testMethodParams: TestMethodParams | null = null;
 
-                testMethod(...args) {
+                testMethod(...args: TestMethodParams) {
                     this.testMethodParams = args;
                 }
             }
@@ -126,9 +129,9 @@ describe('PropertyDecorators', () => {
                 @OnChange()
                 testProp = oldValue;
 
-                testMethodParams = null;
+                testMethodParams: TestMethodParams | null = null;
 
-                onChangeTestProp(...args) {
+                onChangeTestProp(...args: TestMethodParams) {
                     this.testMethodParams = args;
                 }
             }
@@ -170,9 +173,9 @@ describe('PropertyDecorators', () => {
                 @OnAssignment('invalid')
                 testProp = oldValue;
 
-                testMethodParams = null;
+                testMethodParams: TestMethodParams | null = null;
 
-                testMethod(...args) {
+                testMethod(...args: TestMethodParams) {
                     this.testMethodParams = args;
                 }
             }
@@ -187,9 +190,9 @@ describe('PropertyDecorators', () => {
                 @OnAssignment()
                 testProp = oldValue;
 
-                testMethodParams = null;
+                testMethodParams: TestMethodParams | null = null;
 
-                onChangeTestProp(...args) {
+                onChangeTestProp(...args: TestMethodParams) {
                     this.testMethodParams = args;
                 }
             }

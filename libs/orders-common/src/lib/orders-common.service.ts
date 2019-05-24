@@ -1,6 +1,7 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { isNull } from 'lodash-es';
+import { EMPTY, Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { toNewOrderRequest } from './new-order-request.mapper';
 import { NewOrder, Order } from './order.model';
@@ -27,6 +28,12 @@ export class OrdersCommonService {
     }
 
     private handleRedirect<T>(response: HttpResponse<any>) {
-        return this.httpClient.get<T>(response.headers.get('Location'));
+        const location = response.headers.get('Location');
+
+        if (isNull(location)) {
+            return EMPTY;
+        }
+
+        return this.httpClient.get<T>(location);
     }
 }

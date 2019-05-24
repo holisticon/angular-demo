@@ -1,9 +1,11 @@
+// tslint:disable: no-non-null-assertion
+
 import { TestBed } from '@angular/core/testing';
 import { Params } from '@angular/router';
-import { LoadSearchResultsAction } from '@ngxp/products-common';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { RouterNavigationAction, ROUTER_NAVIGATION } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
+import { LoadSearchResultsAction } from '@ngxp/products-common';
 import { cold, hot } from 'jasmine-marbles';
 import { Observable } from 'rxjs';
 import { ProductsNavigationEffects } from './products-navigation.effects';
@@ -35,7 +37,7 @@ describe('ProductsNavigationEffects', () => {
             routerNavigationAction = {
                 type: ROUTER_NAVIGATION,
                 payload: {
-                    event: null,
+                    event: null!,
                     routerState: {
                         url: '/products',
                         params: {},

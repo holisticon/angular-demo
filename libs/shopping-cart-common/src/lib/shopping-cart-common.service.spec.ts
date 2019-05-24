@@ -46,6 +46,21 @@ describe('ShoppingCartCommonService', () => {
 
             httpController.verify();
         });
+
+        it('returns an empty observable if the server response contains no location header', () => {
+            shoppingCartCommonService
+                .addToShoppingCart(additionToShoppingCart)
+                .subscribe(() => fail());
+
+            const postRequest = httpController.expectOne('https://example.hypercontract.org/shoppingCart/items');
+
+            postRequest.flush(null, {
+                status: 201,
+                statusText: 'Created'
+            });
+
+            httpController.verify();
+        });
     });
 
 });
