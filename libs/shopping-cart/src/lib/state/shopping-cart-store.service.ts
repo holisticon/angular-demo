@@ -13,15 +13,15 @@ import { getShoppingCart } from './shopping-cart.selectors';
 export class ShoppingCartStore extends StoreService<ShoppingCartPartialState> {
 
     @Select(() => getShoppingCart)
-    getShoppingCart: () => Observable<ShoppingCart>;
+    getShoppingCart!: () => Observable<ShoppingCart>;
 
     @Dispatch(LoadShoppingCartAction)
-    loadShoppingCart: () => void;
+    loadShoppingCart!: () => void;
 
     @Dispatch(UpdateShoppingCartItemQuantityAction)
-    updateShoppingCartItemQuantity: (quantityUpdate: ResourceWith<QuantityUpdate>) => void;
+    updateShoppingCartItemQuantity!: (quantityUpdate: ResourceWith<QuantityUpdate>) => void;
 
     @Dispatch(DeleteShoppingCartItemAction)
-    deleteShoppingCartItem: (shoppingCartItem: ShoppingCartItem) => void;
+    deleteShoppingCartItem!: (shoppingCartItem: ShoppingCartItem) => void;
 
 }

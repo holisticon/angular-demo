@@ -12,15 +12,15 @@ import { getAddresses, getPaymentOptions, getUserProfile } from './user-profile.
 export class UserProfileCommonStore extends StoreService<UserProfilePartialState> {
 
     @Select(() => getUserProfile)
-    getUserProfile: () => Observable<UserProfile>;
+    getUserProfile!: () => Observable<UserProfile>;
 
     @Select(() => getAddresses)
-    getAddresses: () => Observable<Address[]>;
+    getAddresses!: () => Observable<Address[]>;
 
     @Select(() => getPaymentOptions)
-    getPaymentOptions: () => Observable<PaymentOption[]>;
+    getPaymentOptions!: () => Observable<PaymentOption[]>;
 
     @Dispatch(LoadUserProfileAction)
-    loadUserProfile: () => void;
+    loadUserProfile!: () => void;
 
 }

@@ -9,6 +9,6 @@ import { PaymentOption } from '@ngxp/user-profile-common';
 export class PaymentOptionComponent {
 
     @Input()
-    paymentOption: PaymentOption
+    paymentOption!: PaymentOption
 
 }

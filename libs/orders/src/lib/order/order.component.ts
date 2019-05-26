@@ -9,6 +9,6 @@ import { Order } from '@ngxp/orders-common';
 export class OrderComponent {
 
     @Input()
-    order: Order;
+    order!: Order;
 
 }

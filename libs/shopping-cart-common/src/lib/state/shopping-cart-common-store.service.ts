@@ -9,6 +9,6 @@ import { AddToShoppingCartAction } from './shopping-cart-common.actions';
 export class ShoppingCartCommonStore extends StoreService<void> {
 
     @Dispatch(AddToShoppingCartAction)
-    addToShoppingCart: (additionToShoppingCart: AdditionToShoppingCart) => void;
+    addToShoppingCart!: (additionToShoppingCart: AdditionToShoppingCart) => void;
 
 }

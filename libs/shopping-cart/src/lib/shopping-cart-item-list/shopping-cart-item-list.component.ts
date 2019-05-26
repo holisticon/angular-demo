@@ -10,7 +10,7 @@ import { QuantityUpdate, ShoppingCart, ShoppingCartItem } from '@ngxp/shopping-c
 export class ShoppingCartItemListComponent {
 
     @Input()
-    shoppingCart: ShoppingCart;
+    shoppingCart!: ShoppingCart;
 
     @Output()
     updateQuantity = new EventEmitter<ResourceWith<QuantityUpdate>>();

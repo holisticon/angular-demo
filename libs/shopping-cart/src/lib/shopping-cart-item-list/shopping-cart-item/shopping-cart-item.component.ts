@@ -11,7 +11,7 @@ import { QuantityUpdate, ShoppingCartItem } from '@ngxp/shopping-cart-common';
 export class ShoppingCartItemComponent {
 
     @Input()
-    shoppingCartItem: ShoppingCartItem;
+    shoppingCartItem!: ShoppingCartItem;
 
     @Output()
     updateQuantity = new EventEmitter<ResourceWith<QuantityUpdate, ShoppingCartItem>>();

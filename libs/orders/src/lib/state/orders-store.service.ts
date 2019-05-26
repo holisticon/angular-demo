@@ -12,9 +12,9 @@ import { getOrders } from './orders.selectors';
 export class OrdersStore extends StoreService<OrdersPartialState> {
 
     @Select(() => getOrders)
-    getOrders: () => Observable<Order[]>;
+    getOrders!: () => Observable<Order[]>;
 
     @Dispatch(LoadOrdersAction)
-    loadOrders: () => void;
+    loadOrders!: () => void;
 
 }

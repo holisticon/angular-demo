@@ -11,6 +11,6 @@ import { getSearchResults } from './products.selectors';
 export class ProductsStore extends StoreService<ProductsPartialState> {
 
     @Select(() => getSearchResults)
-    getSearchResults: () => Observable<Product[]>;
+    getSearchResults!: () => Observable<Product[]>;
 
 }

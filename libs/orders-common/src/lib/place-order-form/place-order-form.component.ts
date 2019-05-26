@@ -14,11 +14,11 @@ import { NewOrder } from '../order.model';
 export class PlaceOrderFormComponent {
 
     @Input()
-    shoppingCart: ShoppingCart;
+    shoppingCart!: ShoppingCart;
 
     @Input()
     @OnNonNullChange()
-    userProfile: UserProfile;
+    userProfile!: UserProfile;
 
     @Output()
     placeOrder = new EventEmitter<NewOrder>();

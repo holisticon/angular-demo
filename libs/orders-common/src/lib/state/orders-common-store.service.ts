@@ -9,6 +9,6 @@ import { PlaceOrderAction } from './orders-common.actions';
 export class OrdersCommonStore extends StoreService<void> {
 
     @Dispatch(PlaceOrderAction)
-    placeOrder: (newOrder: NewOrder) => void;
+    placeOrder!: (newOrder: NewOrder) => void;
 
 }

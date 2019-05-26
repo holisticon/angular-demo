@@ -8,6 +8,6 @@ import { SearchProductsAction } from './products.actions';
 export class ProductsCommonStore extends StoreService<void> {
 
     @Dispatch(SearchProductsAction)
-    searchProducts: (query: string) => void;
+    searchProducts!: (query: string) => void;
 
 }

@@ -9,6 +9,6 @@ import { Address } from '@ngxp/user-profile-common';
 export class AddressComponent {
 
     @Input()
-    address: Address;
+    address!: Address;
 
 }

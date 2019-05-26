@@ -13,7 +13,7 @@ import { toNumber } from 'lodash-es';
 export class ProductListEntryComponent {
 
     @Input()
-    product: Product;
+    product!: Product;
 
     @Output()
     addToShoppingCart = new EventEmitter<AdditionToShoppingCart>();

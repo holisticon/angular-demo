@@ -12,7 +12,7 @@ export class UpdateQuantityFormComponent {
 
     @Input()
     @OnNonNullChange()
-    shoppingCartItem: Resource<ShoppingCartItem>;
+    shoppingCartItem!: Resource<ShoppingCartItem>;
 
     @Output()
     updateQuantity = new EventEmitter<ResourceWith<QuantityUpdate, ShoppingCartItem>>();
