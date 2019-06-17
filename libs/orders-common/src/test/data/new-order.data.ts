@@ -1,21 +1,19 @@
-import { addressBuilder, paymentOptionBuilder, userProfile } from '@ngxp/user-profile-common/test';
-import { Blueprint, createBlueprintBuilder, BlueprintFactory } from '@ngxp/builder';
-import * as faker from 'faker';
-import { random, sample } from 'lodash-es';
-import { getRandomValue, createResourceBlueprintBuilder } from '@ngxp/common/test';
+// tslint:disable: no-non-null-assertion
+
+import { BlueprintFactory } from '@ngxp/builder';
 import { Resource } from '@ngxp/common';
+import { createResourceBlueprintBuilder } from '@ngxp/common/test';
 import { NewOrder } from '@ngxp/orders-common';
 import { shoppingCartBuilder } from '@ngxp/shopping-cart-common/test';
-
-const minItemCount = 1;
-const maxItemCount = 3;
+import { userProfile } from '@ngxp/user-profile-common/test';
+import { sample } from 'lodash-es';
 
 const newOrderBlueprint: BlueprintFactory<NewOrder> = () => {
     return {
-        billingAddress: () => sample(userProfile.addresses),
-        shippingAddress: () => sample(userProfile.addresses),
+        billingAddress: () => sample(userProfile.addresses)!,
+        shippingAddress: () => sample(userProfile.addresses)!,
         shoppingCart: () => shoppingCartBuilder().build(),
-        payment: () => sample(userProfile.paymentOptions)
+        payment: () => sample(userProfile.paymentOptions)!
     };
 };
 

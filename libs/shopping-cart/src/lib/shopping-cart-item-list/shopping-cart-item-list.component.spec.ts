@@ -2,12 +2,12 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { ResourceWith } from '@ngxp/common';
-import { QuantityUpdate, ShoppingCart, ShoppingCartItem } from '@ngxp/shopping-cart-common';
-import { take } from 'rxjs/operators';
-import { ShoppingCartItemComponent } from './shopping-cart-item/shopping-cart-item.component';
-import { ShoppingCartItemListComponent } from './shopping-cart-item-list.component';
-import { UpdateQuantityFormComponent } from './shopping-cart-item/update-quantity-form/update-quantity-form.component';
+import { QuantityUpdate, ShoppingCartItem } from '@ngxp/shopping-cart-common';
 import { shoppingCart } from '@ngxp/shopping-cart-common/test';
+import { take } from 'rxjs/operators';
+import { ShoppingCartItemListComponent } from './shopping-cart-item-list.component';
+import { ShoppingCartItemComponent } from './shopping-cart-item/shopping-cart-item.component';
+import { UpdateQuantityFormComponent } from './shopping-cart-item/update-quantity-form/update-quantity-form.component';
 
 describe('ShoppingCartItemListComponent', () => {
     let component: ShoppingCartItemListComponent;
@@ -60,24 +60,24 @@ describe('ShoppingCartItemListComponent', () => {
             }
         };
 
-        shoppingCartItemRow.updateQuantity.emit(expectedQuantityUpdate);
-
         fixture.componentInstance.updateQuantity
             .pipe(take(1))
             .subscribe(quantityUpdate => {
                 expect(quantityUpdate).toEqual(expectedQuantityUpdate);
             });
+
+        shoppingCartItemRow.updateQuantity.emit(expectedQuantityUpdate);
     });
 
     it('emits an delete event when the shopping cart item row is emits one', () => {
         const shoppingCartItemRow: ShoppingCartItemComponent = fixture.debugElement.query(By.directive(ShoppingCartItemComponent)).componentInstance;
-
-        shoppingCartItemRow.delete.emit(shoppingCartItemRow.shoppingCartItem);
 
         fixture.componentInstance.delete
             .pipe(take(1))
             .subscribe(shoppingCartItem => {
                 expect(shoppingCartItem).toEqual(shoppingCartItemRow.shoppingCartItem);
             });
+
+        shoppingCartItemRow.delete.emit(shoppingCartItemRow.shoppingCartItem);
     });
 });

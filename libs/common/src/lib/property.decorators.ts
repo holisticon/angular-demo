@@ -3,7 +3,7 @@ import { isFunction, isNull, isUndefined, upperFirst } from 'lodash-es';
 export function OnNonNullChange(onNonNullChange?: string | Function) {
     return function (target: any, key: string) {
         return OnChange(
-            function(newValue, oldValue) {
+            function(this: typeof target, newValue: any, oldValue: any) {
                 if (!isNull(newValue)) {
                     resolveMethod(this, key, onNonNullChange)(newValue, oldValue);
                 }
@@ -15,7 +15,7 @@ export function OnNonNullChange(onNonNullChange?: string | Function) {
 export function OnChange(onChangeCallback?: string | Function) {
     return function (target: any, key: string) {
         return OnAssignment(
-            function(newValue, oldValue) {
+            function(this: typeof target, newValue: any, oldValue: any) {
                 if (newValue !== oldValue) {
                     resolveMethod(this, key, onChangeCallback)(newValue, oldValue);
                 }

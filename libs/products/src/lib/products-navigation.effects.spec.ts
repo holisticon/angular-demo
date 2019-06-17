@@ -1,3 +1,5 @@
+// tslint:disable: no-non-null-assertion
+
 import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { RouterNavigationAction, ROUTER_NAVIGATION } from '@ngrx/router-store';
@@ -34,7 +36,7 @@ describe('ProductsNavigationEffects', () => {
             routerNavigationAction = {
                 type: ROUTER_NAVIGATION,
                 payload: {
-                    event: null,
+                    event: null!,
                     routerState: {
                         url: '/products',
                         root: <any> {

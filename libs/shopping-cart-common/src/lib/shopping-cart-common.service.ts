@@ -1,7 +1,8 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AdditionToShoppingCart, ShoppingCart } from '@ngxp/shopping-cart-common';
-import { Observable } from 'rxjs';
+import { isNull } from 'lodash-es';
+import { EMPTY, Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
 @Injectable({
@@ -26,6 +27,12 @@ export class ShoppingCartCommonService {
     }
 
     private handleRedirect<T>(response: HttpResponse<any>) {
-        return this.httpClient.get<T>(response.headers.get('Location'));
+        const location = response.headers.get('Location');
+
+        if (isNull(location)) {
+            return EMPTY;
+        }
+
+        return this.httpClient.get<T>(location);
     }
 }

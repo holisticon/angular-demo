@@ -45,7 +45,7 @@ export class PlaceOrderFormComponent {
         return this.userProfile.paymentOptions;
     }
 
-    onSubmit(event) {
+    onSubmit(event: Event) {
         event.preventDefault();
 
         this.placeOrder.emit({

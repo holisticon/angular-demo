@@ -3,10 +3,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { ResourceWith } from '@ngxp/common';
 import { QuantityUpdate, ShoppingCartItem } from '@ngxp/shopping-cart-common';
-import { take } from 'rxjs/operators';
-import { UpdateQuantityFormComponent } from './update-quantity-form/update-quantity-form.component';
-import { ShoppingCartItemComponent } from './shopping-cart-item.component';
 import { shoppingCartItem } from '@ngxp/shopping-cart-common/test';
+import { take } from 'rxjs/operators';
+import { ShoppingCartItemComponent } from './shopping-cart-item.component';
+import { UpdateQuantityFormComponent } from './update-quantity-form/update-quantity-form.component';
 
 describe('ShoppingCartItemComponent', () => {
     let component: ShoppingCartItemComponent;
@@ -54,13 +54,13 @@ describe('ShoppingCartItemComponent', () => {
 
         const updateQuantityForm: UpdateQuantityFormComponent = fixture.debugElement.query(By.directive(UpdateQuantityFormComponent)).componentInstance;
 
-        updateQuantityForm.updateQuantity.emit(quantityUpdate);
-
         fixture.componentInstance.updateQuantity
             .pipe(take(1))
             .subscribe(expectedQuantityUpdate => {
                 expect(expectedQuantityUpdate).toEqual(expectedQuantityUpdate);
-            })
+            });
+
+        updateQuantityForm.updateQuantity.emit(quantityUpdate);
     });
 
     it('emits a delete event when the remove button is clicked', () => {

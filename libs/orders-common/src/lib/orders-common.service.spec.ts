@@ -48,6 +48,21 @@ describe('OrdersCommonService', () => {
 
             httpController.verify();
         });
+
+        it('returns an empty observable if the server response contains no location header', () => {
+            ordersCommonService
+                .placeOrder(newOrder)
+                .subscribe(() => fail());
+
+            const postRequest = httpController.expectOne('https://example.hypercontract.org/orders');
+
+            postRequest.flush(null, {
+                status: 201,
+                statusText: 'Created'
+            });
+
+            httpController.verify();
+        });
     });
 
 });

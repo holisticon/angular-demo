@@ -1,11 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { Resource } from '@ngxp/common';
-import { ShoppingCartItem } from '@ngxp/shopping-cart-common';
+import { shoppingCartItem } from '@ngxp/shopping-cart-common/test';
 import { take } from 'rxjs/operators';
 import { UpdateQuantityFormComponent } from './update-quantity-form.component';
-import { shoppingCartItem } from '@ngxp/shopping-cart-common/test';
 
 describe('UpdateQuantityFormComponent', () => {
     let component: UpdateQuantityFormComponent;
@@ -38,7 +36,7 @@ describe('UpdateQuantityFormComponent', () => {
     it('emits an updateQuantity event when the form is submitted', () => {
         const expectedQuantity = 2;
         const form = fixture.debugElement.query(By.css('form'));
-        const quantityFormControl = fixture.componentInstance.quantity.setValue(expectedQuantity);
+        fixture.componentInstance.quantity.setValue(expectedQuantity);
 
         fixture.componentInstance.updateQuantity
             .pipe(take(1))

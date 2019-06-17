@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { LoadSearchResultsAction, ProductsActionTypes, SearchResultsLoadedAction } from '@ngxp/products-common';
 import { Actions, Effect } from '@ngrx/effects';
+import { LoadSearchResultsAction, ProductsActionTypes, SearchResultsLoadedAction } from '@ngxp/products-common';
 import { DataPersistence } from '@nrwl/nx';
 import { map } from 'rxjs/operators';
 import { ProductService } from '../product.service';
