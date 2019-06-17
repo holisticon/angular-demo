@@ -8,12 +8,12 @@ import { routerReducer, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { NxModule } from '@nrwl/angular';
-import { storeFreeze } from 'ngrx-store-freeze';
 import { storeLogger } from 'ngrx-store-logger';
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AppEffects } from './state/app.effects';
+
 
 @NgModule({
     imports: [
@@ -29,7 +29,13 @@ import { AppEffects } from './state/app.effects';
         ], { initialNavigation: 'enabled' }),
         StoreModule.forRoot(
             { router: routerReducer },
-            { metaReducers: !environment.production ? [storeLogger(), storeFreeze] : [] }
+            {
+                metaReducers: !environment.production ? [storeLogger()] : [],
+                runtimeChecks: {
+                    strictStateImmutability: true,
+                    strictActionImmutability: true
+                }
+            }
         ),
         EffectsModule.forRoot([AppEffects]),
         !environment.production ? StoreDevtoolsModule.instrument() : [],
