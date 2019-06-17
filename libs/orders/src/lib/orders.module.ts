@@ -17,18 +17,7 @@ import { initialState as ordersInitialState, ordersReducer } from './state/order
             { path: '', pathMatch: 'full', component: OrdersComponent }
         ]),
         UserProfileCommonModule,
-        StoreModule.forFeature(
-            'orders',
-            ordersReducer,
-            {
-                initialState: ordersInitialState,
-                metaReducers: [reducer => {
-                    return (state, action) => {
-                        console.log(state);
-                        return reducer(state, action);
-                    }
-                }]
-            }),
+        StoreModule.forFeature('orders', ordersReducer, { initialState: ordersInitialState }),
         EffectsModule.forFeature([OrdersEffects])
     ],
     declarations: [
