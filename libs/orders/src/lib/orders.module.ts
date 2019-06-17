@@ -1,15 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { UserProfileCommonModule } from '@ngxp/user-profile-common';
 import { EffectsModule } from '@ngrx/effects';
-import { Store, StoreModule } from '@ngrx/store';
+import { StoreModule } from '@ngrx/store';
+import { UserProfileCommonModule } from '@ngxp/user-profile-common';
 import { OrderComponent } from './order/order.component';
 import { OrdersComponent } from './orders/orders.component';
-import { LoadOrdersAction } from './state/orders.actions';
-import { OrdersEffects } from './state/orders.effects';
-import { initialState as ordersInitialState, ordersReducer, OrdersState } from './state/orders.reducer';
 import { OrdersStore } from './state/orders-store.service';
+import { OrdersEffects } from './state/orders.effects';
+import { initialState as ordersInitialState, ordersReducer } from './state/orders.reducer';
 
 @NgModule({
     imports: [
@@ -18,7 +17,18 @@ import { OrdersStore } from './state/orders-store.service';
             { path: '', pathMatch: 'full', component: OrdersComponent }
         ]),
         UserProfileCommonModule,
-        StoreModule.forFeature('orders', ordersReducer, { initialState: ordersInitialState }),
+        StoreModule.forFeature(
+            'orders',
+            ordersReducer,
+            {
+                initialState: ordersInitialState,
+                metaReducers: [reducer => {
+                    return (state, action) => {
+                        console.log(state);
+                        return reducer(state, action);
+                    }
+                }]
+            }),
         EffectsModule.forFeature([OrdersEffects])
     ],
     declarations: [
