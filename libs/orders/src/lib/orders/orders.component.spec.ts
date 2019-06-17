@@ -1,14 +1,12 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { Order, OrderStatus } from '@ngxp/orders-common';
 import { StoreModule } from '@ngrx/store';
-import { of as observableOf } from 'rxjs';
+import { orders } from '@ngxp/orders-common/test';
+import { provideStoreServiceMock } from '@ngxp/store-service/testing';
 import { OrderComponent } from '../order/order.component';
 import { OrdersStore } from '../state/orders-store.service';
 import { OrdersComponent } from './orders.component';
-import { provideStoreServiceMock } from '@ngxp/store-service/testing';
-import { orders } from '@ngxp/orders-common/test';
 
 describe('OrdersComponent', () => {
     let component: OrdersComponent;
@@ -17,7 +15,12 @@ describe('OrdersComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [
-                StoreModule.forRoot({}),
+                StoreModule.forRoot({}, {
+                    runtimeChecks: {
+                        strictStateImmutability: true,
+                        strictActionImmutability: true
+                    }
+                }),
             ],
             declarations: [
                 OrdersComponent,

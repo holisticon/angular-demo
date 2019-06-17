@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
-import { DataPersistence } from '@nrwl/nx';
+import { DataPersistence } from '@nrwl/angular';
 import { map } from 'rxjs/operators';
 import { OrdersCommonService } from '../orders-common.service';
 import { OrderPlacedAction, OrdersCommonActionTypes, PlaceOrderAction } from './orders-common.actions';

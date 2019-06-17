@@ -7,8 +7,20 @@ import {
   BrowserDynamicTestingModule,
   platformBrowserDynamicTesting
 } from '@angular/platform-browser-dynamic/testing';
+import { addMatchers, initTestScheduler, getTestScheduler, resetTestScheduler } from 'jasmine-marbles';
 
 declare const require: any;
+
+// fix for "No test scheduler initialized" after updating to Angular 8
+// see https://github.com/synapse-wireless-labs/jasmine-marbles/issues/40#issuecomment-499785967
+const env = jasmine.getEnv();
+
+env.beforeAll(() => addMatchers());
+env.beforeEach(() => initTestScheduler());
+env.afterEach(() => {
+    getTestScheduler().flush();
+    resetTestScheduler();
+});
 
 // First, initialize the Angular testing environment.
 getTestBed().initTestEnvironment(

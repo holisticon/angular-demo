@@ -1,15 +1,14 @@
 import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
-import { Resource } from '@ngxp/common';
-import { LoadSearchResultsAction, Product, SearchResultsLoadedAction } from '@ngxp/products-common';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { StoreModule } from '@ngrx/store';
-import { DataPersistence } from '@nrwl/nx';
+import { LoadSearchResultsAction, SearchResultsLoadedAction } from '@ngxp/products-common';
+import { products } from '@ngxp/products-common/test';
+import { DataPersistence } from '@nrwl/angular';
 import { hot } from 'jasmine-marbles';
 import { Observable, of as observableOf } from 'rxjs';
 import { ProductService } from '../product.service';
 import { ProductsEffects } from './products.effects';
-import { products } from '@ngxp/products-common/test';
 
 describe('ProductsEffects', () => {
     let actions$: Observable<any>;
@@ -22,7 +21,12 @@ describe('ProductsEffects', () => {
         TestBed.configureTestingModule({
             imports: [
                 HttpClientModule,
-                StoreModule.forRoot({})
+                StoreModule.forRoot({}, {
+                    runtimeChecks: {
+                        strictStateImmutability: true,
+                        strictActionImmutability: true
+                    }
+                }),
             ],
             providers: [
                 ProductsEffects,

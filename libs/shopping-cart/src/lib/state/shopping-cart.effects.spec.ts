@@ -1,19 +1,19 @@
 import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
-import { ResourceWith } from '@ngxp/common';
-import { Order, OrderPlacedAction, OrderStatus } from '@ngxp/orders-common';
-import { QuantityUpdate, ShoppingCart, ShoppingCartItem, ShoppingCartLoadedAction } from '@ngxp/shopping-cart-common';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { StoreModule } from '@ngrx/store';
-import { DataPersistence } from '@nrwl/nx';
+import { ResourceWith } from '@ngxp/common';
+import { OrderPlacedAction } from '@ngxp/orders-common';
+import { order } from '@ngxp/orders-common/test';
+import { QuantityUpdate, ShoppingCartItem, ShoppingCartLoadedAction } from '@ngxp/shopping-cart-common';
+import { shoppingCart, shoppingCartItem } from '@ngxp/shopping-cart-common/test';
+import { DataPersistence } from '@nrwl/angular';
 import { hot } from 'jasmine-marbles';
 import { Observable, of as observableOf } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { ShoppingCartService } from '../shopping-cart.service';
 import { DeleteShoppingCartItemAction, LoadShoppingCartAction, UpdateShoppingCartItemQuantityAction } from './shopping-cart.actions';
 import { ShoppingCartEffects } from './shopping-cart.effects';
-import { shoppingCart, shoppingCartItem } from '@ngxp/shopping-cart-common/test';
-import { order } from '@ngxp/orders-common/test';
 
 describe('ShoppingCartEffects', () => {
     let actions$: Observable<any>;
@@ -24,7 +24,12 @@ describe('ShoppingCartEffects', () => {
         TestBed.configureTestingModule({
             imports: [
                 HttpClientModule,
-                StoreModule.forRoot({})
+                StoreModule.forRoot({}, {
+                    runtimeChecks: {
+                        strictStateImmutability: true,
+                        strictActionImmutability: true
+                    }
+                }),
             ],
             providers: [
                 ShoppingCartEffects,

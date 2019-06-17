@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
+import { Actions, Effect, ofType } from '@ngrx/effects';
 import { OrdersCommonActionTypes } from '@ngxp/orders-common';
 import { ShoppingCartLoadedAction } from '@ngxp/shopping-cart-common';
-import { Actions, Effect, ofType } from '@ngrx/effects';
-import { DataPersistence } from '@nrwl/nx';
+import { DataPersistence } from '@nrwl/angular';
 import { map } from 'rxjs/operators';
 import { ShoppingCartService } from '../shopping-cart.service';
 import { DeleteShoppingCartItemAction, LoadShoppingCartAction, ShoppingCartActionTypes, UpdateShoppingCartItemQuantityAction } from './shopping-cart.actions';

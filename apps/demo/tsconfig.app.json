@@ -1,8 +1,7 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../dist/out-tsc/apps/demo",
-    "module": "es2015"
+    "outDir": "../../dist/out-tsc"
   },
   "include": [
     "**/*.ts",
@@ -12,8 +11,5 @@
     "../../libs/user-profile/src/index.ts",
     "../../libs/orders/src/index.ts"
   ],
-  "exclude": [
-    "**/*.spec.ts",
-    "src/test.ts"
-  ]
+  "exclude": ["**/*.spec.ts", "src/test.ts"]
 }

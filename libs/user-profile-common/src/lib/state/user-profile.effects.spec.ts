@@ -2,14 +2,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { StoreModule } from '@ngrx/store';
-import { DataPersistence } from '@nrwl/nx';
+import { userProfile } from '@ngxp/user-profile-common/test';
+import { DataPersistence } from '@nrwl/angular';
 import { hot } from 'jasmine-marbles';
 import { Observable, of as observableOf } from 'rxjs';
-import { UserProfile } from '../user-profile.model';
 import { UserProfileService } from '../user-profile.service';
 import { LoadUserProfileAction, UserProfileLoadedAction } from './user-profile.actions';
 import { UserProfileEffects } from './user-profile.effects';
-import { userProfile } from '@ngxp/user-profile-common/test';
 
 describe('UserProfileEffects', () => {
     let actions$: Observable<any>;
@@ -20,7 +19,12 @@ describe('UserProfileEffects', () => {
         TestBed.configureTestingModule({
             imports: [
                 HttpClientModule,
-                StoreModule.forRoot({})
+                StoreModule.forRoot({}, {
+                    runtimeChecks: {
+                        strictStateImmutability: true,
+                        strictActionImmutability: true
+                    }
+                }),
             ],
             providers: [
                 UserProfileEffects,

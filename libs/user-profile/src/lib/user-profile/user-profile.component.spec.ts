@@ -1,11 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { AddressComponent, PaymentOptionComponent, UserProfile, UserProfileCommonStore } from '@ngxp/user-profile-common';
 import { StoreModule } from '@ngrx/store';
-import { of as observableOf } from 'rxjs';
-import { UserProfileComponent } from './user-profile.component';
-import { provideStoreServiceMock, StoreServiceMock } from '@ngxp/store-service/testing';
+import { provideStoreServiceMock } from '@ngxp/store-service/testing';
+import { AddressComponent, PaymentOptionComponent, UserProfileCommonStore } from '@ngxp/user-profile-common';
 import { userProfile } from '@ngxp/user-profile-common/test';
+import { UserProfileComponent } from './user-profile.component';
 
 describe('UserProfileComponent', () => {
     let component: UserProfileComponent;
@@ -14,7 +13,12 @@ describe('UserProfileComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [
-                StoreModule.forRoot({})
+                StoreModule.forRoot({}, {
+                    runtimeChecks: {
+                        strictStateImmutability: true,
+                        strictActionImmutability: true
+                    }
+                }),
             ],
             declarations: [
                 UserProfileComponent,

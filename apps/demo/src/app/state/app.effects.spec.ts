@@ -2,10 +2,10 @@
 import { TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { SearchProductsAction } from '@ngxp/products-common';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { StoreModule } from '@ngrx/store';
-import { DataPersistence } from '@nrwl/nx';
+import { SearchProductsAction } from '@ngxp/products-common';
+import { DataPersistence } from '@nrwl/angular';
 import { hot } from 'jasmine-marbles';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
@@ -19,7 +19,12 @@ describe('AppEffects', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [
-                StoreModule.forRoot({}),
+                StoreModule.forRoot({}, {
+                    runtimeChecks: {
+                        strictStateImmutability: true,
+                        strictActionImmutability: true
+                    }
+                }),
                 RouterTestingModule
             ],
             providers: [

@@ -7,17 +7,13 @@ import { EffectsModule } from '@ngrx/effects';
 import { routerReducer, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { NxModule } from '@nrwl/nx';
-import { storeFreeze } from 'ngrx-store-freeze';
+import { NxModule } from '@nrwl/angular';
 import { storeLogger } from 'ngrx-store-logger';
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AppEffects } from './state/app.effects';
 
-export function logger(reducer) {
-    return storeLogger()(reducer);
-}
 
 @NgModule({
     imports: [
@@ -25,15 +21,21 @@ export function logger(reducer) {
         HttpClientModule, // see https://github.com/angular/angular-cli/issues/10170
         NxModule.forRoot(),
         RouterModule.forRoot([
-            { path: '', loadChildren: '@ngxp/homepage#HomepageModule' },
-            { path: 'products', loadChildren: '@ngxp/products#ProductsModule' },
-            { path: 'shopping-cart', loadChildren: '@ngxp/shopping-cart#ShoppingCartModule' },
-            { path: 'user-profile', loadChildren: '@ngxp/user-profile#UserProfileModule' },
-            { path: 'orders', loadChildren: '@ngxp/orders#OrdersModule' }
+            { path: '', loadChildren: () => import('@ngxp/homepage').then(m => m.HomepageModule) },
+            { path: 'products', loadChildren: () => import('@ngxp/products').then(m => m.ProductsModule) },
+            { path: 'shopping-cart', loadChildren: () => import('@ngxp/shopping-cart').then(m => m.ShoppingCartModule) },
+            { path: 'user-profile', loadChildren: () => import('@ngxp/user-profile').then(m => m.UserProfileModule) },
+            { path: 'orders', loadChildren: () => import('@ngxp/orders').then(m => m.OrdersModule) }
         ], { initialNavigation: 'enabled' }),
         StoreModule.forRoot(
             { router: routerReducer },
-            { metaReducers: !environment.production ? [logger, storeFreeze] : [] }
+            {
+                metaReducers: !environment.production ? [storeLogger()] : [],
+                runtimeChecks: {
+                    strictStateImmutability: true,
+                    strictActionImmutability: true
+                }
+            }
         ),
         EffectsModule.forRoot([AppEffects]),
         !environment.production ? StoreDevtoolsModule.instrument() : [],

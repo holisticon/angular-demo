@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import { LoadSearchResultsAction, ProductsActionTypes, SearchResultsLoadedAction } from '@ngxp/products-common';
-import { DataPersistence } from '@nrwl/nx';
+import { DataPersistence } from '@nrwl/angular';
 import { map } from 'rxjs/operators';
 import { ProductService } from '../product.service';
 import { ProductsPartialState } from './products.reducer';

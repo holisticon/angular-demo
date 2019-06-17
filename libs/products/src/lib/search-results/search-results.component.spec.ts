@@ -1,17 +1,15 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { getId, Resource } from '@ngxp/common';
-import { Product } from '@ngxp/products-common';
-import { AdditionToShoppingCart, AddToShoppingCartAction, ShoppingCartCommonStore } from '@ngxp/shopping-cart-common';
-import { Store, StoreModule } from '@ngrx/store';
+import { StoreModule } from '@ngrx/store';
+import { getId } from '@ngxp/common';
 import { expectElementFromFixture } from '@ngxp/common/test';
-import { of as observableOf } from 'rxjs';
+import { product, products } from '@ngxp/products-common/test';
+import { AdditionToShoppingCart, ShoppingCartCommonStore } from '@ngxp/shopping-cart-common';
+import { provideStoreServiceMock } from '@ngxp/store-service/testing';
 import { ProductListComponent } from '../product-list/product-list.component';
 import { ProductsStore } from '../state/products-store.service';
 import { SearchResultsComponent } from './search-results.component';
-import { provideStoreServiceMock } from '@ngxp/store-service/testing';
-import { products, product } from '@ngxp/products-common/test';
 
 describe('SearchResultsComponent', () => {
     let component: SearchResultsComponent;
@@ -23,7 +21,12 @@ describe('SearchResultsComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [
-                StoreModule.forRoot({}),
+                StoreModule.forRoot({}, {
+                    runtimeChecks: {
+                        strictStateImmutability: true,
+                        strictActionImmutability: true
+                    }
+                }),
             ],
             declarations: [
                 ProductListComponent,
