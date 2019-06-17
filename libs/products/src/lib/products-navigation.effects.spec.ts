@@ -1,9 +1,8 @@
 import { TestBed } from '@angular/core/testing';
-import { Params } from '@angular/router';
-import { LoadSearchResultsAction } from '@ngxp/products-common';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { RouterNavigationAction, ROUTER_NAVIGATION } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
+import { LoadSearchResultsAction } from '@ngxp/products-common';
 import { cold, hot } from 'jasmine-marbles';
 import { Observable } from 'rxjs';
 import { ProductsNavigationEffects } from './products-navigation.effects';
@@ -29,7 +28,7 @@ describe('ProductsNavigationEffects', () => {
     });
 
     describe('loadSearchResultsOnNavigate', () => {
-        let routerNavigationAction: RouterNavigationAction<RouterStateUrl>;
+        let routerNavigationAction: RouterNavigationAction;
 
         beforeEach(() => {
             routerNavigationAction = {
@@ -38,8 +37,10 @@ describe('ProductsNavigationEffects', () => {
                     event: null,
                     routerState: {
                         url: '/products',
-                        params: {},
-                        queryParams: { query }
+                        root: <any> {
+                            queryParams: { query },
+
+                        }
                     }
                 }
             };
@@ -54,7 +55,7 @@ describe('ProductsNavigationEffects', () => {
         });
 
         it('dispatches a LoadSearchResultsAction with NULL as query when the route contains no query param', () => {
-            routerNavigationAction.payload.routerState.queryParams = {};
+            routerNavigationAction.payload.routerState.root.queryParams = {};
 
             actions$ = hot('-a-|', { a: routerNavigationAction });
 
@@ -74,10 +75,3 @@ describe('ProductsNavigationEffects', () => {
         });
     });
 });
-
-// TODO: remove duplication
-interface RouterStateUrl {
-    url: string;
-    params: Params;
-    queryParams: Params;
-}

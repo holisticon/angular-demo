@@ -799,10 +799,10 @@ export class ProductsNavigationEffects {
     loadSearchResultsOnNavigate$ = this.actions$
         .ofType(ROUTER_NAVIGATION)
         .pipe(
-            map((action: RouterNavigationAction<RouterStateUrl>) => action.payload),
+            map((action: RouterNavigationAction) => action.payload),
             map(routerNavigationPayload => routerNavigationPayload.routerState),
             filter(routerState => routerState.url.startsWith('/products')),
-            map(routerState => routerState.queryParams.query),
+            map(routerState => routerState.root.queryParams.query),
             map(query => defaultTo(query, null)),
             map(query => new LoadSearchResultsAction(query))
         );
