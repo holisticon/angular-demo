@@ -21,7 +21,12 @@ describe('ProductsEffects', () => {
         TestBed.configureTestingModule({
             imports: [
                 HttpClientModule,
-                StoreModule.forRoot({})
+                StoreModule.forRoot({}, {
+                    runtimeChecks: {
+                        strictStateImmutability: true,
+                        strictActionImmutability: true
+                    }
+                }),
             ],
             providers: [
                 ProductsEffects,

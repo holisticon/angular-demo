@@ -18,7 +18,12 @@ describe('ProductsNavigationEffects', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [
-                StoreModule.forRoot({})
+                StoreModule.forRoot({}, {
+                    runtimeChecks: {
+                        strictStateImmutability: true,
+                        strictActionImmutability: true
+                    }
+                }),
             ],
             providers: [
                 ProductsNavigationEffects,

@@ -2,22 +2,20 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
+import { StoreModule } from '@ngrx/store';
 import { ResourceWith } from '@ngxp/common';
-import { NewOrder, PlaceOrderAction, PlaceOrderFormComponent, OrdersCommonStore } from '@ngxp/orders-common';
-import { QuantityUpdate, ShoppingCart, ShoppingCartItem } from '@ngxp/shopping-cart-common';
-import { UserProfile, UserProfileCommonStore } from '@ngxp/user-profile-common';
-import { Store, StoreModule } from '@ngrx/store';
-import { BehaviorSubject, Observable, of as observableOf } from 'rxjs';
+import { OrdersCommonStore, PlaceOrderFormComponent } from '@ngxp/orders-common';
+import { newOrder } from '@ngxp/orders-common/test';
+import { QuantityUpdate, ShoppingCartItem } from '@ngxp/shopping-cart-common';
+import { emptyShoppingCart, shoppingCart, shoppingCartItem } from '@ngxp/shopping-cart-common/test';
+import { provideStoreServiceMock, StoreServiceMock } from '@ngxp/store-service/testing';
+import { UserProfileCommonStore } from '@ngxp/user-profile-common';
+import { userProfile } from '@ngxp/user-profile-common/test';
 import { ShoppingCartItemListComponent } from '../shopping-cart-item-list/shopping-cart-item-list.component';
 import { ShoppingCartItemComponent } from '../shopping-cart-item-list/shopping-cart-item/shopping-cart-item.component';
 import { ShoppingCartStore } from '../state/shopping-cart-store.service';
-import { DeleteShoppingCartItemAction, UpdateShoppingCartItemQuantityAction } from '../state/shopping-cart.actions';
 import { ShoppingCartIsEmptyPipe } from './shopping-cart-is-empty.pipe';
 import { ShoppingCartComponent } from './shopping-cart.component';
-import { provideStoreServiceMock, StoreServiceMock } from '@ngxp/store-service/testing';
-import { shoppingCart, emptyShoppingCart, shoppingCartItem } from '@ngxp/shopping-cart-common/test';
-import { userProfile } from '@ngxp/user-profile-common/test';
-import { newOrder } from '@ngxp/orders-common/test';
 
 describe('ShoppingCartComponent', () => {
     let component: ShoppingCartComponent;
@@ -29,7 +27,12 @@ describe('ShoppingCartComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [
-                StoreModule.forRoot({}),
+                StoreModule.forRoot({}, {
+                    runtimeChecks: {
+                        strictStateImmutability: true,
+                        strictActionImmutability: true
+                    }
+                }),
                 FormsModule,
                 ReactiveFormsModule
             ],

@@ -2,11 +2,11 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
-import { ProductSearchFormComponent, SearchProductsAction, ProductsCommonStore } from '@ngxp/products-common';
-import { Store, StoreModule } from '@ngrx/store';
+import { StoreModule } from '@ngrx/store';
 import { expectElementFromFixture } from '@ngxp/common/test';
-import { HomepageComponent } from './homepage.component';
+import { ProductsCommonStore, ProductSearchFormComponent } from '@ngxp/products-common';
 import { provideStoreServiceMock } from '@ngxp/store-service/testing';
+import { HomepageComponent } from './homepage.component';
 
 describe('HomepageComponent', () => {
     let component: HomepageComponent;
@@ -17,7 +17,12 @@ describe('HomepageComponent', () => {
         TestBed.configureTestingModule({
             imports: [
                 RouterTestingModule,
-                StoreModule.forRoot({})
+                StoreModule.forRoot({}, {
+                    runtimeChecks: {
+                        strictStateImmutability: true,
+                        strictActionImmutability: true
+                    }
+                }),
             ],
             declarations: [
                 HomepageComponent,
