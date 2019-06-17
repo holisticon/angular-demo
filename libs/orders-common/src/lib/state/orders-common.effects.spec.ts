@@ -2,15 +2,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { StoreModule } from '@ngrx/store';
-import { DataPersistence } from '@nrwl/nx';
+import { newOrder, order } from '@ngxp/orders-common/test';
+import { DataPersistence } from '@nrwl/angular';
 import { hot } from 'jasmine-marbles';
 import { Observable, of as observableOf } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { OrdersCommonService } from '../orders-common.service';
 import { OrderPlacedAction, PlaceOrderAction } from './orders-common.actions';
 import { OrdersCommonEffects } from './orders-common.effects';
-import { NewOrder, Order, OrderStatus } from '../order.model';
-import { orderBuilder, order, newOrder } from '@ngxp/orders-common/test';
 
 describe('OrdersCommonEffects', () => {
     let actions$: Observable<any>;

@@ -2,15 +2,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { StoreModule } from '@ngrx/store';
-import { DataPersistence } from '@nrwl/nx';
+import { additionToShoppingCart, shoppingCart } from '@ngxp/shopping-cart-common/test';
+import { DataPersistence } from '@nrwl/angular';
 import { hot } from 'jasmine-marbles';
 import { Observable, of as observableOf } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { ShoppingCartCommonService } from '../shopping-cart-common.service';
-import { ShoppingCartCommonEffects } from './shopping-cart-common.effects';
-import { ShoppingCart } from '../shopping-cart.model';
 import { AddToShoppingCartAction, ShoppingCartLoadedAction } from './shopping-cart-common.actions';
-import { shoppingCart, additionToShoppingCart } from '@ngxp/shopping-cart-common/test';
+import { ShoppingCartCommonEffects } from './shopping-cart-common.effects';
 
 describe('ShoppingCartCommonEffects', () => {
     let actions$: Observable<any>;
