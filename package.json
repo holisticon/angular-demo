@@ -27,7 +27,7 @@
   },
   "private": true,
   "dependencies": {
-    "@nrwl/angular": "8.1.0",
+    "@nrwl/angular": "8.1.2",
     "@angular/animations": "8.0.2",
     "@angular/common": "8.0.2",
     "@angular/compiler": "8.0.2",
@@ -45,7 +45,7 @@
     "@ngxp/store-service": "5.0.1",
     "core-js": "^2.6.5",
     "lodash-es": "4.17.11",
-    "rxjs": "~6.5.2",
+    "rxjs": "~6.4.0",
     "tslib": "^1.9.3",
     "viz": "^0.0.1",
     "zone.js": "~0.9.1"
@@ -59,7 +59,7 @@
     "@commitlint/config-conventional": "7.5.0",
     "@ngrx/schematics": "8.0.1",
     "@ngrx/store-devtools": "8.0.1",
-    "@nrwl/workspace": "8.1.0",
+    "@nrwl/workspace": "8.1.2",
     "@types/faker": "4.1.5",
     "@types/jasmine": "~3.3.10",
     "@types/jasminewd2": "~2.0.6",
