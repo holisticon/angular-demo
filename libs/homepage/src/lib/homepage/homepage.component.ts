@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { SearchProductsAction, ProductsCommonStore } from '@ngxp/products-common';
-import { Store } from '@ngrx/store';
+import { ProductsCommonStore } from '@ngxp/products-common';
 
 @Component({
   selector: 'ngxp-homepage',

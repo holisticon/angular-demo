@@ -1,27 +1,12 @@
-import { Action } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
 import { AdditionToShoppingCart, ShoppingCart } from '../shopping-cart.model';
 
-export enum ShoppingCartCommonActionTypes {
-    AddToShoppingCart = '[Shopping Cart] add to shopping cart',
-    ShoppingCartLoaded = '[Shopping Cart] shopping cart loaded'
-}
+export const addToShoppingCartAction = createAction(
+    '[Shopping Cart] add to shopping cart',
+    props<{ additionToShoppingCart: AdditionToShoppingCart }>()
+);
 
-export class AddToShoppingCartAction implements Action {
-    readonly type = ShoppingCartCommonActionTypes.AddToShoppingCart;
-
-    constructor(
-        public payload: AdditionToShoppingCart
-    ) { }
-}
-
-export class ShoppingCartLoadedAction implements Action {
-    readonly type = ShoppingCartCommonActionTypes.ShoppingCartLoaded;
-
-    constructor(
-        public payload: ShoppingCart
-    ) { }
-}
-
-export type ShoppingCartCommonAction =
-    | AddToShoppingCartAction
-    | ShoppingCartLoadedAction;
+export const shoppingCartLoadedAction = createAction(
+    '[Shopping Cart] shopping cart loaded',
+    props<{ shoppingCart: ShoppingCart }>()
+);

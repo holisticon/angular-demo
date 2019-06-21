@@ -1,23 +1,11 @@
-import { Action } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
 import { UserProfile } from '../user-profile.model';
 
-export enum UserProfileActionTypes {
-    LoadUserProfile = '[UserProfile] load user profile',
-    UserProfileLoaded = '[UserProfile] user profile Loaded'
-}
+export const loadUserProfileAction = createAction(
+    '[UserProfile] load user profile'
+);
 
-export class LoadUserProfileAction implements Action {
-    readonly type = UserProfileActionTypes.LoadUserProfile;
-}
-
-export class UserProfileLoadedAction implements Action {
-    readonly type = UserProfileActionTypes.UserProfileLoaded;
-
-    constructor(
-        public payload: UserProfile
-    ) {}
-}
-
-export type UserProfileAction =
-    | LoadUserProfileAction
-    | UserProfileLoadedAction;
+export const userProfileLoadedAction = createAction(
+    '[UserProfile] user profile Loaded',
+    props<{ userProfile: UserProfile }>()
+);

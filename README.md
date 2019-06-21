@@ -55,11 +55,11 @@ The app module is the entry-point for Angular's bootstrapper and configures appl
 …
     imports: [
         RouterModule.forRoot([
-            { path: '', loadChildren: '@ngxp/homepage#HomepageModule' },
-            { path: 'products', loadChildren: '@ngxp/products#ProductsModule' },
-            { path: 'shopping-cart', loadChildren: '@ngxp/shopping-cart#ShoppingCartModule' },
-            { path: 'user-profile', loadChildren: '@ngxp/user-profile#UserProfileModule' },
-            { path: 'orders', loadChildren: '@ngxp/orders#OrdersModule' }
+            { path: '', loadChildren: () => import('@ngxp/homepage').then(m => m.HomepageModule) },
+            { path: 'products', loadChildren: () => import('@ngxp/products').then(m => m.ProductsModule) },
+            { path: 'shopping-cart', loadChildren: () => import('@ngxp/shopping-cart').then(m => m.ShoppingCartModule) },
+            { path: 'user-profile', loadChildren: () => import('@ngxp/user-profile').then(m => m.UserProfileModule) },
+            { path: 'orders', loadChildren: () => import('@ngxp/orders').then(m => m.OrdersModule) }
         ]),
     ]
 …
@@ -495,7 +495,7 @@ export class UserProfileComponent {
     constructor(
         private store: Store<UserProfileAppState>
     ) {
-        this.addresses = this.store.select(getAddresses());
+        this.addresses = this.store.select(getAddresses);
     }
 }
 ```
@@ -546,44 +546,34 @@ export class HomepageComponent {
     ) {}
 
     onProductSearch(query: string) {
-        this.store.dispatch(new SearchProductsAction(query));
+        this.store.dispatch(searchProductsAction({ query }));
     }
 }
 ```
 
-In the example the `HomepageComponent` handles the `search` event of the product search form and triggers a `SearchProductsAction` with the search query as `payload`.
+In the example the `HomepageComponent` handles the `search` event of the product search form and triggers a `searchProductsAction` with the search query as `payload`.
 
 The actual state change happens in the reducer functions. When an action is dispatched, it is passed to each reducer along with the current state. Each reducer then decides whether to act upon the given action or not.
 
 ```ts
 // products.reducer.ts
 
-export function productsReducer(state = initialState, action: ProductsActions): ProductsState {
-    switch (action.type) {
-        case ProductsActionTypes.LoadSearchResults: {
-            return {
-                ...state,
-                query: action.payload,
-                searchResults: []
-            };
-        }
-
-        case ProductsActionTypes.SearchResultsLoaded: {
-            return {
-                ...state,
-                searchResults: action.payload
-            };
-        }
-
-        default:
-            return state;
-    }
-}
+export const productsReducer = createReducer(initialState,
+    on(loadSearchResultsAction, (state, { query }) => ({
+        ...state,
+        query,
+        searchResults: []
+    })),
+    on(searchResultsLoadedAction, (state, { searchResults }) => ({
+        ...state,
+        searchResults
+    }))
+);
 ```
 
-The reducer in this example handles the `LoadSearchResults` and `SearchResultsLoaded`. In case of the `LoadSearchResults` action, the search query is stored in the state and any previous search results are reset.
+The reducer in this example handles the `loadSearchResultsAction` and `searchResultsLoadedAction`. In case of the `loadSearchResultsAction`, the search query is stored in the state and any previous search results are reset.
 
-The `SearchProducts` action from the previous example on the other hand would not cause a state change. Instead, the given state is returned untouched. This is an important aspect of reducers, as this means that the object identity only changes when there have been changes to the state. Combined with the `OnnPush` change detection strategy, this greatly improves the application's performance.
+The `searchProductsAction` from the previous example on the other hand would not cause a state change. Instead, the given state is returned untouched. This is an important aspect of reducers, as this means that the object identity only changes when there have been changes to the state. Combined with the `OnPush` change detection strategy, this greatly improves the application's performance.
 
 ### Triggering Side-Effects
 Not all dispatched actions are handled directly by a reducer function. Actions can be used to trigger side-effects, for example asynchronous requests to the backend, triggering UI notifications or causing route changes. The result of those side-effects can lead to new actions which then trigger other effects or cause state changes via reducers.
@@ -591,35 +581,29 @@ Not all dispatched actions are handled directly by a reducer function. Actions c
 ```ts
 // products.effects.ts
 
+@Injectable()
 export class ProductsEffects {
 
-    @Effect()
-    loadSearchResults$ = this.dataPersistence.fetch(
-        ProductsActionTypes.LoadSearchResults,
-        {
-            run: (action: LoadSearchResultsAction, state: ProductsAppState) => {
-                return this.productService
-                    .searchProducts(action.payload)
-                    .pipe(
-                        map(products => new SearchResultsLoadedAction(products))
-                    );
-            },
-
-            onError: (action: LoadSearchResultsAction, error) => {
-                console.error('Error', error);
-            }
-        }
+    loadSearchResults$ = createEffect(
+        () => this.actions$.pipe(
+            ofType(loadSearchResultsAction),
+            switchMap(({ query }) => this.productService
+                .searchProducts(query)
+                .pipe(
+                    map(searchResults => searchResultsLoadedAction({ searchResults }))
+                )
+            )
+        )
     );
 
     constructor(
         private actions$: Actions,
-        private dataPersistence: DataPersistence<ProductsAppState>,
         private productService: ProductService
     ) {}
 }
 ```
 
-The `LoadSearchResults` action triggers a call of the `searchProducts` method of the `productService`. The results are returned asynchronously, leading to the dispatch of the `SearchResultsLoaded` action.
+The `loadSearchResultsAction` triggers a call of the `searchProducts` method of the `productService`. The results are returned asynchronously, leading to the dispatch of the `searchResultsLoadedAction`.
 
 ### Segmenting the Store by Modules
 While there is only one store for the whole application, it is possible to define one or more reducers per module. That way, the structure of the store is aligned to the way the modules are organized within the application.
@@ -693,14 +677,18 @@ export { ShoppingCartModule } from './lib/shopping-cart.module';
 ```ts
 // shopping-cart/src/lib/state/shopping-cart.actions.ts
 
-export enum ShoppingCartActionTypes {
-    UpdateShoppingCartItemQuantity = '[Shopping Cart] update shopping cart item quantity',
-    DeleteShoppingCartItem = '[Shopping Cart] delete shopping cart item'
-}
+export const loadShoppingCartAction = createAction(
+    '[Shopping Cart] load shopping cart');
 
-export class UpdateShoppingCartItemQuantityAction implements Action {…}
+export const updateShoppingCartItemQuantityAction = createAction(
+    '[Shopping Cart] update shopping cart item quantity',
+    props<{ quantityUpdate: ResourceWith<QuantityUpdate> }>()
+);
 
-export class DeleteShoppingCartItemAction implements Action {…}
+export const deleteShoppingCartItemAction = createAction(
+    '[Shopping Cart] delete shopping cart item',
+    props<{ shoppingCartItem: ShoppingCartItem }>()
+);
 ```
 
 The `shopping-cart` lib keeps its actions, reducer (and therefore state interface) and selectors private by not exposing them through the `index.ts`.
@@ -714,24 +702,28 @@ export * from './lib/state/shopping-cart-common.actions';
 ```ts
 // shopping-cart-common/src/lib/state/shopping-cart-common.actions.ts
 
-export enum ShoppingCartCommonActionTypes {
-    AddToShoppingCart = '[Shopping Cart] add to shopping cart'
-}
+export const addToShoppingCartAction = createAction(
+    '[Shopping Cart] add to shopping cart',
+    props<{ additionToShoppingCart: AdditionToShoppingCart }>()
+);
 
-export class AddToShoppingCartAction implements Action {…}
+export const shoppingCartLoadedAction = createAction(
+    '[Shopping Cart] shopping cart loaded',
+    props<{ shoppingCart: ShoppingCart }>()
+);
 ```
 
-The `shopping-cart-common` lib exports its `AddToShoppingCartAction` through the `index.ts`, making it possible to dispatch its actions in other modules.
+The `shopping-cart-common` lib exports its `addToShoppingCartAction` and `shoppingCartLoadedAction` through the `index.ts`, making it possible to dispatch these actions in other modules.
 
 ```ts
 // products/src/lib/search-results/search-results.component.ts
 
-import { AdditionToShoppingCart, AddToShoppingCartAction } from '@ngxp/shopping-cart-common';
+import { AdditionToShoppingCart, addToShoppingCartAction } from '@ngxp/shopping-cart-common';
 
 export class SearchResultsComponent {
 …
     onAddToShoppingCart(additionToShoppingCart: AdditionToShoppingCart) {
-        this.store.dispatch(new AddToShoppingCartAction(additionToShoppingCart));
+        this.store.dispatch(addToShoppingCartAction({ additionToShoppingCart }));
     }
 …
 }
@@ -756,30 +748,30 @@ export class HomepageComponent {
     ) {}
 
     onProductSearch(query: string) {
-        this.store.dispatch(new SearchProductsAction(query));
+        this.store.dispatch(searchProductsAction({ query }));
     }
 }
 ```
 
-The `HomepageComponent` renders a product search form and dispatches a `SearchProductsAction` on submit. However, it makes no assumptions on what "searching for a product" actually entails.
+The `HomepageComponent` renders a product search form and dispatches a `searchProductsAction` on submit. However, it makes no assumptions on what "searching for a product" actually entails.
 
 ```ts
 // app.effects.ts
 
 export class AppEffects {
 
-    @Effect({ dispatch: false })
-    navigateToProductSearchResults$ = this.actions$
-        .ofType(ProductsActionTypes.SearchProducts)
-        .pipe(
-            map((action: SearchProductsAction) => action.payload),
-            map(query => {
+    navigateToProductSearchResults$ = createEffect(
+        () => this.actions$.pipe(
+            ofType(searchProductsAction),
+            map(({ query }) => {
                 this.router.navigate(
                     ['products'],
                     { queryParams: { query } }
                 )
             })
-        );
+        ),
+        { dispatch: false }
+    );
 
     constructor(
         private actions$: Actions,
@@ -795,28 +787,27 @@ Instead the application itself acts upon that action by causing a route change t
 
 export class ProductsNavigationEffects {
 
-    @Effect()
-    loadSearchResultsOnNavigate$ = this.actions$
-        .ofType(ROUTER_NAVIGATION)
-        .pipe(
-            map((action: RouterNavigationAction) => action.payload),
-            map(routerNavigationPayload => routerNavigationPayload.routerState),
-            filter(routerState => routerState.url.startsWith('/products')),
-            map(routerState => routerState.root.queryParams.query),
-            map(query => defaultTo(query, null)),
-            map(query => new LoadSearchResultsAction(query))
-        );
+    loadSearchResultsOnNavigate$ = createEffect(
+        () => this.actions$.pipe(
+        ofType(ROUTER_NAVIGATION),
+        map((action: RouterNavigationAction) => action.payload),
+        map(routerNavigationPayload => routerNavigationPayload.routerState),
+        filter(routerState => routerState.url.startsWith('/products')),
+        map(routerState => routerState.root.queryParams.query),
+        map((query: string) => defaultTo(query, null)),
+        map(query => loadSearchResultsAction({ query }))
+    ));
 
 }
 ```
 
-Now within the `ProductsModule`, the `ProductsNavigationEffects` know that whenever the `products` route is activated, search results need to be loaded and the appropriate `LoadSearchResultsAction` is dispatched.
+Now within the `ProductsModule`, the `ProductsNavigationEffects` know that whenever the `products` route is activated, search results need to be loaded and the appropriate `loadSearchResultsAction` is dispatched.
 
 The indirection via the router is used for two reasons:
 
-1. By handling the `SearchProductsAction` in the `AppEffects` any module can dispatch the action while the effects of the `ProductsModule` may not have been loaded yet as the module is lazy-loaded.
+1. By handling the `searchProductsAction` in the `AppEffects` any module can dispatch the action while the effects of the `ProductsModule` may not have been loaded yet as the module is lazy-loaded.
 
-2. From the perspective of the `ProductsModule`, the activation of the `products` route is the trigger for a product search. This means that `LoadSearchResultsAction` is also dispatched when the route is activated by other means than the dispatch of the `SearchProductsAction`, e.g. reloading the page or opening a bookmark.
+2. From the perspective of the `ProductsModule`, the activation of the `products` route is the trigger for a product search. This means that `loadSearchResultsAction` is also dispatched when the route is activated by other means than the dispatch of the `searchProductsAction`, e.g. reloading the page or opening a bookmark.
 
 # Centralized Styling
 - tbd

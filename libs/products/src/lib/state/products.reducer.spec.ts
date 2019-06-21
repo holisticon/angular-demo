@@ -1,8 +1,7 @@
-import { Resource } from '@ngxp/common';
-import { LoadSearchResultsAction, Product, SearchResultsLoadedAction } from '@ngxp/products-common';
 import { Action } from '@ngrx/store';
-import { ProductsState, initialState, productsReducer } from './products.reducer';
+import { loadSearchResultsAction, searchResultsLoadedAction } from '@ngxp/products-common';
 import { products } from '@ngxp/products-common/test';
+import { initialState, productsReducer, ProductsState } from './products.reducer';
 
 describe('productsReducer', () => {
     const query = 'query';
@@ -21,7 +20,7 @@ describe('productsReducer', () => {
                 searchResults
             };
             const updatedQuery = 'new query';
-            const action = new LoadSearchResultsAction(updatedQuery);
+            const action = loadSearchResultsAction({ query: updatedQuery });
 
             const updatedState = productsReducer(state, action);
 
@@ -32,7 +31,7 @@ describe('productsReducer', () => {
 
     describe('SearchResultsLoaded', () => {
         it('sets the query and resets search results', () => {
-            const action = new SearchResultsLoadedAction(searchResults);
+            const action = searchResultsLoadedAction({ searchResults });
 
             const updatedState = productsReducer(initialState, action);
 

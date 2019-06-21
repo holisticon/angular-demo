@@ -3,12 +3,11 @@ import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { StoreModule } from '@ngrx/store';
 import { additionToShoppingCart, shoppingCart } from '@ngxp/shopping-cart-common/test';
-import { DataPersistence } from '@nrwl/angular';
 import { hot } from 'jasmine-marbles';
 import { Observable, of as observableOf } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { ShoppingCartCommonService } from '../shopping-cart-common.service';
-import { AddToShoppingCartAction, ShoppingCartLoadedAction } from './shopping-cart-common.actions';
+import { addToShoppingCartAction, shoppingCartLoadedAction } from './shopping-cart-common.actions';
 import { ShoppingCartCommonEffects } from './shopping-cart-common.effects';
 
 describe('ShoppingCartCommonEffects', () => {
@@ -30,7 +29,6 @@ describe('ShoppingCartCommonEffects', () => {
             providers: [
                 ShoppingCartCommonEffects,
                 ShoppingCartCommonService,
-                DataPersistence,
                 provideMockActions(() => actions$)
             ]
         });
@@ -44,11 +42,11 @@ describe('ShoppingCartCommonEffects', () => {
             const addToShoppingCartSpy = spyOn(shoppingCartCommonService, 'addToShoppingCart').and.returnValue(observableOf(shoppingCart));
 
             actions$ = hot('-a-|', {
-                a: new AddToShoppingCartAction(additionToShoppingCart)
+                a: addToShoppingCartAction({ additionToShoppingCart })
             });
 
             expect(effects$.addToShoppingCart$).toBeObservable(
-                hot('-a-|', { a: new ShoppingCartLoadedAction(shoppingCart) })
+                hot('-a-|', { a: shoppingCartLoadedAction({ shoppingCart }) })
             );
 
             effects$.addToShoppingCart$

@@ -4,7 +4,7 @@ import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { RouterNavigationAction, ROUTER_NAVIGATION } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
-import { LoadSearchResultsAction } from '@ngxp/products-common';
+import { loadSearchResultsAction } from '@ngxp/products-common';
 import { cold, hot } from 'jasmine-marbles';
 import { Observable } from 'rxjs';
 import { ProductsNavigationEffects } from './products-navigation.effects';
@@ -57,7 +57,7 @@ describe('ProductsNavigationEffects', () => {
             actions$ = hot('-a-|', { a: routerNavigationAction });
 
             expect(effects$.loadSearchResultsOnNavigate$).toBeObservable(
-                hot('-a-|', { a: new LoadSearchResultsAction(query) })
+                hot('-a-|', { a: loadSearchResultsAction({ query }) })
             );
         });
 
@@ -67,7 +67,7 @@ describe('ProductsNavigationEffects', () => {
             actions$ = hot('-a-|', { a: routerNavigationAction });
 
             expect(effects$.loadSearchResultsOnNavigate$).toBeObservable(
-                hot('-a-|', { a: new LoadSearchResultsAction(null) })
+                hot('-a-|', { a: loadSearchResultsAction({ query: null }) })
             );
         });
 

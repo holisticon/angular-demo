@@ -1,34 +1,16 @@
-import { Action } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
 import { ResourceWith } from '@ngxp/common';
 import { QuantityUpdate, ShoppingCartItem } from '@ngxp/shopping-cart-common';
 
-export enum ShoppingCartActionTypes {
-    LoadShoppingCart = '[Shopping Cart] load shopping cart',
-    UpdateShoppingCartItemQuantity = '[Shopping Cart] update shopping cart item quantity',
-    DeleteShoppingCartItem = '[Shopping Cart] delete shopping cart item'
-}
+export const loadShoppingCartAction = createAction(
+    '[Shopping Cart] load shopping cart');
 
-export class LoadShoppingCartAction implements Action {
-    readonly type = ShoppingCartActionTypes.LoadShoppingCart;
-}
+export const updateShoppingCartItemQuantityAction = createAction(
+    '[Shopping Cart] update shopping cart item quantity',
+    props<{ quantityUpdate: ResourceWith<QuantityUpdate> }>()
+);
 
-export class UpdateShoppingCartItemQuantityAction implements Action {
-    readonly type = ShoppingCartActionTypes.UpdateShoppingCartItemQuantity;
-
-    constructor(
-        public payload: ResourceWith<QuantityUpdate>
-    ) { }
-}
-
-export class DeleteShoppingCartItemAction implements Action {
-    readonly type = ShoppingCartActionTypes.DeleteShoppingCartItem;
-
-    constructor(
-        public payload: ShoppingCartItem
-    ) { }
-}
-
-export type ShoppingCartAction =
-    | LoadShoppingCartAction
-    | UpdateShoppingCartItemQuantityAction
-    | DeleteShoppingCartItemAction;
+export const deleteShoppingCartItemAction = createAction(
+    '[Shopping Cart] delete shopping cart item',
+    props<{ shoppingCartItem: ShoppingCartItem }>()
+);

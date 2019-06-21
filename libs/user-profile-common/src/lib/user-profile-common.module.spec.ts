@@ -1,10 +1,7 @@
-import { TestBed, async } from '@angular/core/testing';
-import { Store, StoreModule } from '@ngrx/store';
-import { LoadUserProfileAction } from './state/user-profile.actions';
-import { UserProfileState } from './state/user-profile.reducer';
-import { UserProfileCommonModule } from './user-profile-common.module';
+import { async } from '@angular/core/testing';
 import { createStoreServiceMock } from '@ngxp/store-service/testing';
 import { UserProfileCommonStore } from './state/user-profile-common-store.service';
+import { UserProfileCommonModule } from './user-profile-common.module';
 
 describe('UserProfileCommonModule', () => {
     it('dispatches a LoadUserProfileAction on initialization', async(() => {

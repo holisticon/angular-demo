@@ -1,33 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Actions, Effect } from '@ngrx/effects';
-import { DataPersistence } from '@nrwl/angular';
-import { map } from 'rxjs/operators';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { map, switchMap } from 'rxjs/operators';
 import { OrderService } from '../order.service';
-import { LoadOrdersAction, OrdersActionTypes, OrdersLoadedAction } from './orders.actions';
-import { OrdersPartialState } from './orders.reducer';
+import { loadOrdersAction, ordersLoadedAction } from './orders.actions';
 
 @Injectable()
 export class OrdersEffects {
 
-    @Effect()
-    loadOrders$ = this.dataPersistence.fetch<LoadOrdersAction>(
-        OrdersActionTypes.LoadOrders,
-        {
-            run: (action, state) => {
-                return this.orderService
-                    .loadOrders()
-                    .pipe(map(orders => new OrdersLoadedAction(orders)));
-            },
-
-            onError: (action, error) => {
-                console.error('Error', error);
-            }
-        }
+    loadOrders$ = createEffect(
+        () => this.actions$.pipe(
+            ofType(loadOrdersAction),
+            switchMap(() => this.orderService
+                .loadOrders()
+                .pipe(map(orders => ordersLoadedAction({ orders }))))
+        )
     );
 
     constructor(
         private actions$: Actions,
-        private dataPersistence: DataPersistence<OrdersPartialState>,
         private orderService: OrderService
     ) {}
 }

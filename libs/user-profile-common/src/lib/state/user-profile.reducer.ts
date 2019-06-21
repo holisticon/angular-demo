@@ -1,5 +1,6 @@
+import { createReducer, on } from '@ngrx/store';
 import { UserProfile } from '../user-profile.model';
-import { UserProfileAction, UserProfileActionTypes } from './user-profile.actions';
+import { userProfileLoadedAction } from './user-profile.actions';
 
 export const USER_PROFILE_FEATURE_KEY = 'userProfile';
 
@@ -15,17 +16,9 @@ export const initialState: UserProfileState = {
     userProfile: null
 };
 
-export function userProfileReducer(state = initialState, action: UserProfileAction): UserProfileState {
-    switch (action.type) {
-
-        case UserProfileActionTypes.UserProfileLoaded: {
-            return {
-                ...state,
-                userProfile: action.payload
-            };
-        }
-
-        default:
-            return state;
-    }
-}
+export const userProfileReducer = createReducer(initialState,
+    on(userProfileLoadedAction, (state, { userProfile }) => ({
+        ...state,
+        userProfile
+    }))
+);

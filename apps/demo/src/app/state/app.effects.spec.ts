@@ -4,8 +4,7 @@ import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { StoreModule } from '@ngrx/store';
-import { SearchProductsAction } from '@ngxp/products-common';
-import { DataPersistence } from '@nrwl/angular';
+import { searchProductsAction } from '@ngxp/products-common';
 import { hot } from 'jasmine-marbles';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
@@ -29,7 +28,6 @@ describe('AppEffects', () => {
             ],
             providers: [
                 AppEffects,
-                DataPersistence,
                 provideMockActions(() => actions$)
             ]
         });
@@ -43,7 +41,7 @@ describe('AppEffects', () => {
             const expectedQuery = 'query';
             const navigateSpy = spyOn(router, 'navigate');
 
-            actions$ = hot('-a-|', { a: new SearchProductsAction(expectedQuery) });
+            actions$ = hot('-a-|', { a: searchProductsAction({ query: expectedQuery }) });
 
             appEffects.navigateToProductSearchResults$
                 .pipe(take(1))

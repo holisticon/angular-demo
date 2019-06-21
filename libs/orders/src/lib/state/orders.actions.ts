@@ -1,23 +1,11 @@
+import { createAction, props } from '@ngrx/store';
 import { Order } from '@ngxp/orders-common';
-import { Action } from '@ngrx/store';
 
-export enum OrdersActionTypes {
-    LoadOrders = '[Orders] Load Data',
-    OrdersLoaded = '[Orders] Data Loaded'
-}
+export const loadOrdersAction = createAction(
+    '[Orders] Load Data'
+);
 
-export class LoadOrdersAction implements Action {
-    readonly type = OrdersActionTypes.LoadOrders;
-}
-
-export class OrdersLoadedAction implements Action {
-    readonly type = OrdersActionTypes.OrdersLoaded;
-
-    constructor(
-        public payload: Order[]
-    ) {}
-}
-
-export type OrdersAction =
-    | LoadOrdersAction
-    | OrdersLoadedAction;
+export const ordersLoadedAction = createAction(
+    '[Orders] Data Loaded',
+    props<{ orders: Order[] }>()
+);

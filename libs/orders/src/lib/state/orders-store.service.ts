@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Order } from '@ngxp/orders-common';
-import { Dispatch, Select, StoreService } from '@ngxp/store-service';
-import { Observable } from 'rxjs';
-import { LoadOrdersAction } from './orders.actions';
+import { Select, StoreService } from '@ngxp/store-service';
+import { EMPTY, Observable } from 'rxjs';
 import { OrdersPartialState } from './orders.reducer';
 import { getOrders } from './orders.selectors';
 
@@ -12,9 +11,9 @@ import { getOrders } from './orders.selectors';
 export class OrdersStore extends StoreService<OrdersPartialState> {
 
     @Select(() => getOrders)
-    getOrders!: () => Observable<Order[]>;
+    getOrders: () => Observable<Order[]> = () => EMPTY;
 
-    @Dispatch(LoadOrdersAction)
-    loadOrders!: () => void;
+    // @Dispatch(LoadOrdersAction)
+    loadOrders: () => void = () => {};
 
 }

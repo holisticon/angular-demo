@@ -1,33 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Actions, Effect } from '@ngrx/effects';
-import { DataPersistence } from '@nrwl/angular';
-import { map } from 'rxjs/operators';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { map, switchMap } from 'rxjs/operators';
 import { UserProfileService } from '../user-profile.service';
-import { LoadUserProfileAction, UserProfileActionTypes, UserProfileLoadedAction } from './user-profile.actions';
-import { UserProfileState } from './user-profile.reducer';
+import { loadUserProfileAction, userProfileLoadedAction } from './user-profile.actions';
 
 @Injectable()
 export class UserProfileEffects {
 
-    @Effect()
-    loadUserProfile$ = this.dataPersistence.fetch<LoadUserProfileAction>(
-        UserProfileActionTypes.LoadUserProfile,
-        {
-            run: (action, state) => {
-                return this.userProfileService
-                    .loadUserProfile()
-                    .pipe(map(userProfile => new UserProfileLoadedAction(userProfile)));
-            },
-
-            onError: (action, error) => {
-                console.error('Error', error);
-            }
-        }
-    );
+    loadUserProfile$ = createEffect(
+        () => this.actions$.pipe(
+            ofType(loadUserProfileAction),
+            switchMap(() => this.userProfileService
+            .loadUserProfile()
+            .pipe(map(userProfile => userProfileLoadedAction({ userProfile }))))
+        )
+    )
 
     constructor(
         private actions$: Actions,
-        private dataPersistence: DataPersistence<UserProfileState>,
         private userProfileService: UserProfileService
     ) {}
 }

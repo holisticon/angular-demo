@@ -3,12 +3,11 @@ import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { StoreModule } from '@ngrx/store';
 import { newOrder, order } from '@ngxp/orders-common/test';
-import { DataPersistence } from '@nrwl/angular';
 import { hot } from 'jasmine-marbles';
 import { Observable, of as observableOf } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { OrdersCommonService } from '../orders-common.service';
-import { OrderPlacedAction, PlaceOrderAction } from './orders-common.actions';
+import { orderPlacedAction, placeOrderAction } from './orders-common.actions';
 import { OrdersCommonEffects } from './orders-common.effects';
 
 describe('OrdersCommonEffects', () => {
@@ -30,7 +29,6 @@ describe('OrdersCommonEffects', () => {
             providers: [
                 OrdersCommonEffects,
                 OrdersCommonService,
-                DataPersistence,
                 provideMockActions(() => actions$)
             ]
         });
@@ -44,11 +42,11 @@ describe('OrdersCommonEffects', () => {
             const placeOrderSpy = spyOn(ordersCommonService, 'placeOrder').and.returnValue(observableOf(order));
 
             actions$ = hot('-a-|', {
-                a: new PlaceOrderAction(newOrder)
+                a: placeOrderAction({ newOrder })
             });
 
             expect(effects$.placeOrder$).toBeObservable(
-                hot('-a-|', { a: new OrderPlacedAction(order) })
+                hot('-a-|', { a: orderPlacedAction({ order }) })
             );
 
             effects$.placeOrder$

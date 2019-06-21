@@ -3,16 +3,15 @@ import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { StoreModule } from '@ngrx/store';
 import { ResourceWith } from '@ngxp/common';
-import { OrderPlacedAction } from '@ngxp/orders-common';
+import { orderPlacedAction } from '@ngxp/orders-common';
 import { order } from '@ngxp/orders-common/test';
-import { QuantityUpdate, ShoppingCartItem, ShoppingCartLoadedAction } from '@ngxp/shopping-cart-common';
+import { QuantityUpdate, ShoppingCartItem, shoppingCartLoadedAction } from '@ngxp/shopping-cart-common';
 import { shoppingCart, shoppingCartItem } from '@ngxp/shopping-cart-common/test';
-import { DataPersistence } from '@nrwl/angular';
 import { hot } from 'jasmine-marbles';
 import { Observable, of as observableOf } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { ShoppingCartService } from '../shopping-cart.service';
-import { DeleteShoppingCartItemAction, LoadShoppingCartAction, UpdateShoppingCartItemQuantityAction } from './shopping-cart.actions';
+import { deleteShoppingCartItemAction, loadShoppingCartAction, updateShoppingCartItemQuantityAction } from './shopping-cart.actions';
 import { ShoppingCartEffects } from './shopping-cart.effects';
 
 describe('ShoppingCartEffects', () => {
@@ -34,7 +33,6 @@ describe('ShoppingCartEffects', () => {
             providers: [
                 ShoppingCartEffects,
                 ShoppingCartService,
-                DataPersistence,
                 provideMockActions(() => actions$)
             ]
         });
@@ -47,10 +45,10 @@ describe('ShoppingCartEffects', () => {
         it('dispatches a ShoppingCartLoadedAction with the shopping cart returned by the service', () => {
             spyOn(shoppingCartService, 'loadShoppingCart').and.returnValue(observableOf(shoppingCart));
 
-            actions$ = hot('-a-|', { a: new LoadShoppingCartAction() });
+            actions$ = hot('-a-|', { a: loadShoppingCartAction() });
 
             expect(effects$.loadShoppingCart$).toBeObservable(
-                hot('-a-|', { a: new ShoppingCartLoadedAction(shoppingCart) })
+                hot('-a-|', { a: shoppingCartLoadedAction({ shoppingCart }) })
             );
         });
     });
@@ -67,11 +65,11 @@ describe('ShoppingCartEffects', () => {
             const updateQuantitySpy = spyOn(shoppingCartService, 'updateShoppingCartItemQuantity').and.returnValue(observableOf(shoppingCart));
 
             actions$ = hot('-a-|', {
-                a: new UpdateShoppingCartItemQuantityAction(quantityUpdate)
+                a: updateShoppingCartItemQuantityAction({ quantityUpdate })
             });
 
             expect(effects$.updateShoppingCartItemQuantity$).toBeObservable(
-                hot('-a-|', { a: new ShoppingCartLoadedAction(shoppingCart) })
+                hot('-a-|', { a: shoppingCartLoadedAction({ shoppingCart }) })
             );
 
             effects$.updateShoppingCartItemQuantity$
@@ -90,11 +88,11 @@ describe('ShoppingCartEffects', () => {
             const deleteShoppingCartItemSpy = spyOn(shoppingCartService, 'deleteShoppingCartItem').and.returnValue(observableOf(shoppingCart));
 
             actions$ = hot('-a-|', {
-                a: new DeleteShoppingCartItemAction(shoppingCartItem)
+                a: deleteShoppingCartItemAction({ shoppingCartItem })
             });
 
             expect(effects$.deleteShoppingCartItemQuantity$).toBeObservable(
-                hot('-a-|', { a: new ShoppingCartLoadedAction(shoppingCart) })
+                hot('-a-|', { a: shoppingCartLoadedAction({ shoppingCart }) })
             );
 
             effects$.deleteShoppingCartItemQuantity$
@@ -108,11 +106,11 @@ describe('ShoppingCartEffects', () => {
     describe('reloadShoppingCart', () => {
         it('dispatches a LoadShoppingCartAction to reload the shopping cart when an order has been placed', () => {
             actions$ = hot('-a-|', {
-                a: new OrderPlacedAction(order)
+                a: orderPlacedAction({ order })
             });
 
             expect(effects$.reloadShoppingCart$).toBeObservable(
-                hot('-a-|', { a: new LoadShoppingCartAction() })
+                hot('-a-|', { a: loadShoppingCartAction() })
             );
         });
     });

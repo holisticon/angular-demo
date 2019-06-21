@@ -1,37 +1,17 @@
-import { Action } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
 import { Product } from '../product.model';
 
-export enum ProductsActionTypes {
-    SearchProducts= '[Products] search products',
-    LoadSearchResults = '[Products] load search results',
-    SearchResultsLoaded = '[Products] search results loaded'
-}
+export const searchProductsAction = createAction(
+    '[Products] search products',
+    props<{ query: string | null }>()
+);
 
-export class SearchProductsAction implements Action {
-    readonly type = ProductsActionTypes.SearchProducts;
+export const loadSearchResultsAction = createAction(
+    '[Products] load search results',
+    props<{ query: string | null }>()
+);
 
-    constructor(
-        public payload: string | null
-    ) {}
-}
-
-export class LoadSearchResultsAction implements Action {
-    readonly type = ProductsActionTypes.LoadSearchResults;
-
-    constructor(
-        public payload: string | null
-    ) {}
-}
-
-export class SearchResultsLoadedAction implements Action {
-    readonly type = ProductsActionTypes.SearchResultsLoaded;
-
-    constructor(
-        public payload: Product[]
-    ) {}
-}
-
-export type ProductsAction =
-    | SearchProductsAction
-    | LoadSearchResultsAction
-    | SearchResultsLoadedAction;
+export const searchResultsLoadedAction = createAction(
+    '[Products] search results loaded',
+    props<{ searchResults: Product[] }>()
+);

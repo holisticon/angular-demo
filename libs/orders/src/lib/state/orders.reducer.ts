@@ -1,5 +1,6 @@
+import { createReducer, on } from '@ngrx/store';
 import { Order } from '@ngxp/orders-common';
-import { OrdersActionTypes, OrdersAction } from './orders.actions';
+import { ordersLoadedAction } from './orders.actions';
 
 export const ORDERS_FEATURE_KEY = 'orders';
 
@@ -15,17 +16,9 @@ export const initialState: OrdersState = {
     orders: []
 };
 
-export function ordersReducer(state = initialState, action: OrdersAction): OrdersState {
-    switch (action.type) {
-
-        case OrdersActionTypes.OrdersLoaded: {
-            return {
-                ...state,
-                orders: action.payload
-            };
-        }
-
-        default:
-            return state;
-    }
-}
+export const ordersReducer = createReducer(initialState,
+    on(ordersLoadedAction, (state, { orders }) => ({
+        ...state,
+        orders
+    }))
+);

@@ -1,4 +1,5 @@
-import { Product, ProductsAction, ProductsActionTypes } from '@ngxp/products-common';
+import { createReducer, on } from '@ngrx/store';
+import { loadSearchResultsAction, Product, searchResultsLoadedAction } from '@ngxp/products-common';
 
 export const PRODUCTS_FEATURE_KEY = 'products';
 
@@ -16,25 +17,14 @@ export const initialState: ProductsState = {
     searchResults: []
 };
 
-export function productsReducer(state = initialState, action: ProductsAction): ProductsState {
-    switch (action.type) {
-
-        case ProductsActionTypes.LoadSearchResults: {
-            return {
-                ...state,
-                query: action.payload,
-                searchResults: []
-            };
-        }
-
-        case ProductsActionTypes.SearchResultsLoaded: {
-            return {
-                ...state,
-                searchResults: action.payload
-            };
-        }
-
-        default:
-            return state;
-    }
-}
+export const productsReducer = createReducer(initialState,
+    on(loadSearchResultsAction, (state, { query }) => ({
+        ...state,
+        query,
+        searchResults: []
+    })),
+    on(searchResultsLoadedAction, (state, { searchResults }) => ({
+        ...state,
+        searchResults
+    }))
+);

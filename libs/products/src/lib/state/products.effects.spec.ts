@@ -2,9 +2,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { StoreModule } from '@ngrx/store';
-import { LoadSearchResultsAction, SearchResultsLoadedAction } from '@ngxp/products-common';
+import { loadSearchResultsAction, searchResultsLoadedAction } from '@ngxp/products-common';
 import { products } from '@ngxp/products-common/test';
-import { DataPersistence } from '@nrwl/angular';
 import { hot } from 'jasmine-marbles';
 import { Observable, of as observableOf } from 'rxjs';
 import { ProductService } from '../product.service';
@@ -31,7 +30,6 @@ describe('ProductsEffects', () => {
             providers: [
                 ProductsEffects,
                 ProductService,
-                DataPersistence,
                 provideMockActions(() => actions$)
             ]
         });
@@ -45,10 +43,10 @@ describe('ProductsEffects', () => {
             const expectedQuery = 'query';
             spyOn(productService, 'searchProducts').and.returnValue(observableOf(searchResults));
 
-            actions$ = hot('-a-|', { a: new LoadSearchResultsAction(expectedQuery) });
+            actions$ = hot('-a-|', { a: loadSearchResultsAction({ query: expectedQuery }) });
 
             expect(effects$.loadSearchResults$).toBeObservable(
-                hot('-a-|', { a: new SearchResultsLoadedAction(searchResults) })
+                hot('-a-|', { a: searchResultsLoadedAction({ searchResults }) })
             );
         });
     });

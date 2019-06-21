@@ -1,8 +1,7 @@
-import { Order, OrderStatus } from '@ngxp/orders-common';
 import { Action } from '@ngrx/store';
-import { OrdersLoadedAction } from './orders.actions';
-import { initialState, ordersReducer } from './orders.reducer';
 import { orders } from '@ngxp/orders-common/test';
+import { ordersLoadedAction } from './orders.actions';
+import { initialState, ordersReducer } from './orders.reducer';
 
 describe('ordersReducer', () => {
     it('returns the same state if the action is not applicable', () => {
@@ -13,7 +12,7 @@ describe('ordersReducer', () => {
 
     describe('OrdersLoaded', () => {
         it('sets the orders', () => {
-            const action = new OrdersLoadedAction(orders);
+            const action = ordersLoadedAction({ orders });
 
             const updatedState = ordersReducer(initialState, action);
 

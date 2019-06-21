@@ -1,10 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Product } from '@ngxp/products-common';
-import { AdditionToShoppingCart, AddToShoppingCartAction, ShoppingCartCommonStore } from '@ngxp/shopping-cart-common';
-import { Store } from '@ngrx/store';
+import { AdditionToShoppingCart, ShoppingCartCommonStore } from '@ngxp/shopping-cart-common';
 import { Observable } from 'rxjs';
 import { ProductsStore } from '../state/products-store.service';
-import { ProductsPartialState } from '../state/products.reducer';
 
 @Component({
   selector: 'ngxp-search-results',
@@ -19,7 +17,7 @@ export class SearchResultsComponent {
         private productsStore: ProductsStore,
         private shoppingCartCommonStore: ShoppingCartCommonStore
     ) {
-        this.products$ = productsStore.getSearchResults();
+        this.products$ = this.productsStore.getSearchResults();
     }
 
     onAddToShoppingCart(additionToShoppingCart: AdditionToShoppingCart) {

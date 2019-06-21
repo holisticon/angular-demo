@@ -1,27 +1,12 @@
+import { createAction, props } from '@ngrx/store';
 import { NewOrder, Order } from '@ngxp/orders-common';
-import { Action } from '@ngrx/store';
 
-export enum OrdersCommonActionTypes {
-    PlaceOrder = '[Orders] place order',
-    OrderPlaced = '[Orders] order placed'
-}
+export const placeOrderAction = createAction(
+    '[Orders] place order',
+    props<{ newOrder: NewOrder}>()
+);
 
-export class PlaceOrderAction implements Action {
-    readonly type = OrdersCommonActionTypes.PlaceOrder;
-
-    constructor(
-        public payload: NewOrder
-    ) { }
-}
-
-export class OrderPlacedAction implements Action {
-    readonly type = OrdersCommonActionTypes.OrderPlaced;
-
-    constructor(
-        public payload: Order
-    ) { }
-}
-
-export type OrdersCommonAction =
-    | PlaceOrderAction
-    | OrderPlacedAction;
+export const orderPlacedAction = createAction(
+    '[Orders] order placed',
+    props<{ order: Order }>()
+);

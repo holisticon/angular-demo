@@ -1,9 +1,6 @@
-import { async, TestBed } from '@angular/core/testing';
-import { Store, StoreModule } from '@ngrx/store';
-import { ShoppingCartModule } from './shopping-cart.module';
-import { LoadShoppingCartAction } from './state/shopping-cart.actions';
-import { ShoppingCartState } from './state/shopping-cart.reducer';
+import { async } from '@angular/core/testing';
 import { createStoreServiceMock } from '@ngxp/store-service/testing';
+import { ShoppingCartModule } from './shopping-cart.module';
 import { ShoppingCartStore } from './state/shopping-cart-store.service';
 
 describe('ShoppingCartModule', () => {
