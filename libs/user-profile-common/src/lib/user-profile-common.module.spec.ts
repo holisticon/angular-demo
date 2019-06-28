@@ -8,7 +8,8 @@ describe('UserProfileCommonModule', () => {
         const userProfileCommonStore = createStoreServiceMock(UserProfileCommonStore);
         const loadUserProfileSpy = spyOn(userProfileCommonStore, 'loadUserProfile');
 
-        const ordersModule = new UserProfileCommonModule(userProfileCommonStore);
+        // tslint:disable-next-line: no-unused-expression
+        new UserProfileCommonModule(userProfileCommonStore);
 
         expect(loadUserProfileSpy).toHaveBeenCalled();
     }));

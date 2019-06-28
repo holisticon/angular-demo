@@ -21,7 +21,7 @@ export class SearchResultsComponent {
     }
 
     onAddToShoppingCart(additionToShoppingCart: AdditionToShoppingCart) {
-        this.shoppingCartCommonStore.addToShoppingCart(additionToShoppingCart);
+        this.shoppingCartCommonStore.addToShoppingCart({ additionToShoppingCart });
     }
 
 }

@@ -8,7 +8,8 @@ describe('ShoppingCartModule', () => {
         const shoppingCartStore = createStoreServiceMock(ShoppingCartStore);
         const loadShoppingCartSpy = spyOn(shoppingCartStore, 'loadShoppingCart');
 
-        const ordersModule = new ShoppingCartModule(shoppingCartStore);
+        // tslint:disable-next-line: no-unused-expression
+        new ShoppingCartModule(shoppingCartStore);
 
         expect(loadShoppingCartSpy).toHaveBeenCalled();
     }));

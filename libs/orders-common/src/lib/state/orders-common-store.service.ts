@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { StoreService } from '@ngxp/store-service';
-import { NewOrder } from '../order.model';
+import { Dispatch, Dispatcher, StoreService } from '@ngxp/store-service';
+import { placeOrderAction } from './orders-common.actions';
 
 @Injectable({
     providedIn: 'root'
 })
 export class OrdersCommonStore extends StoreService<void> {
 
-    // @Dispatch(PlaceOrderAction)
-    placeOrder: (newOrder: NewOrder) => void = () => {};
+    @Dispatch(placeOrderAction)
+    placeOrder!: Dispatcher<typeof placeOrderAction>;
 
 }

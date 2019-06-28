@@ -12,7 +12,7 @@ export class HomepageComponent {
     ) {}
 
     onProductSearch(query: string) {
-        this.productsCommonStore.searchProducts(query);
+        this.productsCommonStore.searchProducts({ query });
     }
 
 }

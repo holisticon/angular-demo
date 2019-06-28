@@ -26,15 +26,15 @@ export class ShoppingCartComponent {
     }
 
     onUpdateQuantity(quantityUpdate: ResourceWith<QuantityUpdate>) {
-        this.shoppingCartStore.updateShoppingCartItemQuantity(quantityUpdate);
+        this.shoppingCartStore.updateShoppingCartItemQuantity({ quantityUpdate });
     }
 
     onDelete(shoppingCartItem: ShoppingCartItem) {
-        this.shoppingCartStore.deleteShoppingCartItem(shoppingCartItem);
+        this.shoppingCartStore.deleteShoppingCartItem({ shoppingCartItem });
     }
 
     onPlaceOrder(newOrder: NewOrder) {
-        this.ordersCommonStore.placeOrder(newOrder);
+        this.ordersCommonStore.placeOrder({ newOrder });
     }
 
 }

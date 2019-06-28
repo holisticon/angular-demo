@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { ResourceWith } from '@ngxp/common';
-import { QuantityUpdate, ShoppingCart, ShoppingCartItem } from '@ngxp/shopping-cart-common';
-import { Select, StoreService } from '@ngxp/store-service';
+import { ShoppingCart } from '@ngxp/shopping-cart-common';
+import { Dispatch, Dispatcher, Select, StoreService } from '@ngxp/store-service';
 import { Observable } from 'rxjs';
+import { deleteShoppingCartItemAction, loadShoppingCartAction, updateShoppingCartItemQuantityAction } from './shopping-cart.actions';
 import { ShoppingCartPartialState } from './shopping-cart.reducer';
 import { getShoppingCart } from './shopping-cart.selectors';
 
@@ -11,16 +11,16 @@ import { getShoppingCart } from './shopping-cart.selectors';
 })
 export class ShoppingCartStore extends StoreService<ShoppingCartPartialState> {
 
-    @Select(() => getShoppingCart)
+    @Select(getShoppingCart)
     getShoppingCart!: () => Observable<ShoppingCart>;
 
-    // @Dispatch(LoadShoppingCartAction)
-    loadShoppingCart: () => void = () => {};
+    @Dispatch(loadShoppingCartAction)
+    loadShoppingCart!: Dispatcher<typeof loadShoppingCartAction>;
 
-    // @Dispatch(UpdateShoppingCartItemQuantityAction)
-    updateShoppingCartItemQuantity: (quantityUpdate: ResourceWith<QuantityUpdate>) => void = () => {};
+    @Dispatch(updateShoppingCartItemQuantityAction)
+    updateShoppingCartItemQuantity!: Dispatcher<typeof updateShoppingCartItemQuantityAction>;
 
-    // @Dispatch(DeleteShoppingCartItemAction)
-    deleteShoppingCartItem: (shoppingCartItem: ShoppingCartItem) => void = () => {};
+    @Dispatch(deleteShoppingCartItemAction)
+    deleteShoppingCartItem!: Dispatcher<typeof deleteShoppingCartItemAction>;
 
 }

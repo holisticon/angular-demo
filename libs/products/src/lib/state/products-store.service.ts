@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Product } from '@ngxp/products-common';
 import { Select, StoreService } from '@ngxp/store-service';
-import { EMPTY, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { ProductsPartialState } from './products.reducer';
 import { getSearchResults } from './products.selectors';
 
@@ -10,7 +10,7 @@ import { getSearchResults } from './products.selectors';
 })
 export class ProductsStore extends StoreService<ProductsPartialState> {
 
-    @Select(() => getSearchResults)
-    getSearchResults: () => Observable<Product[]> = () => EMPTY;
+    @Select(getSearchResults)
+    getSearchResults!: () => Observable<Product[]>;
 
 }

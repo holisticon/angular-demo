@@ -57,6 +57,6 @@ describe('HomepageComponent', () => {
 
         productSearchForm.search.emit(expectedQuery);
 
-        expect(searchProductsSpy).toHaveBeenCalledWith(expectedQuery);
+        expect(searchProductsSpy).toHaveBeenCalledWith({ query: expectedQuery });
     });
 });

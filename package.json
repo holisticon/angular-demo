@@ -27,7 +27,6 @@
   },
   "private": true,
   "dependencies": {
-    "@nrwl/angular": "8.1.2",
     "@angular/animations": "8.0.2",
     "@angular/common": "8.0.2",
     "@angular/compiler": "8.0.2",
@@ -42,7 +41,8 @@
     "@ngrx/router-store": "8.0.1",
     "@ngrx/store": "8.0.1",
     "@ngxp/builder": "1.0.0",
-    "@ngxp/store-service": "5.0.1",
+    "@ngxp/store-service": "8.0.0",
+    "@nrwl/angular": "8.1.2",
     "core-js": "^2.6.5",
     "lodash-es": "4.17.11",
     "rxjs": "~6.4.0",

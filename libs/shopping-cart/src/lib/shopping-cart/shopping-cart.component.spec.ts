@@ -103,7 +103,7 @@ describe('ShoppingCartComponent', () => {
 
         shoppingCartItemList.updateQuantity.emit(quantityUpdate);
 
-        expect(updateShoppingCartItemQuantitySpy).toHaveBeenCalledWith(quantityUpdate);
+        expect(updateShoppingCartItemQuantitySpy).toHaveBeenCalledWith({ quantityUpdate });
     }));
 
     it('dispatches an DeleteShoppingCartItemAction when the shopping cart item list emits a delete event', async(() => {
@@ -112,7 +112,7 @@ describe('ShoppingCartComponent', () => {
 
         shoppingCartItemList.delete.emit(shoppingCartItem);
 
-        expect(deleteShoppingCartItemSpy).toHaveBeenCalledWith(shoppingCartItem);
+        expect(deleteShoppingCartItemSpy).toHaveBeenCalledWith({ shoppingCartItem });
     }));
 
     it('dispatches a PlaceOrderAction when the place order form emits a placeOrder event', async(() => {
@@ -121,6 +121,6 @@ describe('ShoppingCartComponent', () => {
 
         placeOrderForm.placeOrder.emit(newOrder);
 
-        expect(placeOrderSpy).toHaveBeenCalledWith(newOrder);
+        expect(placeOrderSpy).toHaveBeenCalledWith({ newOrder });
     }));
 });

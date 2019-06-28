@@ -70,6 +70,6 @@ describe('SearchResultsComponent', () => {
 
         productList.addToShoppingCart.emit(additionToShoppingCart);
 
-        expect(addToShoppingCartSpy).toHaveBeenCalledWith(additionToShoppingCart);
+        expect(addToShoppingCartSpy).toHaveBeenCalledWith({ additionToShoppingCart });
     }));
 });
