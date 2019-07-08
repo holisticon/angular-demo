@@ -3,21 +3,6 @@
   "version": 1,
   "newProjectRoot": "",
   "projects": {
-    "all": {
-      "root": "./apps/demo",
-      "projectType": "application",
-      "architect": {
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "./test.ts",
-            "polyfills": "./polyfills.ts",
-            "tsConfig": "./tsconfig.spec.json",
-            "karmaConfig": "./karma.conf.js"
-          }
-        }
-      }
-    },
     "demo": {
       "root": "apps/demo",
       "sourceRoot": "apps/demo/src",
@@ -78,19 +63,11 @@
           }
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@nrwl/jest:jest",
           "options": {
-            "main": "apps/demo/src/test.ts",
-            "karmaConfig": "apps/demo/karma.conf.js",
-            "polyfills": "apps/demo/src/polyfills.ts",
+            "jestConfig": "apps/demo/jest.config.js",
             "tsConfig": "apps/demo/tsconfig.spec.json",
-            "scripts": [],
-            "styles": ["apps/demo/src/styles.scss"],
-            "assets": [
-              "apps/demo/src/assets",
-              "apps/demo/src/favicon.ico",
-              "apps/demo/src/manifest.json"
-            ]
+            "setupFile": "apps/demo/src/test-setup.ts"
           }
         },
         "lint": {
@@ -134,14 +111,11 @@
       "projectType": "library",
       "architect": {
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@nrwl/jest:jest",
           "options": {
-            "main": "libs/common/src/test.ts",
-            "karmaConfig": "libs/common/karma.conf.js",
-            "scripts": [],
-            "styles": [],
-            "assets": [],
-            "tsConfig": "libs/common/tsconfig.spec.json"
+            "jestConfig": "libs/common/jest.config.js",
+            "tsConfig": "libs/common/tsconfig.spec.json",
+            "setupFile": "libs/common/src/test-setup.ts"
           }
         },
         "lint": {
@@ -163,14 +137,11 @@
       "projectType": "library",
       "architect": {
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@nrwl/jest:jest",
           "options": {
-            "main": "libs/homepage/src/test.ts",
-            "karmaConfig": "libs/homepage/karma.conf.js",
-            "scripts": [],
-            "styles": [],
-            "assets": [],
-            "tsConfig": "libs/homepage/tsconfig.spec.json"
+            "jestConfig": "libs/homepage/jest.config.js",
+            "tsConfig": "libs/homepage/tsconfig.spec.json",
+            "setupFile": "libs/homepage/src/test-setup.ts"
           }
         },
         "lint": {
@@ -192,14 +163,11 @@
       "projectType": "library",
       "architect": {
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@nrwl/jest:jest",
           "options": {
-            "main": "libs/orders/src/test.ts",
-            "karmaConfig": "libs/orders/karma.conf.js",
-            "scripts": [],
-            "styles": [],
-            "assets": [],
-            "tsConfig": "libs/orders/tsconfig.spec.json"
+            "jestConfig": "libs/homepage/jest.config.js",
+            "tsConfig": "libs/homepage/tsconfig.spec.json",
+            "setupFile": "libs/homepage/src/test-setup.ts"
           }
         },
         "lint": {
@@ -221,14 +189,11 @@
       "projectType": "library",
       "architect": {
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@nrwl/jest:jest",
           "options": {
-            "main": "libs/orders-common/src/test.ts",
-            "karmaConfig": "libs/orders-common/karma.conf.js",
-            "scripts": [],
-            "styles": [],
-            "assets": [],
-            "tsConfig": "libs/orders-common/tsconfig.spec.json"
+            "jestConfig": "libs/orders-common/jest.config.js",
+            "tsConfig": "libs/orders-common/tsconfig.spec.json",
+            "setupFile": "libs/orders-common/src/test-setup.ts"
           }
         },
         "lint": {
@@ -250,14 +215,11 @@
       "projectType": "library",
       "architect": {
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@nrwl/jest:jest",
           "options": {
-            "main": "libs/products/src/test.ts",
-            "karmaConfig": "libs/products/karma.conf.js",
-            "scripts": [],
-            "styles": [],
-            "assets": [],
-            "tsConfig": "libs/products/tsconfig.spec.json"
+            "jestConfig": "libs/products/jest.config.js",
+            "tsConfig": "libs/products/tsconfig.spec.json",
+            "setupFile": "libs/products/src/test-setup.ts"
           }
         },
         "lint": {
@@ -279,14 +241,11 @@
       "projectType": "library",
       "architect": {
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@nrwl/jest:jest",
           "options": {
-            "main": "libs/products-common/src/test.ts",
-            "karmaConfig": "libs/products-common/karma.conf.js",
-            "scripts": [],
-            "styles": [],
-            "assets": [],
-            "tsConfig": "libs/products-common/tsconfig.spec.json"
+            "jestConfig": "libs/products-common/jest.config.js",
+            "tsConfig": "libs/products-common/tsconfig.spec.json",
+            "setupFile": "libs/products-common/src/test-setup.ts"
           }
         },
         "lint": {
@@ -308,14 +267,11 @@
       "projectType": "library",
       "architect": {
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@nrwl/jest:jest",
           "options": {
-            "main": "libs/shopping-cart/src/test.ts",
-            "karmaConfig": "libs/shopping-cart/karma.conf.js",
-            "scripts": [],
-            "styles": [],
-            "assets": [],
-            "tsConfig": "libs/shopping-cart/tsconfig.spec.json"
+            "jestConfig": "libs/shopping-cart/jest.config.js",
+            "tsConfig": "libs/shopping-cart/tsconfig.spec.json",
+            "setupFile": "libs/shopping-cart/src/test-setup.ts"
           }
         },
         "lint": {
@@ -337,14 +293,11 @@
       "projectType": "library",
       "architect": {
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@nrwl/jest:jest",
           "options": {
-            "main": "libs/shopping-cart-common/src/test.ts",
-            "karmaConfig": "libs/shopping-cart-common/karma.conf.js",
-            "scripts": [],
-            "styles": [],
-            "assets": [],
-            "tsConfig": "libs/shopping-cart-common/tsconfig.spec.json"
+            "jestConfig": "libs/shopping-cart-common/jest.config.js",
+            "tsConfig": "libs/shopping-cart-common/tsconfig.spec.json",
+            "setupFile": "libs/shopping-cart-common/src/test-setup.ts"
           }
         },
         "lint": {
@@ -366,14 +319,11 @@
       "projectType": "library",
       "architect": {
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@nrwl/jest:jest",
           "options": {
-            "main": "libs/user-profile/src/test.ts",
-            "karmaConfig": "libs/user-profile/karma.conf.js",
-            "scripts": [],
-            "styles": [],
-            "assets": [],
-            "tsConfig": "libs/user-profile/tsconfig.spec.json"
+            "jestConfig": "libs/user-profile/jest.config.js",
+            "tsConfig": "libs/user-profile/tsconfig.spec.json",
+            "setupFile": "libs/user-profile/src/test-setup.ts"
           }
         },
         "lint": {
@@ -395,14 +345,11 @@
       "projectType": "library",
       "architect": {
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@nrwl/jest:jest",
           "options": {
-            "main": "libs/user-profile-common/src/test.ts",
-            "karmaConfig": "libs/user-profile-common/karma.conf.js",
-            "scripts": [],
-            "styles": [],
-            "assets": [],
-            "tsConfig": "libs/user-profile-common/tsconfig.spec.json"
+            "jestConfig": "libs/user-profile-common/jest.config.js",
+            "tsConfig": "libs/user-profile-common/tsconfig.spec.json",
+            "setupFile": "libs/user-profile-common/src/test-setup.ts"
           }
         },
         "lint": {
@@ -425,5 +372,14 @@
       "typescriptMismatch": false
     },
     "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
   }
 }

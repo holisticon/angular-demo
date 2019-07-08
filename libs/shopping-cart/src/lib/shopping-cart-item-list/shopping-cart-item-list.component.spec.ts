@@ -47,7 +47,10 @@ describe('ShoppingCartItemListComponent', () => {
     });
 
     it('renders the total price', () => {
-        expect(fixture.debugElement.query(By.css('.total-price')).nativeNode.textContent).toBe(shoppingCart.totalPrice.toFixed(2));
+        const formattedPrice = shoppingCart.totalPrice.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+        expect(fixture.debugElement.query(By.css('.total-price')).nativeNode.textContent)
+            .toBe(formattedPrice);
     });
 
     it('emits an updateQuantity event when the shopping cart item row is emits one', () => {

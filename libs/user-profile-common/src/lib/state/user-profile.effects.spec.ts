@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { StoreModule } from '@ngrx/store';
 import { userProfile } from '@ngxp/user-profile-common/test';
-import { hot } from 'jasmine-marbles';
+import { hot } from 'jest-marbles';
 import { Observable, of as observableOf } from 'rxjs';
 import { UserProfileService } from '../user-profile.service';
 import { loadUserProfileAction, userProfileLoadedAction } from './user-profile.actions';

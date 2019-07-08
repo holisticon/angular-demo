@@ -7,7 +7,7 @@ import { orderPlacedAction } from '@ngxp/orders-common';
 import { order } from '@ngxp/orders-common/test';
 import { QuantityUpdate, ShoppingCartItem, shoppingCartLoadedAction } from '@ngxp/shopping-cart-common';
 import { shoppingCart, shoppingCartItem } from '@ngxp/shopping-cart-common/test';
-import { hot } from 'jasmine-marbles';
+import { hot } from 'jest-marbles';
 import { Observable, of as observableOf } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { ShoppingCartService } from '../shopping-cart.service';

@@ -1,7 +1,7 @@
 import { ComponentFixture } from '@angular/core/testing';
 import { isUndefined } from 'lodash-es';
 
-export function expectElementFromFixture<T>(fixture: ComponentFixture<T>, domQuery?: string): jasmine.Matchers<Element | null> {
+export function expectElementFromFixture<T>(fixture: ComponentFixture<T>, domQuery?: string): any { // jasmine.Matchers<Element | null>
     return expect(elementFromFixture(fixture, domQuery));
 }
 
