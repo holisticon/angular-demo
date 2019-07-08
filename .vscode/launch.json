@@ -10,6 +10,29 @@
             "name": "Launch Chrome against localhost",
             "url": "http://localhost:4200",
             "webRoot": "${workspaceFolder}"
+        },
+        {
+            "name": "Launch Jest tests",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/node_modules/@angular/cli/bin/ng",
+            "args": [
+                "test",
+                "${input:pickProject}",
+                "--runInBand=true",
+                "--codeCoverage=false"
+            ],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "trace": "all"
+        }
+    ],
+    "inputs": [
+        {
+            "id": "pickProject",
+            "description": "Enter a project (library or application)",
+            "type": "promptString"
         }
     ]
 }
