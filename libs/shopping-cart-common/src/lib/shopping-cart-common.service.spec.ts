@@ -1,7 +1,7 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { additionToShoppingCart, shoppingCart } from '@ngxp/shopping-cart-common/test';
-import { cold } from 'jasmine-marbles';
+import { cold } from 'jest-marbles';
 import { ShoppingCartCommonService } from './shopping-cart-common.service';
 
 describe('ShoppingCartCommonService', () => {
@@ -49,9 +49,10 @@ describe('ShoppingCartCommonService', () => {
         });
 
         it('returns an empty observable if the server response contains no location header', () => {
-            expect(
-                shoppingCartCommonService.addToShoppingCart(additionToShoppingCart)
-            ).toBeObservable(cold('-'));
+            const returnedObservable = shoppingCartCommonService.addToShoppingCart(additionToShoppingCart);
+
+            returnedObservable.subscribe();
+            expect(returnedObservable).toBeObservable(cold(''));
 
             const postRequest = httpController.expectOne('https://example.hypercontract.org/shoppingCart/items');
 

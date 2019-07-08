@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { StoreModule } from '@ngrx/store';
 import { additionToShoppingCart, shoppingCart } from '@ngxp/shopping-cart-common/test';
-import { hot } from 'jasmine-marbles';
+import { hot } from 'jest-marbles';
 import { Observable, of as observableOf } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { ShoppingCartCommonService } from '../shopping-cart-common.service';

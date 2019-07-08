@@ -5,7 +5,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { StoreModule } from '@ngrx/store';
 import { searchProductsAction } from '@ngxp/products-common';
-import { hot } from 'jasmine-marbles';
+import { hot } from 'jest-marbles';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { AppEffects } from './app.effects';

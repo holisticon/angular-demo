@@ -2,7 +2,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { TestBed } from '@angular/core/testing';
 import { getId } from '@ngxp/common';
 import { newOrder, order } from '@ngxp/orders-common/test';
-import { cold } from 'jasmine-marbles';
+import { cold } from 'jest-marbles';
 import { toNewOrderRequest } from './new-order-request.mapper';
 import { OrdersCommonService } from './orders-common.service';
 
@@ -51,9 +51,10 @@ describe('OrdersCommonService', () => {
         });
 
         it('returns an empty observable if the server response contains no location header', () => {
-            expect(
-                ordersCommonService.placeOrder(newOrder)
-            ).toBeObservable(cold('-'));
+            const returnedObservable = ordersCommonService.placeOrder(newOrder);
+
+            returnedObservable.subscribe();
+            expect(returnedObservable).toBeObservable(cold(''));
 
             const postRequest = httpController.expectOne('https://example.hypercontract.org/orders');
 
