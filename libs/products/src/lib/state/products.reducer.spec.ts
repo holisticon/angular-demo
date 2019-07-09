@@ -1,11 +1,12 @@
 import { Action } from '@ngrx/store';
+import { getId, getIds, toMap } from '@ngxp/common';
 import { loadSearchResultsAction, searchResultsLoadedAction } from '@ngxp/products-common';
-import { products } from '@ngxp/products-common/test';
+import { product, products, searchResults } from '@ngxp/products-common/test';
 import { initialState, productsReducer, ProductsState } from './products.reducer';
 
 describe('productsReducer', () => {
     const query = 'query';
-    const searchResults = products;
+    const searchResultIds = getIds(searchResults);
 
     it('returns the same state if the action is not applicable', () => {
         const action: Action = { type: 'some-action' };
@@ -14,10 +15,11 @@ describe('productsReducer', () => {
     });
 
     describe('LoadSearchResults', () => {
-        it('sets the query and resets search results', () => {
+        it('sets the query, resets search results and leaves the products untouched', () => {
             const state: ProductsState = {
                 query,
-                searchResults
+                searchResults: searchResultIds,
+                products: toMap(products)
             };
             const updatedQuery = 'new query';
             const action = loadSearchResultsAction({ query: updatedQuery });
@@ -26,16 +28,31 @@ describe('productsReducer', () => {
 
             expect(updatedState.query).toBe(updatedQuery);
             expect(updatedState.searchResults).toEqual([]);
+            expect(updatedState.products).toBe(state.products);
         });
     });
 
     describe('SearchResultsLoaded', () => {
-        it('sets the query and resets search results', () => {
+        it('sets search results and adds them to the products map', () => {
+            const preloadedProducts = [product];
+            const state: ProductsState = {
+                ...initialState,
+                products: toMap(preloadedProducts)
+            };
+
             const action = searchResultsLoadedAction({ searchResults });
 
-            const updatedState = productsReducer(initialState, action);
+            const updatedState = productsReducer(state, action);
 
-            expect(updatedState.searchResults).toBe(searchResults);
+            expect(updatedState.searchResults).toEqual(searchResultIds);
+            expect(updatedState.products[getId(product)]).toBe(product);
+            expect(Object.values(updatedState.products).length).toBe(searchResults.length + preloadedProducts.length);
+
+            [...preloadedProducts, ...searchResults]
+                .forEach(product => {
+                    const productId = getId(product);
+                    expect(updatedState.products[productId]).toBe(product);
+                });
         });
     });
 

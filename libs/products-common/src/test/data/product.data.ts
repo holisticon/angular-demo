@@ -1,8 +1,9 @@
-import { Product } from '@ngxp/products-common';
-import { Blueprint, createBlueprintBuilder } from '@ngxp/builder';
-import * as faker from 'faker';
+import { Blueprint } from '@ngxp/builder';
 import { Resource } from '@ngxp/common';
 import { createResourceBlueprintBuilder } from '@ngxp/common/test';
+import { Product } from '@ngxp/products-common';
+import * as faker from 'faker';
+import { sampleSize } from 'lodash-es';
 
 const productBlueprint: Blueprint<Product> = {
     name: () => faker.commerce.productName(),
@@ -14,3 +15,5 @@ export const productBuilder = createResourceBlueprintBuilder(productBlueprint);
 
 export const product: Resource<Product> = productBuilder().freeze().build();
 export const products: Resource<Product>[] = productBuilder().freeze().buildMany(100);
+
+export const searchResults = sampleSize(products, products.length -50);

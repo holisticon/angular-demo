@@ -1,4 +1,5 @@
 import { createAction, props } from '@ngrx/store';
+import { Resource } from '@ngxp/common';
 import { Product } from '../product.model';
 
 export const searchProductsAction = createAction(
@@ -13,5 +14,5 @@ export const loadSearchResultsAction = createAction(
 
 export const searchResultsLoadedAction = createAction(
     '[Products] search results loaded',
-    props<{ searchResults: Product[] }>()
+    props<{ searchResults: Resource<Product>[] }>()
 );

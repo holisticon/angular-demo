@@ -1,11 +1,13 @@
 import { createReducer, on } from '@ngrx/store';
+import { getIds, ResourceId, ResourceMap, toMap } from '@ngxp/common';
 import { loadSearchResultsAction, Product, searchResultsLoadedAction } from '@ngxp/products-common';
 
 export const PRODUCTS_FEATURE_KEY = 'products';
 
 export interface ProductsState {
     query: string | null;
-    searchResults: Product[];
+    searchResults: ResourceId[];
+    products: ResourceMap<Product>;
 }
 
 export interface ProductsPartialState {
@@ -14,7 +16,8 @@ export interface ProductsPartialState {
 
 export const initialState: ProductsState = {
     query: null,
-    searchResults: []
+    searchResults: [],
+    products: {}
 };
 
 export const productsReducer = createReducer(initialState,
@@ -25,6 +28,10 @@ export const productsReducer = createReducer(initialState,
     })),
     on(searchResultsLoadedAction, (state, { searchResults }) => ({
         ...state,
-        searchResults
+        searchResults: getIds(searchResults),
+        products: {
+            ...state.products,
+            ...toMap(searchResults)
+        }
     }))
 );
