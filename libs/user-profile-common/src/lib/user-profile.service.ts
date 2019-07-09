@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Resource } from '@ngxp/common';
 import { UserProfile } from './user-profile.model';
 
 @Injectable({
@@ -12,9 +12,9 @@ export class UserProfileService {
         private httpClient: HttpClient
     ) { }
 
-    loadUserProfile(): Observable<UserProfile> {
+    loadUserProfile() {
         return this.httpClient
-            .get<UserProfile>('https://example.hypercontract.org/userProfile');
+            .get<Resource<UserProfile>>('https://example.hypercontract.org/userProfile');
     }
 
 }

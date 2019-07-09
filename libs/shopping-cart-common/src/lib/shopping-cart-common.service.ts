@@ -1,8 +1,9 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Resource } from '@ngxp/common';
 import { AdditionToShoppingCart, ShoppingCart } from '@ngxp/shopping-cart-common';
 import { isNull } from 'lodash-es';
-import { EMPTY, Observable } from 'rxjs';
+import { EMPTY } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
 @Injectable({
@@ -14,7 +15,7 @@ export class ShoppingCartCommonService {
         private httpClient: HttpClient
     ) { }
 
-    addToShoppingCart(additionToShoppingCart: AdditionToShoppingCart): Observable<ShoppingCart> {
+    addToShoppingCart(additionToShoppingCart: AdditionToShoppingCart) {
         return this.httpClient
             .post(
                 'https://example.hypercontract.org/shoppingCart/items',
@@ -22,10 +23,11 @@ export class ShoppingCartCommonService {
                 { responseType: 'text', observe: 'response' }
             )
             .pipe(
-                switchMap(response => this.handleRedirect<ShoppingCart>(response))
+                switchMap(response => this.handleRedirect<Resource<ShoppingCart>>(response))
             );
     }
 
+    // TODO: refactor together with identical implementation form OrdersCommonService
     private handleRedirect<T>(response: HttpResponse<any>) {
         const location = response.headers.get('Location');
 

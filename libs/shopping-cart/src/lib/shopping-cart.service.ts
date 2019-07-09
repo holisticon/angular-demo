@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { getId } from '@ngxp/common';
+import { getId, Resource } from '@ngxp/common';
 import { QuantityUpdate, ShoppingCart, ShoppingCartItem } from '@ngxp/shopping-cart-common';
-import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -13,24 +12,24 @@ export class ShoppingCartService {
         private httpClient: HttpClient
     ) {}
 
-    loadShoppingCart(): Observable<ShoppingCart> {
+    loadShoppingCart() {
         return this.httpClient
-            .get<ShoppingCart>(
+            .get<Resource<ShoppingCart>>(
                 'https://example.hypercontract.org/shoppingCart'
             );
     }
 
-    updateShoppingCartItemQuantity(shoppingCartItem: ShoppingCartItem, quantityUpdate: QuantityUpdate): Observable<ShoppingCart> {
+    updateShoppingCartItemQuantity(shoppingCartItem: ShoppingCartItem, quantityUpdate: QuantityUpdate) {
         return this.httpClient
-            .patch<ShoppingCart>(
+            .patch<Resource<ShoppingCart>>(
                 `https://example.hypercontract.org/shoppingCart/items/${getId(shoppingCartItem)}`,
                 quantityUpdate
             );
     }
 
-    deleteShoppingCartItem(shoppingCartItem: ShoppingCartItem): Observable<ShoppingCart> {
+    deleteShoppingCartItem(shoppingCartItem: ShoppingCartItem) {
         return this.httpClient
-            .delete<ShoppingCart>(
+            .delete<Resource<ShoppingCart>>(
                 `https://example.hypercontract.org/shoppingCart/items/${getId(shoppingCartItem)}`
             );
     }

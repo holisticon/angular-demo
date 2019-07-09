@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Resource } from '@ngxp/common';
 import { Order } from '@ngxp/orders-common';
-import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -12,9 +12,9 @@ export class OrderService {
         private httpClient: HttpClient
     ) {}
 
-    loadOrders(): Observable<Order[]> {
+    loadOrders() {
         return this.httpClient
-            .get<Order[]>(
+            .get<Resource<Order>[]>(
                 'https://example.hypercontract.org/orders'
             );
     }
