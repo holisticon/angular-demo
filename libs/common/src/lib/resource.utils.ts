@@ -1,8 +1,12 @@
 import { zipObject } from 'lodash-es';
-import { Resource } from './resource.model';
+import { Resource, ResourceId } from './resource.model';
 
-export function getId(resource: Resource<any>) {
+export function getId(resource: Resource<any>): ResourceId {
     return resource['_id'];
+}
+
+export function getIds(resources: Resource<any>[]) {
+    return resources.map(resource => getId(resource));
 }
 
 export function toMap<T>(resources: Resource<T>[]) {

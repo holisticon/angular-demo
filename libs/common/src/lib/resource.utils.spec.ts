@@ -1,11 +1,24 @@
 import { resource, resources } from '@ngxp/common/test';
-import { getId, toMap } from './resource.utils';
+import { getId, getIds, toMap } from './resource.utils';
 
 describe('resourceUtils', () => {
 
     describe('getId', () => {
         it('returns the ID of the given resource', () => {
             expect(getId(resource)).toBe(resource['_id']);
+        });
+    });
+
+    describe('getIds', () => {
+        it('returns the IDs of the given resources', () => {
+            const ids = getIds(resources);
+
+            expect(ids.length).toEqual(resources.length);
+
+            resources.forEach((resource, index) => {
+                const id = getId(resource);
+                expect(ids[index]).toBe(id);
+            });
         });
     });
 
