@@ -1,7 +1,7 @@
-import { Blueprint, BlueprintFactory, BlueprintBuilder, createBlueprintBuilder } from '@ngxp/builder';
-import { isFunction } from 'lodash-es';
-import * as faker from 'faker';
+import { Blueprint, BlueprintFactory, createBlueprintBuilder } from '@ngxp/builder';
 import { Resource } from '@ngxp/common';
+import * as faker from 'faker';
+import { isFunction } from 'lodash-es';
 
 export function createResourceBlueprintBuilder<T>(blueprint: Blueprint<T> | BlueprintFactory<T>) {
     return createBlueprintBuilder(toResourceBlueprint(blueprint));
@@ -12,6 +12,6 @@ function toResourceBlueprint<T>(blueprint: Blueprint<T> | BlueprintFactory<T>): 
 
     return () => ({
         ...<any> blueprintFn(),
-        id: () => faker.internet.url()
+        _id: () => faker.internet.url()
     });
 }
