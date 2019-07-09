@@ -1,24 +1,22 @@
 import { Injectable } from '@angular/core';
-import { Dispatch, Dispatcher, Select, StoreService } from '@ngxp/store-service';
-import { Observable } from 'rxjs';
-import { Address, PaymentOption, UserProfile } from '../user-profile.model';
+import { Dispatch, Dispatcher, Select, Selector, StoreService } from '@ngxp/store-service';
 import { loadUserProfileAction } from './user-profile.actions';
 import { UserProfilePartialState } from './user-profile.reducer';
-import { getAddresses, getPaymentOptions, getUserProfile } from './user-profile.selectors';
+import { selectAddresses, selectPaymentOptions, selectUserProfile } from './user-profile.selectors';
 
 @Injectable({
     providedIn: 'root'
 })
 export class UserProfileCommonStore extends StoreService<UserProfilePartialState> {
 
-    @Select(getUserProfile)
-    getUserProfile!: () => Observable<UserProfile>;
+    @Select(selectUserProfile)
+    getUserProfile!: Selector<typeof selectUserProfile>;
 
-    @Select(getAddresses)
-    getAddresses!: () => Observable<Address[]>;
+    @Select(selectAddresses)
+    getAddresses!: Selector<typeof selectAddresses>;
 
-    @Select(getPaymentOptions)
-    getPaymentOptions!: () => Observable<PaymentOption[]>;
+    @Select(selectPaymentOptions)
+    getPaymentOptions!: Selector<typeof selectPaymentOptions>;
 
     @Dispatch(loadUserProfileAction)
     loadUserProfile!: Dispatcher<typeof loadUserProfileAction>;

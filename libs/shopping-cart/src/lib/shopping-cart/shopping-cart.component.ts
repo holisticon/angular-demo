@@ -13,16 +13,16 @@ import { ShoppingCartStore } from '../state/shopping-cart-store.service';
 })
 export class ShoppingCartComponent {
 
-    shoppingCart$: Observable<ShoppingCart>;
-    userProfile$: Observable<UserProfile>;
+    shoppingCart$: Observable<ShoppingCart | null>;
+    userProfile$: Observable<UserProfile | null>;
 
     constructor(
         private ordersCommonStore: OrdersCommonStore,
         private shoppingCartStore: ShoppingCartStore,
         private userProfileStore: UserProfileCommonStore
     ) {
-        this.shoppingCart$ = shoppingCartStore.getShoppingCart();
-        this.userProfile$ = userProfileStore.getUserProfile();
+        this.shoppingCart$ = this.shoppingCartStore.getShoppingCart();
+        this.userProfile$ = this.userProfileStore.getUserProfile();
     }
 
     onUpdateQuantity(quantityUpdate: ResourceWith<QuantityUpdate>) {

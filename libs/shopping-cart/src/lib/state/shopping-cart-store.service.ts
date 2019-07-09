@@ -1,18 +1,16 @@
 import { Injectable } from '@angular/core';
-import { ShoppingCart } from '@ngxp/shopping-cart-common';
-import { Dispatch, Dispatcher, Select, StoreService } from '@ngxp/store-service';
-import { Observable } from 'rxjs';
+import { Dispatch, Dispatcher, Select, Selector, StoreService } from '@ngxp/store-service';
 import { deleteShoppingCartItemAction, loadShoppingCartAction, updateShoppingCartItemQuantityAction } from './shopping-cart.actions';
 import { ShoppingCartPartialState } from './shopping-cart.reducer';
-import { getShoppingCart } from './shopping-cart.selectors';
+import { selectShoppingCart } from './shopping-cart.selectors';
 
 @Injectable({
     providedIn: 'root'
 })
 export class ShoppingCartStore extends StoreService<ShoppingCartPartialState> {
 
-    @Select(getShoppingCart)
-    getShoppingCart!: () => Observable<ShoppingCart>;
+    @Select(selectShoppingCart)
+    getShoppingCart!: Selector<typeof selectShoppingCart>;
 
     @Dispatch(loadShoppingCartAction)
     loadShoppingCart!: Dispatcher<typeof loadShoppingCartAction>;

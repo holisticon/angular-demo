@@ -423,8 +423,8 @@ export class UserProfileComponent {
     constructor(
         private store: Store<UserProfileAppState>
     ) {
-        this.addresses = this.store.select(getAddresses);
-        this.paymentOptions = this.store.select(getPaymentOptions);
+        this.addresses = this.store.select(selectAddresses);
+        this.paymentOptions = this.store.select(selectPaymentOptions);
     }
 }
 ```
@@ -433,20 +433,20 @@ Notice that the selectors also take care of the case in which the user profile i
 
 ```ts
 // user-profile.selectors.ts
-const getUserProfileState = createFeatureSelector<UserProfileState>(USER_PROFILE_FEATURE_KEY);
+const selectUserProfileState = createFeatureSelector<UserProfileState>(USER_PROFILE_FEATURE_KEY);
 
-export const getUserProfile = createSelector(
-    getUserProfileState,
+export const selectUserProfile = createSelector(
+    selectUserProfileState,
     state => state.userProfile
 );
 
-export const getAddresses = createSelector(
-    getUserProfile,
+export const selectAddresses = createSelector(
+    selectUserProfile,
     userProfile => isNull(userProfile) ? [] : userProfile.addresses
 );
 
-export const getPaymentOptions = createSelector(
-    getUserProfile,
+export const selectPaymentOptions = createSelector(
+    selectUserProfile,
     userProfile => isNull(userProfile) ? [] : userProfile.paymentOptions
 );
 ```
@@ -495,29 +495,29 @@ export class UserProfileComponent {
     constructor(
         private store: Store<UserProfileAppState>
     ) {
-        this.addresses = this.store.select(getAddresses);
+        this.addresses = this.store.select(selectAddresses);
     }
 }
 ```
 
-The `UserProfileComponent` uses the `getAddress` selector to retrieve the user's addresses from the application state. 
+The `UserProfileComponent` uses the `selectAddress` selector to retrieve the user's addresses from the application state. 
 
 ```ts
 // user-profile.selectors.ts
-const getUserProfileState = createFeatureSelector<UserProfileState>(USER_PROFILE_FEATURE_KEY);
+const selectUserProfileState = createFeatureSelector<UserProfileState>(USER_PROFILE_FEATURE_KEY);
 
-export const getUserProfile = createSelector(
-    getUserProfileState,
+export const selectUserProfile = createSelector(
+    selectUserProfileState,
     state => state.userProfile
 );
 
-export const getAddresses = createSelector(
-    getUserProfile,
+export const selectAddresses = createSelector(
+    selectUserProfile,
     userProfile => isNull(userProfile) ? [] : userProfile.addresses
 );
 ```
 
-Being pure functions, is is easy to build selectors that build upon each other promoting code reuse and avoiding duplication of logic. In the example `getAddresses` selector delegates to the `getUserProfile` selector to retrieve the user profile from the application state. It then returns the addresses from the user profile.
+Being pure functions, is is easy to build selectors that build upon each other promoting code reuse and avoiding duplication of logic. In the example `selectAddresses` selector delegates to the `selectUserProfile` selector to retrieve the user profile from the application state. It then returns the addresses from the user profile.
 
 As illustrated by the example, selectors can also be used to provide default values, for example when data has not been loaded yet. By falling back to an empty array when the user profile is `null`, the selector provides the consuming component with a consistent data type and thus keeps the component implementation simple.
 

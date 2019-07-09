@@ -2,7 +2,7 @@
 
 import { userProfile } from '@ngxp/user-profile-common/test';
 import { UserProfilePartialState } from './user-profile.reducer';
-import { getAddresses, getPaymentOptions, getUserProfile } from './user-profile.selectors';
+import { selectAddresses, selectPaymentOptions, selectUserProfile } from './user-profile.selectors';
 
 describe('userProfileSelectors', () => {
     const state: UserProfilePartialState = {
@@ -19,41 +19,41 @@ describe('userProfileSelectors', () => {
         }
     };
 
-    describe('getUserProfile', () => {
+    describe('selectUserProfile', () => {
         it('returns the search results', () => {
             const expectedValue = state.userProfile.userProfile;
 
-            expect(getUserProfile(state)).toBe(expectedValue);
+            expect(selectUserProfile(state)).toBe(expectedValue);
         });
     });
 
-    describe('getAddresses', () => {
+    describe('selectAddresses', () => {
         it('returns the addresses of the user profile', () => {
             const expectedValue = state.userProfile.userProfile!.addresses;
 
-            expect(getAddresses(state)).toBe(expectedValue);
+            expect(selectAddresses(state)).toBe(expectedValue);
         });
 
         it('returns the same empty array when the user profile has not been loaded yet', () => {
-            const returnedValue = getAddresses(stateWithoutUserProfile);
+            const returnedValue = selectAddresses(stateWithoutUserProfile);
 
             expect(returnedValue).toEqual([]);
-            expect(getAddresses(stateWithoutUserProfile)).toBe(returnedValue);
+            expect(selectAddresses(stateWithoutUserProfile)).toBe(returnedValue);
         });
     });
 
-    describe('getPaymentOptions', () => {
+    describe('selectPaymentOptions', () => {
         it('returns the payment options of the user profile', () => {
             const expectedValue = state.userProfile.userProfile!.paymentOptions;
 
-            expect(getPaymentOptions(state)).toBe(expectedValue);
+            expect(selectPaymentOptions(state)).toBe(expectedValue);
         });
 
         it('returns the same empty array when the user profile has not been loaded yet', () => {
-            const returnedValue = getPaymentOptions(stateWithoutUserProfile);
+            const returnedValue = selectPaymentOptions(stateWithoutUserProfile);
 
             expect(returnedValue).toEqual([]);
-            expect(getPaymentOptions(stateWithoutUserProfile)).toBe(returnedValue);
+            expect(selectPaymentOptions(stateWithoutUserProfile)).toBe(returnedValue);
         });
     });
 
