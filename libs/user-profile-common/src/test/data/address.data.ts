@@ -1,8 +1,8 @@
-import { Blueprint, createBlueprintBuilder } from '@ngxp/builder';
+import { Blueprint } from '@ngxp/builder';
+import { Resource } from '@ngxp/resource';
+import { createResourceBlueprintBuilder } from '@ngxp/resource/test';
 import { Address } from '@ngxp/user-profile-common';
 import * as faker from 'faker';
-import { Resource } from '@ngxp/common';
-import { createResourceBlueprintBuilder } from '@ngxp/common/test';
 
 const addressBlueprint: Blueprint<Address> = {
     name: () => faker.name.findName(),

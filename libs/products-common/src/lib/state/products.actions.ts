@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Resource } from '@ngxp/common';
+import { Resource } from '@ngxp/resource';
 import { Product } from '../product.model';
 
 export const searchProductsAction = createAction(

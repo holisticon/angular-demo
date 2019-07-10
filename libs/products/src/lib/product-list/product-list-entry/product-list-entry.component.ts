@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { getId } from '@ngxp/common';
 import { Product } from '@ngxp/products-common';
+import { getId } from '@ngxp/resource';
 import { AdditionToShoppingCart } from '@ngxp/shopping-cart-common';
 import { toNumber } from 'lodash-es';
 

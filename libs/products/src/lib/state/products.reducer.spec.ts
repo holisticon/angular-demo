@@ -1,7 +1,7 @@
 import { Action } from '@ngrx/store';
-import { getId, getIds, toMap } from '@ngxp/common';
 import { loadSearchResultsAction, searchResultsLoadedAction } from '@ngxp/products-common';
 import { product, products, searchResults } from '@ngxp/products-common/test';
+import { getId, getIds, toMap } from '@ngxp/resource';
 import { initialState, productsReducer, ProductsState } from './products.reducer';
 
 describe('productsReducer', () => {

@@ -1,10 +1,9 @@
-import { Blueprint, createBlueprintBuilder } from '@ngxp/builder';
-import * as faker from 'faker';
+import { Blueprint } from '@ngxp/builder';
+import { Resource } from '@ngxp/resource';
+import { createResourceBlueprintBuilder } from '@ngxp/resource/test';
 import { UserProfile } from '@ngxp/user-profile-common';
-import { Resource } from '@ngxp/common';
 import { addresses } from './address.data';
 import { paymentOptions } from './payment-option.data';
-import { createResourceBlueprintBuilder } from '@ngxp/common/test';
 
 const userProfileBlueprint: Blueprint<UserProfile> = {
     addresses: () => addresses,

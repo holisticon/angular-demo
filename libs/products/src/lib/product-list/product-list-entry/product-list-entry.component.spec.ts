@@ -1,11 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { getId, Resource } from '@ngxp/common';
-import { Product } from '@ngxp/products-common';
+import { RouterTestingModule } from '@angular/router/testing';
+import { product } from '@ngxp/products-common/test';
+import { getId, ResourceModule } from '@ngxp/resource';
 import { take } from 'rxjs/operators';
 import { ProductListEntryComponent } from './product-list-entry.component';
-import { product } from '@ngxp/products-common/test';
 
 describe('ProductListEntryComponent', () => {
     let component: ProductListEntryComponent;
@@ -15,7 +15,9 @@ describe('ProductListEntryComponent', () => {
         TestBed.configureTestingModule({
             imports: [
                 FormsModule,
-                ReactiveFormsModule
+                ReactiveFormsModule,
+                ResourceModule,
+                RouterTestingModule
             ],
             declarations: [
                 ProductListEntryComponent
@@ -34,7 +36,6 @@ describe('ProductListEntryComponent', () => {
     it('emits an addToShoppingCart event when the form is submitted', () => {
         const expectedQuantity = 2;
         const form = fixture.debugElement.query(By.css('form'));
-        const quantityFormControl = fixture.componentInstance.quantity.setValue(expectedQuantity);
 
         fixture.componentInstance.addToShoppingCart
             .pipe(take(1))

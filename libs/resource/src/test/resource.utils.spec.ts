@@ -1,5 +1,5 @@
+import { Resource } from '@ngxp/resource';
 import { addId } from './resource.utils';
-import { Resource } from '@ngxp/common';
 
 describe('resourceUtils', () => {
     interface SomeType {

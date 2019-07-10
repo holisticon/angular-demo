@@ -1,8 +1,8 @@
-import { Blueprint, createBlueprintBuilder } from '@ngxp/builder';
-import * as faker from 'faker';
+import { Blueprint } from '@ngxp/builder';
+import { Resource } from '@ngxp/resource';
+import { createResourceBlueprintBuilder } from '@ngxp/resource/test';
 import { PaymentOption } from '@ngxp/user-profile-common';
-import { Resource } from '@ngxp/common';
-import { createResourceBlueprintBuilder } from '@ngxp/common/test';
+import * as faker from 'faker';
 
 const paymentOptionBlueprint: Blueprint<PaymentOption> = {
     accountOwner: () => faker.name.findName(),

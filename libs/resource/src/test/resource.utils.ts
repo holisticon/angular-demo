@@ -1,4 +1,4 @@
-import { Resource, ResourceId } from '@ngxp/common';
+import { Resource, ResourceId } from '@ngxp/resource';
 
 export function addId<T extends object>(obj: T, id: ResourceId): Resource<T> {
     return {

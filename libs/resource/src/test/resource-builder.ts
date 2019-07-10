@@ -1,5 +1,5 @@
 import { Blueprint, BlueprintFactory, createBlueprintBuilder } from '@ngxp/builder';
-import { Resource } from '@ngxp/common';
+import { Resource } from '@ngxp/resource';
 import * as faker from 'faker';
 import { isFunction } from 'lodash-es';
 

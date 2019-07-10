@@ -1,12 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { getId, Resource } from '@ngxp/common';
-import { Product } from '@ngxp/products-common';
+import { product, products } from '@ngxp/products-common/test';
+import { getId, ResourceModule } from '@ngxp/resource';
 import { take } from 'rxjs/operators';
 import { ProductListEntryComponent } from './product-list-entry/product-list-entry.component';
 import { ProductListComponent } from './product-list.component';
-import { products, product } from '@ngxp/products-common/test';
 
 describe('ProductListComponent', () => {
     let component: ProductListComponent;
@@ -16,7 +15,8 @@ describe('ProductListComponent', () => {
         TestBed.configureTestingModule({
             imports: [
                 FormsModule,
-                ReactiveFormsModule
+                ReactiveFormsModule,
+                ResourceModule
             ],
             declarations: [
                 ProductListComponent,

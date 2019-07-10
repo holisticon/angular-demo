@@ -1,6 +1,6 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { getId } from '@ngxp/common';
+import { getId } from '@ngxp/resource';
 import { QuantityUpdate } from '@ngxp/shopping-cart-common';
 import { shoppingCart, shoppingCartItem } from '@ngxp/shopping-cart-common/test';
 import { ShoppingCartService } from './shopping-cart.service';

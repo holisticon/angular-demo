@@ -1,9 +1,9 @@
 // tslint:disable: no-non-null-assertion
 
 import { BlueprintFactory } from '@ngxp/builder';
-import { Resource } from '@ngxp/common';
-import { createResourceBlueprintBuilder } from '@ngxp/common/test';
 import { NewOrder } from '@ngxp/orders-common';
+import { Resource } from '@ngxp/resource';
+import { createResourceBlueprintBuilder } from '@ngxp/resource/test';
 import { shoppingCartBuilder } from '@ngxp/shopping-cart-common/test';
 import { userProfile } from '@ngxp/user-profile-common/test';
 import { sample } from 'lodash-es';

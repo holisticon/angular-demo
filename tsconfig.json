@@ -25,6 +25,8 @@
       "@ngxp/products": ["libs/products/src/index.ts"],
       "@ngxp/products-common": ["libs/products-common/src/index.ts"],
       "@ngxp/products-common/test": ["libs/products-common/src/test/index.ts"],
+      "@ngxp/resource": ["libs/resource/src/index.ts"],
+      "@ngxp/resource/test": ["libs/resource/src/test/index.ts"],
       "@ngxp/shopping-cart": ["libs/shopping-cart/src/index.ts"],
       "@ngxp/shopping-cart-common": ["libs/shopping-cart-common/src/index.ts"],
       "@ngxp/shopping-cart-common/test": [

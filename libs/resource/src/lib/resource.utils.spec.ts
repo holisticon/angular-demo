@@ -1,4 +1,4 @@
-import { resource, resources } from '@ngxp/common/test';
+import { resource, resources } from '@ngxp/resource/test';
 import { getId, getIds, toMap } from './resource.utils';
 
 describe('resourceUtils', () => {

@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { ResourceWith } from '@ngxp/common';
+import { ResourceWith } from '@ngxp/resource';
 import { QuantityUpdate, ShoppingCartItem } from '@ngxp/shopping-cart-common';
 
 export const loadShoppingCartAction = createAction(

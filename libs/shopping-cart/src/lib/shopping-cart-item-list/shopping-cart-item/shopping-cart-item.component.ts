@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { ResourceWith } from '@ngxp/common';
+import { ResourceWith } from '@ngxp/resource';
 import { QuantityUpdate, ShoppingCartItem } from '@ngxp/shopping-cart-common';
 
 @Component({

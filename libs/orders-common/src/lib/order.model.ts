@@ -1,4 +1,5 @@
-import { LineItem, ResourceId } from '@ngxp/common';
+import { LineItem } from '@ngxp/common';
+import { ResourceId } from '@ngxp/resource';
 import { ShoppingCart } from '@ngxp/shopping-cart-common';
 import { Address, PaymentOption } from '@ngxp/user-profile-common';
 

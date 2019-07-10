@@ -1,9 +1,6 @@
 {
   "npmScope": "ngxp",
   "projects": {
-    "all": {
-      "tags": []
-    },
     "demo": {
       "tags": []
     },
@@ -38,6 +35,9 @@
       "tags": []
     },
     "user-profile-common": {
+      "tags": []
+    },
+    "resource": {
       "tags": []
     }
   }

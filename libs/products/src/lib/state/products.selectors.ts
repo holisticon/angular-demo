@@ -1,6 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { ResourceMap } from '@ngxp/common';
 import { Product } from '@ngxp/products-common';
+import { ResourceMap } from '@ngxp/resource';
 import { ProductsPartialState, ProductsState, PRODUCTS_FEATURE_KEY } from '../state/products.reducer';
 
 const selectProductsState = createFeatureSelector<ProductsPartialState, ProductsState>(PRODUCTS_FEATURE_KEY);

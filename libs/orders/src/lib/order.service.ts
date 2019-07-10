@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Resource } from '@ngxp/common';
 import { Order } from '@ngxp/orders-common';
+import { Resource } from '@ngxp/resource';
 
 @Injectable({
     providedIn: 'root'

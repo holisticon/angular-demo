@@ -3,9 +3,9 @@ import { async, ComponentFixture, fakeAsync, TestBed } from '@angular/core/testi
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { StoreModule } from '@ngrx/store';
-import { ResourceWith } from '@ngxp/common';
 import { OrdersCommonStore, PlaceOrderFormComponent } from '@ngxp/orders-common';
 import { newOrder } from '@ngxp/orders-common/test';
+import { ResourceWith } from '@ngxp/resource';
 import { QuantityUpdate, ShoppingCartItem } from '@ngxp/shopping-cart-common';
 import { emptyShoppingCart, shoppingCart, shoppingCartItem } from '@ngxp/shopping-cart-common/test';
 import { provideStoreServiceMock, StoreServiceMock } from '@ngxp/store-service/testing';

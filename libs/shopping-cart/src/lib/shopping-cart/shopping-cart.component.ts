@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ResourceWith } from '@ngxp/common';
 import { NewOrder, OrdersCommonStore } from '@ngxp/orders-common';
+import { ResourceWith } from '@ngxp/resource';
 import { QuantityUpdate, ShoppingCart, ShoppingCartItem } from '@ngxp/shopping-cart-common';
 import { UserProfile, UserProfileCommonStore } from '@ngxp/user-profile-common';
 import { Observable } from 'rxjs';

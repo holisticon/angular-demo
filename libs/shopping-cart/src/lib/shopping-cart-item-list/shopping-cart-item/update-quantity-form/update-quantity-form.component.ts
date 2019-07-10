@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { OnNonNullChange, Resource, ResourceWith } from '@ngxp/common';
+import { OnNonNullChange } from '@ngxp/common';
+import { Resource, ResourceWith } from '@ngxp/resource';
 import { QuantityUpdate, ShoppingCartItem } from '@ngxp/shopping-cart-common';
 
 @Component({

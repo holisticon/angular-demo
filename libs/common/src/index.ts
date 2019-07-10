@@ -1,5 +1,3 @@
 export * from './lib/function.pipe';
 export * from './lib/line-item.model';
 export * from './lib/property.decorators';
-export * from './lib/resource.model';
-export * from './lib/resource.utils';

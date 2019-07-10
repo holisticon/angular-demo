@@ -1,4 +1,4 @@
-import { getId } from '@ngxp/common';
+import { getId } from '@ngxp/resource';
 import { NewOrder, NewOrderRequest } from './order.model';
 
 export function toNewOrderRequest(newOrder: NewOrder): NewOrderRequest {

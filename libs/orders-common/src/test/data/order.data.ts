@@ -1,10 +1,11 @@
+import { BlueprintFactory } from '@ngxp/builder';
+import { getRandomValue } from '@ngxp/common/test';
 import { Order, OrderStatus } from '@ngxp/orders-common';
+import { Resource } from '@ngxp/resource';
+import { createResourceBlueprintBuilder } from '@ngxp/resource/test';
 import { addressBuilder, paymentOptionBuilder } from '@ngxp/user-profile-common/test';
-import { Blueprint, createBlueprintBuilder, BlueprintFactory } from '@ngxp/builder';
 import * as faker from 'faker';
-import { random, sample } from 'lodash-es';
-import { getRandomValue, createResourceBlueprintBuilder } from '@ngxp/common/test';
-import { Resource } from '@ngxp/common';
+import { random } from 'lodash-es';
 import { orderItemBuilder } from './order-item.data';
 
 const minItemCount = 1;

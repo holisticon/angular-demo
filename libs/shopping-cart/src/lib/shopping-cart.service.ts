@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { getId, Resource } from '@ngxp/common';
+import { getId, Resource } from '@ngxp/resource';
 import { QuantityUpdate, ShoppingCart, ShoppingCartItem } from '@ngxp/shopping-cart-common';
 
 @Injectable({

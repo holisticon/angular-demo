@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { ResourceWith } from '@ngxp/common';
+import { ResourceWith } from '@ngxp/resource';
 import { QuantityUpdate, ShoppingCartItem } from '@ngxp/shopping-cart-common';
 import { shoppingCartItem } from '@ngxp/shopping-cart-common/test';
 import { take } from 'rxjs/operators';

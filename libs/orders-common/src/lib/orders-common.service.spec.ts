@@ -1,7 +1,7 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { getId } from '@ngxp/common';
 import { newOrder, order } from '@ngxp/orders-common/test';
+import { getId } from '@ngxp/resource';
 import { cold } from 'jest-marbles';
 import { toNewOrderRequest } from './new-order-request.mapper';
 import { OrdersCommonService } from './orders-common.service';

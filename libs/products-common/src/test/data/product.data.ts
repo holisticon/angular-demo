@@ -1,7 +1,7 @@
 import { Blueprint } from '@ngxp/builder';
-import { Resource } from '@ngxp/common';
-import { createResourceBlueprintBuilder } from '@ngxp/common/test';
 import { Product } from '@ngxp/products-common';
+import { Resource } from '@ngxp/resource';
+import { createResourceBlueprintBuilder } from '@ngxp/resource/test';
 import * as faker from 'faker';
 import { sampleSize } from 'lodash-es';
 

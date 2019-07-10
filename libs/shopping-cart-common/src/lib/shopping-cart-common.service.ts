@@ -1,6 +1,6 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Resource } from '@ngxp/common';
+import { Resource } from '@ngxp/resource';
 import { AdditionToShoppingCart, ShoppingCart } from '@ngxp/shopping-cart-common';
 import { isNull } from 'lodash-es';
 import { EMPTY } from 'rxjs';

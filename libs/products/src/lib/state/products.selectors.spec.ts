@@ -1,5 +1,5 @@
-import { getId, getIds, toMap } from '@ngxp/common';
 import { products, searchResults } from '@ngxp/products-common/test';
+import { getId, getIds, toMap } from '@ngxp/resource';
 import { ProductsPartialState } from './products.reducer';
 import { selectProduct, selectSearchResults } from './products.selectors';
 

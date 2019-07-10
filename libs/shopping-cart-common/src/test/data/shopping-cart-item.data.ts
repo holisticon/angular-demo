@@ -1,10 +1,9 @@
-import { productBuilder, products } from '@ngxp/products-common/test';
-import { Blueprint, createBlueprintBuilder, BlueprintBuilder, BlueprintFactory, createBuilder } from '@ngxp/builder';
-import * as faker from 'faker';
-import { Product } from '@ngxp/products-common';
-import { isUndefined, random, sample } from 'lodash-es';
-import { getId, LineItem, Resource } from '@ngxp/common';
-import { createResourceBlueprintBuilder } from '@ngxp/common/test';
+import { BlueprintFactory } from '@ngxp/builder';
+import { LineItem } from '@ngxp/common';
+import { productBuilder } from '@ngxp/products-common/test';
+import { getId, Resource } from '@ngxp/resource';
+import { createResourceBlueprintBuilder } from '@ngxp/resource/test';
+import { random } from 'lodash-es';
 
 const minItemQty = 1;
 const maxItemQty = 5;
