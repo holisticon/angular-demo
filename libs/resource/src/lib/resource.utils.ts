@@ -1,4 +1,4 @@
-import { zipObject } from 'lodash-es';
+import { isString, zipObject } from 'lodash-es';
 import { Resource, ResourceId } from './resource.model';
 
 export function getId(resource: Resource<any>): ResourceId {
@@ -14,4 +14,16 @@ export function toMap<T>(resources: Resource<T>[]) {
         resources.map(resource => getId(resource)),
         resources
     );
+}
+
+export function encodeResourceIdAsRouteParam(resourceId: ResourceId): string {
+    if (!isString(resourceId)) {
+        return resourceId;
+    }
+
+    return btoa(resourceId);
+}
+
+export function decodeResourceIdFromRouteParam(encodedResourceId: string): ResourceId {
+    return atob(encodedResourceId);
 }
