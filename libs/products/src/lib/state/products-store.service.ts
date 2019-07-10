@@ -11,4 +11,7 @@ export class ProductsStore extends StoreService<ProductsPartialState> {
     @Select(selectSearchResults)
     getSearchResults!: Selector<typeof selectSearchResults>;
 
+    @Select(selectProduct)
+    getProduct!: Selector<typeof selectProduct>;
+
 }

@@ -3,7 +3,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { product } from '@ngxp/products-common/test';
-import { getId, ResourceModule } from '@ngxp/resource';
+import { encodeResourceIdAsRouteParam, getId, ResourceModule } from '@ngxp/resource';
 import { take } from 'rxjs/operators';
 import { ProductListEntryComponent } from './product-list-entry.component';
 
@@ -31,6 +31,12 @@ describe('ProductListEntryComponent', () => {
         component = fixture.componentInstance;
         component.product = product;
         fixture.detectChanges();
+    });
+
+    it('links to the product detail page', () => {
+        const link = fixture.debugElement.query(By.css('a'));
+
+        expect(link.nativeElement.getAttribute('href')).toBe(`/${encodeURIComponent(encodeResourceIdAsRouteParam(getId(product)))}`);
     });
 
     it('emits an addToShoppingCart event when the form is submitted', () => {

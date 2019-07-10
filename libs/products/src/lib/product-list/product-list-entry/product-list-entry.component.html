@@ -3,7 +3,7 @@
 </figure>
 
 <div class="col-8">
-    <h2 class="h5 mb-1"><a>{{ product.name }}</a></h2>
+    <h2 class="h5 mb-1"><a [routerLink]="product | toResourceId | encodeRouteParam">{{ product.name }}</a></h2>
     <p class="mb-1"><small>{{ product.description }}</small></p>
     <p><strong>{{ product.price | number:'1.2-2' }}</strong></p>
 </div>
