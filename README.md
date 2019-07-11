@@ -558,7 +558,7 @@ The actual state change happens in the reducer functions. When an action is disp
 ```ts
 // products.reducer.ts
 
-export const productsReducer = createReducer(initialState,
+const reducer = createReducer(initialState,
     on(loadSearchResultsAction, (state, { query }) => ({
         ...state,
         query,

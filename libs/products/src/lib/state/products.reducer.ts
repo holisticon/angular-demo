@@ -1,4 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
+import { ReducerArgs } from '@ngxp/common';
 import { loadSearchResultsAction, Product, searchResultsLoadedAction } from '@ngxp/products-common';
 import { getIds, ResourceId, ResourceMap, toMap } from '@ngxp/resource';
 
@@ -20,7 +21,7 @@ export const initialState: ProductsState = {
     products: {}
 };
 
-export const productsReducer = createReducer(initialState,
+const reducer = createReducer(initialState,
     on(loadSearchResultsAction, (state, { query }) => ({
         ...state,
         query,
@@ -35,3 +36,7 @@ export const productsReducer = createReducer(initialState,
         }
     }))
 );
+
+// neccessary for AOT support
+// see https://ngrx.io/guide/store/reducers#creating-the-reducer-function
+export function productsReducer(...args: ReducerArgs<ProductsState>) { return reducer(...args); }

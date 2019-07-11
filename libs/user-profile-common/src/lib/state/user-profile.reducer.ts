@@ -1,4 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
+import { ReducerArgs } from '@ngxp/common';
 import { UserProfile } from '../user-profile.model';
 import { userProfileLoadedAction } from './user-profile.actions';
 
@@ -16,9 +17,13 @@ export const initialState: UserProfileState = {
     userProfile: null
 };
 
-export const userProfileReducer = createReducer(initialState,
+export const reducer = createReducer(initialState,
     on(userProfileLoadedAction, (state, { userProfile }) => ({
         ...state,
         userProfile
     }))
 );
+
+// neccessary for AOT support
+// see https://ngrx.io/guide/store/reducers#creating-the-reducer-function
+export function userProfileReducer(...args: ReducerArgs<UserProfileState>) { return reducer(...args); }
