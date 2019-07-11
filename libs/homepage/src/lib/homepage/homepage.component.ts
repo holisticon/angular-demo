@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ProductsCommonStore } from '@ngxp/products-common';
 
 @Component({
   selector: 'ngxp-homepage',
-  templateUrl: './homepage.component.html'
+  templateUrl: './homepage.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomepageComponent {
 
