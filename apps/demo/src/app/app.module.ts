@@ -7,7 +7,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { routerReducer, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { NxModule } from '@nrwl/angular';
 import { storeLogger } from 'ngrx-store-logger';
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
@@ -19,7 +18,6 @@ import { AppEffects } from './state/app.effects';
     imports: [
         BrowserModule,
         HttpClientModule, // see https://github.com/angular/angular-cli/issues/10170
-        NxModule.forRoot(),
         RouterModule.forRoot([
             { path: '', loadChildren: () => import('@ngxp/homepage').then(m => m.HomepageModule) },
             { path: 'products', loadChildren: () => import('@ngxp/products').then(m => m.ProductsModule) },
