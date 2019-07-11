@@ -1,10 +1,10 @@
-import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { StoreModule } from '@ngrx/store';
 import { expectElementFromFixture } from '@ngxp/common/test';
-import { ProductsCommonStore, ProductSearchFormComponent } from '@ngxp/products-common';
+import { ProductsCommonStore } from '@ngxp/products-common';
 import { provideStoreServiceMock } from '@ngxp/store-service/testing';
 import { HomepageComponent } from './homepage.component';
 
@@ -25,14 +25,13 @@ describe('HomepageComponent', () => {
                 }),
             ],
             declarations: [
-                HomepageComponent,
-                ProductSearchFormComponent
+                HomepageComponent
             ],
             providers: [
                 provideStoreServiceMock(ProductsCommonStore),
             ],
             schemas: [
-                NO_ERRORS_SCHEMA
+                CUSTOM_ELEMENTS_SCHEMA
             ]
         })
             .compileComponents();
@@ -53,9 +52,9 @@ describe('HomepageComponent', () => {
     it('triggers a search for products with the provided query when the product search form emits a search event', () => {
         const expectedQuery = 'query';
         const searchProductsSpy = spyOn(productsCommonStore, 'searchProducts');
-        const productSearchForm: ProductSearchFormComponent = fixture.debugElement.query(By.directive(ProductSearchFormComponent)).componentInstance;
+        const productSearchForm = fixture.debugElement.query(By.css('ngxp-product-search-form'));
 
-        productSearchForm.search.emit(expectedQuery);
+        productSearchForm.triggerEventHandler('search', expectedQuery);
 
         expect(searchProductsSpy).toHaveBeenCalledWith({ query: expectedQuery });
     });

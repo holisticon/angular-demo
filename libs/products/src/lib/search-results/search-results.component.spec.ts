@@ -29,7 +29,6 @@ describe('SearchResultsComponent', () => {
                 }),
             ],
             declarations: [
-                ProductListComponent,
                 SearchResultsComponent
             ],
             schemas: [
@@ -54,7 +53,7 @@ describe('SearchResultsComponent', () => {
     });
 
     it('renders the search results as ngxp-product-list', () => {
-        const productList: ProductListComponent = fixture.debugElement.query(By.directive(ProductListComponent)).componentInstance
+        const productList: ProductListComponent = fixture.debugElement.query(By.css('ngxp-product-list')).nativeElement
 
         expectElementFromFixture(fixture, 'ngxp-product-list').not.toBeNull();
         expect(productList.products).toEqual(searchResults);
@@ -66,9 +65,9 @@ describe('SearchResultsComponent', () => {
             quantity: 2
         };
         const addToShoppingCartSpy = spyOn(shoppingCartCommonStore, 'addToShoppingCart');
-        const productList: ProductListComponent = fixture.debugElement.query(By.directive(ProductListComponent)).componentInstance;
+        const productList = fixture.debugElement.query(By.css('ngxp-product-list'));
 
-        productList.addToShoppingCart.emit(additionToShoppingCart);
+        productList.triggerEventHandler('addToShoppingCart', additionToShoppingCart);
 
         expect(addToShoppingCartSpy).toHaveBeenCalledWith({ additionToShoppingCart });
     }));

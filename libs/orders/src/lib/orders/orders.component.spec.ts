@@ -1,4 +1,4 @@
-import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { StoreModule } from '@ngrx/store';
@@ -23,8 +23,7 @@ describe('OrdersComponent', () => {
                 }),
             ],
             declarations: [
-                OrdersComponent,
-                OrderComponent
+                OrdersComponent
             ],
             providers: [
                 provideStoreServiceMock(OrdersStore, {
@@ -32,7 +31,7 @@ describe('OrdersComponent', () => {
                 })
             ],
             schemas: [
-                NO_ERRORS_SCHEMA
+                CUSTOM_ELEMENTS_SCHEMA
             ]
         })
             .compileComponents();
@@ -45,12 +44,12 @@ describe('OrdersComponent', () => {
     });
 
     it('renders a ngxp-order for each order', () => {
-        const orderComponents = fixture.debugElement.queryAll(By.directive(OrderComponent));
+        const orderComponents = fixture.debugElement.queryAll(By.css('ngxp-order'));
 
         expect(orderComponents.length).toBe(orderComponents.length);
 
         orders.forEach((order, index) => {
-            const orderComponent: OrderComponent = orderComponents[index].componentInstance;
+            const orderComponent: OrderComponent = orderComponents[index].nativeElement;
             expect(orderComponent.order).toEqual(order);
         });
     });

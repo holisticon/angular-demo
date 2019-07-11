@@ -1,3 +1,4 @@
+import { NO_ERRORS_SCHEMA } from '@angular/compiler/src/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -7,7 +8,6 @@ import { shoppingCart } from '@ngxp/shopping-cart-common/test';
 import { take } from 'rxjs/operators';
 import { ShoppingCartItemListComponent } from './shopping-cart-item-list.component';
 import { ShoppingCartItemComponent } from './shopping-cart-item/shopping-cart-item.component';
-import { UpdateQuantityFormComponent } from './shopping-cart-item/update-quantity-form/update-quantity-form.component';
 
 describe('ShoppingCartItemListComponent', () => {
     let component: ShoppingCartItemListComponent;
@@ -20,9 +20,10 @@ describe('ShoppingCartItemListComponent', () => {
                 ReactiveFormsModule
             ],
             declarations: [
-                ShoppingCartItemListComponent,
-                ShoppingCartItemComponent,
-                UpdateQuantityFormComponent
+                ShoppingCartItemListComponent
+            ],
+            schemas: [
+                NO_ERRORS_SCHEMA
             ]
         })
             .compileComponents();
@@ -36,12 +37,12 @@ describe('ShoppingCartItemListComponent', () => {
     });
 
     it('renders a row for each shopping cart item', () => {
-        const shoppingCartItemRows = fixture.debugElement.queryAll(By.directive(ShoppingCartItemComponent));
+        const shoppingCartItemRows = fixture.debugElement.queryAll(By.css('[ngxp-shopping-cart-item-row]'));
 
         expect(shoppingCartItemRows.length).toBe(shoppingCart.items.length);
 
         shoppingCart.items.forEach((shoppingCartItem, index) => {
-            const shoppingCartItemRow: ShoppingCartItemComponent = shoppingCartItemRows[index].componentInstance;
+            const shoppingCartItemRow: ShoppingCartItemComponent = shoppingCartItemRows[index].nativeElement;
             expect(shoppingCartItemRow.shoppingCartItem).toBe(shoppingCartItem);
         });
     });
@@ -54,10 +55,10 @@ describe('ShoppingCartItemListComponent', () => {
     });
 
     it('emits an updateQuantity event when the shopping cart item row is emits one', () => {
-        const shoppingCartItemRow: ShoppingCartItemComponent = fixture.debugElement.query(By.directive(ShoppingCartItemComponent)).componentInstance;
+        const shoppingCartItemRow = fixture.debugElement.query(By.css('[ngxp-shopping-cart-item-row]'));
 
         const expectedQuantityUpdate: ResourceWith<QuantityUpdate, ShoppingCartItem> = {
-            resource: shoppingCartItemRow.shoppingCartItem,
+            resource: shoppingCartItemRow.nativeElement.shoppingCartItem,
             with: {
                 quantity: 2
             }
@@ -69,18 +70,18 @@ describe('ShoppingCartItemListComponent', () => {
                 expect(quantityUpdate).toEqual(expectedQuantityUpdate);
             });
 
-        shoppingCartItemRow.updateQuantity.emit(expectedQuantityUpdate);
+        shoppingCartItemRow.triggerEventHandler('updateQuantity', expectedQuantityUpdate);
     });
 
     it('emits an delete event when the shopping cart item row is emits one', () => {
-        const shoppingCartItemRow: ShoppingCartItemComponent = fixture.debugElement.query(By.directive(ShoppingCartItemComponent)).componentInstance;
+        const shoppingCartItemRow = fixture.debugElement.query(By.css('[ngxp-shopping-cart-item-row]'));
 
         fixture.componentInstance.delete
             .pipe(take(1))
             .subscribe(shoppingCartItem => {
-                expect(shoppingCartItem).toEqual(shoppingCartItemRow.shoppingCartItem);
+                expect(shoppingCartItem).toEqual(shoppingCartItemRow.nativeElement.shoppingCartItem);
             });
 
-        shoppingCartItemRow.delete.emit(shoppingCartItemRow.shoppingCartItem);
+        shoppingCartItemRow.triggerEventHandler('delete', shoppingCartItemRow.nativeElement.shoppingCartItem);
     });
 });

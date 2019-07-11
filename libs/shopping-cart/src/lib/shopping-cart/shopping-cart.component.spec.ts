@@ -12,7 +12,6 @@ import { provideStoreServiceMock, StoreServiceMock } from '@ngxp/store-service/t
 import { UserProfileCommonStore } from '@ngxp/user-profile-common';
 import { userProfile } from '@ngxp/user-profile-common/test';
 import { ShoppingCartItemListComponent } from '../shopping-cart-item-list/shopping-cart-item-list.component';
-import { ShoppingCartItemComponent } from '../shopping-cart-item-list/shopping-cart-item/shopping-cart-item.component';
 import { ShoppingCartStore } from '../state/shopping-cart-store.service';
 import { ShoppingCartIsEmptyPipe } from './shopping-cart-is-empty.pipe';
 import { ShoppingCartComponent } from './shopping-cart.component';
@@ -38,10 +37,7 @@ describe('ShoppingCartComponent', () => {
             ],
             declarations: [
                 ShoppingCartComponent,
-                ShoppingCartItemListComponent,
-                ShoppingCartItemComponent,
-                ShoppingCartIsEmptyPipe,
-                PlaceOrderFormComponent
+                ShoppingCartIsEmptyPipe
             ],
             providers: [
                 provideStoreServiceMock(OrdersCommonStore),
@@ -69,13 +65,13 @@ describe('ShoppingCartComponent', () => {
     });
 
     it('renders the shopping cart as ngxp-shopping-cart-item-list', () => {
-        const shoppingCartItemList: ShoppingCartItemListComponent = fixture.debugElement.query(By.directive(ShoppingCartItemListComponent)).componentInstance;
+        const shoppingCartItemList: ShoppingCartItemListComponent = fixture.debugElement.query(By.css('ngxp-shopping-cart-item-list')).nativeElement;
 
         expect(shoppingCartItemList.shoppingCart).toEqual(shoppingCart);
     });
 
     it('renders the place order form when the shopping cart contains items', () => {
-        const placeOrderForm: PlaceOrderFormComponent = fixture.debugElement.query(By.directive(PlaceOrderFormComponent)).componentInstance;
+        const placeOrderForm: PlaceOrderFormComponent = fixture.debugElement.query(By.css('ngxp-place-order-form')).nativeElement;
 
         expect(placeOrderForm.shoppingCart).toEqual(shoppingCart);
         expect(placeOrderForm.userProfile).toEqual(userProfile);
@@ -86,7 +82,7 @@ describe('ShoppingCartComponent', () => {
 
         fixture.detectChanges();
 
-        const placeOrderForm = fixture.debugElement.query(By.directive(PlaceOrderFormComponent));
+        const placeOrderForm = fixture.debugElement.query(By.css('ngxp-place-order-form'));
 
         expect(placeOrderForm).toBeNull();
     }));
@@ -99,27 +95,27 @@ describe('ShoppingCartComponent', () => {
             }
         };
         const updateShoppingCartItemQuantitySpy = spyOn(shoppingCartStore, 'updateShoppingCartItemQuantity');
-        const shoppingCartItemList: ShoppingCartItemListComponent = fixture.debugElement.query(By.directive(ShoppingCartItemListComponent)).componentInstance;
+        const shoppingCartItemList = fixture.debugElement.query(By.css('ngxp-shopping-cart-item-list'));
 
-        shoppingCartItemList.updateQuantity.emit(quantityUpdate);
+        shoppingCartItemList.triggerEventHandler('updateQuantity', quantityUpdate);
 
         expect(updateShoppingCartItemQuantitySpy).toHaveBeenCalledWith({ quantityUpdate });
     }));
 
     it('dispatches an DeleteShoppingCartItemAction when the shopping cart item list emits a delete event', async(() => {
         const deleteShoppingCartItemSpy = spyOn(shoppingCartStore, 'deleteShoppingCartItem');
-        const shoppingCartItemList: ShoppingCartItemListComponent = fixture.debugElement.query(By.directive(ShoppingCartItemListComponent)).componentInstance;
+        const shoppingCartItemList = fixture.debugElement.query(By.css('ngxp-shopping-cart-item-list'));
 
-        shoppingCartItemList.delete.emit(shoppingCartItem);
+        shoppingCartItemList.triggerEventHandler('delete', shoppingCartItem);
 
         expect(deleteShoppingCartItemSpy).toHaveBeenCalledWith({ shoppingCartItem });
     }));
 
     it('dispatches a PlaceOrderAction when the place order form emits a placeOrder event', async(() => {
         const placeOrderSpy = spyOn(ordersCommonStore, 'placeOrder');
-        const placeOrderForm: PlaceOrderFormComponent = fixture.debugElement.query(By.directive(PlaceOrderFormComponent)).componentInstance;
+        const placeOrderForm = fixture.debugElement.query(By.css('ngxp-place-order-form'));
 
-        placeOrderForm.placeOrder.emit(newOrder);
+        placeOrderForm.triggerEventHandler('placeOrder', newOrder);
 
         expect(placeOrderSpy).toHaveBeenCalledWith({ newOrder });
     }));

@@ -1,15 +1,14 @@
-import { DebugElement } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { ShoppingCart } from '@ngxp/shopping-cart-common';
-import { AddressComponent, PaymentOptionComponent, UserProfile } from '@ngxp/user-profile-common';
+import { shoppingCart } from '@ngxp/shopping-cart-common/test';
+import { AddressComponent } from '@ngxp/user-profile-common';
+import { userProfile } from '@ngxp/user-profile-common/test';
 import { isNull } from 'lodash-es';
 import { take } from 'rxjs/operators';
-import { PlaceOrderFormComponent } from './place-order-form.component';
 import { NewOrder } from '../order.model';
-import { shoppingCart } from '@ngxp/shopping-cart-common/test';
-import { userProfile } from '@ngxp/user-profile-common/test';
+import { PlaceOrderFormComponent } from './place-order-form.component';
 
 describe('PlaceOrderFormComponent', () => {
     let component: PlaceOrderFormComponent;
@@ -22,9 +21,10 @@ describe('PlaceOrderFormComponent', () => {
                 ReactiveFormsModule
             ],
             declarations: [
-                AddressComponent,
-                PaymentOptionComponent,
                 PlaceOrderFormComponent
+            ],
+            schemas: [
+                CUSTOM_ELEMENTS_SCHEMA
             ]
         })
             .compileComponents();
@@ -40,9 +40,9 @@ describe('PlaceOrderFormComponent', () => {
 
     describe('billingAddress', () => {
         it('renders each address of the given user profile as option for billing address', () => {
-            const billingAddresses: AddressComponent[] = fixture.debugElement.queryAll(By.directive(AddressComponent))
+            const billingAddresses: AddressComponent[] = fixture.debugElement.queryAll(By.css('ngxp-address'))
                 .filter(address => !isNull(address.nativeElement.closest('.billing-address')))
-                .map((address: DebugElement) => address.componentInstance);
+                .map((address: DebugElement) => address.nativeElement);
 
             userProfile.addresses.forEach((address, index) => {
                 const addressComponent = billingAddresses[index];
@@ -57,9 +57,9 @@ describe('PlaceOrderFormComponent', () => {
 
     describe('shippingAddress', () => {
         it('renders each address of the given user profile as option for shipping address', () => {
-            const shippingAddresses: AddressComponent[] = fixture.debugElement.queryAll(By.directive(AddressComponent))
+            const shippingAddresses: AddressComponent[] = fixture.debugElement.queryAll(By.css('ngxp-address'))
             .filter(address => !isNull(address.nativeElement.closest('.shipping-address')))
-            .map((address: DebugElement) => address.componentInstance);
+            .map((address: DebugElement) => address.nativeElement);
 
             userProfile.addresses.forEach((address, index) => {
                 const addressComponent = shippingAddresses[index];
@@ -74,8 +74,8 @@ describe('PlaceOrderFormComponent', () => {
 
     describe('payment', () => {
         it('renders each payment option of the given user profile as option for payment', () => {
-            const paymentOptions: PaymentOptionComponent[] = fixture.debugElement.queryAll(By.directive(PaymentOptionComponent))
-                .map((address: DebugElement) => address.componentInstance);
+            const paymentOptions = fixture.debugElement.queryAll(By.css('ngxp-payment-option'))
+                .map((address: DebugElement) => address.nativeElement);
 
             userProfile.paymentOptions.forEach((paymentOption, index) => {
                 const payment = paymentOptions[index];

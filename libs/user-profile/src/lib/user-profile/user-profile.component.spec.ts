@@ -1,8 +1,9 @@
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { StoreModule } from '@ngrx/store';
 import { provideStoreServiceMock } from '@ngxp/store-service/testing';
-import { AddressComponent, PaymentOptionComponent, UserProfileCommonStore } from '@ngxp/user-profile-common';
+import { UserProfileCommonStore } from '@ngxp/user-profile-common';
 import { userProfile } from '@ngxp/user-profile-common/test';
 import { UserProfileComponent } from './user-profile.component';
 
@@ -21,15 +22,16 @@ describe('UserProfileComponent', () => {
                 }),
             ],
             declarations: [
-                UserProfileComponent,
-                AddressComponent,
-                PaymentOptionComponent
+                UserProfileComponent
             ],
             providers: [
                 provideStoreServiceMock(UserProfileCommonStore, {
                     getAddresses: userProfile.addresses,
                     getPaymentOptions: userProfile.paymentOptions
                 })
+            ],
+            schemas: [
+                CUSTOM_ELEMENTS_SCHEMA
             ]
         })
             .compileComponents();
@@ -42,10 +44,10 @@ describe('UserProfileComponent', () => {
     });
 
     it('renders a ngxp-address for each address', () => {
-        expect(fixture.debugElement.queryAll(By.directive(AddressComponent)).length).toBe(userProfile.addresses.length);
+        expect(fixture.debugElement.queryAll(By.css('ngxp-address')).length).toBe(userProfile.addresses.length);
     });
 
     it('renders a ngxp-payment-option for each payment option', () => {
-        expect(fixture.debugElement.queryAll(By.directive(PaymentOptionComponent)).length).toBe(userProfile.paymentOptions.length);
+        expect(fixture.debugElement.queryAll(By.css('ngxp-payment-option')).length).toBe(userProfile.paymentOptions.length);
     });
 });

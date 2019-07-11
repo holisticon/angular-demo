@@ -1,4 +1,4 @@
-import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -22,7 +22,7 @@ describe('ProductListComponent', () => {
                 ProductListComponent
             ],
             schemas: [
-                NO_ERRORS_SCHEMA
+                CUSTOM_ELEMENTS_SCHEMA
             ]
         })
             .compileComponents();

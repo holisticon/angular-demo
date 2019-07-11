@@ -1,3 +1,4 @@
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -6,7 +7,6 @@ import { QuantityUpdate, ShoppingCartItem } from '@ngxp/shopping-cart-common';
 import { shoppingCartItem } from '@ngxp/shopping-cart-common/test';
 import { take } from 'rxjs/operators';
 import { ShoppingCartItemComponent } from './shopping-cart-item.component';
-import { UpdateQuantityFormComponent } from './update-quantity-form/update-quantity-form.component';
 
 describe('ShoppingCartItemComponent', () => {
     let component: ShoppingCartItemComponent;
@@ -19,8 +19,10 @@ describe('ShoppingCartItemComponent', () => {
                 ReactiveFormsModule
             ],
             declarations: [
-                ShoppingCartItemComponent,
-                UpdateQuantityFormComponent
+                ShoppingCartItemComponent
+            ],
+            schemas: [
+                CUSTOM_ELEMENTS_SCHEMA
             ]
         })
             .compileComponents();
@@ -40,7 +42,7 @@ describe('ShoppingCartItemComponent', () => {
     });
 
     it('renders the update quantity form', () => {
-        const updateQuantityForm: UpdateQuantityFormComponent = fixture.debugElement.query(By.directive(UpdateQuantityFormComponent)).componentInstance;
+        const updateQuantityForm = fixture.debugElement.query(By.css('ngxp-update-quantity-form')).nativeElement;
         expect(updateQuantityForm.shoppingCartItem).toBe(shoppingCartItem);
     });
 
@@ -52,7 +54,7 @@ describe('ShoppingCartItemComponent', () => {
             }
         };
 
-        const updateQuantityForm: UpdateQuantityFormComponent = fixture.debugElement.query(By.directive(UpdateQuantityFormComponent)).componentInstance;
+        const updateQuantityForm = fixture.debugElement.query(By.css('ngxp-update-quantity-form'));
 
         fixture.componentInstance.updateQuantity
             .pipe(take(1))
@@ -60,7 +62,7 @@ describe('ShoppingCartItemComponent', () => {
                 expect(expectedQuantityUpdate).toEqual(expectedQuantityUpdate);
             });
 
-        updateQuantityForm.updateQuantity.emit(quantityUpdate);
+        updateQuantityForm.triggerEventHandler('updateQuantity', quantityUpdate);
     });
 
     it('emits a delete event when the remove button is clicked', () => {
