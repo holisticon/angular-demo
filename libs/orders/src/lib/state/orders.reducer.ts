@@ -8,7 +8,7 @@ export interface OrdersState {
     orders: Order[]
 }
 
-export interface OrdersPartialState {
+export interface OrdersAppState {
     readonly [ORDERS_FEATURE_KEY]: OrdersState;
 }
 

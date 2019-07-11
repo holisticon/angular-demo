@@ -1,9 +1,9 @@
 import { orders } from '@ngxp/orders-common/test';
-import { OrdersPartialState } from './orders.reducer';
+import { OrdersAppState } from './orders.reducer';
 import { selectOrders } from './orders.selectors';
 
 describe('ordersSelectors', () => {
-    const state: OrdersPartialState = {
+    const state: OrdersAppState = {
         orders: {
             orders
         }

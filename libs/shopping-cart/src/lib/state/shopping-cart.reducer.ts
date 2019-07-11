@@ -7,7 +7,7 @@ export interface ShoppingCartState {
     shoppingCart: ShoppingCart | null;
 }
 
-export interface ShoppingCartPartialState {
+export interface ShoppingCartAppState {
     readonly [SHOPPING_CART_FEATURE_KEY]: ShoppingCartState;
 }
 

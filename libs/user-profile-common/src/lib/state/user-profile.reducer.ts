@@ -8,7 +8,7 @@ export interface UserProfileState {
     userProfile: UserProfile | null;
 }
 
-export interface UserProfilePartialState {
+export interface UserProfileAppState {
     readonly [USER_PROFILE_FEATURE_KEY]: UserProfileState;
 }
 

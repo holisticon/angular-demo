@@ -10,7 +10,7 @@ export interface ProductsState {
     products: ResourceMap<Product>;
 }
 
-export interface ProductsPartialState {
+export interface ProductsAppState {
     readonly [PRODUCTS_FEATURE_KEY]: ProductsState;
 }
 

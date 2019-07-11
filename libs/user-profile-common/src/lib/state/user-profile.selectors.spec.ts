@@ -1,11 +1,11 @@
 // tslint:disable: no-non-null-assertion
 
 import { userProfile } from '@ngxp/user-profile-common/test';
-import { UserProfilePartialState } from './user-profile.reducer';
+import { UserProfileAppState } from './user-profile.reducer';
 import { selectAddresses, selectPaymentOptions, selectUserProfile } from './user-profile.selectors';
 
 describe('userProfileSelectors', () => {
-    const state: UserProfilePartialState = {
+    const state: UserProfileAppState = {
         userProfile: {
             userProfile
         }

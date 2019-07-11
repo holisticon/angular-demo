@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Select, Selector, StoreService } from '@ngxp/store-service';
-import { ProductsPartialState } from './products.reducer';
+import { ProductsAppState } from './products.reducer';
 import { selectProduct, selectSearchResults } from './products.selectors';
 
 @Injectable({
     providedIn: 'root'
 })
-export class ProductsStore extends StoreService<ProductsPartialState> {
+export class ProductsStore extends StoreService<ProductsAppState> {
 
     @Select(selectSearchResults)
     getSearchResults!: Selector<typeof selectSearchResults>;
