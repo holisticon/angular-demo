@@ -44,12 +44,11 @@
     "@ngxp/builder": "1.0.0",
     "@ngxp/store-service": "8.0.0",
     "@nrwl/angular": "8.1.2",
-    "core-js": "^2.6.5",
+    "core-js": "2.6.5",
     "lodash-es": "4.17.11",
-    "rxjs": "~6.4.0",
-    "tslib": "^1.9.3",
-    "viz": "^0.0.1",
-    "zone.js": "~0.9.1"
+    "rxjs": "6.4.0",
+    "tslib": "1.9.3",
+    "zone.js": "0.9.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.800.0",
@@ -77,8 +76,8 @@
     "ngrx-store-logger": "0.2.3",
     "protractor": "5.4.2",
     "ts-jest": "24.0.0",
-    "ts-node": "~8.0.3",
-    "tslint": "~5.14.0",
-    "typescript": "~3.4.5"
+    "ts-node": "8.0.3",
+    "tslint": "5.14.0",
+    "typescript": "3.4.5"
   }
 }
