@@ -165,9 +165,9 @@
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/homepage/jest.config.js",
-            "tsConfig": "libs/homepage/tsconfig.spec.json",
-            "setupFile": "libs/homepage/src/test-setup.ts"
+            "jestConfig": "libs/orders/jest.config.js",
+            "tsConfig": "libs/orders/tsconfig.spec.json",
+            "setupFile": "libs/orders/src/test-setup.ts"
           }
         },
         "lint": {
