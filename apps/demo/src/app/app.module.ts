@@ -15,7 +15,7 @@ import { AppEffects } from './state/app.effects';
 @NgModule({
     imports: [
         BrowserModule,
-        HttpClientModule, // see https://github.com/angular/angular-cli/issues/10170,
+        HttpClientModule, // see https://github.com/angular/angular-cli/issues/10170
         RouterModule.forRoot([
             { path: '', loadChildren: () => import('@ngxp/homepage').then(m => m.HomepageModule) },
             { path: 'products', loadChildren: () => import('@ngxp/products').then(m => m.ProductsModule) },
