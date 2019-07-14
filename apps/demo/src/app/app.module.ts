@@ -12,6 +12,7 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AppEffects } from './state/app.effects';
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -22,15 +23,15 @@ import { AppEffects } from './state/app.effects';
             { path: 'shopping-cart', loadChildren: () => import('@ngxp/shopping-cart').then(m => m.ShoppingCartModule) },
             { path: 'user-profile', loadChildren: () => import('@ngxp/user-profile').then(m => m.UserProfileModule) },
             { path: 'orders', loadChildren: () => import('@ngxp/orders').then(m => m.OrdersModule) }
-        ], { initialNavigation: 'enabled' }),
+        ]),
         StoreModule.forRoot(
             { router: routerReducer },
             {
                 metaReducers: !environment.production ? [storeLogger()] : [],
                 runtimeChecks: {
-                    strictStateImmutability: true,
                     strictActionImmutability: true,
                     strictActionSerializability: true,
+                    strictStateImmutability: true,
                     strictStateSerializability: true
                 }
             }
