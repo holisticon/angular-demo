@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { EffectsModule } from '@ngrx/effects';
-import { routerReducer, StoreRouterConnectingModule } from '@ngrx/router-store';
+import { routerReducer, RouterState, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { storeLogger } from 'ngrx-store-logger';
@@ -12,8 +12,6 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AppEffects } from './state/app.effects';
-
-
 @NgModule({
     imports: [
         BrowserModule,
@@ -31,13 +29,17 @@ import { AppEffects } from './state/app.effects';
                 metaReducers: !environment.production ? [storeLogger()] : [],
                 runtimeChecks: {
                     strictStateImmutability: true,
-                    strictActionImmutability: true
+                    strictActionImmutability: true,
+                    strictActionSerializability: true,
+                    strictStateSerializability: true
                 }
             }
         ),
         EffectsModule.forRoot([AppEffects]),
         !environment.production ? StoreDevtoolsModule.instrument() : [],
-        StoreRouterConnectingModule.forRoot(),
+        StoreRouterConnectingModule.forRoot({
+            routerState: RouterState.Minimal
+        }),
         ServiceWorkerModule.register('/ngsw-worker.js', {
             enabled: environment.production
         })

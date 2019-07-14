@@ -3,6 +3,9 @@
   "compilerOptions": {
     "outDir": "../../dist/out-tsc"
   },
+  "angularCompilerOptions": {
+    "enableIvy": true
+  },
   "include": [
     "**/*.ts",
     "../../libs/homepage/src/index.ts",
