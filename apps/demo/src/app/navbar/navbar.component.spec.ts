@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { expectElementFromFixture } from '@ngxp/common/test';
 import { NavbarComponent } from './navbar.component';
 
@@ -24,5 +24,12 @@ describe('NavbarComponent', () => {
 
     it('renders a link to the homepage', () => {
         expectElementFromFixture(fixture, 'a[routerLink="/"]').not.toBeNull();
+    });
+
+    it('renders a link to each section of the app', () => {
+        expectElementFromFixture(fixture, 'a[routerLink="products"]').not.toBeNull();
+        expectElementFromFixture(fixture, 'a[routerLink="shopping-cart"]').not.toBeNull();
+        expectElementFromFixture(fixture, 'a[routerLink="orders"]').not.toBeNull();
+        expectElementFromFixture(fixture, 'a[routerLink="user-profile"]').not.toBeNull();
     });
 });
