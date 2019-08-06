@@ -1,7 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { StoreModule } from '@ngrx/store';
 import { orders } from '@ngxp/orders-common/test';
 import { provideStoreServiceMock } from '@ngxp/store-service/testing';
 import { OrderComponent } from '../order/order.component';
@@ -14,14 +13,6 @@ describe('OrdersComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [
-                StoreModule.forRoot({}, {
-                    runtimeChecks: {
-                        strictStateImmutability: true,
-                        strictActionImmutability: true
-                    }
-                }),
-            ],
             declarations: [
                 OrdersComponent
             ],

@@ -20,14 +20,6 @@ describe('SearchResultsComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [
-                StoreModule.forRoot({}, {
-                    runtimeChecks: {
-                        strictStateImmutability: true,
-                        strictActionImmutability: true
-                    }
-                }),
-            ],
             declarations: [
                 SearchResultsComponent
             ],

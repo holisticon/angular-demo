@@ -1,7 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
-import { StoreModule } from '@ngrx/store';
 import { newOrder, order } from '@ngxp/orders-common/test';
 import { hot } from 'jest-marbles';
 import { Observable, of as observableOf } from 'rxjs';
@@ -18,13 +17,7 @@ describe('OrdersCommonEffects', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [
-                HttpClientModule,
-                StoreModule.forRoot({}, {
-                    runtimeChecks: {
-                        strictStateImmutability: true,
-                        strictActionImmutability: true
-                    }
-                }),
+                HttpClientModule
             ],
             providers: [
                 OrdersCommonEffects,

@@ -3,7 +3,6 @@
 import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { RouterNavigationAction, ROUTER_NAVIGATION } from '@ngrx/router-store';
-import { StoreModule } from '@ngrx/store';
 import { loadSearchResultsAction } from '@ngxp/products-common';
 import { cold, hot } from 'jest-marbles';
 import { Observable } from 'rxjs';
@@ -17,14 +16,6 @@ describe('ProductsNavigationEffects', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [
-                StoreModule.forRoot({}, {
-                    runtimeChecks: {
-                        strictStateImmutability: true,
-                        strictActionImmutability: true
-                    }
-                }),
-            ],
             providers: [
                 ProductsNavigationEffects,
                 provideMockActions(() => actions$)

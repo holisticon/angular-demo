@@ -3,7 +3,6 @@ import { TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
-import { StoreModule } from '@ngrx/store';
 import { searchProductsAction } from '@ngxp/products-common';
 import { hot } from 'jest-marbles';
 import { Observable } from 'rxjs';
@@ -18,12 +17,6 @@ describe('AppEffects', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [
-                StoreModule.forRoot({}, {
-                    runtimeChecks: {
-                        strictStateImmutability: true,
-                        strictActionImmutability: true
-                    }
-                }),
                 RouterTestingModule
             ],
             providers: [
