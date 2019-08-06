@@ -49,9 +49,9 @@ describe('productsReducer', () => {
             expect(Object.values(updatedState.products).length).toBe(searchResults.length + preloadedProducts.length);
 
             [...preloadedProducts, ...searchResults]
-                .forEach(product => {
-                    const productId = getId(product);
-                    expect(updatedState.products[productId]).toBe(product);
+                .forEach(expectedProduct => {
+                    const productId = getId(expectedProduct);
+                    expect(updatedState.products[productId]).toBe(expectedProduct);
                 });
         });
     });
