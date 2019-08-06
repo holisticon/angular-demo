@@ -14,6 +14,8 @@ import { ProductsNavigationEffects } from './products-navigation.effects';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { ProductsEffects } from './state/products.effects';
 import { initialState as productsInitialState, productsReducer, PRODUCTS_FEATURE_KEY } from './state/products.reducer';
+import { ProductImageComponent } from './product-image/product-image.component';
+import { ProductPriceComponent } from './product-price/product-price.component';
 
 @NgModule({
     imports: [
@@ -37,7 +39,9 @@ import { initialState as productsInitialState, productsReducer, PRODUCTS_FEATURE
         SearchResultsComponent,
         ProductListComponent,
         ProductListEntryComponent,
-        ProductDetailsComponent
+        ProductDetailsComponent,
+        ProductImageComponent,
+        ProductPriceComponent,
     ],
     providers: [
         ProductsEffects,
