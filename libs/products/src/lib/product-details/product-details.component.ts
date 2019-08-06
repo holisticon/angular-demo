@@ -20,7 +20,6 @@ export class ProductDetailsComponent {
     ) {
         this.product$ = this.productsStore.getProduct({
             productId: decodeResourceIdFromRouteParam(this.activatedRoute.snapshot.params.productId)
-        })
+        });
     }
-
 }
