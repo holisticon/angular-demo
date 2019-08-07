@@ -1,11 +1,12 @@
 import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
-import { orderPlacedAction } from '@ngxp/orders-common';
+import { OrdersCommonStore } from '@ngxp/orders-common';
 import { order } from '@ngxp/orders-common/test';
 import { ResourceWith } from '@ngxp/resource';
 import { QuantityUpdate, ShoppingCartItem, shoppingCartLoadedAction } from '@ngxp/shopping-cart-common';
 import { shoppingCart, shoppingCartItem } from '@ngxp/shopping-cart-common/test';
+import { provideStoreServiceMock, StoreServiceMock } from '@ngxp/store-service/testing';
 import { hot } from 'jest-marbles';
 import { Observable, of as observableOf } from 'rxjs';
 import { take } from 'rxjs/operators';
@@ -17,6 +18,7 @@ describe('ShoppingCartEffects', () => {
     let actions$: Observable<any>;
     let effects$: ShoppingCartEffects;
     let shoppingCartService: ShoppingCartService;
+    let ordersCommonStore: StoreServiceMock<OrdersCommonStore>;
 
     beforeEach(() => {
         TestBed.configureTestingModule({
@@ -26,12 +28,14 @@ describe('ShoppingCartEffects', () => {
             providers: [
                 ShoppingCartEffects,
                 ShoppingCartService,
-                provideMockActions(() => actions$)
+                provideMockActions(() => actions$),
+                provideStoreServiceMock(OrdersCommonStore)
             ]
         });
 
         effects$ = TestBed.get(ShoppingCartEffects);
         shoppingCartService = TestBed.get(ShoppingCartService);
+        ordersCommonStore = TestBed.get(OrdersCommonStore);
     });
 
     describe('loadShoppingCart', () => {
@@ -98,12 +102,10 @@ describe('ShoppingCartEffects', () => {
 
     describe('reloadShoppingCart', () => {
         it('dispatches a LoadShoppingCartAction to reload the shopping cart when an order has been placed', () => {
-            actions$ = hot('-a-|', {
-                a: orderPlacedAction({ order })
-            });
+            ordersCommonStore.orderPlaced$.next(order);
 
             expect(effects$.reloadShoppingCart$).toBeObservable(
-                hot('-a-|', { a: loadShoppingCartAction() })
+                hot('a', { a: loadShoppingCartAction() })
             );
         });
     });

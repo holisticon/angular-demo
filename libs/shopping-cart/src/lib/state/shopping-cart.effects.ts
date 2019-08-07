@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { orderPlacedAction } from '@ngxp/orders-common';
+import { OrdersCommonStore } from '@ngxp/orders-common';
 import { shoppingCartLoadedAction } from '@ngxp/shopping-cart-common';
 import { map, switchMap } from 'rxjs/operators';
 import { ShoppingCartService } from '../shopping-cart.service';
@@ -40,14 +40,14 @@ export class ShoppingCartEffects {
     );
 
     reloadShoppingCart$ = createEffect(
-        () => this.actions$.pipe(
-            ofType(orderPlacedAction),
+        () => this.ordersCommonStore.orderPlaced$.pipe(
             map(() => loadShoppingCartAction())
         )
     );
 
     constructor(
         private actions$: Actions,
-        private shoppingCartService: ShoppingCartService
+        private shoppingCartService: ShoppingCartService,
+        private ordersCommonStore: OrdersCommonStore
     ) { }
 }
