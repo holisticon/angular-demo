@@ -7,7 +7,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { routerReducer, RouterState, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { storeLogger } from 'ngrx-store-logger';
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -26,7 +25,6 @@ import { AppEffects } from './state/app.effects';
         StoreModule.forRoot(
             { router: routerReducer },
             {
-                metaReducers: !environment.production ? [storeLogger()] : [],
                 runtimeChecks: {
                     strictStateImmutability: true,
                     strictActionImmutability: true,
