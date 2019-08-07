@@ -2,9 +2,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { RouterNavigationAction, ROUTER_NAVIGATION } from '@ngrx/router-store';
-import { loadSearchResultsAction } from '@ngxp/products-common';
 import { defaultTo } from 'lodash-es';
 import { filter, map } from 'rxjs/operators';
+import { loadSearchResultsAction } from './state/products.actions';
 
 @Injectable()
 export class ProductsNavigationEffects {

@@ -1,11 +1,11 @@
 import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
-import { loadSearchResultsAction, searchResultsLoadedAction } from '@ngxp/products-common';
 import { products } from '@ngxp/products-common/test';
 import { hot } from 'jest-marbles';
 import { Observable, of as observableOf } from 'rxjs';
 import { ProductService } from '../product.service';
+import { loadSearchResultsAction, searchResultsLoadedAction } from './products.actions';
 import { ProductsEffects } from './products.effects';
 
 describe('ProductsEffects', () => {
