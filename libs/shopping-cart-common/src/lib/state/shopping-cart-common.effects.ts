@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, switchMap } from 'rxjs/operators';
 import { ShoppingCartCommonService } from '../shopping-cart-common.service';
-import { addToShoppingCartAction, shoppingCartLoadedAction } from './shopping-cart-common.actions';
+import { addToShoppingCartAction, itemAddedToShoppingCartAction } from './shopping-cart-common.actions';
 
 @Injectable()
 export class ShoppingCartCommonEffects {
@@ -13,7 +13,7 @@ export class ShoppingCartCommonEffects {
             switchMap(({ additionToShoppingCart }) => this.shoppingCartCommonService
                 .addToShoppingCart(additionToShoppingCart)
                 .pipe(
-                    map(shoppingCart => shoppingCartLoadedAction({ shoppingCart }))
+                    map(shoppingCart => itemAddedToShoppingCartAction({ shoppingCart }))
                 )
             )
         )

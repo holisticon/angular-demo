@@ -1,20 +1,26 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { OrdersCommonStore } from '@ngxp/orders-common';
-import { shoppingCartLoadedAction } from '@ngxp/shopping-cart-common';
+import { ShoppingCartCommonStore } from '@ngxp/shopping-cart-common';
 import { map, switchMap } from 'rxjs/operators';
 import { ShoppingCartService } from '../shopping-cart.service';
-import { deleteShoppingCartItemAction, loadShoppingCartAction, updateShoppingCartItemQuantityAction } from './shopping-cart.actions';
+import { deleteShoppingCartItemAction, loadShoppingCartAction, shoppingCartUpdatedAction, updateShoppingCartItemQuantityAction } from './shopping-cart.actions';
 
 @Injectable()
 export class ShoppingCartEffects {
+
+    itemAddedToShoppingCart$ = createEffect(
+        () => this.shoppingCartCommonStore.itemAddedToShoppingCart$.pipe(
+            map(shoppingCart => shoppingCartUpdatedAction({ shoppingCart }))
+        )
+    );
 
     loadShoppingCart$ = createEffect(
         () => this.actions$.pipe(
             ofType(loadShoppingCartAction),
             switchMap(() => this.shoppingCartService
                 .loadShoppingCart()
-                .pipe(map(shoppingCart => shoppingCartLoadedAction({ shoppingCart }))))
+                .pipe(map(shoppingCart => shoppingCartUpdatedAction({ shoppingCart }))))
         )
     );
 
@@ -26,7 +32,7 @@ export class ShoppingCartEffects {
                 quantityUpdate.resource,
                 quantityUpdate.with
             )
-            .pipe(map(shoppingCart => shoppingCartLoadedAction({ shoppingCart}))))
+            .pipe(map(shoppingCart => shoppingCartUpdatedAction({ shoppingCart}))))
         )
     );
 
@@ -35,7 +41,7 @@ export class ShoppingCartEffects {
             ofType(deleteShoppingCartItemAction),
             switchMap(({ shoppingCartItem }) => this.shoppingCartService
                 .deleteShoppingCartItem(shoppingCartItem)
-                .pipe(map(shoppingCart => shoppingCartLoadedAction({ shoppingCart }))))
+                .pipe(map(shoppingCart => shoppingCartUpdatedAction({ shoppingCart }))))
         )
     );
 
@@ -48,6 +54,7 @@ export class ShoppingCartEffects {
     constructor(
         private actions$: Actions,
         private shoppingCartService: ShoppingCartService,
+        private shoppingCartCommonStore: ShoppingCartCommonStore,
         private ordersCommonStore: OrdersCommonStore
     ) { }
 }

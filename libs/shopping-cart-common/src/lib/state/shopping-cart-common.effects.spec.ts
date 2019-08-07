@@ -6,7 +6,7 @@ import { hot } from 'jest-marbles';
 import { Observable, of as observableOf } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { ShoppingCartCommonService } from '../shopping-cart-common.service';
-import { addToShoppingCartAction, shoppingCartLoadedAction } from './shopping-cart-common.actions';
+import { addToShoppingCartAction, itemAddedToShoppingCartAction } from './shopping-cart-common.actions';
 import { ShoppingCartCommonEffects } from './shopping-cart-common.effects';
 
 describe('ShoppingCartCommonEffects', () => {
@@ -31,7 +31,7 @@ describe('ShoppingCartCommonEffects', () => {
     });
 
     describe('addToShoppingCart', () => {
-        it('calls the service with the given addition to shopping cart and dispatches a ShoppingCartLoadedAction with the updated shopping cart', () => {
+        it('calls the service with the given addition to shopping cart and dispatches a ItemAddedToShoppingCartAction with the updated shopping cart', () => {
             const addToShoppingCartSpy = spyOn(shoppingCartCommonService, 'addToShoppingCart').and.returnValue(observableOf(shoppingCart));
 
             actions$ = hot('-a-|', {
@@ -39,7 +39,7 @@ describe('ShoppingCartCommonEffects', () => {
             });
 
             expect(effects$.addToShoppingCart$).toBeObservable(
-                hot('-a-|', { a: shoppingCartLoadedAction({ shoppingCart }) })
+                hot('-a-|', { a: itemAddedToShoppingCartAction({ shoppingCart }) })
             );
 
             effects$.addToShoppingCart$

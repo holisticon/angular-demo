@@ -6,7 +6,7 @@ export const addToShoppingCartAction = createAction(
     props<{ additionToShoppingCart: AdditionToShoppingCart }>()
 );
 
-export const shoppingCartLoadedAction = createAction(
-    '[Shopping Cart] shopping cart loaded',
+export const itemAddedToShoppingCartAction = createAction(
+    '[Shopping Cart] item added to shopping cart',
     props<{ shoppingCart: ShoppingCart }>()
 );
