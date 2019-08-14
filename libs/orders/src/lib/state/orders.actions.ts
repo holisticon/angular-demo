@@ -2,10 +2,10 @@ import { createAction, props } from '@ngrx/store';
 import { Order } from '@ngxp/orders-common';
 
 export const loadOrdersAction = createAction(
-    '[Orders] Load Data'
+    '[Orders] load orders'
 );
 
 export const ordersLoadedAction = createAction(
-    '[Orders] Data Loaded',
+    '[Orders] orders loaded',
     props<{ orders: Order[] }>()
 );

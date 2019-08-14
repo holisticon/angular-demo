@@ -2,7 +2,6 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
-import { StoreModule } from '@ngrx/store';
 import { expectElementFromFixture } from '@ngxp/common/test';
 import { ProductsCommonStore } from '@ngxp/products-common';
 import { provideStoreServiceMock } from '@ngxp/store-service/testing';
@@ -16,13 +15,7 @@ describe('HomepageComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [
-                RouterTestingModule,
-                StoreModule.forRoot({}, {
-                    runtimeChecks: {
-                        strictStateImmutability: true,
-                        strictActionImmutability: true
-                    }
-                }),
+                RouterTestingModule
             ],
             declarations: [
                 HomepageComponent

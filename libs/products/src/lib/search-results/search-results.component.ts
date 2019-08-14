@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Product } from '@ngxp/products-common';
-import { AdditionToShoppingCart, ShoppingCartCommonStore } from '@ngxp/shopping-cart-common';
 import { Observable } from 'rxjs';
 import { ProductsStore } from '../state/products-store.service';
 
@@ -14,14 +13,9 @@ export class SearchResultsComponent {
     products$: Observable<Product[]>;
 
     constructor(
-        private productsStore: ProductsStore,
-        private shoppingCartCommonStore: ShoppingCartCommonStore
+        private productsStore: ProductsStore
     ) {
         this.products$ = this.productsStore.getSearchResults();
-    }
-
-    onAddToShoppingCart(additionToShoppingCart: AdditionToShoppingCart) {
-        this.shoppingCartCommonStore.addToShoppingCart({ additionToShoppingCart });
     }
 
 }

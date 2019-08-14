@@ -47,6 +47,7 @@ export class ShoppingCartModule {
     constructor(
         shoppingCartStore: ShoppingCartStore
     ) {
-        shoppingCartStore.loadShoppingCart();
+        // TODO load via routing effect
+        setTimeout(() => shoppingCartStore.loadShoppingCart());
     }
 }

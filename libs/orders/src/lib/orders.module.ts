@@ -32,6 +32,7 @@ export class OrdersModule {
     constructor(
         ordersStore: OrdersStore
     ) {
-        ordersStore.loadOrders();
+        // TODO load via routing effect
+        setTimeout(() => ordersStore.loadOrders());
     }
 }

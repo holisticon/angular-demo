@@ -1,10 +1,9 @@
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { product } from '@ngxp/products-common/test';
 import { encodeResourceIdAsRouteParam, getId, ResourceModule } from '@ngxp/resource';
-import { take } from 'rxjs/operators';
 import { ProductListEntryComponent } from './product-list-entry.component';
 
 describe('ProductListEntryComponent', () => {
@@ -14,13 +13,14 @@ describe('ProductListEntryComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [
-                FormsModule,
-                ReactiveFormsModule,
                 ResourceModule,
                 RouterTestingModule
             ],
             declarations: [
                 ProductListEntryComponent
+            ],
+            schemas: [
+                CUSTOM_ELEMENTS_SCHEMA
             ]
         })
             .compileComponents();
@@ -39,19 +39,9 @@ describe('ProductListEntryComponent', () => {
         expect(link.nativeElement.getAttribute('href')).toBe(`/${encodeURIComponent(encodeResourceIdAsRouteParam(getId(product)))}`);
     });
 
-    it('emits an addToShoppingCart event when the form is submitted', () => {
-        const expectedQuantity = 2;
-        const form = fixture.debugElement.query(By.css('form'));
+    it('renders the Add to Shopping Cart form', () => {
+        const addToShoppingCartForm = fixture.debugElement.query(By.css('ngxp-add-to-shopping-cart-form')).nativeNode;
 
-        fixture.componentInstance.addToShoppingCart
-            .pipe(take(1))
-            .subscribe(additionToShoppingCart => {
-                expect(additionToShoppingCart).toEqual({
-                    product: getId(product),
-                    quantity: expectedQuantity
-                });
-            })
-
-        form.nativeElement.dispatchEvent(new Event('submit'));
+        expect(addToShoppingCartForm.product).toBe(product);
     });
 });

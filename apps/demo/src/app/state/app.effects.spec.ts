@@ -3,9 +3,8 @@ import { TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
-import { StoreModule } from '@ngrx/store';
-import { searchProductsAction } from '@ngxp/products-common';
-import { hot } from 'jest-marbles';
+import { ProductsCommonStore } from '@ngxp/products-common';
+import { provideStoreServiceMock, StoreServiceMock } from '@ngxp/store-service/testing';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { AppEffects } from './app.effects';
@@ -14,26 +13,23 @@ describe('AppEffects', () => {
     let actions$: Observable<any>;
     let appEffects: AppEffects;
     let router: Router;
+    let productsCommonStore: StoreServiceMock<ProductsCommonStore>;
 
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [
-                StoreModule.forRoot({}, {
-                    runtimeChecks: {
-                        strictStateImmutability: true,
-                        strictActionImmutability: true
-                    }
-                }),
                 RouterTestingModule
             ],
             providers: [
                 AppEffects,
-                provideMockActions(() => actions$)
+                provideMockActions(() => actions$),
+                provideStoreServiceMock(ProductsCommonStore)
             ]
         });
 
         appEffects = TestBed.get(AppEffects);
         router = TestBed.get(Router);
+        productsCommonStore = TestBed.get(ProductsCommonStore);
     });
 
     describe('navigateToProductSearchResults', () => {
@@ -41,7 +37,7 @@ describe('AppEffects', () => {
             const expectedQuery = 'query';
             const navigateSpy = spyOn(router, 'navigate');
 
-            actions$ = hot('-a-|', { a: searchProductsAction({ query: expectedQuery }) });
+            productsCommonStore.searchProducts$.next(expectedQuery);
 
             appEffects.navigateToProductSearchResults$
                 .pipe(take(1))

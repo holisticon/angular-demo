@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
-import { shoppingCartLoadedAction } from '@ngxp/shopping-cart-common';
 import { shoppingCart } from '@ngxp/shopping-cart-common/test';
+import { shoppingCartUpdatedAction } from './shopping-cart.actions';
 import { initialState, shoppingCartReducer } from './shopping-cart.reducer';
 
 describe('shoppingCartReducer', () => {
@@ -10,9 +10,9 @@ describe('shoppingCartReducer', () => {
         expect(state).toBe(initialState);
     });
 
-    describe('ShoppingCartLoaded', () => {
+    describe('ShoppingCartUpdated', () => {
         it('sets the shopping cart', () => {
-            const action = shoppingCartLoadedAction({ shoppingCart });
+            const action = shoppingCartUpdatedAction({ shoppingCart });
 
             const updatedState = shoppingCartReducer(initialState, action);
 

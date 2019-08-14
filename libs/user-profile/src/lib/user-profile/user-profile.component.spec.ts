@@ -1,7 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { StoreModule } from '@ngrx/store';
 import { provideStoreServiceMock } from '@ngxp/store-service/testing';
 import { UserProfileCommonStore } from '@ngxp/user-profile-common';
 import { userProfile } from '@ngxp/user-profile-common/test';
@@ -13,14 +12,6 @@ describe('UserProfileComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [
-                StoreModule.forRoot({}, {
-                    runtimeChecks: {
-                        strictStateImmutability: true,
-                        strictActionImmutability: true
-                    }
-                }),
-            ],
             declarations: [
                 UserProfileComponent
             ],

@@ -12,6 +12,6 @@ function toResourceBlueprint<T>(blueprint: Blueprint<T> | BlueprintFactory<T>): 
 
     return () => ({
         ...<any> blueprintFn(),
-        _id: () => faker.internet.url()
+        _id: () => `${faker.internet.url()}/${faker.random.uuid()}`
     });
 }

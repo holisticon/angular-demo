@@ -1,7 +1,7 @@
 import { Action } from '@ngrx/store';
-import { loadSearchResultsAction, searchResultsLoadedAction } from '@ngxp/products-common';
 import { product, products, searchResults } from '@ngxp/products-common/test';
 import { getId, getIds, toMap } from '@ngxp/resource';
+import { loadSearchResultsAction, searchResultsLoadedAction } from './products.actions';
 import { initialState, productsReducer, ProductsState } from './products.reducer';
 
 describe('productsReducer', () => {
@@ -49,9 +49,9 @@ describe('productsReducer', () => {
             expect(Object.values(updatedState.products).length).toBe(searchResults.length + preloadedProducts.length);
 
             [...preloadedProducts, ...searchResults]
-                .forEach(product => {
-                    const productId = getId(product);
-                    expect(updatedState.products[productId]).toBe(product);
+                .forEach(expectedProduct => {
+                    const productId = getId(expectedProduct);
+                    expect(updatedState.products[productId]).toBe(expectedProduct);
                 });
         });
     });

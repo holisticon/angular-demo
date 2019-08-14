@@ -1,7 +1,8 @@
 import { createReducer, on } from '@ngrx/store';
 import { ReducerArgs } from '@ngxp/common';
-import { loadSearchResultsAction, Product, searchResultsLoadedAction } from '@ngxp/products-common';
+import { Product } from '@ngxp/products-common';
 import { getIds, ResourceId, ResourceMap, toMap } from '@ngxp/resource';
+import { loadSearchResultsAction, searchResultsLoadedAction } from './products.actions';
 
 export const PRODUCTS_FEATURE_KEY = 'products';
 

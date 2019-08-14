@@ -2,7 +2,6 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { StoreModule } from '@ngrx/store';
 import { OrdersCommonStore, PlaceOrderFormComponent } from '@ngxp/orders-common';
 import { newOrder } from '@ngxp/orders-common/test';
 import { ResourceWith } from '@ngxp/resource';
@@ -26,12 +25,6 @@ describe('ShoppingCartComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [
-                StoreModule.forRoot({}, {
-                    runtimeChecks: {
-                        strictStateImmutability: true,
-                        strictActionImmutability: true
-                    }
-                }),
                 FormsModule,
                 ReactiveFormsModule
             ],

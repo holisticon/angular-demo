@@ -1,8 +1,18 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-5">
     <div class="container">
+        <a class="navbar-brand" routerLink="/">Demo</a>
         <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/">Start</a>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" routerLink="products">Catalog</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" routerLink="shopping-cart">Shopping Cart</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" routerLink="orders">Orders</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" routerLink="user-profile">User Profile</a>
             </li>
         </ul>
     </div>

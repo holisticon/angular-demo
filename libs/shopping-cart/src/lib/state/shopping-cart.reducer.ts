@@ -1,6 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import { ReducerArgs } from '@ngxp/common';
-import { ShoppingCart, shoppingCartLoadedAction } from '@ngxp/shopping-cart-common';
+import { ShoppingCart } from '@ngxp/shopping-cart-common';
+import { shoppingCartUpdatedAction } from './shopping-cart.actions';
 
 export const SHOPPING_CART_FEATURE_KEY = 'shoppingCart';
 
@@ -17,7 +18,7 @@ export const initialState: ShoppingCartState = {
 };
 
 export const reducer = createReducer(initialState,
-    on(shoppingCartLoadedAction, (state, { shoppingCart }) => ({
+    on(shoppingCartUpdatedAction, (state, { shoppingCart }) => ({
         ...state,
         shoppingCart
     }))

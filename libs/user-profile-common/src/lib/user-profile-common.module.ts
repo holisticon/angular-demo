@@ -34,6 +34,7 @@ export class UserProfileCommonModule {
     constructor(
         userProfileCommonStore: UserProfileCommonStore
     ) {
-        userProfileCommonStore.loadUserProfile();
+        // TODO load via routing effect
+        setTimeout(() => userProfileCommonStore.loadUserProfile());
     }
 }
