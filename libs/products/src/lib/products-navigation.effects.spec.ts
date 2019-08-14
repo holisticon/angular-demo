@@ -1,11 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
-import { loadSearchResultsAction } from '@ngxp/products-common';
 import { buildSearchResultsNavigationAction, searchResultsNavigationAction, searchResultsQueryParams } from '@ngxp/products/test';
 import { routerNavigationAction } from '@ngxp/routing/test';
 import { cold, hot } from 'jest-marbles';
 import { Observable } from 'rxjs';
 import { ProductsNavigationEffects } from './products-navigation.effects';
+import { loadSearchResultsAction } from './state/products.actions';
 
 describe('ProductsNavigationEffects', () => {
     let actions$: Observable<any>;

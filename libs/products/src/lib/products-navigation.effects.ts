@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect } from '@ngrx/effects';
-import { loadSearchResultsAction } from '@ngxp/products-common';
 import { extractQueryParam, filterNavigationTo } from '@ngxp/routing';
 import { map } from 'rxjs/operators';
 import { ProductsViews } from './products.views';
+import { loadSearchResultsAction } from './state/products.actions';
 
 @Injectable()
 export class ProductsNavigationEffects {
@@ -16,6 +16,6 @@ export class ProductsNavigationEffects {
         ));
 
     constructor(
-        private actions$: Actions
+        private actions$: Actions,
     ) { }
 }
