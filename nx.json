@@ -39,6 +39,9 @@
     },
     "resource": {
       "tags": []
+    },
+    "routing": {
+      "tags": []
     }
   }
 }

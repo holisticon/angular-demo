@@ -1,11 +1,8 @@
 import { Resource } from '@ngxp/resource';
+import { SomeType } from '@ngxp/resource/test';
 import { addId } from './resource.utils';
 
 describe('resourceUtils', () => {
-    interface SomeType {
-        value: string;
-    }
-
     const object: SomeType = {
         value: 'some value'
     };

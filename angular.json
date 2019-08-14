@@ -391,6 +391,33 @@
         }
       },
       "schematics": {}
+    },
+    "routing": {
+      "projectType": "library",
+      "root": "libs/routing",
+      "sourceRoot": "libs/routing/src",
+      "prefix": "ngxp",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/routing/tsconfig.lib.json",
+              "libs/routing/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/routing/jest.config.js",
+            "tsConfig": "libs/routing/tsconfig.spec.json",
+            "setupFile": "libs/routing/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "defaultProject": "demo",

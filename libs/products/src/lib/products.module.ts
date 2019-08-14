@@ -14,6 +14,8 @@ import { ProductsNavigationEffects } from './products-navigation.effects';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { ProductsEffects } from './state/products.effects';
 import { initialState as productsInitialState, productsReducer, PRODUCTS_FEATURE_KEY } from './state/products.reducer';
+import { ProductsViews } from './products.views';
+import { ProductsComponent } from './products.component';
 
 @NgModule({
     imports: [
@@ -22,8 +24,10 @@ import { initialState as productsInitialState, productsReducer, PRODUCTS_FEATURE
         ReactiveFormsModule,
         HttpClientModule,
         RouterModule.forChild([
-            { path: '', pathMatch: 'full', component: SearchResultsComponent },
-            { path: ':productId', component: ProductDetailsComponent }
+            { path: '', pathMatch: 'full', component: ProductsComponent, data: { view: ProductsViews.Root }, children: [
+                { path: '', pathMatch: 'full', component: SearchResultsComponent, data: { view: ProductsViews.SearchResults } },
+                { path: ':productId', component: ProductDetailsComponent, data: { view: ProductsViews.ProductDetails } }
+            ] },
         ]),
         StoreModule.forFeature(PRODUCTS_FEATURE_KEY, productsReducer, { initialState: productsInitialState }),
         EffectsModule.forFeature([
@@ -37,11 +41,12 @@ import { initialState as productsInitialState, productsReducer, PRODUCTS_FEATURE
         SearchResultsComponent,
         ProductListComponent,
         ProductListEntryComponent,
-        ProductDetailsComponent
+        ProductDetailsComponent,
+        ProductsComponent
     ],
     providers: [
         ProductsEffects,
         ProductsNavigationEffects
     ]
 })
-export class ProductsModule {}
+export class ProductsModule { }
