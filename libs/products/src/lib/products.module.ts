@@ -25,7 +25,7 @@ import { initialState as productsInitialState, productsReducer, PRODUCTS_FEATURE
         HttpClientModule,
         RouterModule.forChild([
             {
-                path: '', pathMatch: 'full', component: ProductsComponent, data: { view: ProductsViews.Root }, children: [
+                path: '', component: ProductsComponent, data: { view: ProductsViews.Root }, children: [
                     { path: '', pathMatch: 'full', component: SearchResultsComponent, data: { view: ProductsViews.SearchResults } },
                     { path: ':productId', component: ProductDetailsComponent, data: { view: ProductsViews.ProductDetails } }
                 ]
