@@ -2,6 +2,7 @@ import { BlueprintFactory } from '@ngxp/builder';
 import { productBuilder } from '@ngxp/products-common/test';
 import { getId, Resource } from '@ngxp/resource';
 import { createResourceBlueprintBuilder } from '@ngxp/resource/test';
+import { ShoppingCartItem } from '@ngxp/shopping-cart-common';
 import { random } from 'lodash-es';
 
 const minItemQty = 1;
