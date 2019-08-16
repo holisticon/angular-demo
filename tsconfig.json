@@ -31,6 +31,7 @@
             "@ngxp/routing": ["libs/routing/src/index.ts"],
             "@ngxp/routing/test": ["libs/routing/src/test/index.ts"],
             "@ngxp/shopping-cart": ["libs/shopping-cart/src/index.ts"],
+            "@ngxp/shopping-cart/test": ["libs/shopping-cart/src/test/index.ts"],
             "@ngxp/shopping-cart-common": ["libs/shopping-cart-common/src/index.ts"],
             "@ngxp/shopping-cart-common/test": ["libs/shopping-cart-common/src/test/index.ts"],
             "@ngxp/user-profile": ["libs/user-profile/src/index.ts"],
