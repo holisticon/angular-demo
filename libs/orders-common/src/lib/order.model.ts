@@ -1,4 +1,3 @@
-import { LineItem } from '@ngxp/common';
 import { ResourceId } from '@ngxp/resource';
 import { ShoppingCart } from '@ngxp/shopping-cart-common';
 import { Address, PaymentOption } from '@ngxp/user-profile-common';
@@ -12,7 +11,13 @@ export interface Order {
     date: string;
 }
 
-export interface OrderItem extends LineItem {}
+export interface OrderItem {
+    name: string;
+    description: string;
+    price: number;
+    quantity: number;
+    product: string;
+}
 
 export interface NewOrder {
     shoppingCart: ShoppingCart;
@@ -27,7 +32,6 @@ export interface NewOrderRequest {
     shippingAddress: ResourceId;
     payment: ResourceId;
 }
-
 
 export enum OrderStatus {
     Cancelled = 'Cancelled',
