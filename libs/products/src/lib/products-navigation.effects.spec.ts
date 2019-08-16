@@ -23,7 +23,7 @@ describe('ProductsNavigationEffects', () => {
     });
 
     describe('loadSearchResultsOnNavigate', () => {
-        it('dispatches a LoadSearchResultsAction with the query from the query params when the user navigates to /products', () => {
+        it('dispatches a LoadSearchResultsAction with the query from the query params when the user navigates to the Search Results view', () => {
             actions$ = hot('-a-|', { a: searchResultsNavigationAction });
 
             expect(effects$.loadSearchResultsOnNavigate$).toBeObservable(
@@ -31,7 +31,7 @@ describe('ProductsNavigationEffects', () => {
             );
         });
 
-        it('dispatches a LoadSearchResultsAction with NULL as query when the route contains no query param', () => {
+        it('dispatches a LoadSearchResultsAction with NULL as query when the route does not reference the Search Results view', () => {
             actions$ = hot('-a-|', { a: buildSearchResultsNavigationAction() });
 
             expect(effects$.loadSearchResultsOnNavigate$).toBeObservable(
