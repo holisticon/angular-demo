@@ -3,7 +3,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { shoppingCart } from '@ngxp/shopping-cart-common/test';
-import { AddressComponent } from '@ngxp/user-profile-common';
 import { userProfile } from '@ngxp/user-profile-common/test';
 import { isNull } from 'lodash-es';
 import { take } from 'rxjs/operators';
@@ -40,7 +39,7 @@ describe('PlaceOrderFormComponent', () => {
 
     describe('billingAddress', () => {
         it('renders each address of the given user profile as option for billing address', () => {
-            const billingAddresses: AddressComponent[] = fixture.debugElement.queryAll(By.css('ngxp-address'))
+            const billingAddresses = fixture.debugElement.queryAll(By.css('ngxp-address'))
                 .filter(address => !isNull(address.nativeElement.closest('.billing-address')))
                 .map((address: DebugElement) => address.nativeElement);
 
@@ -57,9 +56,9 @@ describe('PlaceOrderFormComponent', () => {
 
     describe('shippingAddress', () => {
         it('renders each address of the given user profile as option for shipping address', () => {
-            const shippingAddresses: AddressComponent[] = fixture.debugElement.queryAll(By.css('ngxp-address'))
-            .filter(address => !isNull(address.nativeElement.closest('.shipping-address')))
-            .map((address: DebugElement) => address.nativeElement);
+            const shippingAddresses = fixture.debugElement.queryAll(By.css('ngxp-address'))
+                .filter(address => !isNull(address.nativeElement.closest('.shipping-address')))
+                .map((address: DebugElement) => address.nativeElement);
 
             userProfile.addresses.forEach((address, index) => {
                 const addressComponent = shippingAddresses[index];
