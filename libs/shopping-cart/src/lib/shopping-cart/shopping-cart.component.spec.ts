@@ -2,7 +2,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { OrdersCommonStore, PlaceOrderFormComponent } from '@ngxp/orders-common';
+import { OrdersCommonStore } from '@ngxp/orders-common';
 import { newOrder } from '@ngxp/orders-common/test';
 import { ResourceWith } from '@ngxp/resource';
 import { QuantityUpdate, ShoppingCartItem } from '@ngxp/shopping-cart-common';
@@ -64,7 +64,7 @@ describe('ShoppingCartComponent', () => {
     });
 
     it('renders the place order form when the shopping cart contains items', () => {
-        const placeOrderForm: PlaceOrderFormComponent = fixture.debugElement.query(By.css('ngxp-place-order-form')).nativeElement;
+        const placeOrderForm = fixture.debugElement.query(By.css('ngxp-place-order-form')).nativeElement;
 
         expect(placeOrderForm.shoppingCart).toEqual(shoppingCart);
         expect(placeOrderForm.userProfile).toEqual(userProfile);
