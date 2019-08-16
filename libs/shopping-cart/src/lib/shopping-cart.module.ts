@@ -38,9 +38,6 @@ import { initialState as shoppingCartInitialState, shoppingCartReducer, SHOPPING
         UpdateQuantityFormComponent,
         ShoppingCartItemComponent,
         ShoppingCartIsEmptyPipe
-    ],
-    providers: [
-        ShoppingCartEffects
     ]
 })
 export class ShoppingCartModule {

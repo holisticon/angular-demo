@@ -48,10 +48,6 @@ import { initialState as productsInitialState, productsReducer, PRODUCTS_FEATURE
         ProductImageComponent,
         ProductPriceComponent,
         ProductComponent
-    ],
-    providers: [
-        ProductsEffects,
-        ProductsNavigationEffects
     ]
 })
 export class ProductsModule { }
