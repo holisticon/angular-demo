@@ -15,14 +15,14 @@ export class ShoppingCartService {
     loadShoppingCart() {
         return this.httpClient
             .get<Resource<ShoppingCart>>(
-                'https://example.hypercontract.org/shoppingCart'
+                'http://localhost:80/shoppingCart'
             );
     }
 
     updateShoppingCartItemQuantity(shoppingCartItem: ShoppingCartItem, quantityUpdate: QuantityUpdate) {
         return this.httpClient
             .patch<Resource<ShoppingCart>>(
-                `https://example.hypercontract.org/shoppingCart/items/${getId(shoppingCartItem)}`,
+                `http://localhost:80/shoppingCart/items/${getId(shoppingCartItem)}`,
                 quantityUpdate
             );
     }
@@ -30,7 +30,7 @@ export class ShoppingCartService {
     deleteShoppingCartItem(shoppingCartItem: ShoppingCartItem) {
         return this.httpClient
             .delete<Resource<ShoppingCart>>(
-                `https://example.hypercontract.org/shoppingCart/items/${getId(shoppingCartItem)}`
+                `http://localhost:80/shoppingCart/items/${getId(shoppingCartItem)}`
             );
     }
 

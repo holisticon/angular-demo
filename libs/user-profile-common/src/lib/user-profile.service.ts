@@ -14,7 +14,7 @@ export class UserProfileService {
 
     loadUserProfile() {
         return this.httpClient
-            .get<Resource<UserProfile>>('https://example.hypercontract.org/userProfile');
+            .get<Resource<UserProfile>>('http://localhost:80/userProfile');
     }
 
 }

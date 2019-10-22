@@ -30,7 +30,7 @@ describe('ProductService', () => {
                     expect(searchResults).toBe(products);
                 });
 
-            const request = httpController.expectOne(`https://example.hypercontract.org/products?query=${query}`);
+            const request = httpController.expectOne(`http://localhost:80/products?query=${query}`);
 
             expect(request.request.method).toEqual('GET');
 

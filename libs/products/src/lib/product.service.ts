@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from '@ngxp/products-common';
 import { Resource } from '@ngxp/resource';
@@ -14,9 +14,11 @@ export class ProductService {
     ) {}
 
     searchProducts(query: string | null) {
-        const queryString = isNull(query) ? '' : `?query=${encodeURIComponent(query)}`
+        const queryString = isNull(query) ? '' : `?query=${encodeURIComponent(query)}`;
         return this.httpClient
-            .get<Resource<Product>[]>(`https://example.hypercontract.org/products${queryString}`);
+            .get<Resource<Product>[]>(`http://localhost:80/products${queryString}`,
+                { 'headers': new HttpHeaders({ 'accept': 'application/prs.hal-forms+json' }) });
     }
+
 
 }

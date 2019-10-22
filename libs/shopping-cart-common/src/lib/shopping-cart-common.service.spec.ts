@@ -26,7 +26,7 @@ describe('ShoppingCartCommonService', () => {
                     expect(returnedShoppingCart).toBe(shoppingCart);
                 });
 
-            const postRequest = httpController.expectOne('https://example.hypercontract.org/shoppingCart/items');
+            const postRequest = httpController.expectOne('http://localhost:80/shoppingCart/items');
 
             expect(postRequest.request.method).toEqual('POST');
             expect(postRequest.request.body).toEqual(additionToShoppingCart);
@@ -35,11 +35,11 @@ describe('ShoppingCartCommonService', () => {
                 status: 201,
                 statusText: 'Created',
                 headers: {
-                    Location: 'https://example.hypercontract.org/shoppingCart'
+                    Location: 'http://localhost:80/shoppingCart'
                 }
             });
 
-            const getRequest = httpController.expectOne('https://example.hypercontract.org/shoppingCart');
+            const getRequest = httpController.expectOne('http://localhost:80/shoppingCart');
 
             expect(getRequest.request.method).toEqual('GET');
 
@@ -54,7 +54,7 @@ describe('ShoppingCartCommonService', () => {
             returnedObservable.subscribe();
             expect(returnedObservable).toBeObservable(cold(''));
 
-            const postRequest = httpController.expectOne('https://example.hypercontract.org/shoppingCart/items');
+            const postRequest = httpController.expectOne('http://localhost:80/shoppingCart/items');
 
             postRequest.flush(null, {
                 status: 201,

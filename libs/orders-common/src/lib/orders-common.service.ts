@@ -19,7 +19,7 @@ export class OrdersCommonService {
     placeOrder(newOrder: NewOrder) {
         return this.httpClient
             .post(
-                'https://example.hypercontract.org/orders',
+                'http://localhost:80/orders',
                 toNewOrderRequest(newOrder),
                 { responseType: 'text', observe: 'response' }
             )

@@ -15,7 +15,7 @@ export class OrderService {
     loadOrders() {
         return this.httpClient
             .get<Resource<Order>[]>(
-                'https://example.hypercontract.org/orders'
+                'http://localhost:80/orders'
             );
     }
 

@@ -18,7 +18,7 @@ export class ShoppingCartCommonService {
     addToShoppingCart(additionToShoppingCart: AdditionToShoppingCart) {
         return this.httpClient
             .post(
-                'https://example.hypercontract.org/shoppingCart/items',
+                'http://localhost:80/shoppingCart/items',
                 additionToShoppingCart,
                 { responseType: 'text', observe: 'response' }
             )

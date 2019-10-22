@@ -31,7 +31,7 @@ describe('ShoppingCartService', () => {
                     expect(returnedShoppingCart).toBe(shoppingCart);
                 });
 
-            const request = httpController.expectOne('https://example.hypercontract.org/shoppingCart');
+            const request = httpController.expectOne('http://localhost:80/shoppingCart');
 
             expect(request.request.method).toEqual('GET');
 
@@ -57,7 +57,7 @@ describe('ShoppingCartService', () => {
                 });
 
             const patchRequest = httpController.expectOne(
-                `https://example.hypercontract.org/shoppingCart/items/${getId(shoppingCartItem)}`
+                `http://localhost:80/shoppingCart/items/${getId(shoppingCartItem)}`
             );
 
             expect(patchRequest.request.method).toEqual('PATCH');
@@ -78,7 +78,7 @@ describe('ShoppingCartService', () => {
                 });
 
             const deleteRequest = httpController.expectOne(
-                `https://example.hypercontract.org/shoppingCart/items/${getId(shoppingCartItem)}`
+                `http://localhost:80/shoppingCart/items/${getId(shoppingCartItem)}`
             );
 
             expect(deleteRequest.request.method).toEqual('DELETE');
