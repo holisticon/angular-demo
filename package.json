@@ -6,7 +6,7 @@
         "ng": "ng",
         "start": "ng serve",
         "build": "ng build --prod",
-        "test": "nx affected:test --all",
+        "test": "ng test --run-in-band",
         "lint": "nx workspace-lint && ng lint",
         "e2e": "ng e2e",
         "affected:apps": "nx affected:apps",
