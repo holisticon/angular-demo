@@ -8,7 +8,10 @@ export const PRODUCTS_FEATURE_KEY = 'products';
 
 export interface ProductsState {
     query: string | null;
-    searchResults: ResourceId[];
+    searchResults: {
+        products: ResourceId[];
+        totalResults: number;
+    } | null;
     products: ResourceMap<Product>;
 }
 
@@ -18,22 +21,25 @@ export interface ProductsAppState {
 
 export const initialState: ProductsState = {
     query: null,
-    searchResults: [],
+    searchResults: null,
     products: {}
 };
 
 const reducer = createReducer(initialState,
-    on(loadSearchResultsAction, (state, { query }) => ({
+    on(loadSearchResultsAction, (state, { queryString: query }) => ({
         ...state,
         query,
-        searchResults: []
+        searchResults: null
     })),
     on(searchResultsLoadedAction, (state, { searchResults }) => ({
         ...state,
-        searchResults: getIds(searchResults),
+        searchResults: {
+            ...searchResults,
+            products: getIds(searchResults.products)
+        },
         products: {
             ...state.products,
-            ...toMap(searchResults)
+            ...toMap(searchResults.products)
         }
     }))
 );

@@ -6,7 +6,7 @@ import { initialState, productsReducer, ProductsState } from './products.reducer
 
 describe('productsReducer', () => {
     const query = 'query';
-    const searchResultIds = getIds(searchResults);
+    const searchResultIds = getIds(searchResults.products);
 
     it('returns the same state if the action is not applicable', () => {
         const action: Action = { type: 'some-action' };
@@ -14,25 +14,28 @@ describe('productsReducer', () => {
         expect(state).toBe(initialState);
     });
 
-    describe('LoadSearchResults', () => {
+    describe('loadSearchResults', () => {
         it('sets the query, resets search results and leaves the products untouched', () => {
             const state: ProductsState = {
                 query,
-                searchResults: searchResultIds,
+                searchResults: {
+                    products: searchResultIds,
+                    totalResults: searchResultIds.length
+                },
                 products: toMap(products)
             };
             const updatedQuery = 'new query';
-            const action = loadSearchResultsAction({ query: updatedQuery });
+            const action = loadSearchResultsAction({ queryString: updatedQuery });
 
             const updatedState = productsReducer(state, action);
 
             expect(updatedState.query).toBe(updatedQuery);
-            expect(updatedState.searchResults).toEqual([]);
+            expect(updatedState.searchResults).toBe(null);
             expect(updatedState.products).toBe(state.products);
         });
     });
 
-    describe('SearchResultsLoaded', () => {
+    describe('searchResultsLoaded', () => {
         it('sets search results and adds them to the products map', () => {
             const preloadedProducts = [product];
             const state: ProductsState = {
@@ -44,11 +47,14 @@ describe('productsReducer', () => {
 
             const updatedState = productsReducer(state, action);
 
-            expect(updatedState.searchResults).toEqual(searchResultIds);
+            // tslint:disable-next-line: no-non-null-assertion
+            expect(updatedState.searchResults!.products).toEqual(searchResultIds);
+            // tslint:disable-next-line: no-non-null-assertion
+            expect(updatedState.searchResults!.totalResults).toEqual(searchResultIds.length);
             expect(updatedState.products[getId(product)]).toBe(product);
-            expect(Object.values(updatedState.products).length).toBe(searchResults.length + preloadedProducts.length);
+            expect(Object.values(updatedState.products).length).toBe(searchResults.products.length + preloadedProducts.length);
 
-            [...preloadedProducts, ...searchResults]
+            [...preloadedProducts, ...searchResults.products]
                 .forEach(expectedProduct => {
                     const productId = getId(expectedProduct);
                     expect(updatedState.products[productId]).toBe(expectedProduct);

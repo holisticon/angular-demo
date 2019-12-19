@@ -36,7 +36,7 @@ describe('ProductSearchFormComponent', () => {
     it('emits a search event with the query on sumbit', () => {
         const expectedQuery = 'query';
         const form = fixture.debugElement.query(By.css('form'));
-        const quantityFormControl = fixture.componentInstance.query.setValue(expectedQuery);
+        const quantityFormControl = fixture.componentInstance.queryString.setValue(expectedQuery);
 
         fixture.componentInstance.search
             .pipe(take(1))

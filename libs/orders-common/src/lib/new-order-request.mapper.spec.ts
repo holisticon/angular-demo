@@ -4,9 +4,8 @@ import { toNewOrderRequest } from './new-order-request.mapper';
 
 describe('toNewOrderRequest', () => {
     it('maps the given new order to an order request', () => {
-        // kind of useless 🤔 ... for now 😏
         expect(toNewOrderRequest(newOrder)).toEqual({
-            items: newOrder.shoppingCart.items
+            shoppingCartItems: newOrder.shoppingCartItems
                 .map(shoppingCartItem => getId(shoppingCartItem)),
             payment: getId(newOrder.payment),
             shippingAddress: getId(newOrder.shippingAddress),

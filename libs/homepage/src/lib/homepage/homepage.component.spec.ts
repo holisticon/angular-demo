@@ -42,13 +42,13 @@ describe('HomepageComponent', () => {
         expectElementFromFixture(fixture, 'ngxp-product-search-form').not.toBeNull();
     });
 
-    it('triggers a search for products with the provided query when the product search form emits a search event', () => {
-        const expectedQuery = 'query';
+    it('triggers a search for products with the provided query string when the product search form emits a search event', () => {
+        const expectedQueryString = 'query';
         const searchProductsSpy = spyOn(productsCommonStore, 'searchProducts');
         const productSearchForm = fixture.debugElement.query(By.css('ngxp-product-search-form'));
 
-        productSearchForm.triggerEventHandler('search', expectedQuery);
+        productSearchForm.triggerEventHandler('search', expectedQueryString);
 
-        expect(searchProductsSpy).toHaveBeenCalledWith({ query: expectedQuery });
+        expect(searchProductsSpy).toHaveBeenCalledWith({ queryString: expectedQueryString });
     });
 });

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Product } from '@ngxp/products-common';
+import { SearchResults } from '@ngxp/products-common';
 import { Observable } from 'rxjs';
 import { ProductsStore } from '../state/products-store.service';
 
@@ -10,12 +10,12 @@ import { ProductsStore } from '../state/products-store.service';
 })
 export class SearchResultsComponent {
 
-    products$: Observable<Product[]>;
+    searchResults$: Observable<SearchResults | null>;
 
     constructor(
         private productsStore: ProductsStore
     ) {
-        this.products$ = this.productsStore.getSearchResults();
+        this.searchResults$ = this.productsStore.getSearchResults();
     }
 
 }

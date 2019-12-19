@@ -1,19 +1,19 @@
-import { orders } from '@ngxp/orders-common/test';
+import { orderHistory } from '@ngxp/orders-common/test';
 import { OrdersAppState } from './orders.reducer';
-import { selectOrders } from './orders.selectors';
+import { selectOrderHistory } from './orders.selectors';
 
 describe('ordersSelectors', () => {
     const state: OrdersAppState = {
         orders: {
-            orders
+            orderHistory
         }
     };
 
-    describe('selectOrders', () => {
+    describe('selectOrderHistory', () => {
         it('returns the search results', () => {
-            const expectedValue = state.orders.orders;
+            const expectedValue = state.orders.orderHistory;
 
-            expect(selectOrders(state)).toBe(expectedValue);
+            expect(selectOrderHistory(state)).toBe(expectedValue);
         });
     });
 });

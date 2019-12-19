@@ -36,8 +36,8 @@ describe('ShoppingCartItemComponent', () => {
     });
 
     it('renders the shopping cart item', () => {
-        expect(fixture.debugElement.query(By.css('.name')).nativeNode.textContent).toBe(shoppingCartItem.name);
-        expect(fixture.debugElement.query(By.css('.description')).nativeNode.textContent).toBe(shoppingCartItem.description);
+        expect(fixture.debugElement.query(By.css('.name')).nativeNode.textContent).toBe(shoppingCartItem.productName);
+        expect(fixture.debugElement.query(By.css('.description')).nativeNode.textContent).toBe(shoppingCartItem.productDescription);
         expect(fixture.debugElement.query(By.css('.price')).nativeNode.textContent).toBe(shoppingCartItem.price.toFixed(2));
     });
 

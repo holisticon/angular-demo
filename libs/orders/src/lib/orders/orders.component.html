@@ -1,7 +1,7 @@
 <h1 class="mb-5">Orders</h1>
 
 <ul class="list-unstyled">
-    <li class="mb-5" *ngFor="let order of (orders$ | async)">
+    <li class="mb-5" *ngFor="let order of (orderHistory$ | async)?.orders">
         <ngxp-order [order]="order"></ngxp-order>
     </li>
 </ul>

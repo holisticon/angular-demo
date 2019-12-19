@@ -2,17 +2,17 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, switchMap } from 'rxjs/operators';
 import { OrderService } from '../order.service';
-import { loadOrdersAction, ordersLoadedAction } from './orders.actions';
+import { loadOrderHistoryAction, orderHistoryLoaded } from './orders.actions';
 
 @Injectable()
 export class OrdersEffects {
 
-    loadOrders$ = createEffect(
+    loadOrderHistory$ = createEffect(
         () => this.actions$.pipe(
-            ofType(loadOrdersAction),
+            ofType(loadOrderHistoryAction),
             switchMap(() => this.orderService
-                .loadOrders()
-                .pipe(map(orders => ordersLoadedAction({ orders }))))
+                .loadOrderHistory()
+                .pipe(map(orderHistory => orderHistoryLoaded({ orderHistory }))))
         )
     );
 

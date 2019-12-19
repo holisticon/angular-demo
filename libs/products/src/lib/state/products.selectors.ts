@@ -1,6 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { Product } from '@ngxp/products-common';
+import { Product, SearchResults } from '@ngxp/products-common';
 import { ResourceMap } from '@ngxp/resource';
+import { isNull } from 'lodash-es';
 import { ProductsAppState, ProductsState, PRODUCTS_FEATURE_KEY } from '../state/products.reducer';
 
 const selectProductsState = createFeatureSelector<ProductsAppState, ProductsState>(PRODUCTS_FEATURE_KEY);
@@ -13,7 +14,17 @@ const selectProducts = createSelector(
 export const selectSearchResults = createSelector(
     selectProductsState,
     selectProducts,
-    (state, products) => state.searchResults.map(productId => products[productId])
+    ({ searchResults }, products): SearchResults | null => {
+        if (isNull(searchResults)) {
+            return null;
+        }
+
+        return {
+            ...searchResults,
+            products: searchResults.products
+                .map(productId => products[productId])
+        };
+    }
 );
 
 export const selectProduct = createSelector(

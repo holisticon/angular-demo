@@ -1,6 +1,6 @@
 import { BlueprintFactory } from '@ngxp/builder';
 import { getRandomValue } from '@ngxp/common/test';
-import { Order, OrderStatus } from '@ngxp/orders-common';
+import { Order, OrderHistory, OrderStatus } from '@ngxp/orders-common';
 import { Resource } from '@ngxp/resource';
 import { createResourceBlueprintBuilder } from '@ngxp/resource/test';
 import { addressBuilder, paymentOptionBuilder } from '@ngxp/user-profile-common/test';
@@ -15,11 +15,11 @@ const orderBlueprint: BlueprintFactory<Order> = () => {
     const items = orderItemBuilder().freeze().buildMany(random(minItemCount, maxItemCount));
     return {
         billingAddress: () => addressBuilder().build(),
-        date: () => faker.date.past().toISOString(),
-        items: () => items,
+        orderDate: () => faker.date.past().toISOString(),
+        orderItems: () => items,
         payment: () => paymentOptionBuilder().build(),
         shippingAddress: () => addressBuilder().build(),
-        status: () => getRandomValue(OrderStatus)
+        orderStatus: () => getRandomValue(OrderStatus)
     };
 };
 
@@ -27,3 +27,4 @@ export const orderBuilder = createResourceBlueprintBuilder(orderBlueprint);
 
 export const order: Resource<Order> = orderBuilder().freeze().build();
 export const orders: Resource<Order>[] = orderBuilder().freeze().buildMany(20);
+export const orderHistory: OrderHistory = { orders };

@@ -8,7 +8,10 @@ describe('productsSelectors', () => {
     const state: ProductsAppState = {
         products: {
             query: 'query',
-            searchResults: getIds(searchResults),
+            searchResults: {
+                products: getIds(searchResults.products),
+                totalResults: searchResults.products.length
+            },
             products: toMap(products)
         }
     };

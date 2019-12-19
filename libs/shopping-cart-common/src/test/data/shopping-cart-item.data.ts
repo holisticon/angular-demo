@@ -11,8 +11,8 @@ const maxItemQty = 5;
 const shoppingCartItemBlueprintFactory: BlueprintFactory<ShoppingCartItem> = () => {
     const product = productBuilder().freeze().build();
     return {
-        name: () => product.name,
-        description: () => product.description,
+        productName: () => product.productName,
+        productDescription: () => product.productDescription,
         price: () => product.price,
         product: () => getId(product),
         quantity: () => random(minItemQty, maxItemQty)

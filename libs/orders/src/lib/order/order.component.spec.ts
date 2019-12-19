@@ -29,7 +29,7 @@ describe('OrderComponent', () => {
     });
 
     it('renders the order status', () => {
-        expect(fixture.debugElement.query(By.css('.status')).nativeElement.textContent).toBe(order.status);
+        expect(fixture.debugElement.query(By.css('.status')).nativeElement.textContent).toBe(order.orderStatus);
     });
 
     it('renders the billing address as ngxp-address', () => {

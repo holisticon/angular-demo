@@ -7,7 +7,7 @@ describe('ProductService', () => {
     let productService: ProductService;
     let httpController: HttpTestingController;
 
-    const query = 'query';
+    const queryString = 'query';
 
     beforeEach(() => {
         TestBed.configureTestingModule({
@@ -25,12 +25,12 @@ describe('ProductService', () => {
 
     describe('searchProducts', () => {
         it('loads products matching the given query from the backend', () => {
-            productService.searchProducts(query)
+            productService.searchProducts(queryString)
                 .subscribe(searchResults => {
                     expect(searchResults).toBe(products);
                 });
 
-            const request = httpController.expectOne(`https://example.hypercontract.org/products?query=${query}`);
+            const request = httpController.expectOne(`https://example.hypercontract.org/products?queryString=${queryString}`);
 
             expect(request.request.method).toEqual('GET');
 

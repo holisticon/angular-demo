@@ -6,7 +6,7 @@ import { OrdersStore } from './state/orders-store.service';
 describe('OrdersModule', () => {
     it('loads the orders on initialization', fakeAsync(() => {
         const ordersStore = createStoreServiceMock(OrdersStore);
-        const loadOrdersSpy = spyOn(ordersStore, 'loadOrders');
+        const loadOrdersSpy = spyOn(ordersStore, 'loadOrderHistory');
 
         // tslint:disable-next-line: no-unused-expression
         new OrdersModule(ordersStore);

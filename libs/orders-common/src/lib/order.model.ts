@@ -1,33 +1,37 @@
-import { ResourceId } from '@ngxp/resource';
-import { ShoppingCart } from '@ngxp/shopping-cart-common';
+import { Resource, ResourceId } from '@ngxp/resource';
+import { ShoppingCartItem } from '@ngxp/shopping-cart-common';
 import { Address, PaymentOption } from '@ngxp/user-profile-common';
 
+export interface OrderHistory {
+    orders: Resource<Order>[];
+}
+
 export interface Order {
-    status: OrderStatus;
-    items: OrderItem[];
+    orderStatus: OrderStatus;
+    orderItems: OrderItem[];
     billingAddress: Address;
     shippingAddress: Address;
     payment: PaymentOption;
-    date: string;
+    orderDate: string;
 }
 
 export interface OrderItem {
-    name: string;
-    description: string;
+    productName: string;
+    productDescription: string;
     price: number;
     quantity: number;
     product: string;
 }
 
 export interface NewOrder {
-    shoppingCart: ShoppingCart;
+    shoppingCartItems: ShoppingCartItem[];
     billingAddress: Address;
     shippingAddress: Address;
     payment: PaymentOption;
 }
 
 export interface NewOrderRequest {
-    items: ResourceId[];
+    shoppingCartItems: ResourceId[];
     billingAddress: ResourceId;
     shippingAddress: ResourceId;
     payment: ResourceId;
@@ -36,10 +40,5 @@ export interface NewOrderRequest {
 export enum OrderStatus {
     Cancelled = 'Cancelled',
     Delivered = 'Delivered',
-    InTransit = 'InTransit',
-    PaymentDue = 'PaymentDue',
-    PickupAvailable = 'PickupAvailable',
-    Problem = 'Problem',
-    Processing = 'Processing',
-    Returned = 'Returned'
+    Processing = 'Processing'
 }

@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
-import { orders } from '@ngxp/orders-common/test';
-import { ordersLoadedAction } from './orders.actions';
+import { orderHistory } from '@ngxp/orders-common/test';
+import { orderHistoryLoaded } from './orders.actions';
 import { initialState, ordersReducer } from './orders.reducer';
 
 describe('ordersReducer', () => {
@@ -10,13 +10,13 @@ describe('ordersReducer', () => {
         expect(state).toBe(initialState);
     });
 
-    describe('OrdersLoaded', () => {
+    describe('orderHistoryLoaded', () => {
         it('sets the orders', () => {
-            const action = ordersLoadedAction({ orders });
+            const action = orderHistoryLoaded({ orderHistory });
 
             const updatedState = ordersReducer(initialState, action);
 
-            expect(updatedState.orders).toBe(orders);
+            expect(updatedState.orderHistory).toBe(orderHistory);
         });
     });
 });

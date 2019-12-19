@@ -25,7 +25,7 @@ describe('OrderService', () => {
     describe('loadOrders', () => {
         it('loads the orders from the backend', () => {
             orderService
-                .loadOrders()
+                .loadOrderHistory()
                 .subscribe(returnedOrders => {
                     expect(returnedOrders).toBe(orders);
                 });

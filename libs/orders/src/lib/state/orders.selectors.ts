@@ -3,7 +3,7 @@ import { OrdersState, ORDERS_FEATURE_KEY } from './orders.reducer';
 
 const selectOrdersState = createFeatureSelector<OrdersState>(ORDERS_FEATURE_KEY);
 
-export const selectOrders = createSelector(
+export const selectOrderHistory = createSelector(
     selectOrdersState,
-    state => state.orders
+    state => state.orderHistory
 );

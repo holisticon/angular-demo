@@ -49,7 +49,7 @@ export class PlaceOrderFormComponent {
         event.preventDefault();
 
         this.placeOrder.emit({
-            shoppingCart: this.shoppingCart,
+            shoppingCartItems: this.shoppingCart.items,
             billingAddress: this.form.value.billingAddress,
             shippingAddress: this.form.value.shippingAddress,
             payment: this.form.value.payment

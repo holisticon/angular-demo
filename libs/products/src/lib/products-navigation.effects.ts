@@ -12,7 +12,7 @@ export class ProductsNavigationEffects {
         () => this.actions$.pipe(
             filterNavigationTo(ProductsViews.SearchResults),
             extractQueryParam('query', null),
-            map(query => loadSearchResultsAction({ query }))
+            map(query => loadSearchResultsAction({ queryString: query }))
         ));
 
     constructor(

@@ -5,8 +5,8 @@ export interface ShoppingCart {
 
 // tslint:disable-next-line:no-empty-interface
 export interface ShoppingCartItem {
-    name: string;
-    description: string;
+    productName: string;
+    productDescription: string;
     price: number;
     quantity: number;
     product: string;

@@ -1,11 +1,11 @@
 import { createAction, props } from '@ngrx/store';
-import { Order } from '@ngxp/orders-common';
+import { OrderHistory } from '@ngxp/orders-common';
 
-export const loadOrdersAction = createAction(
-    '[Orders] load orders'
+export const loadOrderHistoryAction = createAction(
+    '[Orders] load order history'
 );
 
-export const ordersLoadedAction = createAction(
-    '[Orders] orders loaded',
-    props<{ orders: Order[] }>()
+export const orderHistoryLoaded = createAction(
+    '[Orders] order history loaded',
+    props<{ orderHistory: OrderHistory }>()
 );

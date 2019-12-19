@@ -10,7 +10,7 @@ describe('userProfileReducer', () => {
         expect(state).toBe(initialState);
     });
 
-    describe('UserProfileLoaded', () => {
+    describe('userProfileLoaded', () => {
         it('sets the user profile', () => {
             const action = userProfileLoadedAction({ userProfile });
 

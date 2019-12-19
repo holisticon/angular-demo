@@ -33,6 +33,6 @@ export class OrdersModule {
         ordersStore: OrdersStore
     ) {
         // TODO load via routing effect
-        setTimeout(() => ordersStore.loadOrders());
+        setTimeout(() => ordersStore.loadOrderHistory());
     }
 }

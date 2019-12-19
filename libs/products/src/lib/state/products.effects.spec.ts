@@ -1,7 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
-import { products } from '@ngxp/products-common/test';
+import { searchResults } from '@ngxp/products-common/test';
 import { hot } from 'jest-marbles';
 import { Observable, of as observableOf } from 'rxjs';
 import { ProductService } from '../product.service';
@@ -12,8 +12,6 @@ describe('ProductsEffects', () => {
     let actions$: Observable<any>;
     let effects$: ProductsEffects;
     let productService: ProductService;
-
-    const searchResults = products;
 
     beforeEach(() => {
         TestBed.configureTestingModule({
@@ -36,7 +34,7 @@ describe('ProductsEffects', () => {
             const expectedQuery = 'query';
             spyOn(productService, 'searchProducts').and.returnValue(observableOf(searchResults));
 
-            actions$ = hot('-a-|', { a: loadSearchResultsAction({ query: expectedQuery }) });
+            actions$ = hot('-a-|', { a: loadSearchResultsAction({ queryString: expectedQuery }) });
 
             expect(effects$.loadSearchResults$).toBeObservable(
                 hot('-a-|', { a: searchResultsLoadedAction({ searchResults }) })

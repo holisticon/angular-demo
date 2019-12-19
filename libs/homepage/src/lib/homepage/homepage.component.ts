@@ -12,8 +12,8 @@ export class HomepageComponent {
         private productsCommonStore: ProductsCommonStore
     ) {}
 
-    onProductSearch(query: string) {
-        this.productsCommonStore.searchProducts({ query });
+    onProductSearch(queryString: string) {
+        this.productsCommonStore.searchProducts({ queryString });
     }
 
 }

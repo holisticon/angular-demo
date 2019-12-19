@@ -40,8 +40,8 @@ describe('ProductComponent', () => {
         });
 
         it('renders the product name and description', () => {
-            expect(fixture.debugElement.query(By.css('h1')).nativeNode.textContent).toBe(product.name);
-            expect(fixture.debugElement.query(By.css('.description')).nativeNode.textContent).toBe(product.description);
+            expect(fixture.debugElement.query(By.css('h1')).nativeNode.textContent).toBe(product.productName);
+            expect(fixture.debugElement.query(By.css('.description')).nativeNode.textContent).toBe(product.productDescription);
         });
 
         it('renders the product image', () => {

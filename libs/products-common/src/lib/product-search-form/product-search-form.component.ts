@@ -11,10 +11,10 @@ export class ProductSearchFormComponent {
     @Output()
     search = new EventEmitter<string>();
 
-    query = new FormControl();
+    queryString = new FormControl();
 
     onSubmit(event: Event) {
         event.preventDefault();
-        this.search.emit(this.query.value);
+        this.search.emit(this.queryString.value);
     }
 }

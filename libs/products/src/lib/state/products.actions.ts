@@ -1,13 +1,12 @@
 import { createAction, props } from '@ngrx/store';
-import { Product } from '@ngxp/products-common';
-import { Resource } from '@ngxp/resource';
+import { SearchResults } from '@ngxp/products-common';
 
 export const loadSearchResultsAction = createAction(
     '[Products] load search results',
-    props<{ query: string | null }>()
+    props<{ queryString: string | null }>()
 );
 
 export const searchResultsLoadedAction = createAction(
     '[Products] search results loaded',
-    props<{ searchResults: Resource<Product>[] }>()
+    props<{ searchResults: SearchResults }>()
 );

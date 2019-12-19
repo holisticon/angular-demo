@@ -11,7 +11,7 @@ export class ProductsCommonStore extends StoreService<void> {
     @Dispatch(searchProductsAction)
     searchProducts!: Dispatcher<typeof searchProductsAction>;
 
-    @Observe([searchProductsAction], (action: ReturnType<typeof searchProductsAction>) => action.query)
+    @Observe([searchProductsAction], (action: ReturnType<typeof searchProductsAction>) => action.queryString)
     searchProducts$!: Observable<string | null>
 
 }

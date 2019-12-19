@@ -10,8 +10,8 @@ export class ProductsEffects {
     loadSearchResults$ = createEffect(
         () => this.actions$.pipe(
             ofType(loadSearchResultsAction),
-            switchMap(({ query }) => this.productService
-                .searchProducts(query)
+            switchMap(({ queryString }) => this.productService
+                .searchProducts(queryString)
                 .pipe(
                     map(searchResults => searchResultsLoadedAction({ searchResults }))
                 )

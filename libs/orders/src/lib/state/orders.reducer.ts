@@ -1,12 +1,12 @@
 import { createReducer, on } from '@ngrx/store';
 import { ReducerArgs } from '@ngxp/common';
-import { Order } from '@ngxp/orders-common';
-import { ordersLoadedAction } from './orders.actions';
+import { OrderHistory } from '@ngxp/orders-common';
+import { orderHistoryLoaded } from './orders.actions';
 
 export const ORDERS_FEATURE_KEY = 'orders';
 
 export interface OrdersState {
-    orders: Order[]
+    orderHistory: OrderHistory | null;
 }
 
 export interface OrdersAppState {
@@ -14,13 +14,13 @@ export interface OrdersAppState {
 }
 
 export const initialState: OrdersState = {
-    orders: []
+    orderHistory: null
 };
 
 const reducer = createReducer(initialState,
-    on(ordersLoadedAction, (state, { orders }) => ({
+    on(orderHistoryLoaded, (state, { orderHistory }) => ({
         ...state,
-        orders
+        orderHistory
     }))
 );
 

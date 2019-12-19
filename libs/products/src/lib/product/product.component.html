@@ -1,5 +1,5 @@
 <ng-container *ngIf="product">
-    <h1 class="mb-5">{{ product.name }}</h1>
+    <h1 class="mb-5">{{ product.productName }}</h1>
 
     <div class="row align-items-start">
         <ngxp-product-image [product]="product" class="col-4"></ngxp-product-image>
@@ -12,7 +12,7 @@
                 [product]="product"
             ></ngxp-add-to-shopping-cart-form>
 
-            <p class="col mt-5 description">{{ product.description }}</p>
+            <p class="col mt-5 description">{{ product.productDescription }}</p>
         </div>
     </div>
 </ng-container>

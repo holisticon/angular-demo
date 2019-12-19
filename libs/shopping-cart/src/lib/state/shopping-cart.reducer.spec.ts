@@ -10,7 +10,7 @@ describe('shoppingCartReducer', () => {
         expect(state).toBe(initialState);
     });
 
-    describe('ShoppingCartUpdated', () => {
+    describe('shoppingCartUpdated', () => {
         it('sets the shopping cart', () => {
             const action = shoppingCartUpdatedAction({ shoppingCart });
 

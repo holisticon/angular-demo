@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Order } from '@ngxp/orders-common';
+import { OrderHistory } from '@ngxp/orders-common';
 import { Resource } from '@ngxp/resource';
 
 @Injectable({
@@ -12,9 +12,9 @@ export class OrderService {
         private httpClient: HttpClient
     ) {}
 
-    loadOrders() {
+    loadOrderHistory() {
         return this.httpClient
-            .get<Resource<Order>[]>(
+            .get<Resource<OrderHistory>>(
                 'https://example.hypercontract.org/orders'
             );
     }

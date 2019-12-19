@@ -3,7 +3,7 @@ import { NewOrder, NewOrderRequest } from './order.model';
 
 export function toNewOrderRequest(newOrder: NewOrder): NewOrderRequest {
     return {
-        items: newOrder.shoppingCart.items
+        shoppingCartItems: newOrder.shoppingCartItems
             .map(shoppingCartItem => getId(shoppingCartItem)),
         payment: getId(newOrder.payment),
         shippingAddress: getId(newOrder.shippingAddress),

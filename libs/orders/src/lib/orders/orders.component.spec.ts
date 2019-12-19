@@ -1,7 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { orders } from '@ngxp/orders-common/test';
+import { orderHistory } from '@ngxp/orders-common/test';
 import { provideStoreServiceMock } from '@ngxp/store-service/testing';
 import { OrderComponent } from '../order/order.component';
 import { OrdersStore } from '../state/orders-store.service';
@@ -18,7 +18,7 @@ describe('OrdersComponent', () => {
             ],
             providers: [
                 provideStoreServiceMock(OrdersStore, {
-                    getOrders: orders
+                    getOrderHistory: orderHistory
                 })
             ],
             schemas: [
@@ -39,7 +39,7 @@ describe('OrdersComponent', () => {
 
         expect(orderComponents.length).toBe(orderComponents.length);
 
-        orders.forEach((order, index) => {
+        orderHistory.orders.forEach((order, index) => {
             const orderComponent: OrderComponent = orderComponents[index].nativeElement;
             expect(orderComponent.order).toEqual(order);
         });

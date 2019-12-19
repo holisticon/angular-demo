@@ -27,7 +27,7 @@ describe('ProductsNavigationEffects', () => {
             actions$ = hot('-a-|', { a: searchResultsNavigationAction });
 
             expect(effects$.loadSearchResultsOnNavigate$).toBeObservable(
-                hot('-a-|', { a: loadSearchResultsAction({ query: searchResultsQueryParams.query }) })
+                hot('-a-|', { a: loadSearchResultsAction({ queryString: searchResultsQueryParams.query }) })
             );
         });
 
@@ -35,7 +35,7 @@ describe('ProductsNavigationEffects', () => {
             actions$ = hot('-a-|', { a: buildSearchResultsNavigationAction() });
 
             expect(effects$.loadSearchResultsOnNavigate$).toBeObservable(
-                hot('-a-|', { a: loadSearchResultsAction({ query: null }) })
+                hot('-a-|', { a: loadSearchResultsAction({ queryString: null }) })
             );
         });
 

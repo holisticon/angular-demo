@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Product } from '@ngxp/products-common';
+import { SearchResults } from '@ngxp/products-common';
 import { Resource } from '@ngxp/resource';
 import { isNull } from 'lodash-es';
 
@@ -13,10 +13,10 @@ export class ProductService {
         private httpClient: HttpClient
     ) {}
 
-    searchProducts(query: string | null) {
-        const queryString = isNull(query) ? '' : `?query=${encodeURIComponent(query)}`
+    searchProducts(queryString: string | null) {
+        const queryParams = isNull(queryString) ? '' : `?queryString=${encodeURIComponent(queryString)}`
         return this.httpClient
-            .get<Resource<Product>[]>(`https://example.hypercontract.org/products${queryString}`);
+            .get<Resource<SearchResults>>(`https://example.hypercontract.org/products${queryParams}`);
     }
 
 }
