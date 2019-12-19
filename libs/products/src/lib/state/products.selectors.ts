@@ -22,12 +22,12 @@ export const selectSearchResults = createSelector(
         return {
             ...searchResults,
             products: searchResults.products
-                .map(productId => products[productId])
+                .map(productUri => products[productUri])
         };
     }
 );
 
 export const selectProduct = createSelector(
     selectProducts,
-    (products: ResourceMap<Product>, props: { productId: string }) => products[props.productId]
+    (products: ResourceMap<Product>, props: { productUri: string }) => products[props.productUri]
 );

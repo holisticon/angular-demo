@@ -1,4 +1,4 @@
-import { Resource, ResourceId } from '@ngxp/resource';
+import { Resource, ResourceUri } from '@ngxp/resource';
 import { ShoppingCartItem } from '@ngxp/shopping-cart-common';
 import { Address, PaymentOption } from '@ngxp/user-profile-common';
 
@@ -31,10 +31,10 @@ export interface NewOrder {
 }
 
 export interface NewOrderRequest {
-    shoppingCartItems: ResourceId[];
-    billingAddress: ResourceId;
-    shippingAddress: ResourceId;
-    payment: ResourceId;
+    shoppingCartItems: ResourceUri[];
+    billingAddress: ResourceUri;
+    shippingAddress: ResourceUri;
+    payment: ResourceUri;
 }
 
 export enum OrderStatus {

@@ -2,13 +2,13 @@
 
 import { Pipe } from '@angular/core';
 import { FunctionPipe } from '@ngxp/common';
-import { encodeResourceIdAsRouteParam } from './resource.utils';
+import { encodeResourceUriAsRouteParam } from './resource.utils';
 
 @Pipe({
     name: 'encodeRouteParam'
 })
 export class EncodeRouteParam extends FunctionPipe {
     constructor() {
-        super(encodeResourceIdAsRouteParam);
+        super(encodeResourceUriAsRouteParam);
     }
 }

@@ -1,12 +1,12 @@
 import { Action } from '@ngrx/store';
 import { product, products, searchResults } from '@ngxp/products-common/test';
-import { getId, getIds, toMap } from '@ngxp/resource';
+import { getUri, getUris, toMap } from '@ngxp/resource';
 import { loadSearchResultsAction, searchResultsLoadedAction } from './products.actions';
 import { initialState, productsReducer, ProductsState } from './products.reducer';
 
 describe('productsReducer', () => {
     const query = 'query';
-    const searchResultIds = getIds(searchResults.products);
+    const searchResultUris = getUris(searchResults.products);
 
     it('returns the same state if the action is not applicable', () => {
         const action: Action = { type: 'some-action' };
@@ -19,8 +19,8 @@ describe('productsReducer', () => {
             const state: ProductsState = {
                 query,
                 searchResults: {
-                    products: searchResultIds,
-                    totalResults: searchResultIds.length
+                    products: searchResultUris,
+                    totalResults: searchResultUris.length
                 },
                 products: toMap(products)
             };
@@ -48,16 +48,16 @@ describe('productsReducer', () => {
             const updatedState = productsReducer(state, action);
 
             // tslint:disable-next-line: no-non-null-assertion
-            expect(updatedState.searchResults!.products).toEqual(searchResultIds);
+            expect(updatedState.searchResults!.products).toEqual(searchResultUris);
             // tslint:disable-next-line: no-non-null-assertion
-            expect(updatedState.searchResults!.totalResults).toEqual(searchResultIds.length);
-            expect(updatedState.products[getId(product)]).toBe(product);
+            expect(updatedState.searchResults!.totalResults).toEqual(searchResultUris.length);
+            expect(updatedState.products[getUri(product)]).toBe(product);
             expect(Object.values(updatedState.products).length).toBe(searchResults.products.length + preloadedProducts.length);
 
             [...preloadedProducts, ...searchResults.products]
                 .forEach(expectedProduct => {
-                    const productId = getId(expectedProduct);
-                    expect(updatedState.products[productId]).toBe(expectedProduct);
+                    const productUri = getUri(expectedProduct);
+                    expect(updatedState.products[productUri]).toBe(expectedProduct);
                 });
         });
     });

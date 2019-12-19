@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { product } from '@ngxp/products-common/test';
-import { getId } from '@ngxp/resource';
+import { getUri } from '@ngxp/resource';
 import { provideStoreServiceMock } from '@ngxp/store-service/testing';
 import { AdditionToShoppingCart } from '../shopping-cart.model';
 import { ShoppingCartCommonStore } from '../state/shopping-cart-common-store.service';
@@ -48,7 +48,7 @@ describe('AddToShoppingCartFormComponent', () => {
         const expectedQuantity = 2;
         fixture.componentInstance.quantity = expectedQuantity;
         const additionToShoppingCart: AdditionToShoppingCart = {
-            product: getId(product),
+            product: getUri(product),
             quantity: expectedQuantity
         };
 

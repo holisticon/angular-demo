@@ -2,13 +2,13 @@
 
 import { Pipe } from '@angular/core';
 import { FunctionPipe } from '@ngxp/common';
-import { getId } from './resource.utils';
+import { getUri } from './resource.utils';
 
 @Pipe({
-    name: 'toResourceId'
+    name: 'toResourceUri'
 })
-export class ToResourceIdPipe extends FunctionPipe {
+export class ToResourceUriPipe extends FunctionPipe {
     constructor() {
-        super(getId);
+        super(getUri);
     }
 }

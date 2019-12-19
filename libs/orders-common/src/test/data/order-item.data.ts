@@ -1,7 +1,7 @@
 import { BlueprintFactory } from '@ngxp/builder';
 import { OrderItem } from '@ngxp/orders-common';
 import { productBuilder } from '@ngxp/products-common/test';
-import { getId, Resource } from '@ngxp/resource';
+import { getUri, Resource } from '@ngxp/resource';
 import { createResourceBlueprintBuilder } from '@ngxp/resource/test';
 import { random } from 'lodash-es';
 
@@ -14,7 +14,7 @@ const orderItemBlueprintFactory: BlueprintFactory<OrderItem> = () => {
         productName: () => product.productName,
         productDescription: () => product.productDescription,
         price: () => product.price,
-        product: () => getId(product),
+        product: () => getUri(product),
         quantity: () => random(minItemQty, maxItemQty)
     };
 };

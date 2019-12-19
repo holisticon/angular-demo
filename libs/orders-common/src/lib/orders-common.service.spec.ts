@@ -1,7 +1,7 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { newOrder, order } from '@ngxp/orders-common/test';
-import { getId } from '@ngxp/resource';
+import { getUri } from '@ngxp/resource';
 import { cold } from 'jest-marbles';
 import { toNewOrderRequest } from './new-order-request.mapper';
 import { OrdersCommonService } from './orders-common.service';
@@ -37,11 +37,11 @@ describe('OrdersCommonService', () => {
                 status: 201,
                 statusText: 'Created',
                 headers: {
-                    Location: `https://example.hypercontract.org/orders/${getId(order)}`
+                    Location: `https://example.hypercontract.org/orders/${getUri(order)}`
                 }
             });
 
-            const getRequest = httpController.expectOne(`https://example.hypercontract.org/orders/${getId(order)}`);
+            const getRequest = httpController.expectOne(`https://example.hypercontract.org/orders/${getUri(order)}`);
 
             expect(getRequest.request.method).toEqual('GET');
 

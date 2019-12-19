@@ -1,6 +1,6 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { getId } from '@ngxp/resource';
+import { getUri } from '@ngxp/resource';
 import { QuantityUpdate } from '@ngxp/shopping-cart-common';
 import { shoppingCart, shoppingCartItem } from '@ngxp/shopping-cart-common/test';
 import { ShoppingCartService } from './shopping-cart.service';
@@ -56,7 +56,7 @@ describe('ShoppingCartService', () => {
                     expect(returnedShoppingCart).toBe(shoppingCart);
                 });
 
-            const patchRequest = httpController.expectOne(getId(shoppingCartItem));
+            const patchRequest = httpController.expectOne(getUri(shoppingCartItem));
 
             expect(patchRequest.request.method).toEqual('PATCH');
             expect(patchRequest.request.body).toEqual(quantityUpdate);
@@ -75,7 +75,7 @@ describe('ShoppingCartService', () => {
                     expect(returnedShoppingCart).toBe(shoppingCart);
                 });
 
-            const deleteRequest = httpController.expectOne(getId(shoppingCartItem));
+            const deleteRequest = httpController.expectOne(getUri(shoppingCartItem));
 
             expect(deleteRequest.request.method).toEqual('DELETE');
 

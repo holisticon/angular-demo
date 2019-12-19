@@ -1,23 +1,23 @@
 import { resource, resources } from '@ngxp/resource/test';
-import { getId, getIds, toMap } from './resource.utils';
+import { getUri, getUris, toMap } from './resource.utils';
 
 describe('resourceUtils', () => {
 
-    describe('getId', () => {
-        it('returns the ID of the given resource', () => {
-            expect(getId(resource)).toBe(resource['_id']);
+    describe('getUri', () => {
+        it('returns the URI of the given resource', () => {
+            expect(getUri(resource)).toBe(resource['_id']);
         });
     });
 
-    describe('getIds', () => {
-        it('returns the IDs of the given resources', () => {
-            const ids = getIds(resources);
+    describe('getUris', () => {
+        it('returns the URIs of the given resources', () => {
+            const uris = getUris(resources);
 
-            expect(ids.length).toEqual(resources.length);
+            expect(uris.length).toEqual(resources.length);
 
             resources.forEach((resource, index) => {
-                const id = getId(resource);
-                expect(ids[index]).toBe(id);
+                const uri = getUri(resource);
+                expect(uris[index]).toBe(uri);
             });
         });
     });
@@ -26,12 +26,12 @@ describe('resourceUtils', () => {
         it('converts the given array of resources to a map with the resource IDs as keys', () => {
             const resourceMap = toMap(resources);
 
-            expect(Object.keys(resourceMap)).toEqual(resources.map(resource => getId(resource)));
+            expect(Object.keys(resourceMap)).toEqual(resources.map(resource => getUri(resource)));
             expect(Object.values(resourceMap)).toEqual(resources);
 
             resources.forEach(resource => {
-                const id = getId(resource);
-                expect(resourceMap[id]).toBe(resource);
+                const uri = getUri(resource);
+                expect(resourceMap[uri]).toBe(resource);
             });
         });
     });

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { EncodeRouteParam } from './encode-route-param.pipe';
-import { ToResourceIdPipe } from './to-resource-id.pipe';
+import { ToResourceUriPipe } from './to-resource-uri.pipe';
 
 @NgModule({
     imports: [
@@ -9,11 +9,11 @@ import { ToResourceIdPipe } from './to-resource-id.pipe';
     ],
     declarations: [
         EncodeRouteParam,
-        ToResourceIdPipe
+        ToResourceUriPipe
     ],
     exports: [
         EncodeRouteParam,
-        ToResourceIdPipe
+        ToResourceUriPipe
     ]
 })
 export class ResourceModule { }

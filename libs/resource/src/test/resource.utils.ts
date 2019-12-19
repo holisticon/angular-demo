@@ -1,8 +1,8 @@
-import { Resource, ResourceId } from '@ngxp/resource';
+import { Resource, ResourceUri } from '@ngxp/resource';
 
-export function addId<T extends object>(obj: T, id: ResourceId): Resource<T> {
+export function addUri<T extends object>(obj: T, uri: ResourceUri): Resource<T> {
     return {
-        _id: id,
+        _id: uri,
         ...(<any> obj)
     };
 }

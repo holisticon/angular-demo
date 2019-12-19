@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { getId, Resource } from '@ngxp/resource';
+import { getUri, Resource } from '@ngxp/resource';
 import { QuantityUpdate, ShoppingCart, ShoppingCartItem } from '@ngxp/shopping-cart-common';
 
 @Injectable({
@@ -22,7 +22,7 @@ export class ShoppingCartService {
     updateShoppingCartItemQuantity(shoppingCartItem: ShoppingCartItem, quantityUpdate: QuantityUpdate) {
         return this.httpClient
             .patch<Resource<ShoppingCart>>(
-                getId(shoppingCartItem),
+                getUri(shoppingCartItem),
                 quantityUpdate
             );
     }
@@ -30,7 +30,7 @@ export class ShoppingCartService {
     deleteShoppingCartItem(shoppingCartItem: ShoppingCartItem) {
         return this.httpClient
             .delete<Resource<ShoppingCart>>(
-                getId(shoppingCartItem)
+                getUri(shoppingCartItem)
             );
     }
 

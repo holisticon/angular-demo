@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from '@ngxp/products-common';
-import { decodeResourceIdFromRouteParam } from '@ngxp/resource';
+import { decodeResourceUriFromRouteParam } from '@ngxp/resource';
 import { Observable } from 'rxjs';
 import { ProductsStore } from '../state/products-store.service';
 
@@ -19,7 +19,7 @@ export class ProductDetailsComponent {
         private activatedRoute: ActivatedRoute
     ) {
         this.product$ = this.productsStore.getProduct({
-            productId: decodeResourceIdFromRouteParam(this.activatedRoute.snapshot.params.productId)
+            productUri: decodeResourceUriFromRouteParam(this.activatedRoute.snapshot.params.product)
         });
     }
 }

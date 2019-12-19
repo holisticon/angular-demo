@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { product } from '@ngxp/products-common/test';
-import { encodeResourceIdAsRouteParam, getId } from '@ngxp/resource';
+import { encodeResourceUriAsRouteParam, getUri } from '@ngxp/resource';
 import { provideStoreServiceMock } from '@ngxp/store-service/testing';
 import { ProductsStore } from '../state/products-store.service';
 import { ProductDetailsComponent } from './product-details.component';
@@ -15,7 +15,7 @@ fdescribe('ProductDetailsComponent', () => {
     const activatedRoute: any = {
         snapshot: {
             params: {
-                productId: encodeResourceIdAsRouteParam(getId(product))
+                product: encodeResourceUriAsRouteParam(getUri(product))
             }
         }
     };

@@ -1,6 +1,6 @@
 import { Resource } from '@ngxp/resource';
 import { SomeType } from '@ngxp/resource/test';
-import { addId } from './resource.utils';
+import { addUri } from './resource.utils';
 
 describe('resourceUtils', () => {
     const object: SomeType = {
@@ -8,13 +8,13 @@ describe('resourceUtils', () => {
     };
 
     const resource: Resource<SomeType> = {
-        _id: 'id',
+        _id: 'uri',
         ...object
     };
 
-    describe('addId', () => {
+    describe('addUri', () => {
         it('returns the given object as resource with the given ID', () => {
-            expect(addId(object, resource._id)).toEqual(resource);
+            expect(addUri(object, resource._id)).toEqual(resource);
         });
     });
 });

@@ -1,29 +1,29 @@
 import { isString, zipObject } from 'lodash-es';
-import { Resource, ResourceId } from './resource.model';
+import { Resource, ResourceUri } from './resource.model';
 
-export function getId(resource: Resource<any>): ResourceId {
+export function getUri(resource: Resource<any>): ResourceUri {
     return resource['_id'];
 }
 
-export function getIds(resources: Resource<any>[]) {
-    return resources.map(resource => getId(resource));
+export function getUris(resources: Resource<any>[]) {
+    return resources.map(resource => getUri(resource));
 }
 
 export function toMap<T>(resources: Resource<T>[]) {
     return zipObject(
-        resources.map(resource => getId(resource)),
+        resources.map(resource => getUri(resource)),
         resources
     );
 }
 
-export function encodeResourceIdAsRouteParam(resourceId: ResourceId): string {
-    if (!isString(resourceId)) {
-        return resourceId;
+export function encodeResourceUriAsRouteParam(resourceUri: ResourceUri): string {
+    if (!isString(resourceUri)) {
+        return resourceUri;
     }
 
-    return btoa(resourceId);
+    return btoa(resourceUri);
 }
 
-export function decodeResourceIdFromRouteParam(encodedResourceId: string): ResourceId {
-    return atob(encodedResourceId);
+export function decodeResourceUriFromRouteParam(encodedResourceUri: string): ResourceUri {
+    return atob(encodedResourceUri);
 }

@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { product } from '@ngxp/products-common/test';
-import { encodeResourceIdAsRouteParam, getId, ResourceModule } from '@ngxp/resource';
+import { encodeResourceUriAsRouteParam, getUri, ResourceModule } from '@ngxp/resource';
 import { ProductListEntryComponent } from './product-list-entry.component';
 
 describe('ProductListEntryComponent', () => {
@@ -36,7 +36,7 @@ describe('ProductListEntryComponent', () => {
     it('links to the product detail page', () => {
         const link = fixture.debugElement.query(By.css('a'));
 
-        expect(link.nativeElement.getAttribute('href')).toBe(`/${encodeURIComponent(encodeResourceIdAsRouteParam(getId(product)))}`);
+        expect(link.nativeElement.getAttribute('href')).toBe(`/${encodeURIComponent(encodeResourceUriAsRouteParam(getUri(product)))}`);
     });
 
     it('renders the Add to Shopping Cart form', () => {

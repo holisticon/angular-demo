@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Product } from '@ngxp/products-common';
-import { getId } from '@ngxp/resource';
+import { getUri } from '@ngxp/resource';
 import { toNumber } from 'lodash-es';
 import { AdditionToShoppingCart } from '../shopping-cart.model';
 import { ShoppingCartCommonStore } from '../state/shopping-cart-common-store.service';
@@ -25,7 +25,7 @@ export class AddToShoppingCartFormComponent {
         event.preventDefault();
 
         const additionToShoppingCart: AdditionToShoppingCart = {
-            product: getId(this.product),
+            product: getUri(this.product),
             quantity: toNumber(this.quantity)
         };
 

@@ -1,5 +1,5 @@
 import { products, searchResults } from '@ngxp/products-common/test';
-import { getId, getIds, toMap } from '@ngxp/resource';
+import { getUri, getUris, toMap } from '@ngxp/resource';
 import { ProductsAppState } from './products.reducer';
 import { selectProduct, selectSearchResults } from './products.selectors';
 
@@ -9,7 +9,7 @@ describe('productsSelectors', () => {
         products: {
             query: 'query',
             searchResults: {
-                products: getIds(searchResults.products),
+                products: getUris(searchResults.products),
                 totalResults: searchResults.products.length
             },
             products: toMap(products)
@@ -27,10 +27,10 @@ describe('productsSelectors', () => {
     describe('selectProduct', () => {
         it('returns the product with the given ID', () => {
             const product = products[0];
-            const productId = getId(product);
+            const productUri = getUri(product);
             const expectedValue = product;
 
-            expect(selectProduct(state, { productId })).toEqual(expectedValue);
+            expect(selectProduct(state, { productUri: productUri })).toEqual(expectedValue);
         });
     });
 
