@@ -490,7 +490,8 @@
     "warnings": {
       "typescriptMismatch": false
     },
-    "defaultCollection": "@nrwl/angular"
+    "defaultCollection": "@nrwl/angular",
+    "analytics": "96ba4abd-5552-470f-b0c7-08308c7cad4a"
   },
   "schematics": {
     "@nrwl/angular:application": {
