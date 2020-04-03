@@ -1,6 +1,6 @@
-import { RouterNavigationAction } from '@ngrx/router-store';
+import { RouterNavigatedAction } from '@ngrx/router-store';
 import { RouterStateSnapshot } from '@ngxp/routing';
-import { activatedRouteSnapshotBuilder, routerNavigationActionBuilder, routerStateSnapshotBuilder } from '@ngxp/routing/test';
+import { activatedRouteSnapshotBuilder, routerNavigatedActionBuilder, routerStateSnapshotBuilder } from '@ngxp/routing/test';
 import { ProductsViews } from '../../lib/products.views';
 
 export const searchResultsQueryParams = { query: 'cheese' };
@@ -25,8 +25,8 @@ function createSearchResultsRouteSnapshot(queryParams = {}) {
     }).build();
 }
 
-export function buildSearchResultsNavigationAction(queryParams = {}): RouterNavigationAction<RouterStateSnapshot> {
-    return routerNavigationActionBuilder(
+export function buildSearchResultsNavigationAction(queryParams = {}): RouterNavigatedAction<RouterStateSnapshot> {
+    return routerNavigatedActionBuilder(
         routerStateSnapshotBuilder(
             createSearchResultsRouteSnapshot(queryParams)
         ).freeze().build()

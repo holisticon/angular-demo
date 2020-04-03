@@ -3,16 +3,16 @@
   "compilerOptions": {
     "outDir": "../../dist/out-tsc"
   },
-  "angularCompilerOptions": {
-    "enableIvy": true
-  },
+  "files": [
+    "src/main.ts",
+    "src/polyfills.ts"
+  ],
   "include": [
-    "**/*.ts",
+    "**/*.d.ts",
     "../../libs/homepage/src/index.ts",
     "../../libs/products/src/index.ts",
     "../../libs/shopping-cart/src/index.ts",
     "../../libs/user-profile/src/index.ts",
     "../../libs/orders/src/index.ts"
-  ],
-  "exclude": ["src/test-setup.ts", "**/*.spec.ts"]
+  ]
 }

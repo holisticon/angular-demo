@@ -5,7 +5,10 @@
       "tags": []
     },
     "demo-e2e": {
-      "tags": []
+      "tags": [],
+      "implicitDependencies": [
+        "demo"
+      ]
     },
     "common": {
       "tags": []
@@ -42,6 +45,19 @@
     },
     "routing": {
       "tags": []
+    }
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e"
+        ]
+      }
     }
   }
 }
