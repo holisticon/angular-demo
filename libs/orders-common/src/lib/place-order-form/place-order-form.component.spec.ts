@@ -92,7 +92,7 @@ describe('PlaceOrderFormComponent', () => {
             billingAddress: userProfile.addresses[0],
             shippingAddress: userProfile.addresses[0],
             payment: userProfile.paymentOptions[0],
-            shoppingCart
+            shoppingCartItems: shoppingCart.items
         };
         const form = fixture.debugElement.query(By.css('form'));
 
