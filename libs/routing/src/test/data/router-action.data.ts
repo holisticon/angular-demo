@@ -1,4 +1,4 @@
-import { RouterNavigationAction, RouterNavigationPayload, ROUTER_NAVIGATION } from '@ngrx/router-store';
+import { RouterNavigatedAction, RouterNavigationPayload, ROUTER_NAVIGATED } from '@ngrx/router-store';
 import { Blueprint, BlueprintBuilder, createBlueprintBuilder } from '@ngxp/builder';
 import { RouterStateSnapshot } from '@ngxp/routing';
 import * as faker from 'faker';
@@ -6,7 +6,7 @@ import { isUndefined } from 'lodash-es';
 import { getUrl } from './activated-route-snapshot-data-utils';
 import { routerStateSnapshot } from './router-state-snapshot.data';
 
-type NavigationAction = RouterNavigationAction<RouterStateSnapshot>;
+type NavigatedAction = RouterNavigatedAction<RouterStateSnapshot>;
 
 function toNavigationPayload(routerState: RouterStateSnapshot): RouterNavigationPayload<RouterStateSnapshot> {
     return {
@@ -18,11 +18,11 @@ function toNavigationPayload(routerState: RouterStateSnapshot): RouterNavigation
     };
 }
 
-const routerNavigationActionBlueprint: Blueprint<NavigationAction> = {
-    type: () => ROUTER_NAVIGATION,
+const routerNavigationActionBlueprint: Blueprint<NavigatedAction> = {
+    type: () => ROUTER_NAVIGATED,
     payload: () => toNavigationPayload(routerStateSnapshot)
 };
-export function routerNavigationActionBuilder(routerState?: RouterStateSnapshot): BlueprintBuilder<NavigationAction> {
+export function routerNavigationActionBuilder(routerState?: RouterStateSnapshot): BlueprintBuilder<NavigatedAction> {
     return createBlueprintBuilder(routerNavigationActionBlueprint)(
         isUndefined(routerState) ? {} : { payload: toNavigationPayload(routerState) }
     );
