@@ -1,5 +1,5 @@
 import { ofType } from '@ngrx/effects';
-import { RouterNavigationAction, ROUTER_NAVIGATION } from '@ngrx/router-store';
+import { RouterNavigationAction, ROUTER_NAVIGATED } from '@ngrx/router-store';
 import { Action } from '@ngrx/store';
 import { defaultTo } from 'lodash-es';
 import { OperatorFunction } from 'rxjs';
@@ -11,7 +11,7 @@ type NavigationAction = RouterNavigationAction<RouterStateSnapshot>;
 
 export function filterNavigationTo(view: string): OperatorFunction<Action, NavigationAction> {
     return input$ => input$.pipe(
-        ofType(ROUTER_NAVIGATION),
+        ofType(ROUTER_NAVIGATED),
         filter((action: NavigationAction) => {
             const activatedViews = getViews(getRouterState(action));
             return activatedViews.includes(view);
