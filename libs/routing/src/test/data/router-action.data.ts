@@ -18,14 +18,14 @@ function toNavigationPayload(routerState: RouterStateSnapshot): RouterNavigation
     };
 }
 
-const routerNavigationActionBlueprint: Blueprint<NavigatedAction> = {
+const routerNavigatedActionBlueprint: Blueprint<NavigatedAction> = {
     type: () => ROUTER_NAVIGATED,
     payload: () => toNavigationPayload(routerStateSnapshot)
 };
-export function routerNavigationActionBuilder(routerState?: RouterStateSnapshot): BlueprintBuilder<NavigatedAction> {
-    return createBlueprintBuilder(routerNavigationActionBlueprint)(
+export function routerNavigatedActionBuilder(routerState?: RouterStateSnapshot): BlueprintBuilder<NavigatedAction> {
+    return createBlueprintBuilder(routerNavigatedActionBlueprint)(
         isUndefined(routerState) ? {} : { payload: toNavigationPayload(routerState) }
     );
 }
 
-export const routerNavigationAction = routerNavigationActionBuilder().build();
+export const routerNavigationAction = routerNavigatedActionBuilder().build();

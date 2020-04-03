@@ -1,11 +1,11 @@
-import { activatedRouteSnapshot, libraryRootRouteSnapshot, libraryRouteSnapshot, pageRouteSnapshot, queryParamName, queryParams, routerNavigationActionBuilder, routerStateSnapshotBuilder, Views } from '@ngxp/routing/test';
+import { activatedRouteSnapshot, libraryRootRouteSnapshot, libraryRouteSnapshot, pageRouteSnapshot, queryParamName, queryParams, routerNavigatedActionBuilder, routerStateSnapshotBuilder, Views } from '@ngxp/routing/test';
 import { hot } from 'jest-marbles';
 import { extractQueryParam, filterNavigationTo } from './routing-operators';
 
-const pageNavigationAction = routerNavigationActionBuilder(routerStateSnapshotBuilder(pageRouteSnapshot).build()).build();
-const libraryRootNavigationAction = routerNavigationActionBuilder(routerStateSnapshotBuilder(libraryRootRouteSnapshot).build()).build();
-const libraryNavigationAction = routerNavigationActionBuilder(routerStateSnapshotBuilder(libraryRouteSnapshot).build()).build();
-const activatedNavigationAction = routerNavigationActionBuilder(routerStateSnapshotBuilder(activatedRouteSnapshot).build()).build();
+const pageNavigationAction = routerNavigatedActionBuilder(routerStateSnapshotBuilder(pageRouteSnapshot).build()).build();
+const libraryRootNavigationAction = routerNavigatedActionBuilder(routerStateSnapshotBuilder(libraryRootRouteSnapshot).build()).build();
+const libraryNavigationAction = routerNavigatedActionBuilder(routerStateSnapshotBuilder(libraryRouteSnapshot).build()).build();
+const activatedNavigationAction = routerNavigatedActionBuilder(routerStateSnapshotBuilder(activatedRouteSnapshot).build()).build();
 
 describe('routingOperators', () => {
     describe('filterNavigationTo', () => {

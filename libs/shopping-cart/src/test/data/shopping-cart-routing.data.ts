@@ -1,6 +1,6 @@
-import { RouterNavigationAction } from '@ngrx/router-store';
+import { RouterNavigatedAction } from '@ngrx/router-store';
 import { RouterStateSnapshot } from '@ngxp/routing';
-import { activatedRouteSnapshotBuilder, routerNavigationActionBuilder, routerStateSnapshotBuilder } from '@ngxp/routing/test';
+import { activatedRouteSnapshotBuilder, routerNavigatedActionBuilder, routerStateSnapshotBuilder } from '@ngxp/routing/test';
 import { ShoppingCartViews } from '../../lib/shopping-cart.views';
 
 function createShoppingCartRouteSnapshot() {
@@ -13,8 +13,8 @@ function createShoppingCartRouteSnapshot() {
     }).build();
 }
 
-export function buildShoppingCartNavigationAction(): RouterNavigationAction<RouterStateSnapshot> {
-    return routerNavigationActionBuilder(
+export function buildShoppingCartNavigationAction(): RouterNavigatedAction<RouterStateSnapshot> {
+    return routerNavigatedActionBuilder(
         routerStateSnapshotBuilder(
             createShoppingCartRouteSnapshot()
         ).freeze().build()
