@@ -1,16 +1,28 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { OrdersCommonStore } from '@ngxp/orders-common';
-import { ShoppingCartCommonStore } from '@ngxp/shopping-cart-common';
+import { OrdersStore } from '@ngxp/orders';
 import { map, switchMap } from 'rxjs/operators';
 import { ShoppingCartService } from '../shopping-cart.service';
-import { deleteShoppingCartItemAction, loadShoppingCartAction, shoppingCartUpdatedAction, updateShoppingCartItemQuantityAction } from './shopping-cart.actions';
+import { ShoppingCartStore } from './shopping-cart-store.service';
+import { addToShoppingCartAction, deleteShoppingCartItemAction, itemAddedToShoppingCartAction, loadShoppingCartAction, shoppingCartUpdatedAction, updateShoppingCartItemQuantityAction } from './shopping-cart.actions';
 
 @Injectable()
 export class ShoppingCartEffects {
 
+    addToShoppingCart$ = createEffect(
+        () => this.actions$.pipe(
+            ofType(addToShoppingCartAction),
+            switchMap(({ additionToShoppingCart }) => this.shoppingCartService
+                .addToShoppingCart(additionToShoppingCart)
+                .pipe(
+                    map(shoppingCart => itemAddedToShoppingCartAction({ shoppingCart }))
+                )
+            )
+        )
+    );
+
     itemAddedToShoppingCart$ = createEffect(
-        () => this.shoppingCartCommonStore.itemAddedToShoppingCart$.pipe(
+        () => this.shoppingCartStore.itemAddedToShoppingCart$.pipe(
             map(shoppingCart => shoppingCartUpdatedAction({ shoppingCart }))
         )
     );
@@ -28,11 +40,11 @@ export class ShoppingCartEffects {
         () => this.actions$.pipe(
             ofType(updateShoppingCartItemQuantityAction),
             switchMap(({ quantityUpdate }) => this.shoppingCartService
-            .updateShoppingCartItemQuantity(
-                quantityUpdate.resource,
-                quantityUpdate.with
-            )
-            .pipe(map(shoppingCart => shoppingCartUpdatedAction({ shoppingCart}))))
+                .updateShoppingCartItemQuantity(
+                    quantityUpdate.resource,
+                    quantityUpdate.with
+                )
+                .pipe(map(shoppingCart => shoppingCartUpdatedAction({ shoppingCart }))))
         )
     );
 
@@ -46,7 +58,7 @@ export class ShoppingCartEffects {
     );
 
     reloadShoppingCart$ = createEffect(
-        () => this.ordersCommonStore.orderPlaced$.pipe(
+        () => this.ordersStore.orderPlaced$.pipe(
             map(() => loadShoppingCartAction())
         )
     );
@@ -54,7 +66,7 @@ export class ShoppingCartEffects {
     constructor(
         private actions$: Actions,
         private shoppingCartService: ShoppingCartService,
-        private shoppingCartCommonStore: ShoppingCartCommonStore,
-        private ordersCommonStore: OrdersCommonStore
+        private shoppingCartStore: ShoppingCartStore,
+        private ordersStore: OrdersStore
     ) { }
 }

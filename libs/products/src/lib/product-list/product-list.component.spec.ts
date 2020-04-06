@@ -2,7 +2,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { products } from '@ngxp/products-common/test';
+import { products } from '@ngxp/products/test';
 import { ResourceModule } from '@ngxp/resource';
 import { ProductListComponent } from './product-list.component';
 

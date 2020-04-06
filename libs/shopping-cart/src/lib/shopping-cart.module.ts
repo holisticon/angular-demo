@@ -5,9 +5,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { OrdersCommonModule } from '@ngxp/orders-common';
-import { ShoppingCartCommonModule } from '@ngxp/shopping-cart-common';
-import { UserProfileCommonModule } from '@ngxp/user-profile-common';
+import { OrdersModule } from '@ngxp/orders';
+import { UserProfileModule } from '@ngxp/user-profile';
+import { AddToShoppingCartFormComponent } from './add-to-shopping-cart-form/add-to-shopping-cart-form.component';
 import { ShoppingCartItemListComponent } from './shopping-cart-item-list/shopping-cart-item-list.component';
 import { ShoppingCartItemComponent } from './shopping-cart-item-list/shopping-cart-item/shopping-cart-item.component';
 import { UpdateQuantityFormComponent } from './shopping-cart-item-list/shopping-cart-item/update-quantity-form/update-quantity-form.component';
@@ -32,16 +32,19 @@ import { initialState as shoppingCartInitialState, shoppingCartReducer, SHOPPING
             ShoppingCartEffects,
             ShoppingCartNavigationEffects
         ]),
-        ShoppingCartCommonModule,
-        OrdersCommonModule,
-        UserProfileCommonModule
+        OrdersModule,
+        UserProfileModule
     ],
     declarations: [
+        AddToShoppingCartFormComponent,
         ShoppingCartComponent,
         ShoppingCartItemListComponent,
         UpdateQuantityFormComponent,
         ShoppingCartItemComponent,
         ShoppingCartIsEmptyPipe
+    ],
+    exports: [
+        AddToShoppingCartFormComponent
     ]
 })
 export class ShoppingCartModule { }

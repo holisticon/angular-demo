@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { product, products, searchResults } from '@ngxp/products-common/test';
+import { product, products, searchResults } from '@ngxp/products/test';
 import { getUri, getUris, toMap } from '@ngxp/resource';
 import { loadSearchResultsAction, searchResultsLoadedAction } from './products.actions';
 import { initialState, productsReducer, ProductsState } from './products.reducer';
@@ -10,7 +10,7 @@ describe('productsReducer', () => {
 
     it('returns the same state if the action is not applicable', () => {
         const action: Action = { type: 'some-action' };
-        const state = productsReducer(initialState, <any> action);
+        const state = productsReducer(initialState, <any>action);
         expect(state).toBe(initialState);
     });
 

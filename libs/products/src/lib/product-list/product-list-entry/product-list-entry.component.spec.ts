@@ -2,7 +2,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
-import { product } from '@ngxp/products-common/test';
+import { product } from '@ngxp/products/test';
 import { encodeResourceUriAsRouteParam, getUri, ResourceModule } from '@ngxp/resource';
 import { ProductListEntryComponent } from './product-list-entry.component';
 

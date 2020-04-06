@@ -2,7 +2,7 @@
 
 import { Pipe } from '@angular/core';
 import { FunctionPipe } from '@ngxp/common';
-import { shoppingCartIsEmpty } from '@ngxp/shopping-cart-common';
+import { shoppingCartIsEmpty } from '../shopping-cart.util';
 
 @Pipe({
     name: 'shoppingCartIsEmpty'

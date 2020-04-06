@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ProductsCommonModule } from '@ngxp/products-common';
 import { StoreModule } from '@ngrx/store';
+import { ProductsModule } from '@ngxp/products';
 import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
@@ -12,7 +12,7 @@ import { HomepageComponent } from './homepage/homepage.component';
             { path: '', pathMatch: 'full', component: HomepageComponent }
         ]),
         StoreModule.forFeature('homepage', {}),
-        ProductsCommonModule
+        ProductsModule
     ],
     declarations: [
         HomepageComponent

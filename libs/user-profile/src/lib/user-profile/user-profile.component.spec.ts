@@ -2,8 +2,8 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { provideStoreServiceMock } from '@ngxp/store-service/testing';
-import { UserProfileCommonStore } from '@ngxp/user-profile-common';
-import { userProfile } from '@ngxp/user-profile-common/test';
+import { userProfile } from '@ngxp/user-profile/test';
+import { UserProfileStore } from '../state/user-profile-store.service';
 import { UserProfileComponent } from './user-profile.component';
 
 describe('UserProfileComponent', () => {
@@ -16,7 +16,7 @@ describe('UserProfileComponent', () => {
                 UserProfileComponent
             ],
             providers: [
-                provideStoreServiceMock(UserProfileCommonStore, {
+                provideStoreServiceMock(UserProfileStore, {
                     getAddresses: userProfile.addresses,
                     getPaymentOptions: userProfile.paymentOptions
                 })

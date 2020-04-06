@@ -22,7 +22,7 @@ import { AppEffects } from './state/app.effects';
             { path: 'shopping-cart', loadChildren: () => import('@ngxp/shopping-cart').then(m => m.ShoppingCartModule) },
             { path: 'user-profile', loadChildren: () => import('@ngxp/user-profile').then(m => m.UserProfileModule) },
             { path: 'orders', loadChildren: () => import('@ngxp/orders').then(m => m.OrdersModule) }
-        ]),
+        ], { enableTracing: true }),
         StoreModule.forRoot(
             { router: routerReducer },
             {

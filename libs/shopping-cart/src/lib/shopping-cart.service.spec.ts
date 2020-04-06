@@ -1,8 +1,9 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { getUri } from '@ngxp/resource';
-import { QuantityUpdate } from '@ngxp/shopping-cart-common';
-import { shoppingCart, shoppingCartItem } from '@ngxp/shopping-cart-common/test';
+import { additionToShoppingCart, shoppingCart, shoppingCartItem } from '@ngxp/shopping-cart/test';
+import { cold } from 'jest-marbles';
+import { QuantityUpdate } from './shopping-cart.model';
 import { ShoppingCartService } from './shopping-cart.service';
 
 describe('ShoppingCartService', () => {
@@ -80,6 +81,53 @@ describe('ShoppingCartService', () => {
             expect(deleteRequest.request.method).toEqual('DELETE');
 
             deleteRequest.flush(shoppingCart);
+
+            httpController.verify();
+        });
+    });
+
+    describe('addToShoppingCart', () => {
+        it('submits the given addition to the shopping cart to the backend', () => {
+            shoppingCartService
+                .addToShoppingCart(additionToShoppingCart)
+                .subscribe(returnedShoppingCart => {
+                    expect(returnedShoppingCart).toBe(shoppingCart);
+                });
+
+            const postRequest = httpController.expectOne('https://example.hypercontract.org/shoppingCart/items');
+
+            expect(postRequest.request.method).toEqual('POST');
+            expect(postRequest.request.body).toEqual(additionToShoppingCart);
+
+            postRequest.flush(null, {
+                status: 201,
+                statusText: 'Created',
+                headers: {
+                    Location: 'https://example.hypercontract.org/shoppingCart'
+                }
+            });
+
+            const getRequest = httpController.expectOne('https://example.hypercontract.org/shoppingCart');
+
+            expect(getRequest.request.method).toEqual('GET');
+
+            getRequest.flush(shoppingCart);
+
+            httpController.verify();
+        });
+
+        it('returns an empty observable if the server response contains no location header', () => {
+            const returnedObservable = shoppingCartService.addToShoppingCart(additionToShoppingCart);
+
+            returnedObservable.subscribe();
+            expect(returnedObservable).toBeObservable(cold(''));
+
+            const postRequest = httpController.expectOne('https://example.hypercontract.org/shoppingCart/items');
+
+            postRequest.flush(null, {
+                status: 201,
+                statusText: 'Created'
+            });
 
             httpController.verify();
         });

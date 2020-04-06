@@ -2,15 +2,15 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { OrdersCommonStore } from '@ngxp/orders-common';
-import { newOrder } from '@ngxp/orders-common/test';
+import { OrdersStore } from '@ngxp/orders';
+import { newOrder } from '@ngxp/orders/test';
 import { ResourceWith } from '@ngxp/resource';
-import { QuantityUpdate, ShoppingCartItem } from '@ngxp/shopping-cart-common';
-import { emptyShoppingCart, shoppingCart, shoppingCartItem } from '@ngxp/shopping-cart-common/test';
+import { emptyShoppingCart, shoppingCart, shoppingCartItem } from '@ngxp/shopping-cart/test';
 import { provideStoreServiceMock, StoreServiceMock } from '@ngxp/store-service/testing';
-import { UserProfileCommonStore } from '@ngxp/user-profile-common';
-import { userProfile } from '@ngxp/user-profile-common/test';
+import { UserProfileStore } from '@ngxp/user-profile';
+import { userProfile } from '@ngxp/user-profile/test';
 import { ShoppingCartItemListComponent } from '../shopping-cart-item-list/shopping-cart-item-list.component';
+import { QuantityUpdate, ShoppingCartItem } from '../shopping-cart.model';
 import { ShoppingCartStore } from '../state/shopping-cart-store.service';
 import { ShoppingCartIsEmptyPipe } from './shopping-cart-is-empty.pipe';
 import { ShoppingCartComponent } from './shopping-cart.component';
@@ -19,7 +19,7 @@ describe('ShoppingCartComponent', () => {
     let component: ShoppingCartComponent;
     let fixture: ComponentFixture<ShoppingCartComponent>;
 
-    let ordersCommonStore: StoreServiceMock<OrdersCommonStore>;
+    let ordersStore: StoreServiceMock<OrdersStore>;
     let shoppingCartStore: StoreServiceMock<ShoppingCartStore>;
 
     beforeEach(async(() => {
@@ -33,11 +33,11 @@ describe('ShoppingCartComponent', () => {
                 ShoppingCartIsEmptyPipe
             ],
             providers: [
-                provideStoreServiceMock(OrdersCommonStore),
+                provideStoreServiceMock(OrdersStore),
                 provideStoreServiceMock(ShoppingCartStore, {
                     getShoppingCart: shoppingCart
                 }),
-                provideStoreServiceMock(UserProfileCommonStore, {
+                provideStoreServiceMock(UserProfileStore, {
                     getUserProfile: userProfile
                 })
             ],
@@ -47,7 +47,7 @@ describe('ShoppingCartComponent', () => {
         })
             .compileComponents();
 
-        ordersCommonStore = TestBed.get(OrdersCommonStore);
+        ordersStore = TestBed.get(OrdersStore);
         shoppingCartStore = TestBed.get(ShoppingCartStore);
     }));
 
@@ -105,7 +105,7 @@ describe('ShoppingCartComponent', () => {
     }));
 
     it('dispatches a PlaceOrderAction when the place order form emits a placeOrder event', async(() => {
-        const placeOrderSpy = spyOn(ordersCommonStore, 'placeOrder');
+        const placeOrderSpy = spyOn(ordersStore, 'placeOrder');
         const placeOrderForm = fixture.debugElement.query(By.css('ngxp-place-order-form'));
 
         placeOrderForm.triggerEventHandler('placeOrder', newOrder);

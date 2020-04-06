@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { ReducerArgs } from '@ngxp/common';
-import { ShoppingCart } from '@ngxp/shopping-cart-common';
+import { ShoppingCart } from '../shopping-cart.model';
 import { shoppingCartUpdatedAction } from './shopping-cart.actions';
 
 export const SHOPPING_CART_FEATURE_KEY = 'shoppingCart';

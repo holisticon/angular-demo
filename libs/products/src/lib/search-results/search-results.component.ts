@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { SearchResults } from '@ngxp/products-common';
 import { Observable } from 'rxjs';
+import { SearchResults } from '../product.model';
 import { ProductsStore } from '../state/products-store.service';
 
 @Component({
-  selector: 'ngxp-search-results',
-  templateUrl: './search-results.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'ngxp-search-results',
+    templateUrl: './search-results.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SearchResultsComponent {
 

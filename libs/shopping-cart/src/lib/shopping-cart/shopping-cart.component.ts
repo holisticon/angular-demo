@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { NewOrder, OrdersCommonStore } from '@ngxp/orders-common';
+import { NewOrder, OrdersStore } from '@ngxp/orders';
 import { ResourceWith } from '@ngxp/resource';
-import { QuantityUpdate, ShoppingCart, ShoppingCartItem } from '@ngxp/shopping-cart-common';
-import { UserProfile, UserProfileCommonStore } from '@ngxp/user-profile-common';
+import { UserProfile, UserProfileStore } from '@ngxp/user-profile';
 import { Observable } from 'rxjs';
+import { QuantityUpdate, ShoppingCart, ShoppingCartItem } from '../shopping-cart.model';
 import { ShoppingCartStore } from '../state/shopping-cart-store.service';
 
 @Component({
@@ -17,9 +17,9 @@ export class ShoppingCartComponent {
     userProfile$: Observable<UserProfile | null>;
 
     constructor(
-        private ordersCommonStore: OrdersCommonStore,
+        private ordersStore: OrdersStore,
         private shoppingCartStore: ShoppingCartStore,
-        private userProfileStore: UserProfileCommonStore
+        private userProfileStore: UserProfileStore
     ) {
         this.shoppingCart$ = this.shoppingCartStore.getShoppingCart();
         this.userProfile$ = this.userProfileStore.getUserProfile();
@@ -34,7 +34,7 @@ export class ShoppingCartComponent {
     }
 
     onPlaceOrder(newOrder: NewOrder) {
-        this.ordersCommonStore.placeOrder({ newOrder });
+        this.ordersStore.placeOrder({ newOrder });
     }
 
 }

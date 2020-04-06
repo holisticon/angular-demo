@@ -1,7 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { orderHistory } from '@ngxp/orders-common/test';
+import { orderHistory } from '@ngxp/orders/test';
 import { provideStoreServiceMock } from '@ngxp/store-service/testing';
 import { OrderComponent } from '../order/order.component';
 import { OrdersStore } from '../state/orders-store.service';

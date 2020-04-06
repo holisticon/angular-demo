@@ -3,9 +3,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { ResourceWith } from '@ngxp/resource';
-import { QuantityUpdate, ShoppingCartItem } from '@ngxp/shopping-cart-common';
-import { shoppingCart } from '@ngxp/shopping-cart-common/test';
+import { shoppingCart } from '@ngxp/shopping-cart/test';
 import { take } from 'rxjs/operators';
+import { QuantityUpdate, ShoppingCartItem } from '../shopping-cart.model';
 import { ShoppingCartItemListComponent } from './shopping-cart-item-list.component';
 import { ShoppingCartItemComponent } from './shopping-cart-item/shopping-cart-item.component';
 

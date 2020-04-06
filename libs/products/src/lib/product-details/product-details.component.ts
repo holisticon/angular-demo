@@ -1,14 +1,14 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Product } from '@ngxp/products-common';
 import { decodeResourceUriFromRouteParam } from '@ngxp/resource';
 import { Observable } from 'rxjs';
+import { Product } from '../product.model';
 import { ProductsStore } from '../state/products-store.service';
 
 @Component({
-  selector: 'ngxp-product-details',
-  templateUrl: './product-details.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'ngxp-product-details',
+    templateUrl: './product-details.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductDetailsComponent {
 

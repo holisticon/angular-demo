@@ -1,7 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { product } from '@ngxp/products-common/test';
+import { product } from '@ngxp/products/test';
 import { ProductComponent } from './product.component';
 
 describe('ProductComponent', () => {

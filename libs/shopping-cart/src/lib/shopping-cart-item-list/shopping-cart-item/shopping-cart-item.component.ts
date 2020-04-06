@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { ResourceWith } from '@ngxp/resource';
-import { QuantityUpdate, ShoppingCartItem } from '@ngxp/shopping-cart-common';
+import { QuantityUpdate, ShoppingCartItem } from '../../shopping-cart.model';
 
 @Component({
-  // tslint:disable-next-line:component-selector
-  selector: '[ngxp-shopping-cart-item-row]',
-  templateUrl: './shopping-cart-item.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    // tslint:disable-next-line:component-selector
+    selector: '[ngxp-shopping-cart-item-row]',
+    templateUrl: './shopping-cart-item.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ShoppingCartItemComponent {
 

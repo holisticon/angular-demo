@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { product } from '@ngxp/products-common/test';
+import { product } from '@ngxp/products/test';
 import { ProductPriceComponent } from './product-price.component';
 
 

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { OrderHistory } from '@ngxp/orders-common';
 import { Observable } from 'rxjs';
+import { OrderHistory } from '../order.model';
 import { OrdersStore } from '../state/orders-store.service';
 
 @Component({

@@ -2,7 +2,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { expectElementFromFixture } from '@ngxp/common/test';
-import { searchResults } from '@ngxp/products-common/test';
+import { searchResults } from '@ngxp/products/test';
 import { provideStoreServiceMock } from '@ngxp/store-service/testing';
 import { ProductListComponent } from '../product-list/product-list.component';
 import { ProductsStore } from '../state/products-store.service';

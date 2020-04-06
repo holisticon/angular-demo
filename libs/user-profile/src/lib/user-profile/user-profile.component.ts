@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Address, PaymentOption, UserProfileCommonStore } from '@ngxp/user-profile-common';
 import { Observable } from 'rxjs';
+import { UserProfileStore } from '../state/user-profile-store.service';
+import { Address, PaymentOption } from '../user-profile.model';
 
 @Component({
     selector: 'ngxp-user-profile',
@@ -13,7 +14,7 @@ export class UserProfileComponent {
     paymentOptions$: Observable<PaymentOption[]>;
 
     constructor(
-        private userProfileStore: UserProfileCommonStore
+        private userProfileStore: UserProfileStore
     ) {
         this.addresses$ = userProfileStore.getAddresses();
         this.paymentOptions$ = userProfileStore.getPaymentOptions();

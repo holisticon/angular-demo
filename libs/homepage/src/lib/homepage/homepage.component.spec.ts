@@ -3,14 +3,14 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { expectElementFromFixture } from '@ngxp/common/test';
-import { ProductsCommonStore } from '@ngxp/products-common';
+import { ProductsStore } from '@ngxp/products';
 import { provideStoreServiceMock } from '@ngxp/store-service/testing';
 import { HomepageComponent } from './homepage.component';
 
 describe('HomepageComponent', () => {
     let component: HomepageComponent;
     let fixture: ComponentFixture<HomepageComponent>;
-    let productsCommonStore: ProductsCommonStore;
+    let productsStore: ProductsStore;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -21,7 +21,7 @@ describe('HomepageComponent', () => {
                 HomepageComponent
             ],
             providers: [
-                provideStoreServiceMock(ProductsCommonStore),
+                provideStoreServiceMock(ProductsStore),
             ],
             schemas: [
                 CUSTOM_ELEMENTS_SCHEMA
@@ -29,7 +29,7 @@ describe('HomepageComponent', () => {
         })
             .compileComponents();
 
-        productsCommonStore = TestBed.get(ProductsCommonStore);
+        productsStore = TestBed.get(ProductsStore);
     }));
 
     beforeEach(() => {
@@ -44,7 +44,7 @@ describe('HomepageComponent', () => {
 
     it('triggers a search for products with the provided query string when the product search form emits a search event', () => {
         const expectedQueryString = 'query';
-        const searchProductsSpy = spyOn(productsCommonStore, 'searchProducts');
+        const searchProductsSpy = spyOn(productsStore, 'searchProducts');
         const productSearchForm = fixture.debugElement.query(By.css('ngxp-product-search-form'));
 
         productSearchForm.triggerEventHandler('search', expectedQueryString);

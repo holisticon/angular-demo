@@ -2,7 +2,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { order } from '@ngxp/orders-common/test';
+import { order } from '@ngxp/orders/test';
 import { OrderComponent } from './order.component';
 
 describe('OrderComponent', () => {

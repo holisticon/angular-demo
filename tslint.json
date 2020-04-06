@@ -100,11 +100,11 @@
       {
         "allow": [
           "@ngxp/common/test",
-          "@ngxp/orders-common/test",
-          "@ngxp/products-common/test",
+          "@ngxp/orders/test",
+          "@ngxp/products/test",
           "@ngxp/resource/test",
-          "@ngxp/shopping-cart-common/test",
-          "@ngxp/user-profile-common/test"
+          "@ngxp/shopping-cart/test",
+          "@ngxp/user-profile/test"
         ],
         "depConstraints": [
           {

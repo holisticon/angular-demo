@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { shoppingCart } from '@ngxp/shopping-cart-common/test';
+import { shoppingCart } from '@ngxp/shopping-cart/test';
 import { shoppingCartUpdatedAction } from './shopping-cart.actions';
 import { initialState, shoppingCartReducer } from './shopping-cart.reducer';
 

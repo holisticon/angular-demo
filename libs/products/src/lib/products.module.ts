@@ -1,16 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { ResourceModule } from '@ngxp/resource';
-import { ShoppingCartCommonModule } from '@ngxp/shopping-cart-common';
+import { ShoppingCartModule } from '@ngxp/shopping-cart';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductImageComponent } from './product-image/product-image.component';
 import { ProductListEntryComponent } from './product-list/product-list-entry/product-list-entry.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductPriceComponent } from './product-price/product-price.component';
+import { ProductSearchFormComponent } from './product-search-form/product-search-form.component';
 import { ProductComponent } from './product/product.component';
 import { ProductsNavigationEffects } from './products-navigation.effects';
 import { ProductsComponent } from './products.component';
@@ -23,6 +25,8 @@ import { initialState as productsInitialState, productsReducer, PRODUCTS_FEATURE
     imports: [
         CommonModule,
         HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
         RouterModule.forChild([
             {
                 path: '', component: ProductsComponent, data: { view: ProductsViews.Root }, children: [
@@ -37,7 +41,7 @@ import { initialState as productsInitialState, productsReducer, PRODUCTS_FEATURE
             ProductsNavigationEffects
         ]),
         ResourceModule,
-        ShoppingCartCommonModule
+        ShoppingCartModule
     ],
     declarations: [
         SearchResultsComponent,
@@ -47,7 +51,11 @@ import { initialState as productsInitialState, productsReducer, PRODUCTS_FEATURE
         ProductsComponent,
         ProductImageComponent,
         ProductPriceComponent,
-        ProductComponent
+        ProductComponent,
+        ProductSearchFormComponent
+    ],
+    exports: [
+        ProductSearchFormComponent
     ]
 })
 export class ProductsModule { }

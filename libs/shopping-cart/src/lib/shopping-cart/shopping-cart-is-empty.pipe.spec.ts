@@ -1,6 +1,6 @@
-import { ShoppingCart, shoppingCartIsEmpty } from '@ngxp/shopping-cart-common';
+import { emptyShoppingCart, shoppingCart } from '@ngxp/shopping-cart/test';
+import { shoppingCartIsEmpty } from '../shopping-cart.util';
 import { ShoppingCartIsEmptyPipe } from './shopping-cart-is-empty.pipe';
-import { shoppingCartBuilder, shoppingCart, emptyShoppingCart } from '@ngxp/shopping-cart-common/test';
 
 describe('ShoppingCartIsEmptyPipe', () => {
     let pipe: ShoppingCartIsEmptyPipe;
@@ -15,10 +15,6 @@ describe('ShoppingCartIsEmptyPipe', () => {
             shoppingCart,
             emptyShoppingCart
         ]
-            .forEach(value => {
-                expect(pipe.transform(value)).toBe(shoppingCartIsEmpty(value));
-
-            });
+            .forEach(value => expect(pipe.transform(value)).toBe(shoppingCartIsEmpty(value)));
     });
-
 });

@@ -213,36 +213,6 @@
       },
       "prefix": "ngxp"
     },
-    "orders-common": {
-      "root": "libs/orders-common",
-      "sourceRoot": "libs/orders-common/src",
-      "projectType": "library",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/orders-common/jest.config.js",
-            "tsConfig": "libs/orders-common/tsconfig.spec.json",
-            "setupFile": "libs/orders-common/src/test-setup.ts",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/orders-common/tsconfig.lib.json",
-              "libs/orders-common/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/orders-common/**"
-            ]
-          }
-        }
-      },
-      "prefix": "ngxp"
-    },
     "products": {
       "root": "libs/products",
       "sourceRoot": "libs/products/src",
@@ -267,36 +237,6 @@
             "exclude": [
               "**/node_modules/**",
               "!libs/products/**"
-            ]
-          }
-        }
-      },
-      "prefix": "ngxp"
-    },
-    "products-common": {
-      "root": "libs/products-common",
-      "sourceRoot": "libs/products-common/src",
-      "projectType": "library",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/products-common/jest.config.js",
-            "tsConfig": "libs/products-common/tsconfig.spec.json",
-            "setupFile": "libs/products-common/src/test-setup.ts",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/products-common/tsconfig.lib.json",
-              "libs/products-common/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/products-common/**"
             ]
           }
         }
@@ -333,36 +273,6 @@
       },
       "prefix": "ngxp"
     },
-    "shopping-cart-common": {
-      "root": "libs/shopping-cart-common",
-      "sourceRoot": "libs/shopping-cart-common/src",
-      "projectType": "library",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/shopping-cart-common/jest.config.js",
-            "tsConfig": "libs/shopping-cart-common/tsconfig.spec.json",
-            "setupFile": "libs/shopping-cart-common/src/test-setup.ts",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/shopping-cart-common/tsconfig.lib.json",
-              "libs/shopping-cart-common/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/shopping-cart-common/**"
-            ]
-          }
-        }
-      },
-      "prefix": "ngxp"
-    },
     "user-profile": {
       "root": "libs/user-profile",
       "sourceRoot": "libs/user-profile/src",
@@ -387,36 +297,6 @@
             "exclude": [
               "**/node_modules/**",
               "!libs/user-profile/**"
-            ]
-          }
-        }
-      },
-      "prefix": "ngxp"
-    },
-    "user-profile-common": {
-      "root": "libs/user-profile-common",
-      "sourceRoot": "libs/user-profile-common/src",
-      "projectType": "library",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/user-profile-common/jest.config.js",
-            "tsConfig": "libs/user-profile-common/tsconfig.spec.json",
-            "setupFile": "libs/user-profile-common/src/test-setup.ts",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/user-profile-common/tsconfig.lib.json",
-              "libs/user-profile-common/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/user-profile-common/**"
             ]
           }
         }
