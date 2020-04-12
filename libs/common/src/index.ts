@@ -1,3 +1,4 @@
-export * from './lib/function.pipe';
+export { FunctionPipe } from './lib/function.pipe';
 export * from './lib/property.decorators';
-export * from './lib/reducer';
+export { ReducerArgs } from './lib/reducer';
+

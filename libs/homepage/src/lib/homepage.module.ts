@@ -16,9 +16,6 @@ import { HomepageComponent } from './homepage/homepage.component';
     ],
     declarations: [
         HomepageComponent
-    ],
-    exports: [
-        HomepageComponent
     ]
 })
 export class HomepageModule { }

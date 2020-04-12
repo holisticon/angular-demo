@@ -1,4 +1,4 @@
-export * from './lib/order.model';
+export { NewOrder } from './lib/order.model';
 export { OrdersModule } from './lib/orders.module';
-export * from './lib/state/orders-store.service';
+export { OrdersStore } from './lib/state/orders-store.service';
 
