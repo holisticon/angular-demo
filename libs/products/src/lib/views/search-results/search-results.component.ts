@@ -1,7 +1,9 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, NgModule } from '@angular/core';
 import { Observable } from 'rxjs';
 import { SearchResults } from '../../domain/product';
 import { ProductsStore } from '../../state/products-store.service';
+import { ProductListModule } from '../../ui/product-list/product-list.component';
 
 @Component({
     selector: 'ngxp-search-results',
@@ -19,3 +21,9 @@ export class SearchResultsComponent {
     }
 
 }
+
+@NgModule({
+    declarations: [SearchResultsComponent],
+    imports: [CommonModule, ProductListModule]
+})
+export class SearchResultsModule { }

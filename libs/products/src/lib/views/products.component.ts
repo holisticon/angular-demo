@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
     selector: 'ngxp-products',
@@ -6,3 +7,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductsComponent { }
+
+@NgModule({
+    declarations: [ProductsComponent],
+    imports: [RouterModule]
+})
+export class ProductsModule { }

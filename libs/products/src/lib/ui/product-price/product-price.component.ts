@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, Input, NgModule } from '@angular/core';
 import { Product } from '../../domain/product';
 
 @Component({
@@ -12,3 +13,10 @@ export class ProductPriceComponent {
     product!: Product | null;
 
 }
+
+@NgModule({
+    declarations: [ProductPriceComponent],
+    exports: [ProductPriceComponent],
+    imports: [CommonModule]
+})
+export class ProductPriceModule { }

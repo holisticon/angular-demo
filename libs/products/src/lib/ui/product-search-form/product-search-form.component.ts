@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, EventEmitter, NgModule, Output } from '@angular/core';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
     selector: 'ngxp-product-search-form',
@@ -18,3 +18,10 @@ export class ProductSearchFormComponent {
         this.search.emit(this.queryString.value);
     }
 }
+
+@NgModule({
+    declarations: [ProductSearchFormComponent],
+    exports: [ProductSearchFormComponent],
+    imports: [FormsModule, ReactiveFormsModule]
+})
+export class ProductSearchFormModule { }

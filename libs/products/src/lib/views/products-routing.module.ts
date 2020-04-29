@@ -3,16 +3,19 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { ProductsModule } from '../..';
-import { ProductDetailsComponent } from './product-details/product-details.component';
+import { ProductDetailsComponent, ProductDetailsModule } from './product-details/product-details.component';
 import { ProductsNavigationEffects } from './products-navigation.effects';
-import { ProductsComponent } from './products.component';
+import { ProductsComponent, ProductsModule as ProductsComponentModule } from './products.component';
 import { ProductsViews } from './products.views';
-import { SearchResultsComponent } from './search-results/search-results.component';
+import { SearchResultsComponent, SearchResultsModule } from './search-results/search-results.component';
 
 @NgModule({
     imports: [
         CommonModule,
         ProductsModule,
+        ProductsComponentModule,
+        SearchResultsModule,
+        ProductDetailsModule,
         RouterModule.forChild([
             {
                 path: '', component: ProductsComponent, data: { view: ProductsViews.Root }, children: [
@@ -24,11 +27,6 @@ import { SearchResultsComponent } from './search-results/search-results.componen
         EffectsModule.forFeature([
             ProductsNavigationEffects
         ])
-    ],
-    declarations: [
-        ProductsComponent,
-        SearchResultsComponent,
-        ProductDetailsComponent
     ]
 })
 export class ProductsRoutingModule { }

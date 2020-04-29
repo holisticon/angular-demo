@@ -1,9 +1,11 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, NgModule } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { decodeResourceUriFromRouteParam } from '@ngxp/resource';
 import { Observable } from 'rxjs';
 import { Product } from '../../domain/product';
 import { ProductsStore } from '../../state/products-store.service';
+import { ProductModule } from '../../ui/product/product.component';
 
 @Component({
     selector: 'ngxp-product-details',
@@ -23,3 +25,9 @@ export class ProductDetailsComponent {
         });
     }
 }
+
+@NgModule({
+    declarations: [ProductDetailsComponent],
+    imports: [CommonModule, ProductModule]
+})
+export class ProductDetailsModule { }

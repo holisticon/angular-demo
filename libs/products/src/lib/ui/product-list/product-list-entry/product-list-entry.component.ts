@@ -1,5 +1,11 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, Input, NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { ResourceModule } from '@ngxp/resource';
+import { ShoppingCartModule } from '@ngxp/shopping-cart';
 import { Product } from '../../../domain/product';
+import { ProductImageModule } from '../../product-image/product-image.component';
+import { ProductPriceModule } from '../../product-price/product-price.component';
 
 @Component({
     selector: 'ngxp-product-list-entry',
@@ -12,3 +18,10 @@ export class ProductListEntryComponent {
     product!: Product;
 
 }
+
+@NgModule({
+    declarations: [ProductListEntryComponent],
+    exports: [ProductListEntryComponent],
+    imports: [CommonModule, RouterModule, ResourceModule, ShoppingCartModule, ProductImageModule, ProductPriceModule]
+})
+export class ProductListEntryModule { }

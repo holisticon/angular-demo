@@ -1,5 +1,7 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, Input, NgModule } from '@angular/core';
 import { Product } from '../../domain/product';
+import { ProductListEntryModule } from './product-list-entry/product-list-entry.component';
 
 @Component({
     selector: 'ngxp-product-list',
@@ -12,3 +14,10 @@ export class ProductListComponent {
     products: Product[] = [];
 
 }
+
+@NgModule({
+    declarations: [ProductListComponent],
+    exports: [ProductListComponent],
+    imports: [CommonModule, ProductListEntryModule]
+})
+export class ProductListModule { }
