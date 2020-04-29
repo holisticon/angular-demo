@@ -3,7 +3,7 @@ import { Resource } from '@ngxp/resource';
 import { createResourceBlueprintBuilder } from '@ngxp/resource/test';
 import * as faker from 'faker';
 import { sampleSize } from 'lodash-es';
-import { Product, SearchResults } from '../../lib/product.model';
+import { Product, SearchResults } from '../../lib/domain/product';
 
 const productBlueprint: Blueprint<Product> = {
     productName: () => faker.commerce.productName(),

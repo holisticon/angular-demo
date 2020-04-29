@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { SearchResults } from '../product.model';
+import { SearchResults } from '../domain/product';
 
 export const searchProductsAction = createAction(
     '[Products] search products',

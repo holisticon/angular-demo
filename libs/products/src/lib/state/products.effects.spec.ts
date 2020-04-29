@@ -4,7 +4,7 @@ import { provideMockActions } from '@ngrx/effects/testing';
 import { searchResults } from '@ngxp/products/test';
 import { hot } from 'jest-marbles';
 import { Observable, of as observableOf } from 'rxjs';
-import { ProductService } from '../product.service';
+import { ProductService } from './product.service';
 import { loadSearchResultsAction, searchResultsLoadedAction } from './products.actions';
 import { ProductsEffects } from './products.effects';
 

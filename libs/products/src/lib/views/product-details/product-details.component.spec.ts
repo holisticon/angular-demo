@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { product } from '@ngxp/products/test';
 import { encodeResourceUriAsRouteParam, getUri } from '@ngxp/resource';
 import { provideStoreServiceMock } from '@ngxp/store-service/testing';
-import { ProductsStore } from '../state/products-store.service';
+import { ProductsStore } from '../../state/products-store.service';
 import { ProductDetailsComponent } from './product-details.component';
 
 fdescribe('ProductDetailsComponent', () => {

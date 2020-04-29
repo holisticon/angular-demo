@@ -4,8 +4,8 @@ import { buildSearchResultsNavigationAction, searchResultsNavigationAction, sear
 import { routerNavigationAction } from '@ngxp/routing/test';
 import { cold, hot } from 'jest-marbles';
 import { Observable } from 'rxjs';
+import { loadSearchResultsAction } from '../state/products.actions';
 import { ProductsNavigationEffects } from './products-navigation.effects';
-import { loadSearchResultsAction } from './state/products.actions';
 
 describe('ProductsNavigationEffects', () => {
     let actions$: Observable<any>;

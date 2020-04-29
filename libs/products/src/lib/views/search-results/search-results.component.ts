@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { SearchResults } from '../product.model';
-import { ProductsStore } from '../state/products-store.service';
+import { SearchResults } from '../../domain/product';
+import { ProductsStore } from '../../state/products-store.service';
 
 @Component({
     selector: 'ngxp-search-results',

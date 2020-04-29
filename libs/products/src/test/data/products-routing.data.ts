@@ -1,7 +1,7 @@
 import { RouterNavigatedAction } from '@ngrx/router-store';
 import { RouterStateSnapshot } from '@ngxp/routing';
 import { activatedRouteSnapshotBuilder, routerNavigatedActionBuilder, routerStateSnapshotBuilder } from '@ngxp/routing/test';
-import { ProductsViews } from '../../lib/products.views';
+import { ProductsViews } from '../../lib/views/products.views';
 
 export const searchResultsQueryParams = { query: 'cheese' };
 

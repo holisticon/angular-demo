@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { Product } from '../product.model';
+import { Product } from '../../domain/product';
 
 @Component({
-    selector: 'ngxp-product',
-    templateUrl: './product.component.html',
+    selector: 'ngxp-product-price',
+    templateUrl: './product-price.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProductComponent {
+export class ProductPriceComponent {
 
     @Input()
     product!: Product | null;
