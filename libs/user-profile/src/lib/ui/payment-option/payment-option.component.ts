@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { PaymentOption } from '../user-profile.model';
+import { PaymentOption } from '../../domain/user-profile';
 
 @Component({
     selector: 'ngxp-payment-option',

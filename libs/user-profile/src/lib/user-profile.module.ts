@@ -4,13 +4,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { AddressComponent } from './address/address.component';
-import { PaymentOptionComponent } from './payment-option/payment-option.component';
 import { UserProfileStore } from './state/user-profile-store.service';
 import { UserProfileEffects } from './state/user-profile.effects';
 import { initialState as userProfileInitialState, userProfileReducer, USER_PROFILE_FEATURE_KEY } from './state/user-profile.reducer';
-import { UserProfileService } from './user-profile.service';
-import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UserProfileService } from './state/user-profile.service';
+import { AddressComponent } from './ui/address/address.component';
+import { PaymentOptionComponent } from './ui/payment-option/payment-option.component';
+import { UserProfileComponent } from './views/user-profile/user-profile.component';
 
 @NgModule({
     imports: [

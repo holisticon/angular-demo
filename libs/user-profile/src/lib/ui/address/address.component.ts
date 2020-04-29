@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { Address } from '../user-profile.model';
+import { Address } from '../../domain/user-profile';
 
 @Component({
     selector: 'ngxp-address',

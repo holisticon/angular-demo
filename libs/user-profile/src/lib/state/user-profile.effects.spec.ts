@@ -4,9 +4,9 @@ import { provideMockActions } from '@ngrx/effects/testing';
 import { userProfile } from '@ngxp/user-profile/test';
 import { hot } from 'jest-marbles';
 import { Observable, of as observableOf } from 'rxjs';
-import { UserProfileService } from '../user-profile.service';
 import { loadUserProfileAction, userProfileLoadedAction } from './user-profile.actions';
 import { UserProfileEffects } from './user-profile.effects';
+import { UserProfileService } from './user-profile.service';
 
 describe('UserProfileEffects', () => {
     let actions$: Observable<any>;

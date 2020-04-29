@@ -1,7 +1,7 @@
 import { Blueprint } from '@ngxp/builder';
 import { Resource } from '@ngxp/resource';
 import { createResourceBlueprintBuilder } from '@ngxp/resource/test';
-import { UserProfile } from '../../lib/user-profile.model';
+import { UserProfile } from '../../lib/domain/user-profile';
 import { addresses } from './address.data';
 import { paymentOptions } from './payment-option.data';
 

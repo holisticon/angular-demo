@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { provideStoreServiceMock } from '@ngxp/store-service/testing';
 import { userProfile } from '@ngxp/user-profile/test';
-import { UserProfileStore } from '../state/user-profile-store.service';
+import { UserProfileStore } from '../../state/user-profile-store.service';
 import { UserProfileComponent } from './user-profile.component';
 
 describe('UserProfileComponent', () => {

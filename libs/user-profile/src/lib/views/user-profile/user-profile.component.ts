@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { UserProfileStore } from '../state/user-profile-store.service';
-import { Address, PaymentOption } from '../user-profile.model';
+import { Address, PaymentOption } from '../../domain/user-profile';
+import { UserProfileStore } from '../../state/user-profile-store.service';
 
 @Component({
     selector: 'ngxp-user-profile',

@@ -2,7 +2,7 @@ import { Blueprint } from '@ngxp/builder';
 import { Resource } from '@ngxp/resource';
 import { createResourceBlueprintBuilder } from '@ngxp/resource/test';
 import * as faker from 'faker';
-import { Address } from '../../lib/user-profile.model';
+import { Address } from '../../lib/domain/user-profile';
 
 const addressBlueprint: Blueprint<Address> = {
     name: () => faker.name.findName(),
