@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, NgModule } from '@angular/core';
 import { PaymentOption } from '../../domain/user-profile';
 
 @Component({
@@ -12,3 +12,9 @@ export class PaymentOptionComponent {
     paymentOption!: PaymentOption
 
 }
+
+@NgModule({
+    declarations: [PaymentOptionComponent],
+    exports: [PaymentOptionComponent]
+})
+export class PaymentOptionModule { }

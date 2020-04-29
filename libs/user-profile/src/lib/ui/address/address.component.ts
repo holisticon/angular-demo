@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, NgModule } from '@angular/core';
 import { Address } from '../../domain/user-profile';
 
 @Component({
@@ -12,3 +12,9 @@ export class AddressComponent {
     address!: Address;
 
 }
+
+@NgModule({
+    declarations: [AddressComponent],
+    exports: [AddressComponent]
+})
+export class AddressModule { }

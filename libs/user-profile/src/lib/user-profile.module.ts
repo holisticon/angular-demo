@@ -7,8 +7,6 @@ import { UserProfileStore } from './state/user-profile-store.service';
 import { UserProfileEffects } from './state/user-profile.effects';
 import { initialState as userProfileInitialState, userProfileReducer, USER_PROFILE_FEATURE_KEY } from './state/user-profile.reducer';
 import { UserProfileService } from './state/user-profile.service';
-import { AddressComponent } from './ui/address/address.component';
-import { PaymentOptionComponent } from './ui/payment-option/payment-option.component';
 
 @NgModule({
     imports: [
@@ -20,14 +18,6 @@ import { PaymentOptionComponent } from './ui/payment-option/payment-option.compo
     providers: [
         UserProfileEffects,
         UserProfileService
-    ],
-    declarations: [
-        AddressComponent,
-        PaymentOptionComponent,
-    ],
-    exports: [
-        AddressComponent,
-        PaymentOptionComponent
     ]
 })
 export class UserProfileModule {

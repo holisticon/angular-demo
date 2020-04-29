@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, NgModule } from '@angular/core';
-import { UserProfileModule } from '@ngxp/user-profile';
+import { AddressModule, PaymentOptionModule } from '@ngxp/user-profile';
 import { Order } from '../../domain/order';
 
 @Component({
@@ -18,6 +18,6 @@ export class OrderComponent {
 @NgModule({
     declarations: [OrderComponent],
     exports: [OrderComponent],
-    imports: [CommonModule, UserProfileModule]
+    imports: [CommonModule, AddressModule, PaymentOptionModule]
 })
 export class OrderModule { }

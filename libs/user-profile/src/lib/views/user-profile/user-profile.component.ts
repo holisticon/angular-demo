@@ -1,7 +1,10 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, NgModule } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Address, PaymentOption } from '../../domain/user-profile';
 import { UserProfileStore } from '../../state/user-profile-store.service';
+import { AddressModule } from '../../ui/address/address.component';
+import { PaymentOptionModule } from '../../ui/payment-option/payment-option.component';
 
 @Component({
     selector: 'ngxp-user-profile',
@@ -21,3 +24,9 @@ export class UserProfileComponent {
     }
 
 }
+
+@NgModule({
+    declarations: [UserProfileComponent],
+    imports: [CommonModule, AddressModule, PaymentOptionModule]
+})
+export class UserProfileModule { }
