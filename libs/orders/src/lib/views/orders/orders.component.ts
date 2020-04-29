@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { OrderHistory } from '../order.model';
-import { OrdersStore } from '../state/orders-store.service';
+import { OrderHistory } from '../../domain/order';
+import { OrdersStore } from '../../state/orders-store.service';
 
 @Component({
     selector: 'ngxp-orders',

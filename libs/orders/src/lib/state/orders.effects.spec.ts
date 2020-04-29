@@ -5,7 +5,7 @@ import { newOrder, order, orderHistory } from '@ngxp/orders/test';
 import { hot } from 'jest-marbles';
 import { Observable, of as observableOf } from 'rxjs';
 import { take } from 'rxjs/operators';
-import { OrderService } from '../order.service';
+import { OrderService } from './order.service';
 import { loadOrderHistoryAction, orderHistoryLoaded, orderPlacedAction, placeOrderAction } from './orders.actions';
 import { OrdersEffects } from './orders.effects';
 

@@ -4,7 +4,7 @@ import { OnNonNullChange } from '@ngxp/common';
 import { ShoppingCart } from '@ngxp/shopping-cart';
 import { UserProfile } from '@ngxp/user-profile';
 import { defaultTo, isNull } from 'lodash-es';
-import { NewOrder } from '../order.model';
+import { NewOrder } from '../../domain/order';
 
 @Component({
     selector: 'ngxp-place-order-form',

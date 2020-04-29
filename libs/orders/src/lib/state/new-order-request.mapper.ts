@@ -1,5 +1,5 @@
 import { getUri } from '@ngxp/resource';
-import { NewOrder, NewOrderRequest } from './order.model';
+import { NewOrder, NewOrderRequest } from '../domain/order';
 
 export function toNewOrderRequest(newOrder: NewOrder): NewOrderRequest {
     return {

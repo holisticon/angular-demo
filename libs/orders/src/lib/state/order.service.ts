@@ -4,8 +4,8 @@ import { Resource } from '@ngxp/resource';
 import { isNull } from 'lodash-es';
 import { EMPTY } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { NewOrder, Order, OrderHistory } from '../domain/order';
 import { toNewOrderRequest } from './new-order-request.mapper';
-import { NewOrder, Order, OrderHistory } from './order.model';
 
 @Injectable({
     providedIn: 'root'

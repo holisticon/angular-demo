@@ -6,7 +6,7 @@ import { shoppingCart } from '@ngxp/shopping-cart/test';
 import { userProfile } from '@ngxp/user-profile/test';
 import { isNull } from 'lodash-es';
 import { take } from 'rxjs/operators';
-import { NewOrder } from '../order.model';
+import { NewOrder } from '../../domain/order';
 import { PlaceOrderFormComponent } from './place-order-form.component';
 
 describe('PlaceOrderFormComponent', () => {

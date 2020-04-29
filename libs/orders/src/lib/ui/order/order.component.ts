@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { Order } from '../order.model';
+import { Order } from '../../domain/order';
 
 @Component({
     selector: 'ngxp-order',

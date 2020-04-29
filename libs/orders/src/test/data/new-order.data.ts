@@ -6,7 +6,7 @@ import { createResourceBlueprintBuilder } from '@ngxp/resource/test';
 import { shoppingCartItemBuilder } from '@ngxp/shopping-cart/test';
 import { userProfile } from '@ngxp/user-profile/test';
 import { sample } from 'lodash-es';
-import { NewOrder } from '../../lib/order.model';
+import { NewOrder } from '../../lib/domain/order';
 
 const newOrderBlueprint: BlueprintFactory<NewOrder> = () => {
     return {

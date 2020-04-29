@@ -5,7 +5,7 @@ import { createResourceBlueprintBuilder } from '@ngxp/resource/test';
 import { addressBuilder, paymentOptionBuilder } from '@ngxp/user-profile/test';
 import * as faker from 'faker';
 import { random } from 'lodash-es';
-import { Order, OrderHistory, OrderStatus } from '../../lib/order.model';
+import { Order, OrderHistory, OrderStatus } from '../../lib/domain/order';
 import { orderItemBuilder } from './order-item.data';
 
 const minItemCount = 1;

@@ -5,12 +5,12 @@ import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { UserProfileModule } from '@ngxp/user-profile';
-import { OrderComponent } from './order/order.component';
-import { OrdersComponent } from './orders/orders.component';
-import { PlaceOrderFormComponent } from './place-order-form/place-order-form.component';
 import { OrdersStore } from './state/orders-store.service';
 import { OrdersEffects } from './state/orders.effects';
 import { initialState as ordersInitialState, ordersReducer } from './state/orders.reducer';
+import { OrderComponent } from './ui/order/order.component';
+import { PlaceOrderFormComponent } from './ui/place-order-form/place-order-form.component';
+import { OrdersComponent } from './views/orders/orders.component';
 
 @NgModule({
     imports: [

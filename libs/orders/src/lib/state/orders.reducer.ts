@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { ReducerArgs } from '@ngxp/common';
-import { OrderHistory } from '../order.model';
+import { OrderHistory } from '../domain/order';
 import { orderHistoryLoaded } from './orders.actions';
 
 export const ORDERS_FEATURE_KEY = 'orders';
