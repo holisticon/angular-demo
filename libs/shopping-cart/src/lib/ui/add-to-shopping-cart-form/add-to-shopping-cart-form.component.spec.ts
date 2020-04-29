@@ -4,8 +4,8 @@ import { By } from '@angular/platform-browser';
 import { product } from '@ngxp/products/test';
 import { getUri } from '@ngxp/resource';
 import { provideStoreServiceMock } from '@ngxp/store-service/testing';
-import { AdditionToShoppingCart } from '../shopping-cart.model';
-import { ShoppingCartStore } from '../state/shopping-cart-store.service';
+import { AdditionToShoppingCart } from '../../domain/shopping-cart';
+import { ShoppingCartStore } from '../../state/shopping-cart-store.service';
 import { AddToShoppingCartFormComponent } from './add-to-shopping-cart-form.component';
 
 describe('AddToShoppingCartFormComponent', () => {

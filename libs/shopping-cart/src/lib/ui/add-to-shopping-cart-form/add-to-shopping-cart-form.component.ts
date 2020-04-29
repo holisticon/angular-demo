@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Product } from '@ngxp/products';
 import { getUri } from '@ngxp/resource';
 import { toNumber } from 'lodash-es';
-import { AdditionToShoppingCart } from '../shopping-cart.model';
-import { ShoppingCartStore } from '../state/shopping-cart-store.service';
+import { AdditionToShoppingCart } from '../../domain/shopping-cart';
+import { ShoppingCartStore } from '../../state/shopping-cart-store.service';
 
 @Component({
     selector: 'ngxp-add-to-shopping-cart-form',

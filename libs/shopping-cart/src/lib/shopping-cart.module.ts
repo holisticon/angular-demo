@@ -7,16 +7,16 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { OrdersModule } from '@ngxp/orders';
 import { UserProfileModule } from '@ngxp/user-profile';
-import { AddToShoppingCartFormComponent } from './add-to-shopping-cart-form/add-to-shopping-cart-form.component';
-import { ShoppingCartItemListComponent } from './shopping-cart-item-list/shopping-cart-item-list.component';
-import { ShoppingCartItemComponent } from './shopping-cart-item-list/shopping-cart-item/shopping-cart-item.component';
-import { UpdateQuantityFormComponent } from './shopping-cart-item-list/shopping-cart-item/update-quantity-form/update-quantity-form.component';
-import { ShoppingCartNavigationEffects } from './shopping-cart-navigation.effects';
-import { ShoppingCartViews } from './shopping-cart.views';
-import { ShoppingCartIsEmptyPipe } from './shopping-cart/shopping-cart-is-empty.pipe';
-import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { ShoppingCartEffects } from './state/shopping-cart.effects';
 import { initialState as shoppingCartInitialState, shoppingCartReducer, SHOPPING_CART_FEATURE_KEY } from './state/shopping-cart.reducer';
+import { AddToShoppingCartFormComponent } from './ui/add-to-shopping-cart-form/add-to-shopping-cart-form.component';
+import { ShoppingCartItemListComponent } from './ui/shopping-cart-item-list/shopping-cart-item-list.component';
+import { ShoppingCartItemComponent } from './ui/shopping-cart-item-list/shopping-cart-item/shopping-cart-item.component';
+import { UpdateQuantityFormComponent } from './ui/shopping-cart-item-list/shopping-cart-item/update-quantity-form/update-quantity-form.component';
+import { ShoppingCartNavigationEffects } from './views/shopping-cart-navigation.effects';
+import { ShoppingCartViews } from './views/shopping-cart.views';
+import { ShoppingCartIsEmptyPipe } from './views/shopping-cart/shopping-cart-is-empty.pipe';
+import { ShoppingCartComponent } from './views/shopping-cart/shopping-cart.component';
 
 @NgModule({
     imports: [

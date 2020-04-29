@@ -9,9 +9,9 @@ import { emptyShoppingCart, shoppingCart, shoppingCartItem } from '@ngxp/shoppin
 import { provideStoreServiceMock, StoreServiceMock } from '@ngxp/store-service/testing';
 import { UserProfileStore } from '@ngxp/user-profile';
 import { userProfile } from '@ngxp/user-profile/test';
-import { ShoppingCartItemListComponent } from '../shopping-cart-item-list/shopping-cart-item-list.component';
-import { QuantityUpdate, ShoppingCartItem } from '../shopping-cart.model';
-import { ShoppingCartStore } from '../state/shopping-cart-store.service';
+import { QuantityUpdate, ShoppingCartItem } from '../../domain/shopping-cart';
+import { ShoppingCartStore } from '../../state/shopping-cart-store.service';
+import { ShoppingCartItemListComponent } from '../../ui/shopping-cart-item-list/shopping-cart-item-list.component';
 import { ShoppingCartIsEmptyPipe } from './shopping-cart-is-empty.pipe';
 import { ShoppingCartComponent } from './shopping-cart.component';
 

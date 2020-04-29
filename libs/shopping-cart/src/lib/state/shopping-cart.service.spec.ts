@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { getUri } from '@ngxp/resource';
 import { additionToShoppingCart, shoppingCart, shoppingCartItem } from '@ngxp/shopping-cart/test';
 import { cold } from 'jest-marbles';
-import { QuantityUpdate } from './shopping-cart.model';
+import { QuantityUpdate } from '../domain/shopping-cart';
 import { ShoppingCartService } from './shopping-cart.service';
 
 describe('ShoppingCartService', () => {

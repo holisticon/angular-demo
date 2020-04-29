@@ -1,7 +1,7 @@
 import { RouterNavigatedAction } from '@ngrx/router-store';
 import { RouterStateSnapshot } from '@ngxp/routing';
 import { activatedRouteSnapshotBuilder, routerNavigatedActionBuilder, routerStateSnapshotBuilder } from '@ngxp/routing/test';
-import { ShoppingCartViews } from '../../lib/shopping-cart.views';
+import { ShoppingCartViews } from '../../lib/views/shopping-cart.views';
 
 function createShoppingCartRouteSnapshot() {
     return activatedRouteSnapshotBuilder('', {

@@ -3,8 +3,8 @@ import { NewOrder, OrdersStore } from '@ngxp/orders';
 import { ResourceWith } from '@ngxp/resource';
 import { UserProfile, UserProfileStore } from '@ngxp/user-profile';
 import { Observable } from 'rxjs';
-import { QuantityUpdate, ShoppingCart, ShoppingCartItem } from '../shopping-cart.model';
-import { ShoppingCartStore } from '../state/shopping-cart-store.service';
+import { QuantityUpdate, ShoppingCart, ShoppingCartItem } from '../../domain/shopping-cart';
+import { ShoppingCartStore } from '../../state/shopping-cart-store.service';
 
 @Component({
     selector: 'ngxp-shopping-cart',

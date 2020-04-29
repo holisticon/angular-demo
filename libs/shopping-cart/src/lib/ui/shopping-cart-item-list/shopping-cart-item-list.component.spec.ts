@@ -5,7 +5,7 @@ import { By } from '@angular/platform-browser';
 import { ResourceWith } from '@ngxp/resource';
 import { shoppingCart } from '@ngxp/shopping-cart/test';
 import { take } from 'rxjs/operators';
-import { QuantityUpdate, ShoppingCartItem } from '../shopping-cart.model';
+import { QuantityUpdate, ShoppingCartItem } from '../../domain/shopping-cart';
 import { ShoppingCartItemListComponent } from './shopping-cart-item-list.component';
 import { ShoppingCartItemComponent } from './shopping-cart-item/shopping-cart-item.component';
 

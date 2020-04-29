@@ -3,7 +3,7 @@ import { productBuilder } from '@ngxp/products/test';
 import { getUri, Resource } from '@ngxp/resource';
 import { createResourceBlueprintBuilder } from '@ngxp/resource/test';
 import { random } from 'lodash-es';
-import { ShoppingCartItem } from '../../lib/shopping-cart.model';
+import { ShoppingCartItem } from '../../lib/domain/shopping-cart';
 
 const minItemQty = 1;
 const maxItemQty = 5;

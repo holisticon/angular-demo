@@ -4,7 +4,7 @@ import { getUri, Resource } from '@ngxp/resource';
 import { isNull } from 'lodash-es';
 import { EMPTY } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { AdditionToShoppingCart, QuantityUpdate, ShoppingCart, ShoppingCartItem } from './shopping-cart.model';
+import { AdditionToShoppingCart, QuantityUpdate, ShoppingCart, ShoppingCartItem } from '../domain/shopping-cart';
 
 @Injectable({
     providedIn: 'root'

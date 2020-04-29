@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { ResourceWith } from '@ngxp/resource';
-import { AdditionToShoppingCart, QuantityUpdate, ShoppingCart, ShoppingCartItem } from '../shopping-cart.model';
+import { AdditionToShoppingCart, QuantityUpdate, ShoppingCart, ShoppingCartItem } from '../domain/shopping-cart';
 
 export const loadShoppingCartAction = createAction(
     '[Shopping Cart] load shopping cart');

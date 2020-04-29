@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 import { FormControl } from '@angular/forms';
 import { OnNonNullChange } from '@ngxp/common';
 import { Resource, ResourceWith } from '@ngxp/resource';
-import { QuantityUpdate, ShoppingCartItem } from '../../../shopping-cart.model';
+import { QuantityUpdate, ShoppingCartItem } from '../../../../domain/shopping-cart';
 
 @Component({
     selector: 'ngxp-update-quantity-form',

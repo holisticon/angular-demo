@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { ResourceWith } from '@ngxp/resource';
-import { QuantityUpdate, ShoppingCartItem } from '../../shopping-cart.model';
+import { QuantityUpdate, ShoppingCartItem } from '../../../domain/shopping-cart';
 
 @Component({
     // tslint:disable-next-line:component-selector

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { ResourceWith } from '@ngxp/resource';
-import { QuantityUpdate, ShoppingCart, ShoppingCartItem } from '../shopping-cart.model';
+import { QuantityUpdate, ShoppingCart, ShoppingCartItem } from '../../domain/shopping-cart';
 
 @Component({
     selector: 'ngxp-shopping-cart-item-list',
