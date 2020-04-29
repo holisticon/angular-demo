@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
+import { PlaceOrderFormModule } from '@ngxp/orders';
 import { ShoppingCartModule } from '../..';
 import { ShoppingCartNavigationEffects } from './shopping-cart-navigation.effects';
 import { ShoppingCartViews } from './shopping-cart.views';
@@ -11,6 +12,7 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     imports: [
         CommonModule,
         ShoppingCartModule,
+        PlaceOrderFormModule,
         RouterModule.forChild([
             { path: '', pathMatch: 'full', component: ShoppingCartComponent, data: { view: ShoppingCartViews.Root } }
         ]),

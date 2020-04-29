@@ -1,7 +1,9 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, NgModule } from '@angular/core';
 import { Observable } from 'rxjs';
 import { OrderHistory } from '../../domain/order';
 import { OrdersStore } from '../../state/orders-store.service';
+import { OrderModule } from '../../ui/order/order.component';
 
 @Component({
     selector: 'ngxp-orders',
@@ -19,3 +21,9 @@ export class OrdersComponent {
     }
 
 }
+
+@NgModule({
+    declarations: [OrdersComponent],
+    imports: [CommonModule, OrderModule]
+})
+export class OrdersModule { }

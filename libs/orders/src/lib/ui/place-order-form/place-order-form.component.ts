@@ -1,8 +1,9 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, NgModule, Output } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { OnNonNullChange } from '@ngxp/common';
 import { ShoppingCart } from '@ngxp/shopping-cart';
-import { UserProfile } from '@ngxp/user-profile';
+import { UserProfile, UserProfileModule } from '@ngxp/user-profile';
 import { defaultTo, isNull } from 'lodash-es';
 import { NewOrder } from '../../domain/order';
 
@@ -65,3 +66,10 @@ export class PlaceOrderFormComponent {
     }
 
 }
+
+@NgModule({
+    declarations: [PlaceOrderFormComponent],
+    exports: [PlaceOrderFormComponent],
+    imports: [CommonModule, ReactiveFormsModule, UserProfileModule]
+})
+export class PlaceOrderFormModule { }
