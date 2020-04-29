@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { UserProfileStore } from './state/user-profile-store.service';
@@ -10,14 +9,10 @@ import { initialState as userProfileInitialState, userProfileReducer, USER_PROFI
 import { UserProfileService } from './state/user-profile.service';
 import { AddressComponent } from './ui/address/address.component';
 import { PaymentOptionComponent } from './ui/payment-option/payment-option.component';
-import { UserProfileComponent } from './views/user-profile/user-profile.component';
 
 @NgModule({
     imports: [
         CommonModule,
-        RouterModule.forChild([
-            { path: '', pathMatch: 'full', component: UserProfileComponent }
-        ]),
         HttpClientModule,
         StoreModule.forFeature(USER_PROFILE_FEATURE_KEY, userProfileReducer, { initialState: userProfileInitialState }),
         EffectsModule.forFeature([UserProfileEffects])
@@ -29,7 +24,6 @@ import { UserProfileComponent } from './views/user-profile/user-profile.componen
     declarations: [
         AddressComponent,
         PaymentOptionComponent,
-        UserProfileComponent
     ],
     exports: [
         AddressComponent,

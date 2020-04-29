@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { OrdersModule } from '@ngxp/orders';
+import { ResourceModule } from '@ngxp/resource';
 import { UserProfileModule } from '@ngxp/user-profile';
 import { ShoppingCartEffects } from './state/shopping-cart.effects';
 import { initialState as shoppingCartInitialState, shoppingCartReducer, SHOPPING_CART_FEATURE_KEY } from './state/shopping-cart.reducer';
@@ -13,10 +14,7 @@ import { AddToShoppingCartFormComponent } from './ui/add-to-shopping-cart-form/a
 import { ShoppingCartItemListComponent } from './ui/shopping-cart-item-list/shopping-cart-item-list.component';
 import { ShoppingCartItemComponent } from './ui/shopping-cart-item-list/shopping-cart-item/shopping-cart-item.component';
 import { UpdateQuantityFormComponent } from './ui/shopping-cart-item-list/shopping-cart-item/update-quantity-form/update-quantity-form.component';
-import { ShoppingCartNavigationEffects } from './views/shopping-cart-navigation.effects';
-import { ShoppingCartViews } from './views/shopping-cart.views';
 import { ShoppingCartIsEmptyPipe } from './views/shopping-cart/shopping-cart-is-empty.pipe';
-import { ShoppingCartComponent } from './views/shopping-cart/shopping-cart.component';
 
 @NgModule({
     imports: [
@@ -24,27 +22,30 @@ import { ShoppingCartComponent } from './views/shopping-cart/shopping-cart.compo
         HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
-        RouterModule.forChild([
-            { path: '', pathMatch: 'full', component: ShoppingCartComponent, data: { view: ShoppingCartViews.Root } }
-        ]),
+        ResourceModule,
+        RouterModule,
         StoreModule.forFeature(SHOPPING_CART_FEATURE_KEY, shoppingCartReducer, { initialState: shoppingCartInitialState }),
         EffectsModule.forFeature([
-            ShoppingCartEffects,
-            ShoppingCartNavigationEffects
+            ShoppingCartEffects
         ]),
         OrdersModule,
         UserProfileModule
     ],
     declarations: [
         AddToShoppingCartFormComponent,
-        ShoppingCartComponent,
         ShoppingCartItemListComponent,
         UpdateQuantityFormComponent,
         ShoppingCartItemComponent,
         ShoppingCartIsEmptyPipe
     ],
     exports: [
-        AddToShoppingCartFormComponent
+        AddToShoppingCartFormComponent,
+
+        // TODO remove
+        ShoppingCartItemListComponent,
+        UpdateQuantityFormComponent,
+        ShoppingCartItemComponent,
+        ShoppingCartIsEmptyPipe
     ]
 })
 export class ShoppingCartModule { }

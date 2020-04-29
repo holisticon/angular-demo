@@ -18,10 +18,10 @@ import { AppEffects } from './state/app.effects';
         HttpClientModule, // see https://github.com/angular/angular-cli/issues/10170
         RouterModule.forRoot([
             { path: '', loadChildren: () => import('@ngxp/homepage').then(m => m.HomepageModule) },
-            { path: 'products', loadChildren: () => import('@ngxp/products').then(m => m.ProductsModule) },
-            { path: 'shopping-cart', loadChildren: () => import('@ngxp/shopping-cart').then(m => m.ShoppingCartModule) },
-            { path: 'user-profile', loadChildren: () => import('@ngxp/user-profile').then(m => m.UserProfileModule) },
-            { path: 'orders', loadChildren: () => import('@ngxp/orders').then(m => m.OrdersModule) }
+            { path: 'products', loadChildren: () => import('@ngxp/products/views').then(m => m.ProductsRoutingModule) },
+            { path: 'shopping-cart', loadChildren: () => import('@ngxp/shopping-cart/views').then(m => m.ShoppingCartRoutingModule) },
+            { path: 'user-profile', loadChildren: () => import('@ngxp/user-profile/views').then(m => m.UserProfileRoutingModule) },
+            { path: 'orders', loadChildren: () => import('@ngxp/orders/views').then(m => m.OrdersRoutingModule) }
         ], { enableTracing: true }),
         StoreModule.forRoot(
             { router: routerReducer },

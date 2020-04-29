@@ -1,5 +1,5 @@
 <td>
-    <a href="" class="name">{{ shoppingCartItem.productName }}</a><br />
+    <a [routerLink]="'/products/' + (shoppingCartItem.product | encodeRouteParam)" class="name">{{ shoppingCartItem.productName }}</a><br />
     <small class="description">{{ shoppingCartItem.productDescription }}</small>
 </td>
 <td class="text-right price">{{ shoppingCartItem.price | number:'1.2' }}</td>
