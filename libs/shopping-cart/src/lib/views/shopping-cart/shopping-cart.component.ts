@@ -1,10 +1,13 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { NewOrder, OrdersStore } from '@ngxp/orders';
+import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, NgModule } from '@angular/core';
+import { NewOrder, OrdersStore, PlaceOrderFormModule } from '@ngxp/orders';
 import { ResourceWith } from '@ngxp/resource';
-import { UserProfile, UserProfileStore } from '@ngxp/user-profile';
+import { UserProfile, UserProfileModule, UserProfileStore } from '@ngxp/user-profile';
 import { Observable } from 'rxjs';
 import { QuantityUpdate, ShoppingCart, ShoppingCartItem } from '../../domain/shopping-cart';
 import { ShoppingCartStore } from '../../state/shopping-cart-store.service';
+import { ShoppingCartItemListModule } from '../../ui/shopping-cart-item-list/shopping-cart-item-list.component';
+import { ShoppingCartIsEmptyModule } from './shopping-cart-is-empty.pipe';
 
 @Component({
     selector: 'ngxp-shopping-cart',
@@ -38,3 +41,9 @@ export class ShoppingCartComponent {
     }
 
 }
+
+@NgModule({
+    declarations: [ShoppingCartComponent],
+    imports: [CommonModule, UserProfileModule, PlaceOrderFormModule, ShoppingCartIsEmptyModule, ShoppingCartItemListModule]
+})
+export class ShoppingCartModule {}

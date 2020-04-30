@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, NgModule, Output } from '@angular/core';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OnNonNullChange } from '@ngxp/common';
 import { Resource, ResourceWith } from '@ngxp/resource';
 import { QuantityUpdate, ShoppingCartItem } from '../../../../domain/shopping-cart';
@@ -33,3 +33,10 @@ export class UpdateQuantityFormComponent {
     }
 
 }
+
+@NgModule({
+    declarations: [UpdateQuantityFormComponent],
+    exports: [UpdateQuantityFormComponent],
+    imports: [FormsModule, ReactiveFormsModule]
+})
+export class UpdateQuantityFormModule {}

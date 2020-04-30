@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Product } from '@ngxp/products';
 import { getUri } from '@ngxp/resource';
 import { toNumber } from 'lodash-es';
@@ -32,3 +33,10 @@ export class AddToShoppingCartFormComponent {
         this.shoppingCartStore.addToShoppingCart({ additionToShoppingCart });
     }
 }
+
+@NgModule({
+    declarations: [AddToShoppingCartFormComponent],
+    exports: [AddToShoppingCartFormComponent],
+    imports: [FormsModule]
+})
+export class AddToShoppingCartFormModule {}

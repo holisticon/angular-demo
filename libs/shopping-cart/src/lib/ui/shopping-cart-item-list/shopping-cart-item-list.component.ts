@@ -1,6 +1,8 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, NgModule, Output } from '@angular/core';
 import { ResourceWith } from '@ngxp/resource';
 import { QuantityUpdate, ShoppingCart, ShoppingCartItem } from '../../domain/shopping-cart';
+import { ShoppingCartItemModule } from './shopping-cart-item/shopping-cart-item.component';
 
 @Component({
     selector: 'ngxp-shopping-cart-item-list',
@@ -27,3 +29,10 @@ export class ShoppingCartItemListComponent {
     }
 
 }
+
+@NgModule({
+    declarations: [ShoppingCartItemListComponent],
+    exports: [ShoppingCartItemListComponent],
+    imports: [CommonModule, ShoppingCartItemModule]
+})
+export class ShoppingCartItemListModule {}

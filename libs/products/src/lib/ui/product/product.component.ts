@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, NgModule } from '@angular/core';
-import { ShoppingCartModule } from '../../../../../shopping-cart/src';
+import { AddToShoppingCartFormModule } from '@ngxp/shopping-cart';
 import { Product } from '../../domain/product';
 import { ProductImageModule } from '../product-image/product-image.component';
 import { ProductPriceModule } from '../product-price/product-price.component';
@@ -20,6 +20,6 @@ export class ProductComponent {
 @NgModule({
     declarations: [ProductComponent],
     exports: [ProductComponent],
-    imports: [CommonModule, ProductImageModule, ProductPriceModule, ShoppingCartModule]
+    imports: [CommonModule, AddToShoppingCartFormModule, ProductImageModule, ProductPriceModule]
 })
 export class ProductModule { }

@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ResourceModule } from '@ngxp/resource';
-import { ShoppingCartModule } from '@ngxp/shopping-cart';
+import { AddToShoppingCartFormModule } from '@ngxp/shopping-cart';
 import { Product } from '../../../domain/product';
 import { ProductImageModule } from '../../product-image/product-image.component';
 import { ProductPriceModule } from '../../product-price/product-price.component';
@@ -22,6 +22,6 @@ export class ProductListEntryComponent {
 @NgModule({
     declarations: [ProductListEntryComponent],
     exports: [ProductListEntryComponent],
-    imports: [CommonModule, RouterModule, ResourceModule, ShoppingCartModule, ProductImageModule, ProductPriceModule]
+    imports: [CommonModule, RouterModule, ResourceModule, AddToShoppingCartFormModule, ProductImageModule, ProductPriceModule]
 })
 export class ProductListEntryModule { }

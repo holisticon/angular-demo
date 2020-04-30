@@ -1,6 +1,9 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { ResourceWith } from '@ngxp/resource';
+import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, NgModule, Output } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { ResourceModule, ResourceWith } from '@ngxp/resource';
 import { QuantityUpdate, ShoppingCartItem } from '../../../domain/shopping-cart';
+import { UpdateQuantityFormModule } from './update-quantity-form/update-quantity-form.component';
 
 @Component({
     // tslint:disable-next-line:component-selector
@@ -27,3 +30,10 @@ export class ShoppingCartItemComponent {
         this.delete.emit(this.shoppingCartItem);
     }
 }
+
+@NgModule({
+    declarations: [ShoppingCartItemComponent],
+    exports: [ShoppingCartItemComponent],
+    imports: [CommonModule, RouterModule, ResourceModule, UpdateQuantityFormModule]
+})
+export class ShoppingCartItemModule {}

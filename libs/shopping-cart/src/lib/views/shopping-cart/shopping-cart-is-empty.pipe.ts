@@ -1,6 +1,6 @@
 // tslint:disable:use-pipe-transform-interface
 
-import { Pipe } from '@angular/core';
+import { NgModule, Pipe } from '@angular/core';
 import { FunctionPipe } from '@ngxp/common';
 import { shoppingCartIsEmpty } from '../../domain/shopping-cart.util';
 
@@ -12,3 +12,9 @@ export class ShoppingCartIsEmptyPipe extends FunctionPipe {
         super(shoppingCartIsEmpty);
     }
 }
+
+@NgModule({
+    declarations: [ShoppingCartIsEmptyPipe],
+    exports: [ShoppingCartIsEmptyPipe]
+})
+export class ShoppingCartIsEmptyModule {}
