@@ -98,30 +98,6 @@
     "nx-enforce-module-boundaries": [
       true,
       {
-        "allow": [
-          "@ngxp/common/test",
-          "@ngxp/resource/test",
-          "@ngxp/orders/test",
-          "@ngxp/orders/views",
-          "@ngxp/orders/ui",
-          "@ngxp/orders/state",
-          "@ngxp/orders/domain",
-          "@ngxp/products/test",
-          "@ngxp/products/views",
-          "@ngxp/products/ui",
-          "@ngxp/products/state",
-          "@ngxp/products/domain",
-          "@ngxp/shopping-cart/test",
-          "@ngxp/shopping-cart/views",
-          "@ngxp/shopping-cart/ui",
-          "@ngxp/shopping-cart/state",
-          "@ngxp/shopping-cart/domain",
-          "@ngxp/user-profile/test",
-          "@ngxp/user-profile/views",
-          "@ngxp/user-profile/ui",
-          "@ngxp/user-profile/state",
-          "@ngxp/user-profile/domain"
-        ],
         "depConstraints": [
           {
             "sourceTag": "*",
