@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { OrdersStore } from './state/orders-store.service';
-import { OrdersEffects } from './state/orders.effects';
-import { initialState as ordersInitialState, ordersReducer } from './state/orders.reducer';
+import { OrdersStore } from './orders-store.service';
+import { OrdersEffects } from './orders.effects';
+import { initialState, ordersReducer } from './orders.reducer';
 
 @NgModule({
     imports: [
-        StoreModule.forFeature('orders', ordersReducer, { initialState: ordersInitialState }),
+        StoreModule.forFeature('orders', ordersReducer, { initialState }),
         EffectsModule.forFeature([OrdersEffects]),
     ],
     providers: [
         OrdersEffects
     ]
 })
-export class OrdersModule {
+export class OrdersStateModule {
     constructor(
         ordersStore: OrdersStore
     ) {

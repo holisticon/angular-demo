@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { decodeResourceUriFromRouteParam } from '@ngxp/resource';
 import { Observable } from 'rxjs';
 import { Product } from '../../domain/product';
+import { ProductsStateModule } from '../../state/products-state.module';
 import { ProductsStore } from '../../state/products-store.service';
 import { ProductModule } from '../../ui/product/product.component';
 
@@ -28,6 +29,6 @@ export class ProductDetailsComponent {
 
 @NgModule({
     declarations: [ProductDetailsComponent],
-    imports: [CommonModule, ProductModule]
+    imports: [CommonModule, ProductsStateModule, ProductModule]
 })
 export class ProductDetailsModule { }

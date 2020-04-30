@@ -2,7 +2,8 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { ResourceWith } from '@ngxp/resource';
+import { RouterTestingModule } from '@angular/router/testing';
+import { ResourceModule, ResourceWith } from '@ngxp/resource';
 import { shoppingCartItem } from '@ngxp/shopping-cart/test';
 import { take } from 'rxjs/operators';
 import { QuantityUpdate, ShoppingCartItem } from '../../../domain/shopping-cart';
@@ -16,7 +17,9 @@ describe('ShoppingCartItemComponent', () => {
         TestBed.configureTestingModule({
             imports: [
                 FormsModule,
-                ReactiveFormsModule
+                ReactiveFormsModule,
+                RouterTestingModule,
+                ResourceModule
             ],
             declarations: [
                 ShoppingCartItemComponent

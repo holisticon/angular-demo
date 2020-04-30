@@ -23,5 +23,4 @@ export class OrdersStore extends StoreService<OrdersAppState> {
     @Observe([orderPlacedAction], (action: ReturnType<typeof orderPlacedAction>) => action.order)
     orderPlaced$!: Observable<Order>;
 
-
 }

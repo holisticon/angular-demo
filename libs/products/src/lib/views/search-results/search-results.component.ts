@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, NgModule } from '@angular/core';
 import { Observable } from 'rxjs';
 import { SearchResults } from '../../domain/product';
+import { ProductsStateModule } from '../../state/products-state.module';
 import { ProductsStore } from '../../state/products-store.service';
 import { ProductListModule } from '../../ui/product-list/product-list.component';
 
@@ -24,6 +25,6 @@ export class SearchResultsComponent {
 
 @NgModule({
     declarations: [SearchResultsComponent],
-    imports: [CommonModule, ProductListModule]
+    imports: [CommonModule, ProductsStateModule, ProductListModule]
 })
 export class SearchResultsModule { }

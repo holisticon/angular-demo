@@ -3,17 +3,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { ShoppingCartEffects } from './state/shopping-cart.effects';
-import { initialState as shoppingCartInitialState, shoppingCartReducer, SHOPPING_CART_FEATURE_KEY } from './state/shopping-cart.reducer';
+import { ShoppingCartEffects } from './shopping-cart.effects';
+import { initialState, shoppingCartReducer, SHOPPING_CART_FEATURE_KEY } from './shopping-cart.reducer';
 
 @NgModule({
     imports: [
         CommonModule,
         HttpClientModule,
-        StoreModule.forFeature(SHOPPING_CART_FEATURE_KEY, shoppingCartReducer, { initialState: shoppingCartInitialState }),
+        StoreModule.forFeature(SHOPPING_CART_FEATURE_KEY, shoppingCartReducer, { initialState: initialState }),
         EffectsModule.forFeature([
             ShoppingCartEffects
         ])
     ]
 })
-export class ShoppingCartModule { }
+export class ShoppingCartStateModule { }

@@ -3,24 +3,22 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { UserProfileStore } from './state/user-profile-store.service';
-import { UserProfileEffects } from './state/user-profile.effects';
-import { initialState as userProfileInitialState, userProfileReducer, USER_PROFILE_FEATURE_KEY } from './state/user-profile.reducer';
-import { UserProfileService } from './state/user-profile.service';
+import { UserProfileStore } from './user-profile-store.service';
+import { UserProfileEffects } from './user-profile.effects';
+import { initialState, userProfileReducer, USER_PROFILE_FEATURE_KEY } from './user-profile.reducer';
 
 @NgModule({
     imports: [
         CommonModule,
         HttpClientModule,
-        StoreModule.forFeature(USER_PROFILE_FEATURE_KEY, userProfileReducer, { initialState: userProfileInitialState }),
+        StoreModule.forFeature(USER_PROFILE_FEATURE_KEY, userProfileReducer, { initialState }),
         EffectsModule.forFeature([UserProfileEffects])
     ],
     providers: [
-        UserProfileEffects,
-        UserProfileService
+        UserProfileEffects
     ]
 })
-export class UserProfileModule {
+export class UserProfileStateModule {
     constructor(
         userProfileStore: UserProfileStore
     ) {

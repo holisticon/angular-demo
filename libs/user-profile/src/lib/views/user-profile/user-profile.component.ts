@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, NgModule } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Address, PaymentOption } from '../../domain/user-profile';
+import { UserProfileStateModule } from '../../state/user-profile-state.module';
 import { UserProfileStore } from '../../state/user-profile-store.service';
 import { AddressModule } from '../../ui/address/address.component';
 import { PaymentOptionModule } from '../../ui/payment-option/payment-option.component';
@@ -17,7 +18,7 @@ export class UserProfileComponent {
     paymentOptions$: Observable<PaymentOption[]>;
 
     constructor(
-        private userProfileStore: UserProfileStore
+        userProfileStore: UserProfileStore
     ) {
         this.addresses$ = userProfileStore.getAddresses();
         this.paymentOptions$ = userProfileStore.getPaymentOptions();
@@ -27,6 +28,6 @@ export class UserProfileComponent {
 
 @NgModule({
     declarations: [UserProfileComponent],
-    imports: [CommonModule, AddressModule, PaymentOptionModule]
+    imports: [CommonModule, UserProfileStateModule, AddressModule, PaymentOptionModule]
 })
 export class UserProfileModule { }
