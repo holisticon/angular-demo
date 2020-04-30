@@ -16,22 +16,58 @@
     "homepage": {
       "tags": []
     },
-    "orders": {
-      "tags": []
-    },
-    "products": {
-      "tags": []
-    },
-    "shopping-cart": {
-      "tags": []
-    },
-    "user-profile": {
-      "tags": []
-    },
     "resource": {
       "tags": []
     },
     "routing": {
+      "tags": []
+    },
+    "orders-views": {
+      "tags": []
+    },
+    "orders-ui": {
+      "tags": []
+    },
+    "orders-state": {
+      "tags": []
+    },
+    "orders-domain": {
+      "tags": []
+    },
+    "products-views": {
+      "tags": []
+    },
+    "products-ui": {
+      "tags": []
+    },
+    "products-state": {
+      "tags": []
+    },
+    "products-domain": {
+      "tags": []
+    },
+    "shopping-cart-views": {
+      "tags": []
+    },
+    "shopping-cart-ui": {
+      "tags": []
+    },
+    "shopping-cart-state": {
+      "tags": []
+    },
+    "shopping-cart-domain": {
+      "tags": []
+    },
+    "user-profile-views": {
+      "tags": []
+    },
+    "user-profile-ui": {
+      "tags": []
+    },
+    "user-profile-state": {
+      "tags": []
+    },
+    "user-profile-domain": {
       "tags": []
     }
   },

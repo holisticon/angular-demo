@@ -26,6 +26,19 @@
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
             "trace": "all"
+        },
+        {
+            "name": "Launch TSLint",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/node_modules/@angular/cli/bin/ng",
+            "args": [
+                "lint"
+            ],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "trace": "all"
         }
     ],
     "inputs": [
