@@ -36,10 +36,10 @@ describe('ShoppingCartEffects', () => {
             ]
         });
 
-        effects$ = TestBed.get(ShoppingCartEffects);
-        shoppingCartService = TestBed.get(ShoppingCartService);
-        ordersStore = TestBed.get(OrdersStore);
-        shoppingCartStore = TestBed.get(ShoppingCartStore);
+        effects$ = TestBed.inject(ShoppingCartEffects);
+        shoppingCartService = TestBed.inject(ShoppingCartService);
+        ordersStore = TestBed.inject(OrdersStore) as any;
+        shoppingCartStore = TestBed.inject(ShoppingCartStore) as any;
     });
 
     describe('addToShoppingCart', () => {

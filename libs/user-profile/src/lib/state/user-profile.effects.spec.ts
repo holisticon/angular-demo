@@ -25,8 +25,8 @@ describe('UserProfileEffects', () => {
             ]
         });
 
-        effects$ = TestBed.get(UserProfileEffects);
-        userProfileService = TestBed.get(UserProfileService);
+        effects$ = TestBed.inject(UserProfileEffects);
+        userProfileService = TestBed.inject(UserProfileService);
     });
 
     describe('loadUserProfile', () => {

@@ -25,8 +25,8 @@ describe('ProductsEffects', () => {
             ]
         });
 
-        effects$ = TestBed.get(ProductsEffects);
-        productService = TestBed.get(ProductService);
+        effects$ = TestBed.inject(ProductsEffects);
+        productService = TestBed.inject(ProductService);
     });
 
     describe('loadSearchResults', () => {

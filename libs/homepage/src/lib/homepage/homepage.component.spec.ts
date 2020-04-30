@@ -29,7 +29,7 @@ describe('HomepageComponent', () => {
         })
             .compileComponents();
 
-        productsStore = TestBed.get(ProductsStore);
+        productsStore = TestBed.inject(ProductsStore) as any;
     }));
 
     beforeEach(() => {

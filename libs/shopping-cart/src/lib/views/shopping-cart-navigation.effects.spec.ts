@@ -19,7 +19,7 @@ describe('ShoppingCartNavigationEffects', () => {
             ]
         });
 
-        effects$ = TestBed.get(ShoppingCartNavigationEffects);
+        effects$ = TestBed.inject(ShoppingCartNavigationEffects);
     });
 
     describe('loadShoppingCartOnNavigate', () => {

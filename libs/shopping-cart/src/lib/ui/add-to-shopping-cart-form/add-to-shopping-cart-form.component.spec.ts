@@ -28,7 +28,7 @@ describe('AddToShoppingCartFormComponent', () => {
         })
             .compileComponents();
 
-        shoppingCartStore = TestBed.get(ShoppingCartStore);
+        shoppingCartStore = TestBed.inject(ShoppingCartStore) as any;
     }));
 
     beforeEach(() => {

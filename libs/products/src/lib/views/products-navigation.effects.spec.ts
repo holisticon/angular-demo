@@ -19,7 +19,7 @@ describe('ProductsNavigationEffects', () => {
             ]
         });
 
-        effects$ = TestBed.get(ProductsNavigationEffects);
+        effects$ = TestBed.inject(ProductsNavigationEffects);
     });
 
     describe('loadSearchResultsOnNavigate', () => {

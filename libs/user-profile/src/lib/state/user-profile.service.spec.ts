@@ -17,8 +17,8 @@ describe('UserProfileService', () => {
             ]
         });
 
-        userProfileService = TestBed.get(UserProfileService);
-        httpController = TestBed.get(HttpTestingController);
+        userProfileService = TestBed.inject(UserProfileService);
+        httpController = TestBed.inject(HttpTestingController);
     });
 
     describe('loadUserProfile', () => {

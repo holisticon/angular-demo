@@ -20,8 +20,8 @@ describe('ShoppingCartService', () => {
             ]
         });
 
-        shoppingCartService = TestBed.get(ShoppingCartService);
-        httpController = TestBed.get(HttpTestingController);
+        shoppingCartService = TestBed.inject(ShoppingCartService);
+        httpController = TestBed.inject(HttpTestingController);
     });
 
     describe('loadShoppingCart', () => {

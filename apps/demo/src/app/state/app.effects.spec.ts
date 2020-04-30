@@ -23,9 +23,9 @@ describe('AppEffects', () => {
             ]
         });
 
-        appEffects = TestBed.get(AppEffects);
-        router = TestBed.get(Router);
-        productsStore = TestBed.get(ProductsStore);
+        appEffects = TestBed.inject(AppEffects);
+        router = TestBed.inject(Router);
+        productsStore = TestBed.inject(ProductsStore) as any;
     });
 
     describe('navigateToProductSearchResults', () => {

@@ -26,8 +26,8 @@ describe('OrdersEffects', () => {
             ]
         });
 
-        effects$ = TestBed.get(OrdersEffects);
-        orderService = TestBed.get(OrderService);
+        effects$ = TestBed.inject(OrdersEffects);
+        orderService = TestBed.inject(OrderService);
     });
 
     describe('loadOrderHistory', () => {

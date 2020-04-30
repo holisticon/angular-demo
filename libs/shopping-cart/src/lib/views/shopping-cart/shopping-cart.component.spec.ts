@@ -47,8 +47,8 @@ describe('ShoppingCartComponent', () => {
         })
             .compileComponents();
 
-        ordersStore = TestBed.get(OrdersStore);
-        shoppingCartStore = TestBed.get(ShoppingCartStore);
+        ordersStore = TestBed.inject(OrdersStore) as any;
+        shoppingCartStore = TestBed.inject(ShoppingCartStore) as any;
     }));
 
     beforeEach(() => {

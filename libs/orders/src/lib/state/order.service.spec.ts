@@ -20,8 +20,8 @@ describe('OrderService', () => {
             ]
         });
 
-        orderService = TestBed.get(OrderService);
-        httpController = TestBed.get(HttpTestingController);
+        orderService = TestBed.inject(OrderService);
+        httpController = TestBed.inject(HttpTestingController);
     });
 
     describe('loadOrders', () => {

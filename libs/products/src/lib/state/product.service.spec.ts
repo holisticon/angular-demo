@@ -19,8 +19,8 @@ describe('ProductService', () => {
             ]
         });
 
-        productService = TestBed.get(ProductService);
-        httpController = TestBed.get(HttpTestingController);
+        productService = TestBed.inject(ProductService);
+        httpController = TestBed.inject(HttpTestingController);
     });
 
     describe('searchProducts', () => {
