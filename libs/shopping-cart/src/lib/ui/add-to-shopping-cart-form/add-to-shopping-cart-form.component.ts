@@ -4,6 +4,7 @@ import { Product } from '@ngxp/products/domain';
 import { getUri } from '@ngxp/resource';
 import { toNumber } from 'lodash-es';
 import { AdditionToShoppingCart } from '../../domain/shopping-cart';
+import { ShoppingCartStateModule } from '../../state/shopping-cart-state.module';
 import { ShoppingCartStore } from '../../state/shopping-cart-store.service';
 
 @Component({
@@ -37,6 +38,6 @@ export class AddToShoppingCartFormComponent {
 @NgModule({
     declarations: [AddToShoppingCartFormComponent],
     exports: [AddToShoppingCartFormComponent],
-    imports: [FormsModule]
+    imports: [FormsModule, ShoppingCartStateModule]
 })
 export class AddToShoppingCartFormModule {}
