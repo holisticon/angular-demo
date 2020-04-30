@@ -1,7 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
-import { OrdersStore } from '@ngxp/orders';
+import { OrdersStore } from '@ngxp/orders/state';
 import { order } from '@ngxp/orders/test';
 import { ResourceWith } from '@ngxp/resource';
 import { additionToShoppingCart, shoppingCart, shoppingCartItem } from '@ngxp/shopping-cart/test';

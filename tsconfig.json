@@ -24,10 +24,16 @@
             "@ngxp/orders": ["libs/orders/src/index.ts"],
             "@ngxp/orders/test": ["libs/orders/src/test/index.ts"],
             "@ngxp/orders/views": ["libs/orders/src/lib/views/index.ts"],
+            "@ngxp/orders/ui": ["libs/orders/src/lib/ui/index.ts"],
+            "@ngxp/orders/state": ["libs/orders/src/lib/state/index.ts"],
+            "@ngxp/orders/domain": ["libs/orders/src/lib/domain/index.ts"],
             
             "@ngxp/products": ["libs/products/src/index.ts"],
             "@ngxp/products/test": ["libs/products/src/test/index.ts"],
             "@ngxp/products/views": ["libs/products/src/lib/views/index.ts"],
+            "@ngxp/products/ui": ["libs/products/src/lib/ui/index.ts"],
+            "@ngxp/products/state": ["libs/products/src/lib/state/index.ts"],
+            "@ngxp/products/domain": ["libs/products/src/lib/domain/index.ts"],
             
             "@ngxp/resource": ["libs/resource/src/index.ts"],
             "@ngxp/resource/test": ["libs/resource/src/test/index.ts"],
@@ -37,10 +43,16 @@
             "@ngxp/shopping-cart": ["libs/shopping-cart/src/index.ts"],
             "@ngxp/shopping-cart/test": ["libs/shopping-cart/src/test/index.ts"],
             "@ngxp/shopping-cart/views": ["libs/shopping-cart/src/lib/views/index.ts"],
+            "@ngxp/shopping-cart/ui": ["libs/shopping-cart/src/lib/ui/index.ts"],
+            "@ngxp/shopping-cart/state": ["libs/shopping-cart/src/lib/state/index.ts"],
+            "@ngxp/shopping-cart/domain": ["libs/shopping-cart/src/lib/domain/index.ts"],
             
             "@ngxp/user-profile": ["libs/user-profile/src/index.ts"],
             "@ngxp/user-profile/test": ["libs/user-profile/src/test/index.ts"],
             "@ngxp/user-profile/views": ["libs/user-profile/src/lib/views/index.ts"],
+            "@ngxp/user-profile/ui": ["libs/user-profile/src/lib/ui/index.ts"],
+            "@ngxp/user-profile/state": ["libs/user-profile/src/lib/state/index.ts"],
+            "@ngxp/user-profile/domain": ["libs/user-profile/src/lib/domain/index.ts"],
         },
         "rootDir": "."
     },

@@ -2,7 +2,7 @@
 import { TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { ProductsStore } from '@ngxp/products';
+import { ProductsStore } from '@ngxp/products/state';
 import { provideStoreServiceMock, StoreServiceMock } from '@ngxp/store-service/testing';
 import { take } from 'rxjs/operators';
 import { AppEffects } from './app.effects';

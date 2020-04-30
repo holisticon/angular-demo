@@ -2,8 +2,9 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, NgModule, Output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { OnNonNullChange } from '@ngxp/common';
-import { ShoppingCart } from '@ngxp/shopping-cart';
-import { AddressModule, PaymentOptionModule, UserProfile } from '@ngxp/user-profile';
+import { ShoppingCart } from '@ngxp/shopping-cart/domain';
+import { UserProfile } from '@ngxp/user-profile/domain';
+import { AddressModule, PaymentOptionModule } from '@ngxp/user-profile/ui';
 import { defaultTo, isNull } from 'lodash-es';
 import { NewOrder } from '../../domain/order';
 

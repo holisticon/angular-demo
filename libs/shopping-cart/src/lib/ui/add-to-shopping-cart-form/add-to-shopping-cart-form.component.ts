@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Product } from '@ngxp/products';
+import { Product } from '@ngxp/products/domain';
 import { getUri } from '@ngxp/resource';
 import { toNumber } from 'lodash-es';
 import { AdditionToShoppingCart } from '../../domain/shopping-cart';

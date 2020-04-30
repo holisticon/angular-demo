@@ -1,8 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, NgModule } from '@angular/core';
-import { NewOrder, OrdersStateModule, OrdersStore, PlaceOrderFormModule } from '@ngxp/orders';
+import { NewOrder } from '@ngxp/orders/domain';
+import { OrdersStateModule, OrdersStore } from '@ngxp/orders/state';
+import { PlaceOrderFormModule } from '@ngxp/orders/ui';
 import { ResourceWith } from '@ngxp/resource';
-import { UserProfile, UserProfileStateModule, UserProfileStore } from '@ngxp/user-profile';
+import { UserProfile } from '@ngxp/user-profile/domain';
+import { UserProfileStateModule, UserProfileStore } from '@ngxp/user-profile/state';
 import { Observable } from 'rxjs';
 import { QuantityUpdate, ShoppingCart, ShoppingCartItem } from '../../domain/shopping-cart';
 import { ShoppingCartStateModule } from '../../state/shopping-cart-state.module';

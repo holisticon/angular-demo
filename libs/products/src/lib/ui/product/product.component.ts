@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, NgModule } from '@angular/core';
-import { AddToShoppingCartFormModule } from '@ngxp/shopping-cart';
+import { AddToShoppingCartFormModule } from '@ngxp/shopping-cart/ui';
 import { Product } from '../../domain/product';
 import { ProductImageModule } from '../product-image/product-image.component';
 import { ProductPriceModule } from '../product-price/product-price.component';

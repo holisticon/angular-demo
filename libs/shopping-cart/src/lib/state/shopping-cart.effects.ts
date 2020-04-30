@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { OrdersStore } from '@ngxp/orders';
+import { OrdersStore } from '@ngxp/orders/state';
 import { map, switchMap } from 'rxjs/operators';
 import { ShoppingCartStore } from './shopping-cart-store.service';
 import { addToShoppingCartAction, deleteShoppingCartItemAction, itemAddedToShoppingCartAction, loadShoppingCartAction, shoppingCartUpdatedAction, updateShoppingCartItemQuantityAction } from './shopping-cart.actions';

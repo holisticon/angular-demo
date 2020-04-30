@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ProductsStore } from '@ngxp/products';
+import { ProductsStore } from '@ngxp/products/state';
 
 @Component({
     selector: 'ngxp-homepage',
