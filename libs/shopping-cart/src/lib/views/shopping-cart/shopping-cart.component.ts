@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, NgModule } from '@angular/core';
-import { NewOrder, OrdersStore, PlaceOrderFormModule } from '@ngxp/orders';
+import { NewOrder, OrdersStateModule, OrdersStore, PlaceOrderFormModule } from '@ngxp/orders';
 import { ResourceWith } from '@ngxp/resource';
 import { UserProfile, UserProfileStateModule, UserProfileStore } from '@ngxp/user-profile';
 import { Observable } from 'rxjs';
@@ -45,6 +45,6 @@ export class ShoppingCartComponent {
 
 @NgModule({
     declarations: [ShoppingCartComponent],
-    imports: [CommonModule, ShoppingCartStateModule, UserProfileStateModule, PlaceOrderFormModule, ShoppingCartIsEmptyModule, ShoppingCartItemListModule]
+    imports: [CommonModule, ShoppingCartStateModule, OrdersStateModule, UserProfileStateModule, PlaceOrderFormModule, ShoppingCartIsEmptyModule, ShoppingCartItemListModule]
 })
 export class ShoppingCartModule {}
