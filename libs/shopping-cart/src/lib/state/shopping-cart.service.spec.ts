@@ -2,7 +2,6 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { TestBed } from '@angular/core/testing';
 import { getUri } from '@ngxp/resource';
 import { additionToShoppingCart, shoppingCart, shoppingCartItem } from '@ngxp/shopping-cart/test';
-import { cold } from 'jest-marbles';
 import { QuantityUpdate } from '../domain/shopping-cart';
 import { ShoppingCartService } from './shopping-cart.service';
 
@@ -99,35 +98,7 @@ describe('ShoppingCartService', () => {
             expect(postRequest.request.method).toEqual('POST');
             expect(postRequest.request.body).toEqual(additionToShoppingCart);
 
-            postRequest.flush(null, {
-                status: 201,
-                statusText: 'Created',
-                headers: {
-                    Location: 'https://example.hypercontract.org/shoppingCart'
-                }
-            });
-
-            const getRequest = httpController.expectOne('https://example.hypercontract.org/shoppingCart');
-
-            expect(getRequest.request.method).toEqual('GET');
-
-            getRequest.flush(shoppingCart);
-
-            httpController.verify();
-        });
-
-        it('returns an empty observable if the server response contains no location header', () => {
-            const returnedObservable = shoppingCartService.addToShoppingCart(additionToShoppingCart);
-
-            returnedObservable.subscribe();
-            expect(returnedObservable).toBeObservable(cold(''));
-
-            const postRequest = httpController.expectOne('https://example.hypercontract.org/shoppingCart/items');
-
-            postRequest.flush(null, {
-                status: 201,
-                statusText: 'Created'
-            });
+            postRequest.flush(shoppingCart);
 
             httpController.verify();
         });

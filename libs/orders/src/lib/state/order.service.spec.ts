@@ -1,8 +1,6 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { newOrder, order, orders } from '@ngxp/orders/test';
-import { getUri } from '@ngxp/resource';
-import { cold } from 'jest-marbles';
 import { toNewOrderRequest } from './new-order-request.mapper';
 import { OrderService } from './order.service';
 
@@ -55,35 +53,7 @@ describe('OrderService', () => {
             expect(postRequest.request.method).toEqual('POST');
             expect(postRequest.request.body).toEqual(toNewOrderRequest(newOrder));
 
-            postRequest.flush(null, {
-                status: 201,
-                statusText: 'Created',
-                headers: {
-                    Location: `https://example.hypercontract.org/orders/${getUri(order)}`
-                }
-            });
-
-            const getRequest = httpController.expectOne(`https://example.hypercontract.org/orders/${getUri(order)}`);
-
-            expect(getRequest.request.method).toEqual('GET');
-
-            getRequest.flush(order);
-
-            httpController.verify();
-        });
-
-        it('returns an empty observable if the server response contains no location header', () => {
-            const returnedObservable = orderService.placeOrder(newOrder);
-
-            returnedObservable.subscribe();
-            expect(returnedObservable).toBeObservable(cold(''));
-
-            const postRequest = httpController.expectOne('https://example.hypercontract.org/orders');
-
-            postRequest.flush(null, {
-                status: 201,
-                statusText: 'Created'
-            });
+            postRequest.flush(order);
 
             httpController.verify();
         });
