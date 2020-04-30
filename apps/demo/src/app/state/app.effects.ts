@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Actions, createEffect } from '@ngrx/effects';
+import { createEffect } from '@ngrx/effects';
 import { ProductsStore } from '@ngxp/products';
 import { map } from 'rxjs/operators';
 
@@ -20,7 +20,6 @@ export class AppEffects {
     );
 
     constructor(
-        private actions$: Actions,
         private router: Router,
         private productsStore: ProductsStore
     ) { }
