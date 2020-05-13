@@ -3,16 +3,16 @@
 import { BlueprintFactory } from '@ngxp/builder';
 import { Resource } from '@ngxp/resource';
 import { createResourceBlueprintBuilder } from '@ngxp/resource/test';
-import { shoppingCartItemBuilder } from '@ngxp/shopping-cart/test';
 import { userProfile } from '@ngxp/user-profile/test';
 import { sample } from 'lodash-es';
 import { NewOrder } from '../../lib/domain/order';
+import { orderItemBuilder } from './order-item.data';
 
 const newOrderBlueprint: BlueprintFactory<NewOrder> = () => {
     return {
         billingAddress: () => sample(userProfile.addresses)!,
         shippingAddress: () => sample(userProfile.addresses)!,
-        shoppingCartItems: () => shoppingCartItemBuilder().buildMany(10),
+        orderItems: () => orderItemBuilder().buildMany(10),
         payment: () => sample(userProfile.paymentOptions)!
     };
 };

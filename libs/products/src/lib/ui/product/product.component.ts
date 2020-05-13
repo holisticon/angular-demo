@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, NgModule } from '@angular/core';
+import { ResourceModule } from '@ngxp/resource';
 import { AddToShoppingCartFormModule } from '@ngxp/shopping-cart/ui';
 import { Product } from '../../domain/product';
 import { ProductImageModule } from '../product-image/product-image.component';
@@ -20,6 +21,6 @@ export class ProductComponent {
 @NgModule({
     declarations: [ProductComponent],
     exports: [ProductComponent],
-    imports: [CommonModule, AddToShoppingCartFormModule, ProductImageModule, ProductPriceModule]
+    imports: [CommonModule, ResourceModule, AddToShoppingCartFormModule, ProductImageModule, ProductPriceModule]
 })
 export class ProductModule { }

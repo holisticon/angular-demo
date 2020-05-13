@@ -1,5 +1,4 @@
 import { Resource, ResourceUri } from '@ngxp/resource';
-import { ShoppingCartItem } from '@ngxp/shopping-cart/domain';
 import { Address, PaymentOption } from '@ngxp/user-profile/domain';
 
 export interface OrderHistory {
@@ -24,7 +23,7 @@ export interface OrderItem {
 }
 
 export interface NewOrder {
-    shoppingCartItems: ShoppingCartItem[];
+    orderItems: OrderItem[];
     billingAddress: Address;
     shippingAddress: Address;
     payment: PaymentOption;

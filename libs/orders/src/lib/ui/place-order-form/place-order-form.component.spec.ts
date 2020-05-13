@@ -2,7 +2,7 @@ import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { shoppingCart } from '@ngxp/shopping-cart/test';
+import { orderItems } from '@ngxp/orders/test';
 import { userProfile } from '@ngxp/user-profile/test';
 import { isNull } from 'lodash-es';
 import { take } from 'rxjs/operators';
@@ -32,7 +32,7 @@ describe('PlaceOrderFormComponent', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(PlaceOrderFormComponent);
         component = fixture.componentInstance;
-        component.shoppingCart = shoppingCart;
+        component.orderItems = orderItems;
         component.userProfile = userProfile;
         fixture.detectChanges();
     });
@@ -92,7 +92,7 @@ describe('PlaceOrderFormComponent', () => {
             billingAddress: userProfile.addresses[0],
             shippingAddress: userProfile.addresses[0],
             payment: userProfile.paymentOptions[0],
-            shoppingCartItems: shoppingCart.items
+            orderItems
         };
         const form = fixture.debugElement.query(By.css('form'));
 

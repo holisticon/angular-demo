@@ -1,13 +1,13 @@
 import { Blueprint } from '@ngxp/builder';
 import { Resource } from '@ngxp/resource';
 import { createResourceBlueprintBuilder } from '@ngxp/resource/test';
-import * as faker from 'faker';
+import { finance, name } from 'faker';
 import { PaymentOption } from '../../lib/domain/user-profile';
 
 const paymentOptionBlueprint: Blueprint<PaymentOption> = {
-    accountOwner: () => faker.name.findName(),
-    iban: () => faker.finance.iban(),
-    bic: () => faker.finance.bic()
+    accountOwner: () => name.findName(),
+    iban: () => finance.iban(),
+    bic: () => finance.bic()
 };
 export const paymentOptionBuilder = createResourceBlueprintBuilder(paymentOptionBlueprint);
 

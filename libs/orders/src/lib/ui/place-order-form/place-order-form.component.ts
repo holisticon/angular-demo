@@ -2,11 +2,10 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, NgModule, Output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { OnNonNullChange } from '@ngxp/common';
-import { ShoppingCart } from '@ngxp/shopping-cart/domain';
 import { UserProfile } from '@ngxp/user-profile/domain';
 import { AddressModule, PaymentOptionModule } from '@ngxp/user-profile/ui';
 import { defaultTo, isNull } from 'lodash-es';
-import { NewOrder } from '../../domain/order';
+import { NewOrder, OrderItem } from '../../domain/order';
 
 @Component({
     selector: 'ngxp-place-order-form',
@@ -16,7 +15,7 @@ import { NewOrder } from '../../domain/order';
 export class PlaceOrderFormComponent {
 
     @Input()
-    shoppingCart!: ShoppingCart;
+    orderItems!: OrderItem[];
 
     @Input()
     @OnNonNullChange()
@@ -51,7 +50,7 @@ export class PlaceOrderFormComponent {
         event.preventDefault();
 
         this.placeOrder.emit({
-            shoppingCartItems: this.shoppingCart.items,
+            orderItems: this.orderItems,
             billingAddress: this.form.value.billingAddress,
             shippingAddress: this.form.value.shippingAddress,
             payment: this.form.value.payment

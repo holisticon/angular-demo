@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Product } from '@ngxp/products/domain';
-import { getUri } from '@ngxp/resource';
+import { ResourceUri } from '@ngxp/resource';
 import { toNumber } from 'lodash-es';
 import { AdditionToShoppingCart } from '../../domain/shopping-cart';
 import { ShoppingCartStateModule } from '../../state/shopping-cart-state.module';
@@ -15,7 +14,7 @@ import { ShoppingCartStore } from '../../state/shopping-cart-store.service';
 export class AddToShoppingCartFormComponent {
 
     @Input()
-    product!: Product;
+    product!: ResourceUri;
 
     quantity = 1;
 
@@ -27,7 +26,7 @@ export class AddToShoppingCartFormComponent {
         event.preventDefault();
 
         const additionToShoppingCart: AdditionToShoppingCart = {
-            product: getUri(this.product),
+            product: this.product,
             quantity: toNumber(this.quantity)
         };
 
@@ -40,4 +39,4 @@ export class AddToShoppingCartFormComponent {
     exports: [AddToShoppingCartFormComponent],
     imports: [FormsModule, ShoppingCartStateModule]
 })
-export class AddToShoppingCartFormModule {}
+export class AddToShoppingCartFormModule { }

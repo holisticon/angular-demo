@@ -3,7 +3,8 @@ import { NewOrder, NewOrderRequest } from '../domain/order';
 
 export function toNewOrderRequest(newOrder: NewOrder): NewOrderRequest {
     return {
-        shoppingCartItems: newOrder.shoppingCartItems
+        // TODO rename to orderItems in API
+        shoppingCartItems: newOrder.orderItems
             .map(shoppingCartItem => getUri(shoppingCartItem)),
         payment: getUri(newOrder.payment),
         shippingAddress: getUri(newOrder.shippingAddress),

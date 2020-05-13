@@ -1,15 +1,15 @@
 import { Blueprint } from '@ngxp/builder';
 import { Resource } from '@ngxp/resource';
 import { createResourceBlueprintBuilder } from '@ngxp/resource/test';
-import * as faker from 'faker';
+import { commerce, image, lorem, random } from 'faker';
 import { sampleSize } from 'lodash-es';
 import { Product, SearchResults } from '../../lib/domain/product';
 
 const productBlueprint: Blueprint<Product> = {
-    productName: () => faker.commerce.productName(),
-    productDescription: () => faker.lorem.paragraph(),
-    price: () => faker.random.number({ min: 0.01, max: 99.99, precision: 0.01 }),
-    image: () => `${faker.image.food()}?${faker.random.uuid()}`
+    productName: () => commerce.productName(),
+    productDescription: () => lorem.paragraph(),
+    price: () => random.number({ min: 0.01, max: 99.99, precision: 0.01 }),
+    image: () => `${image.food()}?${random.uuid()}`
 };
 export const productBuilder = createResourceBlueprintBuilder(productBlueprint);
 

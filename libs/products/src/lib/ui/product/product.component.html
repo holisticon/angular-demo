@@ -9,7 +9,7 @@
 
             <ngxp-add-to-shopping-cart-form
                 class="col-4"
-                [product]="product"
+                [product]="product | toResourceUri"
             ></ngxp-add-to-shopping-cart-form>
 
             <p class="col mt-5 description">{{ product.productDescription }}</p>

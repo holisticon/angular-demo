@@ -1,8 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { product } from '@ngxp/products/test';
-import { getUri } from '@ngxp/resource';
+import { resourceUri } from '@ngxp/resource/test';
 import { provideStoreServiceMock } from '@ngxp/store-service/testing';
 import { AdditionToShoppingCart } from '../../domain/shopping-cart';
 import { ShoppingCartStore } from '../../state/shopping-cart-store.service';
@@ -34,7 +33,7 @@ describe('AddToShoppingCartFormComponent', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(AddToShoppingCartFormComponent);
         component = fixture.componentInstance;
-        component.product = product;
+        component.product = resourceUri;
         fixture.detectChanges();
     });
 
@@ -48,7 +47,7 @@ describe('AddToShoppingCartFormComponent', () => {
         const expectedQuantity = 2;
         fixture.componentInstance.quantity = expectedQuantity;
         const additionToShoppingCart: AdditionToShoppingCart = {
-            product: getUri(product),
+            product: resourceUri,
             quantity: expectedQuantity
         };
 

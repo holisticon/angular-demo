@@ -42,6 +42,6 @@ describe('ProductListEntryComponent', () => {
     it('renders the Add to Shopping Cart form', () => {
         const addToShoppingCartForm = fixture.debugElement.query(By.css('ngxp-add-to-shopping-cart-form')).nativeNode;
 
-        expect(addToShoppingCartForm.product).toBe(product);
+        expect(addToShoppingCartForm.product).toBe(getUri(product));
     });
 });

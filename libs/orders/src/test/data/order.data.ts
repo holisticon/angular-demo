@@ -3,7 +3,7 @@ import { getRandomValue } from '@ngxp/common/test';
 import { Resource } from '@ngxp/resource';
 import { createResourceBlueprintBuilder } from '@ngxp/resource/test';
 import { addressBuilder, paymentOptionBuilder } from '@ngxp/user-profile/test';
-import * as faker from 'faker';
+import { date } from 'faker';
 import { random } from 'lodash-es';
 import { Order, OrderHistory, OrderStatus } from '../../lib/domain/order';
 import { orderItemBuilder } from './order-item.data';
@@ -15,7 +15,7 @@ const orderBlueprint: BlueprintFactory<Order> = () => {
     const items = orderItemBuilder().freeze().buildMany(random(minItemCount, maxItemCount));
     return {
         billingAddress: () => addressBuilder().build(),
-        orderDate: () => faker.date.past().toISOString(),
+        orderDate: () => date.past().toISOString(),
         orderItems: () => items,
         payment: () => paymentOptionBuilder().build(),
         shippingAddress: () => addressBuilder().build(),
