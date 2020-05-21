@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Dispatch, Dispatcher, Observe, Select, Selector, StoreService } from '@ngxp/store-service';
 import { Observable } from 'rxjs';
-import { searchProductsAction } from './products.actions';
+import { loadProductAction, searchProductsAction } from './products.actions';
 import { ProductsAppState } from './products.reducer';
 import { selectProduct, selectSearchResults } from './products.selectors';
 
@@ -15,6 +15,9 @@ export class ProductsStore extends StoreService<ProductsAppState> {
 
     @Select(selectProduct)
     getProduct!: Selector<typeof selectProduct>;
+
+    @Dispatch(loadProductAction)
+    loadProduct!: Dispatcher<typeof loadProductAction>;
 
     @Dispatch(searchProductsAction)
     searchProducts!: Dispatcher<typeof searchProductsAction>;

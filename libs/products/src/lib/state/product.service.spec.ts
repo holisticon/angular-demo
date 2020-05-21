@@ -1,6 +1,7 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { products } from '@ngxp/products/test';
+import { product, products } from '@ngxp/products/test';
+import { getUri } from '@ngxp/resource';
 import { ProductService } from './product.service';
 
 describe('ProductService', () => {
@@ -35,6 +36,24 @@ describe('ProductService', () => {
             expect(request.request.method).toEqual('GET');
 
             request.flush(products);
+
+            httpController.verify();
+        });
+    });
+
+    describe('loadProduct', () => {
+        it('loads the product with the given ID from the backend', () => {
+            const productUri = getUri(product);
+            productService.loadProduct(productUri)
+                .subscribe(returnedProduct => {
+                    expect(returnedProduct).toBe(product);
+                });
+
+            const request = httpController.expectOne(productUri);
+
+            expect(request.request.method).toEqual('GET');
+
+            request.flush(product);
 
             httpController.verify();
         });
