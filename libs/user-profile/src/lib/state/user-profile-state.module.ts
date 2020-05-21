@@ -22,7 +22,6 @@ export class UserProfileStateModule {
     constructor(
         userProfileStore: UserProfileStore
     ) {
-        // TODO load via routing effect
-        setTimeout(() => userProfileStore.loadUserProfile());
+        userProfileStore.loadUserProfile();
     }
 }
