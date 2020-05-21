@@ -22,8 +22,8 @@ describe('ShoppingCartNavigationEffects', () => {
         effects$ = TestBed.inject(ShoppingCartNavigationEffects);
     });
 
-    describe('loadShoppingCartOnNavigate', () => {
-        it('dispatches a LoadShoppingCartAction when the user navigates to the Shopping Cart view', () => {
+    describe('loadShoppingCartOnNavigate$', () => {
+        it('dispatches a loadShoppingCartAction when the user navigates to the Shopping Cart view', () => {
             actions$ = hot('-a-|', { a: shoppingCartNavigationAction });
 
             expect(effects$.loadShoppingCartOnNavigate$).toBeObservable(
@@ -31,7 +31,7 @@ describe('ShoppingCartNavigationEffects', () => {
             );
         });
 
-        it('dispatches a LoadShoppingCartAction with NULL as query when the route does not reference the Shopping Cart view', () => {
+        it('dispatches a loadShoppingCartAction with NULL as query when the route does not reference the Shopping Cart view', () => {
             actions$ = hot('-a-|', { a: routerNavigationAction });
 
             expect(effects$.loadShoppingCartOnNavigate$).toBeObservable(
