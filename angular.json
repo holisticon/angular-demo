@@ -96,33 +96,6 @@
       },
       "prefix": "ngxp"
     },
-    "demo-e2e": {
-      "root": "apps/demo-e2e",
-      "sourceRoot": "apps/demo-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "apps/demo-e2e/protractor.conf.js",
-            "devServerTarget": "demo:serve"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "apps/demo-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/demo-e2e/**"
-            ]
-          }
-        }
-      },
-      "prefix": "ngxp"
-    },
     "common": {
       "root": "libs/common",
       "sourceRoot": "libs/common/src",
