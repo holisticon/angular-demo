@@ -1,5 +1,5 @@
-import { activatedRouteSnapshot, activatedViews } from '@ngxp/routing/test';
-import { getViews } from './router-state.utils';
+import { activatedRouteSnapshot, activatedViews, routeParams } from '@ngxp/routing/test';
+import { getParams, getViews } from './router-state.utils';
 
 describe('routerStateUtils', () => {
     describe('getViews', () => {
@@ -13,6 +13,11 @@ describe('routerStateUtils', () => {
             // tslint:disable-next-line: no-non-null-assertion
             expect(getViews(undefined!)).toEqual([]);
         });
+    });
 
+    describe('getParams', () => {
+        it('returns the route params of the given route snapshot', () => {
+            expect(getParams(activatedRouteSnapshot)).toEqual(routeParams);
+        });
     });
 });

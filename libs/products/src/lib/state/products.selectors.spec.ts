@@ -1,4 +1,4 @@
-import { products, searchResults } from '@ngxp/products-common/test';
+import { products, searchResults } from '@ngxp/products/test';
 import { getUri, getUris, toMap } from '@ngxp/resource';
 import { ProductsAppState } from './products.reducer';
 import { selectProduct, selectSearchResults } from './products.selectors';

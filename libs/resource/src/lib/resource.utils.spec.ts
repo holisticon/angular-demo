@@ -15,8 +15,8 @@ describe('resourceUtils', () => {
 
             expect(uris.length).toEqual(resources.length);
 
-            resources.forEach((resource, index) => {
-                const uri = getUri(resource);
+            resources.forEach((res, index) => {
+                const uri = getUri(res);
                 expect(uris[index]).toBe(uri);
             });
         });
@@ -26,12 +26,12 @@ describe('resourceUtils', () => {
         it('converts the given array of resources to a map with the resource IDs as keys', () => {
             const resourceMap = toMap(resources);
 
-            expect(Object.keys(resourceMap)).toEqual(resources.map(resource => getUri(resource)));
+            expect(Object.keys(resourceMap)).toEqual(resources.map(res => getUri(res)));
             expect(Object.values(resourceMap)).toEqual(resources);
 
-            resources.forEach(resource => {
-                const uri = getUri(resource);
-                expect(resourceMap[uri]).toBe(resource);
+            resources.forEach(res => {
+                const uri = getUri(res);
+                expect(resourceMap[uri]).toBe(res);
             });
         });
     });

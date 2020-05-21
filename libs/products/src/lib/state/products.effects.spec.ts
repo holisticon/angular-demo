@@ -1,11 +1,12 @@
 import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
-import { searchResults } from '@ngxp/products-common/test';
+import { product, searchResults } from '@ngxp/products/test';
+import { getUri } from '@ngxp/resource';
 import { hot } from 'jest-marbles';
-import { Observable, of as observableOf } from 'rxjs';
-import { ProductService } from '../product.service';
-import { loadSearchResultsAction, searchResultsLoadedAction } from './products.actions';
+import { Observable, of } from 'rxjs';
+import { ProductService } from './product.service';
+import { loadProductAction, loadSearchResultsAction, productLoadedAction, searchResultsLoadedAction } from './products.actions';
 import { ProductsEffects } from './products.effects';
 
 describe('ProductsEffects', () => {
@@ -25,19 +26,30 @@ describe('ProductsEffects', () => {
             ]
         });
 
-        effects$ = TestBed.get(ProductsEffects);
-        productService = TestBed.get(ProductService);
+        effects$ = TestBed.inject(ProductsEffects);
+        productService = TestBed.inject(ProductService);
     });
 
-    describe('loadSearchResults', () => {
+    describe('loadSearchResults$', () => {
         it('dispatches a SearchResultsLoadedAction with the search results returned by the service', () => {
-            const expectedQuery = 'query';
-            spyOn(productService, 'searchProducts').and.returnValue(observableOf(searchResults));
+            spyOn(productService, 'searchProducts').and.returnValue(of(searchResults));
 
-            actions$ = hot('-a-|', { a: loadSearchResultsAction({ queryString: expectedQuery }) });
+            actions$ = hot('-a-|', { a: loadSearchResultsAction({ queryString: 'query' }) });
 
             expect(effects$.loadSearchResults$).toBeObservable(
                 hot('-a-|', { a: searchResultsLoadedAction({ searchResults }) })
+            );
+        });
+    });
+
+    describe('loadProduct$', () => {
+        it('dispatches a ProductLoadedAction with the product returned by the service', () => {
+            spyOn(productService, 'loadProduct').and.returnValue(of(product));
+
+            actions$ = hot('-a-|', { a: loadProductAction({ id: getUri(product) }) });
+
+            expect(effects$.loadProduct$).toBeObservable(
+                hot('-a-|', { a: productLoadedAction({ product }) })
             );
         });
     });

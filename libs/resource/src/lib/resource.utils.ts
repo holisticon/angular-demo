@@ -1,5 +1,5 @@
 import { isString, zipObject } from 'lodash-es';
-import { Resource, ResourceUri } from './resource.model';
+import { Resource, ResourceUri } from './resource';
 
 export function getUri(resource: Resource<any>): ResourceUri {
     return resource['_id'];

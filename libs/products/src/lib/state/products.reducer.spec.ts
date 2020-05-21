@@ -1,7 +1,7 @@
 import { Action } from '@ngrx/store';
-import { product, products, searchResults } from '@ngxp/products-common/test';
+import { product, productBuilder, products, searchResults } from '@ngxp/products/test';
 import { getUri, getUris, toMap } from '@ngxp/resource';
-import { loadSearchResultsAction, searchResultsLoadedAction } from './products.actions';
+import { loadSearchResultsAction, productLoadedAction, searchResultsLoadedAction } from './products.actions';
 import { initialState, productsReducer, ProductsState } from './products.reducer';
 
 describe('productsReducer', () => {
@@ -10,7 +10,7 @@ describe('productsReducer', () => {
 
     it('returns the same state if the action is not applicable', () => {
         const action: Action = { type: 'some-action' };
-        const state = productsReducer(initialState, <any> action);
+        const state = productsReducer(initialState, <any>action);
         expect(state).toBe(initialState);
     });
 
@@ -55,6 +55,30 @@ describe('productsReducer', () => {
             expect(Object.values(updatedState.products).length).toBe(searchResults.products.length + preloadedProducts.length);
 
             [...preloadedProducts, ...searchResults.products]
+                .forEach(expectedProduct => {
+                    const productUri = getUri(expectedProduct);
+                    expect(updatedState.products[productUri]).toBe(expectedProduct);
+                });
+        });
+    });
+
+    describe('productLoaded', () => {
+        it('adds the product to the products map', () => {
+            const preloadedProducts = productBuilder().freeze().buildMany(2);
+            const state: ProductsState = {
+                ...initialState,
+                products: toMap(preloadedProducts)
+            };
+
+            const action = productLoadedAction({ product });
+
+            const updatedState = productsReducer(state, action);
+
+            // tslint:disable-next-line: no-non-null-assertion
+            expect(updatedState.products[getUri(product)]).toBe(product);
+            expect(Object.values(updatedState.products).length).toBe(preloadedProducts.length + 1);
+
+            [...preloadedProducts, product]
                 .forEach(expectedProduct => {
                     const productUri = getUri(expectedProduct);
                     expect(updatedState.products[productUri]).toBe(expectedProduct);

@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ProductsCommonModule } from '@ngxp/products-common';
 import { StoreModule } from '@ngrx/store';
+import { ProductsStateModule } from '@ngxp/products/state';
+import { ProductSearchFormModule } from '@ngxp/products/ui';
 import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
@@ -12,12 +13,10 @@ import { HomepageComponent } from './homepage/homepage.component';
             { path: '', pathMatch: 'full', component: HomepageComponent }
         ]),
         StoreModule.forFeature('homepage', {}),
-        ProductsCommonModule
+        ProductSearchFormModule,
+        ProductsStateModule
     ],
     declarations: [
-        HomepageComponent
-    ],
-    exports: [
         HomepageComponent
     ]
 })

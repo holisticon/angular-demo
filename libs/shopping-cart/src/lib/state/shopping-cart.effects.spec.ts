@@ -1,25 +1,26 @@
 import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
-import { OrdersCommonStore } from '@ngxp/orders-common';
-import { order } from '@ngxp/orders-common/test';
+import { OrdersStore } from '@ngxp/orders/state';
+import { order } from '@ngxp/orders/test';
 import { ResourceWith } from '@ngxp/resource';
-import { QuantityUpdate, ShoppingCartCommonStore, ShoppingCartItem } from '@ngxp/shopping-cart-common';
-import { shoppingCart, shoppingCartItem } from '@ngxp/shopping-cart-common/test';
+import { additionToShoppingCart, shoppingCart, shoppingCartItem } from '@ngxp/shopping-cart/test';
 import { provideStoreServiceMock, StoreServiceMock } from '@ngxp/store-service/testing';
 import { hot } from 'jest-marbles';
 import { Observable, of as observableOf } from 'rxjs';
 import { take } from 'rxjs/operators';
-import { ShoppingCartService } from '../shopping-cart.service';
-import { deleteShoppingCartItemAction, loadShoppingCartAction, shoppingCartUpdatedAction, updateShoppingCartItemQuantityAction } from './shopping-cart.actions';
+import { QuantityUpdate, ShoppingCartItem } from '../domain/shopping-cart';
+import { ShoppingCartStore } from './shopping-cart-store.service';
+import { addToShoppingCartAction, deleteShoppingCartItemAction, itemAddedToShoppingCartAction, loadShoppingCartAction, shoppingCartUpdatedAction, updateShoppingCartItemQuantityAction } from './shopping-cart.actions';
 import { ShoppingCartEffects } from './shopping-cart.effects';
+import { ShoppingCartService } from './shopping-cart.service';
 
 describe('ShoppingCartEffects', () => {
     let actions$: Observable<any>;
     let effects$: ShoppingCartEffects;
     let shoppingCartService: ShoppingCartService;
-    let ordersCommonStore: StoreServiceMock<OrdersCommonStore>;
-    let shoppingCartCommonStore: StoreServiceMock<ShoppingCartCommonStore>;
+    let ordersStore: StoreServiceMock<OrdersStore>;
+    let shoppingCartStore: StoreServiceMock<ShoppingCartStore>;
 
     beforeEach(() => {
         TestBed.configureTestingModule({
@@ -30,20 +31,40 @@ describe('ShoppingCartEffects', () => {
                 ShoppingCartEffects,
                 ShoppingCartService,
                 provideMockActions(() => actions$),
-                provideStoreServiceMock(OrdersCommonStore),
-                provideStoreServiceMock(ShoppingCartCommonStore)
+                provideStoreServiceMock(OrdersStore),
+                provideStoreServiceMock(ShoppingCartStore)
             ]
         });
 
-        effects$ = TestBed.get(ShoppingCartEffects);
-        shoppingCartService = TestBed.get(ShoppingCartService);
-        ordersCommonStore = TestBed.get(OrdersCommonStore);
-        shoppingCartCommonStore = TestBed.get(ShoppingCartCommonStore);
+        effects$ = TestBed.inject(ShoppingCartEffects);
+        shoppingCartService = TestBed.inject(ShoppingCartService);
+        ordersStore = TestBed.inject(OrdersStore) as any;
+        shoppingCartStore = TestBed.inject(ShoppingCartStore) as any;
+    });
+
+    describe('addToShoppingCart', () => {
+        it('calls the service with the given addition to shopping cart and dispatches a ItemAddedToShoppingCartAction with the updated shopping cart', () => {
+            const addToShoppingCartSpy = spyOn(shoppingCartService, 'addToShoppingCart').and.returnValue(observableOf(shoppingCart));
+
+            actions$ = hot('-a-|', {
+                a: addToShoppingCartAction({ additionToShoppingCart })
+            });
+
+            expect(effects$.addToShoppingCart$).toBeObservable(
+                hot('-a-|', { a: itemAddedToShoppingCartAction({ shoppingCart }) })
+            );
+
+            effects$.addToShoppingCart$
+                .pipe(take(1))
+                .subscribe(() => {
+                    expect(addToShoppingCartSpy).toHaveBeenCalledWith(additionToShoppingCart);
+                });
+        });
     });
 
     describe('itemAddedToShoppingCart', () => {
         it('dispatches a ShoppingCartUpdatedAction with the shopping cart from the ItemAddedToShoppingCartAction', () => {
-            shoppingCartCommonStore.itemAddedToShoppingCart$.next(shoppingCart);
+            shoppingCartStore.itemAddedToShoppingCart$.next(shoppingCart);
 
             expect(effects$.itemAddedToShoppingCart$).toBeObservable(
                 hot('a', { a: shoppingCartUpdatedAction({ shoppingCart }) })
@@ -115,7 +136,7 @@ describe('ShoppingCartEffects', () => {
 
     describe('reloadShoppingCart', () => {
         it('dispatches a LoadShoppingCartAction to reload the shopping cart when an order has been placed', () => {
-            ordersCommonStore.orderPlaced$.next(order);
+            ordersStore.orderPlaced$.next(order);
 
             expect(effects$.reloadShoppingCart$).toBeObservable(
                 hot('a', { a: loadShoppingCartAction() })

@@ -13,25 +13,13 @@
     "orders": {
       "tags": []
     },
-    "orders-common": {
-      "tags": []
-    },
     "products": {
-      "tags": []
-    },
-    "products-common": {
       "tags": []
     },
     "shopping-cart": {
       "tags": []
     },
-    "shopping-cart-common": {
-      "tags": []
-    },
     "user-profile": {
-      "tags": []
-    },
-    "user-profile-common": {
       "tags": []
     },
     "resource": {

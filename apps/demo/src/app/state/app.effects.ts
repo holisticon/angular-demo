@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Actions, createEffect } from '@ngrx/effects';
-import { ProductsCommonStore } from '@ngxp/products-common';
+import { createEffect } from '@ngrx/effects';
+import { ProductsStore } from '@ngxp/products/state';
 import { map } from 'rxjs/operators';
 
 @Injectable()
 export class AppEffects {
 
     navigateToProductSearchResults$ = createEffect(
-        () => this.productsCommonStore.searchProducts$.pipe(
+        () => this.productsStore.searchProducts$.pipe(
             map(query => {
                 this.router.navigate(
                     ['products'],
@@ -20,8 +20,7 @@ export class AppEffects {
     );
 
     constructor(
-        private actions$: Actions,
         private router: Router,
-        private productsCommonStore: ProductsCommonStore
-    ) {}
+        private productsStore: ProductsStore
+    ) { }
 }

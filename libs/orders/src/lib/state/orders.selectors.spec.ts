@@ -1,4 +1,4 @@
-import { orderHistory } from '@ngxp/orders-common/test';
+import { orderHistory } from '@ngxp/orders/test';
 import { OrdersAppState } from './orders.reducer';
 import { selectOrderHistory } from './orders.selectors';
 

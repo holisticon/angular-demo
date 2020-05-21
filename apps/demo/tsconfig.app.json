@@ -8,11 +8,6 @@
     "src/polyfills.ts"
   ],
   "include": [
-    "**/*.d.ts",
-    "../../libs/homepage/src/index.ts",
-    "../../libs/products/src/index.ts",
-    "../../libs/shopping-cart/src/index.ts",
-    "../../libs/user-profile/src/index.ts",
-    "../../libs/orders/src/index.ts"
+    "**/*.d.ts"
   ]
 }

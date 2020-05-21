@@ -1,5 +1,6 @@
 import { Blueprint, BlueprintBuilder, createBlueprintBuilder } from '@ngxp/builder';
 import { ActivatedRouteSnapshot } from '@ngxp/routing';
+import { lorem } from 'faker';
 import { defaultTo } from 'lodash-es';
 import { applyChildren, applyQueryParamsOnChildren, applyUrlAndRouteConfig, getUrl } from './activated-route-snapshot-data-utils';
 import { Views } from './views.data';
@@ -11,8 +12,8 @@ const paths = {
     page: ''
 }
 
-export const queryParamName = 'someQuery';
-export const queryParams = { [queryParamName]: 'someValue' };
+export const queryParamName = 'someQueryParam';
+export const queryParams = { [queryParamName]: 'someQueryValue' };
 
 const activatedRouteSnapshotBlueprint: Blueprint<ActivatedRouteSnapshot> = {
     data: () => ({}),
@@ -37,16 +38,22 @@ export function activatedRouteSnapshotBuilder(
         .transform(routeSnapshot => applyQueryParamsOnChildren(routeSnapshot));
 }
 
+export const pageRouteParamName = 'page';
+export const pageRouteParams = { [pageRouteParamName]: lorem.word() };
 export const pageRouteSnapshot = activatedRouteSnapshotBuilder(paths.page, {
-    data: { view: Views.FeaturePage }
+    data: { view: Views.FeaturePage },
+    params: pageRouteParams
 }).build();
 
 export const libraryRootRouteSnapshot = activatedRouteSnapshotBuilder(paths.libraryRoot, {
     children: [pageRouteSnapshot]
 }).build();
 
+export const libraryRouteParamName = 'library';
+export const libraryRouteParams = { [libraryRouteParamName]: lorem.word() };
 export const libraryRouteSnapshot = activatedRouteSnapshotBuilder(paths.library, {
     data: { view: Views.FeatureRoot },
+    params: libraryRouteParams,
     children: [libraryRootRouteSnapshot]
 }).build();
 
@@ -56,3 +63,7 @@ export const activatedRouteSnapshot = activatedRouteSnapshotBuilder(paths.appRoo
 }).build();
 
 export const activatedRouteUrl = getUrl(activatedRouteSnapshot);
+export const routeParams = {
+    ...libraryRouteParams,
+    ...pageRouteParams
+}

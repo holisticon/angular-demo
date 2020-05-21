@@ -1,6 +1,6 @@
-import { activatedRouteSnapshot, libraryRootRouteSnapshot, libraryRouteSnapshot, pageRouteSnapshot, queryParamName, queryParams, routerNavigatedActionBuilder, routerStateSnapshotBuilder, Views } from '@ngxp/routing/test';
+import { activatedRouteSnapshot, libraryRootRouteSnapshot, libraryRouteSnapshot, pageRouteParamName, pageRouteParams, pageRouteSnapshot, queryParamName, queryParams, routerNavigatedActionBuilder, routerStateSnapshotBuilder, Views } from '@ngxp/routing/test';
 import { hot } from 'jest-marbles';
-import { extractQueryParam, filterNavigationTo } from './routing-operators';
+import { extractQueryParam, extractRouteParam, filterNavigationTo } from './routing-operators';
 
 const pageNavigationAction = routerNavigatedActionBuilder(routerStateSnapshotBuilder(pageRouteSnapshot).build()).build();
 const libraryRootNavigationAction = routerNavigatedActionBuilder(routerStateSnapshotBuilder(libraryRootRouteSnapshot).build()).build();
@@ -61,6 +61,48 @@ describe('routingOperators', () => {
             });
 
             const queryParam$ = extractQueryParam('invalid')(action$);
+
+            expect(queryParam$).toBeObservable(hot('a', {
+                a: undefined
+            }));
+        });
+    });
+
+    describe('extractRouteParam', () => {
+        it('returns route parameter value for the given parameter name', () => {
+            const expectedRouteParamValue = pageRouteParams[pageRouteParamName];
+
+            const action$ = hot('a', {
+                a: activatedNavigationAction
+            });
+
+            const routeParam$ = extractRouteParam(pageRouteParamName)(action$);
+
+            expect(routeParam$).toBeObservable(hot('a', {
+                a: expectedRouteParamValue
+            }));
+        });
+
+        it('returns the given default value if no route parameter with the given name is present', () => {
+            const expectedRouteParamValue = 'expected';
+
+            const action$ = hot('a', {
+                a: activatedNavigationAction
+            });
+
+            const queryParam$ = extractRouteParam('invalid', expectedRouteParamValue)(action$);
+
+            expect(queryParam$).toBeObservable(hot('a', {
+                a: expectedRouteParamValue
+            }));
+        });
+
+        it('returns undefined if no route parameter with the given name is present and no default value is given', () => {
+            const action$ = hot('a', {
+                a: activatedNavigationAction
+            });
+
+            const queryParam$ = extractRouteParam('invalid')(action$);
 
             expect(queryParam$).toBeObservable(hot('a', {
                 a: undefined

@@ -98,14 +98,6 @@
     "nx-enforce-module-boundaries": [
       true,
       {
-        "allow": [
-          "@ngxp/common/test",
-          "@ngxp/orders-common/test",
-          "@ngxp/products-common/test",
-          "@ngxp/resource/test",
-          "@ngxp/shopping-cart-common/test",
-          "@ngxp/user-profile-common/test"
-        ],
         "depConstraints": [
           {
             "sourceTag": "*",
