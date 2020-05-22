@@ -20,6 +20,7 @@
             "assets": [
               "apps/demo/src/assets",
               "apps/demo/src/favicon.ico",
+              "apps/demo/src/routes.json",
               "apps/demo/src/manifest.json"
             ],
             "styles": [
