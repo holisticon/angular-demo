@@ -1,1 +1,2 @@
-export { Product } from './product';
+export { SearchResults } from './product';
+export * from './public-api';

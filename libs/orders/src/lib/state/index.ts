@@ -1,2 +1,2 @@
-export { OrdersStateModule } from './orders-state.module';
-export { OrdersStore } from './orders-store.service';
+export { loadOrderHistoryAction } from './orders.actions';
+export * from './public-api';

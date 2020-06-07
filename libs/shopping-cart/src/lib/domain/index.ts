@@ -1,1 +1,4 @@
-export { ShoppingCart, ShoppingCartItem } from './shopping-cart';
+export * from './public-api';
+export { AdditionToShoppingCart, QuantityUpdate } from './shopping-cart';
+export { shoppingCartIsEmpty } from './shopping-cart.util';
+

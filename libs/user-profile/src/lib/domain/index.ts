@@ -1,1 +1,1 @@
-export { Address, PaymentOption, UserProfile } from './user-profile';
+export * from './public-api';

@@ -5,7 +5,6 @@ import { expectElementFromFixture } from '@ngxp/common/test';
 import { searchResults } from '@ngxp/products/test';
 import { provideStoreServiceMock } from '@ngxp/store-service/testing';
 import { ProductsStore } from '../../state';
-import { ProductListComponent } from '../../ui';
 import { SearchResultsComponent } from './search-results.component';
 
 describe('SearchResultsComponent', () => {
@@ -36,7 +35,7 @@ describe('SearchResultsComponent', () => {
     });
 
     it('renders the search results as ngxp-product-list', () => {
-        const productList: ProductListComponent = fixture.debugElement.query(By.css('ngxp-product-list')).nativeElement
+        const productList = fixture.debugElement.query(By.css('ngxp-product-list')).nativeElement
 
         expectElementFromFixture(fixture, 'ngxp-product-list').not.toBeNull();
         expect(productList.products).toEqual(searchResults.products);

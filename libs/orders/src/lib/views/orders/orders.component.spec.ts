@@ -4,7 +4,6 @@ import { By } from '@angular/platform-browser';
 import { orderHistory } from '@ngxp/orders/test';
 import { provideStoreServiceMock } from '@ngxp/store-service/testing';
 import { OrdersStore } from '../../state';
-import { OrderComponent } from '../../ui';
 import { OrdersComponent } from './orders.component';
 
 describe('OrdersComponent', () => {
@@ -40,7 +39,7 @@ describe('OrdersComponent', () => {
         expect(orderComponents.length).toBe(orderComponents.length);
 
         orderHistory.orders.forEach((order, index) => {
-            const orderComponent: OrderComponent = orderComponents[index].nativeElement;
+            const orderComponent = orderComponents[index].nativeElement;
             expect(orderComponent.order).toEqual(order);
         });
     });

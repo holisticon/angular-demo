@@ -1,2 +1,1 @@
-export { UserProfileRoutingModule } from './user-profile-routing.module';
-
+export * from './public-api';

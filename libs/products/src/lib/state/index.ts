@@ -1,2 +1,2 @@
-export { ProductsStateModule } from './products-state.module'
-export { ProductsStore } from './products-store.service'
+export { loadProductAction, loadSearchResultsAction } from './products.actions';
+export * from './public-api';

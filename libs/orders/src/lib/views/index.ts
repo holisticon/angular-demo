@@ -1,2 +1,1 @@
-export { OrdersRoutingModule } from './orders-routing.module';
-
+export * from './public-api';

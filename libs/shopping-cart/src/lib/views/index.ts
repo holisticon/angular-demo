@@ -1,2 +1,1 @@
-export { ShoppingCartRoutingModule } from './shopping-cart-routing.module';
-
+export * from './public-api';

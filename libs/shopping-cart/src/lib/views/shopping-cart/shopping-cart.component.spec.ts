@@ -11,7 +11,6 @@ import { UserProfileStore } from '@ngxp/user-profile/state';
 import { userProfile } from '@ngxp/user-profile/test';
 import { QuantityUpdate, ShoppingCartItem } from '../../domain';
 import { ShoppingCartStore } from '../../state';
-import { ShoppingCartItemListComponent } from '../../ui';
 import { ShoppingCartIsEmptyPipe } from './shopping-cart-is-empty.pipe';
 import { ShoppingCartComponent } from './shopping-cart.component';
 
@@ -58,7 +57,7 @@ describe('ShoppingCartComponent', () => {
     });
 
     it('renders the shopping cart as ngxp-shopping-cart-item-list', () => {
-        const shoppingCartItemList: ShoppingCartItemListComponent = fixture.debugElement.query(By.css('ngxp-shopping-cart-item-list')).nativeElement;
+        const shoppingCartItemList = fixture.debugElement.query(By.css('ngxp-shopping-cart-item-list')).nativeElement;
 
         expect(shoppingCartItemList.shoppingCart).toEqual(shoppingCart);
     });
@@ -66,7 +65,7 @@ describe('ShoppingCartComponent', () => {
     it('renders the place order form when the shopping cart contains items', () => {
         const placeOrderForm = fixture.debugElement.query(By.css('ngxp-place-order-form')).nativeElement;
 
-        expect(placeOrderForm.shoppingCart).toEqual(shoppingCart);
+        expect(placeOrderForm.orderItems).toEqual(shoppingCart.items);
         expect(placeOrderForm.userProfile).toEqual(userProfile);
     });
 

@@ -1,1 +1,2 @@
-export { PlaceOrderFormModule } from './place-order-form/place-order-form.component';
+export { OrderModule } from './order/order.component';
+export * from './public-api';
