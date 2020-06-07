@@ -1,10 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, NgModule } from '@angular/core';
 import { Observable } from 'rxjs';
-import { OrderHistory } from '../../domain/order';
-import { OrdersStateModule } from '../../state/orders-state.module';
-import { OrdersStore } from '../../state/orders-store.service';
-import { OrderModule } from '../../ui/order/order.component';
+import { OrderHistory } from '../../domain';
+import { OrdersStateModule, OrdersStore } from '../../state';
+import { OrderModule } from '../../ui';
 
 @Component({
     selector: 'ngxp-orders',

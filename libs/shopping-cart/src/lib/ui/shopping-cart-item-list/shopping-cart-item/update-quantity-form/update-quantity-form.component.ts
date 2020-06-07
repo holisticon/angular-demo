@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, NgModule, Outp
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OnNonNullChange } from '@ngxp/common';
 import { Resource, ResourceWith } from '@ngxp/resource';
-import { QuantityUpdate, ShoppingCartItem } from '../../../../domain/shopping-cart';
+import { QuantityUpdate, ShoppingCartItem } from '../../../../domain';
 
 @Component({
     selector: 'ngxp-update-quantity-form',
@@ -39,4 +39,4 @@ export class UpdateQuantityFormComponent {
     exports: [UpdateQuantityFormComponent],
     imports: [FormsModule, ReactiveFormsModule]
 })
-export class UpdateQuantityFormModule {}
+export class UpdateQuantityFormModule { }

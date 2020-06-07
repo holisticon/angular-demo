@@ -5,7 +5,7 @@ import { OnNonNullChange } from '@ngxp/common';
 import { UserProfile } from '@ngxp/user-profile/domain';
 import { AddressModule, PaymentOptionModule } from '@ngxp/user-profile/ui';
 import { defaultTo, isNull } from 'lodash-es';
-import { NewOrder, OrderItem } from '../../domain/order';
+import { NewOrder, OrderItem } from '../../domain';
 
 @Component({
     selector: 'ngxp-place-order-form',

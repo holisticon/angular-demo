@@ -1,8 +1,8 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { ResourceMap } from '@ngxp/resource';
 import { isNull } from 'lodash-es';
-import { Product, SearchResults } from '../domain/product';
-import { ProductsAppState, ProductsState, PRODUCTS_FEATURE_KEY } from '../state/products.reducer';
+import { Product, SearchResults } from '../domain';
+import { ProductsAppState, ProductsState, PRODUCTS_FEATURE_KEY } from './products.reducer';
 
 const selectProductsState = createFeatureSelector<ProductsAppState, ProductsState>(PRODUCTS_FEATURE_KEY);
 

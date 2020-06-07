@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, NgModule } from '@angular/core';
-import { Product } from '../../domain/product';
+import { Product } from '../../domain';
 
 @Component({
     selector: 'ngxp-product-image',

@@ -4,7 +4,7 @@ import { ordersNavigationAction } from '@ngxp/orders/test';
 import { routerNavigationAction } from '@ngxp/routing/test';
 import { cold, hot } from 'jest-marbles';
 import { Observable } from 'rxjs';
-import { loadOrderHistoryAction } from '../state/orders.actions';
+import { loadOrderHistoryAction } from '../state';
 import { OrdersNavigationEffects } from './orders-navigation.effects';
 
 describe('OrdersNavigationEffects', () => {

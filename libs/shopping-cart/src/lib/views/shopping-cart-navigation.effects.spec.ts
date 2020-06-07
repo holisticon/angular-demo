@@ -4,7 +4,7 @@ import { routerNavigationAction } from '@ngxp/routing/test';
 import { shoppingCartNavigationAction } from '@ngxp/shopping-cart/test';
 import { cold, hot } from 'jest-marbles';
 import { Observable } from 'rxjs';
-import { loadShoppingCartAction } from '../state/shopping-cart.actions';
+import { loadShoppingCartAction } from '../state';
 import { ShoppingCartNavigationEffects } from './shopping-cart-navigation.effects';
 
 describe('ShoppingCartNavigationEffects', () => {

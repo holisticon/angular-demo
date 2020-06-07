@@ -4,8 +4,7 @@ import { decodeResourceUriFromRouteParam } from '@ngxp/resource';
 import { extractQueryParam, extractRouteParam, filterNavigationTo } from '@ngxp/routing';
 import { isEmpty, isUndefined } from 'lodash-es';
 import { filter, map, switchMap } from 'rxjs/operators';
-import { ProductsStore } from '../state';
-import { loadProductAction, loadSearchResultsAction } from '../state/products.actions';
+import { loadProductAction, loadSearchResultsAction, ProductsStore } from '../state';
 import { ProductsViews } from './products.views';
 
 @Injectable()

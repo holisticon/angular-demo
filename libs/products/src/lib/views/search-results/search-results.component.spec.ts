@@ -4,8 +4,8 @@ import { By } from '@angular/platform-browser';
 import { expectElementFromFixture } from '@ngxp/common/test';
 import { searchResults } from '@ngxp/products/test';
 import { provideStoreServiceMock } from '@ngxp/store-service/testing';
-import { ProductsStore } from '../../state/products-store.service';
-import { ProductListComponent } from '../../ui/product-list/product-list.component';
+import { ProductsStore } from '../../state';
+import { ProductListComponent } from '../../ui';
 import { SearchResultsComponent } from './search-results.component';
 
 describe('SearchResultsComponent', () => {

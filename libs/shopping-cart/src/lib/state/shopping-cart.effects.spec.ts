@@ -9,7 +9,7 @@ import { provideStoreServiceMock, StoreServiceMock } from '@ngxp/store-service/t
 import { hot } from 'jest-marbles';
 import { Observable, of as observableOf } from 'rxjs';
 import { take } from 'rxjs/operators';
-import { QuantityUpdate, ShoppingCartItem } from '../domain/shopping-cart';
+import { QuantityUpdate, ShoppingCartItem } from '../domain';
 import { ShoppingCartStore } from './shopping-cart-store.service';
 import { addToShoppingCartAction, deleteShoppingCartItemAction, itemAddedToShoppingCartAction, loadShoppingCartAction, shoppingCartUpdatedAction, updateShoppingCartItemQuantityAction } from './shopping-cart.actions';
 import { ShoppingCartEffects } from './shopping-cart.effects';

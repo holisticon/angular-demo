@@ -1,5 +1,5 @@
 import { emptyShoppingCart, shoppingCart } from '@ngxp/shopping-cart/test';
-import { shoppingCartIsEmpty } from '../../domain/shopping-cart.util';
+import { shoppingCartIsEmpty } from '../../domain';
 import { ShoppingCartIsEmptyPipe } from './shopping-cart-is-empty.pipe';
 
 describe('ShoppingCartIsEmptyPipe', () => {

@@ -6,7 +6,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { ResourceModule, ResourceWith } from '@ngxp/resource';
 import { shoppingCartItem } from '@ngxp/shopping-cart/test';
 import { take } from 'rxjs/operators';
-import { QuantityUpdate, ShoppingCartItem } from '../../../domain/shopping-cart';
+import { QuantityUpdate, ShoppingCartItem } from '../../../domain';
 import { ShoppingCartItemComponent } from './shopping-cart-item.component';
 
 describe('ShoppingCartItemComponent', () => {

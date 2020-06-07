@@ -3,10 +3,9 @@ import { ChangeDetectionStrategy, Component, NgModule } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { decodeResourceUriFromRouteParam } from '@ngxp/resource';
 import { Observable } from 'rxjs';
-import { Product } from '../../domain/product';
-import { ProductsStateModule } from '../../state/products-state.module';
-import { ProductsStore } from '../../state/products-store.service';
-import { ProductModule } from '../../ui/product/product.component';
+import { Product } from '../../domain';
+import { ProductsStateModule, ProductsStore } from '../../state';
+import { ProductModule } from '../../ui';
 
 @Component({
     selector: 'ngxp-product-details',

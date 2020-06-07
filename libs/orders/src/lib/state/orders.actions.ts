@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { NewOrder, Order, OrderHistory } from '../domain/order';
+import { NewOrder, Order, OrderHistory } from '../domain';
 
 export const loadOrderHistoryAction = createAction(
     '[Orders] load order history'

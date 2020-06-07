@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Resource } from '@ngxp/resource';
-import { NewOrder, Order, OrderHistory } from '../domain/order';
+import { NewOrder, Order, OrderHistory } from '../domain';
 import { toNewOrderRequest } from './new-order-request.mapper';
 
 @Injectable({

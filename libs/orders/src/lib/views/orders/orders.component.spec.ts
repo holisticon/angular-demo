@@ -3,8 +3,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { orderHistory } from '@ngxp/orders/test';
 import { provideStoreServiceMock } from '@ngxp/store-service/testing';
-import { OrdersStore } from '../../state/orders-store.service';
-import { OrderComponent } from '../../ui/order/order.component';
+import { OrdersStore } from '../../state';
+import { OrderComponent } from '../../ui';
 import { OrdersComponent } from './orders.component';
 
 describe('OrdersComponent', () => {

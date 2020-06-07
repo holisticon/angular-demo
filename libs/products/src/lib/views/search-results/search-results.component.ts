@@ -1,10 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, NgModule } from '@angular/core';
 import { Observable } from 'rxjs';
-import { SearchResults } from '../../domain/product';
-import { ProductsStateModule } from '../../state/products-state.module';
-import { ProductsStore } from '../../state/products-store.service';
-import { ProductListModule } from '../../ui/product-list/product-list.component';
+import { SearchResults } from '../../domain';
+import { ProductsStateModule, ProductsStore } from '../../state';
+import { ProductListModule } from '../../ui';
 
 @Component({
     selector: 'ngxp-search-results',

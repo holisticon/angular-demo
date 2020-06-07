@@ -6,8 +6,7 @@ import { provideStoreServiceMock, StoreServiceMock } from '@ngxp/store-service/t
 import { cold, hot } from 'jest-marbles';
 import { Observable } from 'rxjs';
 import { getUri } from '../../../../resource/src';
-import { ProductsStore } from '../state';
-import { loadProductAction, loadSearchResultsAction } from '../state/products.actions';
+import { loadProductAction, loadSearchResultsAction, ProductsStore } from '../state';
 import { ProductsNavigationEffects } from './products-navigation.effects';
 
 describe('ProductsNavigationEffects', () => {

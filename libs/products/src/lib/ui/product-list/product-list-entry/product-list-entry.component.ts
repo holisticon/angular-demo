@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, Input, NgModule } from '@angular/co
 import { RouterModule } from '@angular/router';
 import { ResourceModule } from '@ngxp/resource';
 import { AddToShoppingCartFormModule } from '@ngxp/shopping-cart/ui';
-import { Product } from '../../../domain/product';
+import { Product } from '../../../domain';
 import { ProductImageModule } from '../../product-image/product-image.component';
 import { ProductPriceModule } from '../../product-price/product-price.component';
 

@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { ReducerArgs } from '@ngxp/common';
-import { UserProfile } from '../domain/user-profile';
+import { UserProfile } from '../domain';
 import { userProfileLoadedAction } from './user-profile.actions';
 
 export const USER_PROFILE_FEATURE_KEY = 'userProfile';

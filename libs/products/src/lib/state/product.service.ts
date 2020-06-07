@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Resource, ResourceUri } from '@ngxp/resource';
 import { isNull } from 'lodash-es';
-import { Product, SearchResults } from '../domain/product';
+import { Product, SearchResults } from '../domain';
 
 @Injectable({
     providedIn: 'root'

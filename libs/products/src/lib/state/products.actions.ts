@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { Resource, ResourceUri } from '@ngxp/resource';
-import { Product, SearchResults } from '../domain/product';
+import { Product, SearchResults } from '../domain';
 
 export const searchProductsAction = createAction(
     '[Products] search products',

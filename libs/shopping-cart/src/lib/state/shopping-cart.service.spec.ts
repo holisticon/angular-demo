@@ -2,7 +2,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { TestBed } from '@angular/core/testing';
 import { getUri } from '@ngxp/resource';
 import { additionToShoppingCart, shoppingCart, shoppingCartItem } from '@ngxp/shopping-cart/test';
-import { QuantityUpdate } from '../domain/shopping-cart';
+import { QuantityUpdate } from '../domain';
 import { ShoppingCartService } from './shopping-cart.service';
 
 describe('ShoppingCartService', () => {

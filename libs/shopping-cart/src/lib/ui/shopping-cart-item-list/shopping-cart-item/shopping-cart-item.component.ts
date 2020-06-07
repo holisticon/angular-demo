@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, NgModule, Output } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ResourceModule, ResourceWith } from '@ngxp/resource';
-import { QuantityUpdate, ShoppingCartItem } from '../../../domain/shopping-cart';
+import { QuantityUpdate, ShoppingCartItem } from '../../../domain';
 import { UpdateQuantityFormModule } from './update-quantity-form/update-quantity-form.component';
 
 @Component({
@@ -36,4 +36,4 @@ export class ShoppingCartItemComponent {
     exports: [ShoppingCartItemComponent],
     imports: [CommonModule, RouterModule, ResourceModule, UpdateQuantityFormModule]
 })
-export class ShoppingCartItemModule {}
+export class ShoppingCartItemModule { }

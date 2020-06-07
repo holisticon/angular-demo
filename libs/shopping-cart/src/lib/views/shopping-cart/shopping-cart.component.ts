@@ -7,10 +7,9 @@ import { ResourceWith } from '@ngxp/resource';
 import { UserProfile } from '@ngxp/user-profile/domain';
 import { UserProfileStateModule, UserProfileStore } from '@ngxp/user-profile/state';
 import { Observable } from 'rxjs';
-import { QuantityUpdate, ShoppingCart, ShoppingCartItem } from '../../domain/shopping-cart';
-import { ShoppingCartStateModule } from '../../state/shopping-cart-state.module';
-import { ShoppingCartStore } from '../../state/shopping-cart-store.service';
-import { ShoppingCartItemListModule } from '../../ui/shopping-cart-item-list/shopping-cart-item-list.component';
+import { QuantityUpdate, ShoppingCart, ShoppingCartItem } from '../../domain';
+import { ShoppingCartStateModule, ShoppingCartStore } from '../../state';
+import { ShoppingCartItemListModule } from '../../ui';
 import { ShoppingCartIsEmptyModule } from './shopping-cart-is-empty.pipe';
 
 @Component({
@@ -50,4 +49,4 @@ export class ShoppingCartComponent {
     declarations: [ShoppingCartComponent],
     imports: [CommonModule, ShoppingCartStateModule, OrdersStateModule, UserProfileStateModule, PlaceOrderFormModule, ShoppingCartIsEmptyModule, ShoppingCartItemListModule]
 })
-export class ShoppingCartModule {}
+export class ShoppingCartModule { }

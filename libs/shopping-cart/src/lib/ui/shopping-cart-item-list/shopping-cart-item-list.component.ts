@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, NgModule, Output } from '@angular/core';
 import { ResourceWith } from '@ngxp/resource';
-import { QuantityUpdate, ShoppingCart, ShoppingCartItem } from '../../domain/shopping-cart';
+import { QuantityUpdate, ShoppingCart, ShoppingCartItem } from '../../domain';
 import { ShoppingCartItemModule } from './shopping-cart-item/shopping-cart-item.component';
 
 @Component({
@@ -35,4 +35,4 @@ export class ShoppingCartItemListComponent {
     exports: [ShoppingCartItemListComponent],
     imports: [CommonModule, ShoppingCartItemModule]
 })
-export class ShoppingCartItemListModule {}
+export class ShoppingCartItemListModule { }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Dispatch, Dispatcher, Observe, Select, Selector, StoreService } from '@ngxp/store-service';
 import { Observable } from 'rxjs';
-import { ShoppingCart } from '../domain/shopping-cart';
+import { ShoppingCart } from '../domain';
 import { addToShoppingCartAction, deleteShoppingCartItemAction, itemAddedToShoppingCartAction, updateShoppingCartItemQuantityAction } from './shopping-cart.actions';
 import { ShoppingCartAppState } from './shopping-cart.reducer';
 import { selectShoppingCart } from './shopping-cart.selectors';

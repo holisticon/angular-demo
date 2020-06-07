@@ -2,7 +2,7 @@
 
 import { NgModule, Pipe } from '@angular/core';
 import { FunctionPipe } from '@ngxp/common';
-import { shoppingCartIsEmpty } from '../../domain/shopping-cart.util';
+import { shoppingCartIsEmpty } from '../../domain';
 
 @Pipe({
     name: 'shoppingCartIsEmpty'
@@ -17,4 +17,4 @@ export class ShoppingCartIsEmptyPipe extends FunctionPipe {
     declarations: [ShoppingCartIsEmptyPipe],
     exports: [ShoppingCartIsEmptyPipe]
 })
-export class ShoppingCartIsEmptyModule {}
+export class ShoppingCartIsEmptyModule { }

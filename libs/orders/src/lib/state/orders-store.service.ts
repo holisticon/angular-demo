@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Dispatch, Dispatcher, Observe, Select, Selector, StoreService } from '@ngxp/store-service';
 import { Observable } from 'rxjs';
-import { Order } from '../domain/order';
+import { Order } from '../domain';
 import { loadOrderHistoryAction, orderPlacedAction, placeOrderAction } from './orders.actions';
 import { OrdersAppState } from './orders.reducer';
 import { selectOrderHistory } from './orders.selectors';
