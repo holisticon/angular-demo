@@ -90,7 +90,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!apps/demo/**"
+              "!apps/demo/**/*"
             ]
           }
         }
@@ -120,7 +120,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/common/**"
+              "!libs/common/**/*"
             ]
           }
         }
@@ -150,7 +150,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/homepage/**"
+              "!libs/homepage/**/*"
             ]
           }
         }
@@ -180,7 +180,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/orders/**"
+              "!libs/orders/**/*"
             ]
           }
         }
@@ -210,7 +210,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/products/**"
+              "!libs/products/**/*"
             ]
           }
         }
@@ -240,7 +240,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/shopping-cart/**"
+              "!libs/shopping-cart/**/*"
             ]
           }
         }
@@ -270,7 +270,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/user-profile/**"
+              "!libs/user-profile/**/*"
             ]
           }
         }
@@ -292,7 +292,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/resource/**"
+              "!libs/resource/**/*"
             ]
           }
         },
