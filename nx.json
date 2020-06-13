@@ -27,6 +27,12 @@
     },
     "routing": {
       "tags": []
+    },
+    "demo-e2e": {
+      "tags": [],
+      "implicitDependencies": [
+        "demo"
+      ]
     }
   },
   "tasksRunnerOptions": {

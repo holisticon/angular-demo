@@ -15,6 +15,8 @@
         "typeRoots": ["node_modules/@types"],
         "lib": ["es2017", "dom"],
         "baseUrl": ".",
+        "forceConsistentCasingInFileNames": true,
+        "removeComments": true,
         "paths": {
             "@ngxp/common": ["libs/common/src/index.ts"],
             "@ngxp/common/test": ["libs/common/src/test/index.ts"],
@@ -52,7 +54,7 @@
             "@ngxp/user-profile/views": ["libs/user-profile/src/lib/views/public-api.ts"],
             "@ngxp/user-profile/ui": ["libs/user-profile/src/lib/ui/public-api.ts"],
             "@ngxp/user-profile/state": ["libs/user-profile/src/lib/state/public-api.ts"],
-            "@ngxp/user-profile/domain": ["libs/user-profile/src/lib/domain/public-api.ts"],
+            "@ngxp/user-profile/domain": ["libs/user-profile/src/lib/domain/public-api.ts"]
         },
         "rootDir": "."
     },
