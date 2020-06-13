@@ -1,51 +1,56 @@
 {
   "npmScope": "ngxp",
-  "projects": {
-    "demo": {
-      "tags": []
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
     },
-    "common": {
-      "tags": []
-    },
-    "homepage": {
-      "tags": []
-    },
-    "orders": {
-      "tags": []
-    },
-    "products": {
-      "tags": []
-    },
-    "shopping-cart": {
-      "tags": []
-    },
-    "user-profile": {
-      "tags": []
-    },
-    "resource": {
-      "tags": []
-    },
-    "routing": {
-      "tags": []
-    },
-    "demo-e2e": {
-      "tags": [],
-      "implicitDependencies": [
-        "demo"
-      ]
-    }
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
   },
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "test",
-          "e2e"
-        ]
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
       }
     }
+  },
+  "projects": {
+    "demo": {
+        "tags": []
+      },
+      "common": {
+        "tags": []
+      },
+      "homepage": {
+        "tags": []
+      },
+      "orders": {
+        "tags": []
+      },
+      "products": {
+        "tags": []
+      },
+      "shopping-cart": {
+        "tags": []
+      },
+      "user-profile": {
+        "tags": []
+      },
+      "resource": {
+        "tags": []
+      },
+      "routing": {
+        "tags": []
+      },
+      "demo-e2e": {
+        "tags": [],
+        "implicitDependencies": [
+          "demo"
+        ]
+      }
   }
 }
