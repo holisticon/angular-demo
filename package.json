@@ -45,6 +45,7 @@
     "@ngxp/builder": "1.0.0",
     "@ngxp/store-service": "8.0.0",
     "@nrwl/angular": "9.4.0",
+    "bootstrap": "4.5.0",
     "core-js": "2.6.5",
     "lodash-es": "4.17.14",
     "rxjs": "6.5.5",
