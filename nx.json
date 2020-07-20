@@ -6,51 +6,59 @@
       "dependencies": "*",
       "devDependencies": "*"
     },
-    "tsconfig.json": "*",
     "tslint.json": "*",
-    "nx.json": "*"
+    "nx.json": "*",
+    "tsconfig.base.json": "*"
   },
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e"
+        ]
       }
     }
   },
   "projects": {
     "demo": {
-        "tags": []
-      },
-      "common": {
-        "tags": []
-      },
-      "homepage": {
-        "tags": []
-      },
-      "orders": {
-        "tags": []
-      },
-      "products": {
-        "tags": []
-      },
-      "shopping-cart": {
-        "tags": []
-      },
-      "user-profile": {
-        "tags": []
-      },
-      "resource": {
-        "tags": []
-      },
-      "routing": {
-        "tags": []
-      },
-      "demo-e2e": {
-        "tags": [],
-        "implicitDependencies": [
-          "demo"
-        ]
-      }
+      "tags": []
+    },
+    "common": {
+      "tags": []
+    },
+    "homepage": {
+      "tags": []
+    },
+    "orders": {
+      "tags": []
+    },
+    "products": {
+      "tags": []
+    },
+    "shopping-cart": {
+      "tags": []
+    },
+    "user-profile": {
+      "tags": []
+    },
+    "resource": {
+      "tags": []
+    },
+    "routing": {
+      "tags": []
+    },
+    "demo-e2e": {
+      "tags": [],
+      "implicitDependencies": [
+        "demo"
+      ]
+    }
+  },
+  "affected": {
+    "defaultBase": "master"
   }
 }
