@@ -1,0 +1,14 @@
+<div class="form-check mb-3" *ngFor="let address of addressOptions; let i = index">
+    <input
+        class="form-check-input"
+        type="radio"
+        name="{{ uniqueId }}"
+        id="{{ uniqueId }}-{{ i }}"
+        [value]="address"
+        [ngModel]="selectedAddress"
+        (ngModelChange)="onSelectedAddressChange($event)"
+    />
+    <label class="form-check-label" for="{{ uniqueId }}-{{ i }}">
+        <ngxp-address [address]="address"></ngxp-address>
+    </label>
+</div>

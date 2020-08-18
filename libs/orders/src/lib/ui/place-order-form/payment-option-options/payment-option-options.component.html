@@ -1,0 +1,14 @@
+<div class="form-check mb-3" *ngFor="let paymentOption of paymentOptionOptions; let i = index">
+    <input
+        class="form-check-input"
+        type="radio"
+        name="{{ uniqueId }}"
+        id="{{ uniqueId }}-{{ i }}"
+        [value]="paymentOption"
+        [ngModel]="selectedPaymentOption"
+        (ngModelChange)="onSelectedPaymentOptionChange($event)"
+    />
+    <label class="form-check-label" for="{{ uniqueId }}-{{ i }}">
+        <ngxp-payment-option [paymentOption]="paymentOption"></ngxp-payment-option>
+    </label>
+</div>

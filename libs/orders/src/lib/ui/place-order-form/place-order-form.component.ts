@@ -3,9 +3,11 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, NgModule, Outp
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { OnNonNullChange } from '@ngxp/common';
 import { UserProfile } from '@ngxp/user-profile/domain';
-import { AddressModule, PaymentOptionModule } from '@ngxp/user-profile/ui';
+import { PaymentOptionModule } from '@ngxp/user-profile/ui';
 import { defaultTo, isNull } from 'lodash-es';
 import { NewOrder, OrderItem } from '../../domain';
+import { AddressOptionsModule } from './address-options/address-options.component';
+import { PaymentOptionOptionsModule } from './payment-option-options/payment-option-options.component';
 
 @Component({
     selector: 'ngxp-place-order-form',
@@ -70,6 +72,6 @@ export class PlaceOrderFormComponent {
 @NgModule({
     declarations: [PlaceOrderFormComponent],
     exports: [PlaceOrderFormComponent],
-    imports: [CommonModule, ReactiveFormsModule, AddressModule, PaymentOptionModule]
+    imports: [CommonModule, ReactiveFormsModule, AddressOptionsModule, PaymentOptionOptionsModule, PaymentOptionModule]
 })
 export class PlaceOrderFormModule { }
