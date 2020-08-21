@@ -52,14 +52,43 @@ describe('AddressOptionsComponent', () => {
         expect(component.selectedAddress).toBe(userProfile.addresses[0]);
     });
 
-    describe('writeValue', () => {
-        it('sets the selected payment option', () => {
-            // tslint:disable-next-line: no-non-null-assertion
-            const selectedAddress = last(userProfile.addresses)!;
+    it('does nothing if null is passed as addresses', () => {
+        // tslint:disable-next-line: no-non-null-assertion
+        component.addresses = null!;
+        expect(component.addressOptions).toHaveLength(userProfile.addresses.length);
+    });
 
+    describe('writeValue', () => {
+        // tslint:disable-next-line: no-non-null-assertion
+        const selectedAddress = last(userProfile.addresses)!;
+
+        it('sets the selected payment option', () => {
             component.writeValue(selectedAddress);
 
             expect(component.selectedAddress).toBe(selectedAddress);
+        });
+
+        it('does nothing if null is given', () => {
+            component.writeValue(selectedAddress);
+
+            // tslint:disable-next-line: no-non-null-assertion
+            component.writeValue(null!);
+
+            expect(component.selectedAddress).toBe(selectedAddress);
+        });
+    });
+
+    describe('registerOnChange', () => {
+        it('registers an OnChange handler', () => {
+            // tslint:disable-next-line: no-non-null-assertion
+            const selectedAddress = last(userProfile.addresses)!;
+            const onChangeHandler = jest.fn();
+
+            component.registerOnChange(onChangeHandler);
+
+            component.onSelectedAddressChange(selectedAddress);
+
+            expect(onChangeHandler).toHaveBeenCalledWith(selectedAddress);
         });
     });
 });

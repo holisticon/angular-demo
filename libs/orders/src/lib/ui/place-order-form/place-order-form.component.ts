@@ -1,11 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, NgModule, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, NgModule } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { OnNonNullChange } from '@ngxp/common';
-import { UserProfile } from '@ngxp/user-profile/domain';
+import { Address, PaymentOption } from '@ngxp/user-profile/domain';
+import { UserProfileStore } from '@ngxp/user-profile/state';
 import { PaymentOptionModule } from '@ngxp/user-profile/ui';
-import { defaultTo, isNull } from 'lodash-es';
+import { defaultTo, first } from 'lodash-es';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { NewOrder, OrderItem } from '../../domain';
+import { OrdersStore } from '../../state';
 import { AddressOptionsModule } from './address-options/address-options.component';
 import { PaymentOptionOptionsModule } from './payment-option-options/payment-option-options.component';
 
@@ -17,14 +20,7 @@ import { PaymentOptionOptionsModule } from './payment-option-options/payment-opt
 export class PlaceOrderFormComponent {
 
     @Input()
-    orderItems!: OrderItem[];
-
-    @Input()
-    @OnNonNullChange()
-    userProfile!: UserProfile;
-
-    @Output()
-    placeOrder = new EventEmitter<NewOrder>();
+    orderItems: OrderItem[] = [];
 
     form = new FormGroup({
         billingAddress: new FormControl(),
@@ -32,41 +28,38 @@ export class PlaceOrderFormComponent {
         payment: new FormControl()
     });
 
-    get addresses() {
-        if (isNull(this.userProfile)) {
-            return [];
-        }
+    addresses$: Observable<Address[]>;
+    paymentOptions$: Observable<PaymentOption[]>;
 
-        return this.userProfile.addresses;
-    }
-
-    get paymentOptions() {
-        if (isNull(this.userProfile)) {
-            return [];
-        }
-
-        return this.userProfile.paymentOptions;
+    constructor(
+        private ordersStore: OrdersStore,
+        private userProfileStore: UserProfileStore
+    ) {
+        this.addresses$ = this.userProfileStore.getAddresses().pipe(
+            tap(addresses => this.form.patchValue({
+                billingAddress: defaultTo(first(addresses), null),
+                shippingAddress: defaultTo(first(addresses), null),
+            }))
+        );
+        this.paymentOptions$ = this.userProfileStore.getPaymentOptions().pipe(
+            tap(paymentOptions => this.form.patchValue({
+                payment: defaultTo(first(paymentOptions), null)
+            }))
+        );
     }
 
     onSubmit(event: Event) {
         event.preventDefault();
 
-        this.placeOrder.emit({
+        const newOrder: NewOrder = {
             orderItems: this.orderItems,
             billingAddress: this.form.value.billingAddress,
             shippingAddress: this.form.value.shippingAddress,
             payment: this.form.value.payment
-        });
-    }
+        };
 
-    private onChangeUserProfile(userProfile: UserProfile) {
-        this.form.setValue({
-            billingAddress: defaultTo(userProfile.addresses[0], null),
-            shippingAddress: defaultTo(userProfile.addresses[0], null),
-            payment: defaultTo(userProfile.paymentOptions[0], null)
-        })
+        this.ordersStore.placeOrder({ newOrder });
     }
-
 }
 
 @NgModule({

@@ -52,14 +52,43 @@ describe('PaymentOptionOptionsComponent', () => {
         expect(component.selectedPaymentOption).toBe(userProfile.paymentOptions[0]);
     });
 
-    describe('writeValue', () => {
-        it('sets the selected payment option', () => {
-            // tslint:disable-next-line: no-non-null-assertion
-            const selectedPaymentOption = last(userProfile.paymentOptions)!;
+    it('does nothing if null is passed as addresses', () => {
+        // tslint:disable-next-line: no-non-null-assertion
+        component.paymentOptions = null!;
+        expect(component.paymentOptionOptions).toHaveLength(userProfile.addresses.length);
+    });
 
+    describe('writeValue', () => {
+        // tslint:disable-next-line: no-non-null-assertion
+        const selectedPaymentOption = last(userProfile.paymentOptions)!;
+
+        it('sets the selected payment option', () => {
             component.writeValue(selectedPaymentOption);
 
             expect(component.selectedPaymentOption).toBe(selectedPaymentOption);
+        });
+
+        it('does nothing if null is given', () => {
+            component.writeValue(selectedPaymentOption);
+
+            // tslint:disable-next-line: no-non-null-assertion
+            component.writeValue(null!);
+
+            expect(component.selectedPaymentOption).toBe(selectedPaymentOption);
+        });
+    });
+
+    describe('registerOnChange', () => {
+        it('registers an OnChange handler', () => {
+            // tslint:disable-next-line: no-non-null-assertion
+            const selectedPaymentOption = last(userProfile.paymentOptions)!;
+            const onChangeHandler = jest.fn();
+
+            component.registerOnChange(onChangeHandler);
+
+            component.onSelectedPaymentOptionChange(selectedPaymentOption);
+
+            expect(onChangeHandler).toHaveBeenCalledWith(selectedPaymentOption);
         });
     });
 });

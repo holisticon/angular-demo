@@ -3,7 +3,7 @@ import { Component, forwardRef, Input, NgModule } from '@angular/core';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Address } from '@ngxp/user-profile/domain';
 import { AddressModule } from '@ngxp/user-profile/ui';
-import { isNil, uniqueId } from 'lodash-es';
+import { isNil, isNull, uniqueId } from 'lodash-es';
 
 @Component({
     selector: 'ngxp-address-options',
@@ -20,6 +20,9 @@ export class AddressOptionsComponent implements ControlValueAccessor {
 
     @Input()
     set addresses(addresses: Address[]) {
+        if (isNull(addresses)) {
+            return;
+        }
         this.addressOptions = [...addresses];
         this.selectedAddress = addresses[0];
     };

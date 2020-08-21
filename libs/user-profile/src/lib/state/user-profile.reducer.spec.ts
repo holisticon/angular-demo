@@ -16,7 +16,8 @@ describe('userProfileReducer', () => {
 
             const updatedState = userProfileReducer(initialState, action);
 
-            expect(updatedState.userProfile).toBe(userProfile);
+            expect(updatedState.addresses).toBe(userProfile.addresses);
+            expect(updatedState.paymentOptions).toBe(userProfile.paymentOptions);
         });
     });
 });

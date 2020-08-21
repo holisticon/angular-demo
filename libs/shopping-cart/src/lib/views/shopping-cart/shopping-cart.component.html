@@ -8,7 +8,5 @@
 
 <ngxp-place-order-form
     [orderItems]="(shoppingCart$ | async)?.items"
-    [userProfile]="userProfile$ | async"
-    (placeOrder)="onPlaceOrder($event)"
     *ngIf="!((shoppingCart$ | async) | shoppingCartIsEmpty)"
 ></ngxp-place-order-form>

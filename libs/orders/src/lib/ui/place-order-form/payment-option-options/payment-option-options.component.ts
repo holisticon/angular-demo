@@ -3,7 +3,7 @@ import { Component, forwardRef, Input, NgModule } from '@angular/core';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { PaymentOption } from '@ngxp/user-profile/domain';
 import { PaymentOptionModule } from '@ngxp/user-profile/ui';
-import { isNil, uniqueId } from 'lodash-es';
+import { isNil, isNull, uniqueId } from 'lodash-es';
 
 @Component({
     selector: 'ngxp-payment-option-options',
@@ -20,6 +20,9 @@ export class PaymentOptionOptionsComponent implements ControlValueAccessor {
 
     @Input()
     set paymentOptions(paymentOptions: PaymentOption[]) {
+        if (isNull(paymentOptions)) {
+            return;
+        }
         this.paymentOptionOptions = [...paymentOptions];
         this.selectedPaymentOption = paymentOptions[0];
     };

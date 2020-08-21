@@ -1,12 +1,13 @@
 import { createReducer, on } from '@ngrx/store';
 import { ReducerArgs } from '@ngxp/common';
-import { UserProfile } from '../domain';
+import { Address, PaymentOption } from '../domain';
 import { userProfileLoadedAction } from './user-profile.actions';
 
 export const USER_PROFILE_FEATURE_KEY = 'userProfile';
 
 export interface UserProfileState {
-    userProfile: UserProfile | null;
+    addresses: Address[];
+    paymentOptions: PaymentOption[]
 }
 
 export interface UserProfileAppState {
@@ -14,13 +15,15 @@ export interface UserProfileAppState {
 }
 
 export const initialState: UserProfileState = {
-    userProfile: null
+    addresses: [],
+    paymentOptions: []
 };
 
 export const reducer = createReducer(initialState,
     on(userProfileLoadedAction, (state, { userProfile }) => ({
         ...state,
-        userProfile
+        addresses: userProfile.addresses,
+        paymentOptions: userProfile.paymentOptions,
     }))
 );
 
