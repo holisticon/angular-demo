@@ -39,6 +39,18 @@ describe('ProductService', () => {
 
             httpController.verify();
         });
+
+        it('loads all products if no query is given', () => {
+            productService.searchProducts(null).subscribe();
+
+            const request = httpController.expectOne('https://example.hypercontract.org/products');
+
+            expect(request.request.method).toEqual('GET');
+
+            request.flush(products);
+
+            httpController.verify();
+        });
     });
 
     describe('loadProduct', () => {

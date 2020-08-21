@@ -22,6 +22,19 @@ describe('productsSelectors', () => {
 
             expect(selectSearchResults(state)).toEqual(expectedValue);
         });
+
+        it('returns null if there are no search results', () => {
+            const stateWithoutSearchResults: ProductsAppState = {
+                ...state,
+                products: {
+                    ...state.products,
+                    searchResults: null
+                }
+            };
+
+
+            expect(selectSearchResults(stateWithoutSearchResults)).toBeNull();
+        });
     });
 
     describe('selectProduct', () => {

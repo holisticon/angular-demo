@@ -168,6 +168,13 @@ describe('PropertyDecorators', () => {
             ]);
         });
 
+        it('does not break accessing the property', () => {
+            const test = new Test();
+            test.onAssignmentProp = oldValue;
+
+            expect(test.onAssignmentProp).toBe(oldValue);
+        });
+
         it('throws an error if an invalid method name is given', () => {
             class InvalidMethodTest {
                 @OnAssignment('invalid')

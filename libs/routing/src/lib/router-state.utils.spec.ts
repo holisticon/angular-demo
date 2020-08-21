@@ -19,5 +19,15 @@ describe('routerStateUtils', () => {
         it('returns the route params of the given route snapshot', () => {
             expect(getParams(activatedRouteSnapshot)).toEqual(routeParams);
         });
+
+        it('returns an empty array if null is given', () => {
+            // tslint:disable-next-line: no-non-null-assertion
+            expect(getParams(null!)).toEqual([]);
+        });
+
+        it('returns an empty array if undefined is given', () => {
+            // tslint:disable-next-line: no-non-null-assertion
+            expect(getParams(undefined!)).toEqual([]);
+        });
     });
 });

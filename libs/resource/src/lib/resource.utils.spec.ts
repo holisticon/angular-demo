@@ -1,8 +1,8 @@
 import { resource, resources } from '@ngxp/resource/test';
-import { getUri, getUris, toMap } from './resource.utils';
+import { internet } from 'faker';
+import { encodeResourceUriAsRouteParam, getUri, getUris, toMap } from './resource.utils';
 
 describe('resourceUtils', () => {
-
     describe('getUri', () => {
         it('returns the URI of the given resource', () => {
             expect(getUri(resource)).toBe(resource['_id']);
@@ -33,6 +33,34 @@ describe('resourceUtils', () => {
                 const uri = getUri(res);
                 expect(resourceMap[uri]).toBe(res);
             });
+        });
+    });
+
+    describe('encodeResourceUriAsRouteParam', () => {
+        it('encodes a resource URI as base64 string', () => {
+            const uri = internet.url();
+            const encodedUri = btoa(uri);
+
+            expect(encodeResourceUriAsRouteParam(uri)).toBe(encodedUri);
+        });
+
+        it('returns the given value if it is not a string', () => {
+            // tslint:disable-next-line: no-non-null-assertion
+            expect(encodeResourceUriAsRouteParam(null!)).toBe(null);
+            // tslint:disable-next-line: no-non-null-assertion
+            expect(encodeResourceUriAsRouteParam(undefined!)).toBe(undefined);
+            // @ts-ignore
+            expect(encodeResourceUriAsRouteParam(1)).toBe(1);
+
+        });
+    });
+
+    describe('decodeResourceUriFromRouteParam', () => {
+        it('decodes a base64-encoded resource URI', () => {
+            const uri = internet.url();
+            const encodedUri = btoa(uri);
+
+            expect(decodeResourceUriFromRouteParam(encodedUri)).toBe(uri);
         });
     });
 });
