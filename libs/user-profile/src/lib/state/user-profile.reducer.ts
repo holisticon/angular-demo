@@ -1,7 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import { ReducerArgs } from '@ngxp/common';
 import { Address, PaymentOption } from '../domain';
-import { userProfileLoadedAction } from './user-profile.actions';
+import { addressesUpdatedAction, paymentOptionsUpdatedAction, userProfileLoadedAction } from './user-profile.actions';
 
 export const USER_PROFILE_FEATURE_KEY = 'userProfile';
 
@@ -23,7 +23,15 @@ export const reducer = createReducer(initialState,
     on(userProfileLoadedAction, (state, { userProfile }) => ({
         ...state,
         addresses: userProfile.addresses,
-        paymentOptions: userProfile.paymentOptions,
+        paymentOptions: userProfile.paymentOptions
+    })),
+    on(addressesUpdatedAction, (state, { addresses }) => ({
+        ...state,
+        addresses
+    })),
+    on(paymentOptionsUpdatedAction, (state, { paymentOptions }) => ({
+        ...state,
+        paymentOptions
     }))
 );
 

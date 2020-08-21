@@ -1,1 +1,4 @@
-export { Address, PaymentOption, UserProfile } from './user-profile';
+export { Address } from './address';
+export { PaymentOption } from './payment-option';
+export { UserProfile } from './user-profile';
+

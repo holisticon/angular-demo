@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Dispatch, Dispatcher, Select, Selector, StoreService } from '@ngxp/store-service';
-import { loadUserProfileAction } from './user-profile.actions';
+import { addAddressAction, addPaymentOptionAction, loadUserProfileAction, removeAddressAction, removePaymentOptionAction, updateAddressAction, updatePaymentOptionAction } from './user-profile.actions';
 import { UserProfileAppState } from './user-profile.reducer';
 import { selectAddresses, selectPaymentOptions } from './user-profile.selectors';
 
@@ -17,5 +17,23 @@ export class UserProfileStore extends StoreService<UserProfileAppState> {
 
     @Dispatch(loadUserProfileAction)
     loadUserProfile!: Dispatcher<typeof loadUserProfileAction>;
+
+    @Dispatch(addAddressAction)
+    addAddress!: Dispatcher<typeof addAddressAction>;
+
+    @Dispatch(updateAddressAction)
+    updateAddress!: Dispatcher<typeof updateAddressAction>;
+
+    @Dispatch(removeAddressAction)
+    removeAddress!: Dispatcher<typeof removeAddressAction>;
+
+    @Dispatch(addPaymentOptionAction)
+    addPaymentOption!: Dispatcher<typeof addPaymentOptionAction>;
+
+    @Dispatch(updatePaymentOptionAction)
+    updatePaymentOption!: Dispatcher<typeof updatePaymentOptionAction>;
+
+    @Dispatch(removePaymentOptionAction)
+    removePaymentOption!: Dispatcher<typeof removePaymentOptionAction>;
 
 }

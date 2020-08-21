@@ -40,10 +40,7 @@ export class ShoppingCartEffects {
         () => this.actions$.pipe(
             ofType(updateShoppingCartItemQuantityAction),
             switchMap(({ quantityUpdate }) => this.shoppingCartService
-                .updateShoppingCartItemQuantity(
-                    quantityUpdate.resource,
-                    quantityUpdate.with
-                )
+                .updateShoppingCartItemQuantity(quantityUpdate.resource, quantityUpdate.with)
                 .pipe(map(shoppingCart => shoppingCartUpdatedAction({ shoppingCart }))))
         )
     );
