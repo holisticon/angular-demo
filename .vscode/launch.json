@@ -26,6 +26,20 @@
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
             "trace": "all"
+        },
+        {
+            "name": "Launch CodeceptJS tests",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/node_modules/codeceptjs/bin/codecept.js",
+            "args": [
+                "run",
+                "--steps"
+            ],
+            "cwd": "${workspaceFolder}/e2e",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "trace": "all"
         }
     ],
     "inputs": [
