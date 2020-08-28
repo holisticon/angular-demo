@@ -1,11 +1,10 @@
-const { Helper } = codeceptjs;
 const assert = require('assert');
+import { Helper } from 'codeceptjs';
 
-class Custom extends Helper {
+class CustomHelper extends Helper {
 
-    async seeInEach(locator, expected) {
-        debugger
-        const texts = await this.helpers.Playwright.grabTextFrom(locator);
+    async seeInEach(locator: CodeceptJS.LocatorOrString, expected: string) {
+        const texts: string[] = await this.helpers.Playwright.grabTextFrom(locator);
 
         assert(texts.length > 0, `Expected at least one element matching selector <${JSON.stringify(locator)}>.`);
 
@@ -16,4 +15,4 @@ class Custom extends Helper {
 
 }
 
-module.exports = Custom;
+export = CustomHelper;

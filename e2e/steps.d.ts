@@ -1,6 +1,6 @@
 /// <reference types='codeceptjs' />
-type steps_file = typeof import('./steps_file.js');
-type Custom = import('./custom_helper.js');
+type steps_file = typeof import('./steps_file');
+type Custom = import('./custom_helper');
 
 declare namespace CodeceptJS {
   interface SupportObject { I: CodeceptJS.I }

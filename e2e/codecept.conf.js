@@ -1,17 +1,19 @@
 exports.config = {
+    require: ["ts-node/register"],
     output: './output',
     helpers: {
         Playwright: {
             url: 'http://localhost:4200',
             show: true,
-            browser: 'chromium'
+            browser: 'chromium',
+            waitForNavigation: 'networkidle'
         },
         Custom: {
-            require: './custom_helper.js',
+            require: './custom_helper.ts',
         }
     },
     include: {
-        I: './steps_file.js'
+        I: './steps_file.ts'
     },
     mocha: {},
     bootstrap: null,
@@ -19,7 +21,7 @@ exports.config = {
     hooks: [],
     gherkin: {
         features: './features/*.feature',
-        steps: ['./step_definitions/steps.js']
+        steps: ['./step_definitions/steps.ts']
     },
     plugins: {
         screenshotOnFail: {
@@ -29,6 +31,6 @@ exports.config = {
             enabled: true
         }
     },
-    tests: './*_test.js',
+    tests: './*_test.ts',
     name: 'e2e'
 }
