@@ -1,6 +1,6 @@
 <form class="form-inline" (submit)="onSubmit($event)">
     <div class="input-group">
-        <input type="number" name="quantity" min="1" step="1" class="form-control text-right" [(ngModel)]="quantity">
+        <input type="number" name="quantity" title="Quantity" min="1" step="1" class="form-control text-right" [(ngModel)]="quantity">
         <div class="input-group-append">
             <button type="submit" class="btn btn-primary">Add</button>
         </div>
