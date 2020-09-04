@@ -4,7 +4,8 @@ import { Helper } from 'codeceptjs';
 class CustomHelper extends Helper {
 
     async seeInEach(locator: CodeceptJS.LocatorOrString, expected: string) {
-        const texts: string[] = await this.helpers.Playwright.grabTextFrom(locator);
+        const playwright: CodeceptJS.Playwright = this.helpers.Playwright;
+        const texts = await playwright.grabTextFromAll(locator);
 
         assert(texts.length > 0, `Expected at least one element matching selector <${JSON.stringify(locator)}>.`);
 
