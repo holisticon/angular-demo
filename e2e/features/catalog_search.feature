@@ -5,7 +5,7 @@ Feature: Catalog Search
     Given I am on the homepage
     When I enter "pizza" in the "Search Catalog..." field
     And I click "Search Products"
-    Then I am redirected to a page with search results
+    Then I am redirected to the search results page
     And I get 3 search results
     And all search results contain "pizza"
 
@@ -13,5 +13,5 @@ Feature: Catalog Search
     Given I am on the homepage
     When I leave the "Search Catalog..." field empty
     And I click "Search Products"
-    Then I am redirected to a page with search results
+    Then I am redirected to the search results page
     And the search results contain all products
