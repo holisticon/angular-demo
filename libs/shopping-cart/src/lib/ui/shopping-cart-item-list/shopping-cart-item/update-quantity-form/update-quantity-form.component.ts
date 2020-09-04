@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, NgModule, Outp
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OnNonNullChange } from '@ngxp/common';
 import { Resource, ResourceWith } from '@ngxp/resource';
+import { uniqueId } from 'lodash-es';
 import { QuantityUpdate, ShoppingCartItem } from '../../../../domain';
 
 @Component({
@@ -19,6 +20,7 @@ export class UpdateQuantityFormComponent {
     updateQuantity = new EventEmitter<ResourceWith<QuantityUpdate, ShoppingCartItem>>();
 
     quantity = new FormControl();
+    quantityElementId = `quantity-${uniqueId()}`
 
     onSubmit(event: Event) {
         event.preventDefault();

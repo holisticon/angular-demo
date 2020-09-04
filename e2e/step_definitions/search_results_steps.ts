@@ -1,12 +1,16 @@
 const { I } = inject();
 
 Given('I am on the search results page', () => {
-    I.amOnPage('/products');
+    I.amOnPage('/');
+    I.click('Catalog');
 });
 
 When('I click {string} for the first product', (buttonLabel: string) => {
-    // TODO
-    I.click(buttonLabel);
+    const firstProduct = locate('ngxp-product-list-entry').first();
+    I.waitForElement(firstProduct);
+    within(firstProduct, () => {
+        I.click(buttonLabel);
+    });
 });
 
 Then('I am redirected to the search results page', () => {
@@ -15,7 +19,12 @@ Then('I am redirected to the search results page', () => {
 });
 
 Then('all search results contain {string}', (queryString: string) => {
-    I.seeInEach({ css: 'ngxp-product-list-entry h2 > a' }, queryString);
+    I.seeInEach(
+        locate('a')
+            .inside('h2')
+            .inside('ngxp-product-list-entry'),
+        queryString
+    );
 });
 
 Then('I get {int} search results', (searchResultSize: number) => {

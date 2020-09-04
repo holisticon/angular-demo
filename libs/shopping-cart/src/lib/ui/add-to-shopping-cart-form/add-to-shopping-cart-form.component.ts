@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ResourceUri } from '@ngxp/resource';
-import { toNumber } from 'lodash-es';
+import { toNumber, uniqueId } from 'lodash-es';
 import { AdditionToShoppingCart } from '../../domain';
 import { ShoppingCartStateModule, ShoppingCartStore } from '../../state';
 
@@ -16,6 +16,8 @@ export class AddToShoppingCartFormComponent {
     product!: ResourceUri;
 
     quantity = 1;
+
+    quantityElementId = `quantity-${uniqueId()}`
 
     constructor(
         private shoppingCartStore: ShoppingCartStore

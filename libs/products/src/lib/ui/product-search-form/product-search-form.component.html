@@ -1,6 +1,7 @@
 <form class="row form-inline" method="GET" (submit)="onSubmit($event)">
-    <div class="form-group mx-sm-3">
+    <label class="form-group mx-sm-3">
+        <span class="sr-only">Search Catalog</span>
         <input type="text" class="form-control" title="Search Catalog..." placeholder="Search Catalog..." [formControl]="queryString" />
-    </div>
+    </label>
     <button type="submit" class="btn btn-primary">Search Products</button>
 </form>

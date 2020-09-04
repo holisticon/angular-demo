@@ -1,17 +1,23 @@
 const { I } = inject();
 
 Given('the shopping cart is empty', async () => {
-    I.amOnPage('/shopping-cart');
+    I.amOnPage('/');
+    I.click('Shopping Cart');
 
-    const placeOrderButtonVisible = (await I.grabNumberOfVisibleElements({ css: 'button.place-order' }) === 1);
+    const placeOrderButton = locate('button').withText('Place Order');
+
+    const placeOrderButtonVisible = (await I.grabNumberOfVisibleElements(placeOrderButton) === 1);
+
     if (placeOrderButtonVisible) {
-        I.click('Place Order');
+        I.click(placeOrderButton);
     }
 });
 
 Then('the shopping cart contains an item with quantity {int}', (quantity: number) => {
-    I.amOnPage('/shopping-cart');
-    I.seeInField({ css: 'input[title="Quantity"]' }, quantity.toString());
+    I.amOnPage('/');
+    I.click('Shopping Cart');
+
+    I.seeInField('Update Quantity', quantity.toString());
 });
 
 Then('I am redirected to the shopping cart page', () => {
