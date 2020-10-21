@@ -6,7 +6,9 @@ exports.config = {
             url: 'http://localhost:4200',
             show: true,
             browser: 'chromium',
-            waitForNavigation: 'networkidle'
+            waitForNavigation: 'networkidle',
+            waitForAction: 500,
+            fullPageScreenshots: true
         },
         Custom: {
             require: './custom_helper.ts',
