@@ -4,8 +4,9 @@
     <div class="form-group col-4 billing-address">
         <label class="form-control-label h6 mb-3" for="billingAddress">Billing Address</label>
 
-        <div class="form-check mb-3" *ngFor="let address of addresses; let i = index">
-            <input class="form-check-input" type="radio" formControlName="billingAddress" id="billingAddress-{{ i }}" [value]="address" />
+        <div class="form-check mb-3" *ngFor="let address of (addresses$ | async); let i = index">
+            <input class="form-check-input" type="radio" formControlName="billingAddress" id="billingAddress-{{ i }}"
+                [value]="address" />
             <label class="form-check-label" for="billingAddress-{{ i }}">
                 <ngxp-address [address]="address"></ngxp-address>
             </label>
@@ -15,8 +16,9 @@
     <div class="form-group col-4 shipping-address">
         <label class="form-control-label h6 mb-3" for="shippingAddress">Shipping Address</label>
 
-        <div class="form-check mb-3" *ngFor="let address of addresses; let i = index">
-            <input class="form-check-input" type="radio" formControlName="shippingAddress" id="shippingAddress-{{ i }}" [value]="address" />
+        <div class="form-check mb-3" *ngFor="let address of (addresses$ | async); let i = index">
+            <input class="form-check-input" type="radio" formControlName="shippingAddress" id="shippingAddress-{{ i }}"
+                [value]="address" />
             <label class="form-check-label" for="shippingAddress-{{ i }}">
                 <ngxp-address [address]="address"></ngxp-address>
             </label>
@@ -26,8 +28,9 @@
     <div class="form-group col-2 payment">
         <label class="form-control-label h6 mb-3" for="payment">Payment</label>
 
-        <div class="form-check mb-3" *ngFor="let paymentOption of paymentOptions; let i = index">
-            <input class="form-check-input" type="radio" formControlName="payment" id="payment-{{ i }}" [value]="paymentOption" />
+        <div class="form-check mb-3" *ngFor="let paymentOption of (paymentOptions$ | async); let i = index">
+            <input class="form-check-input" type="radio" formControlName="payment" id="payment-{{ i }}"
+                [value]="paymentOption" />
             <label class="form-check-label" for="payment-{{ i }}">
                 <ngxp-payment-option [paymentOption]="paymentOption"></ngxp-payment-option>
             </label>

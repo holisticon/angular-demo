@@ -3,15 +3,19 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { orderItems } from '@ngxp/orders/test';
+import { provideStoreServiceMock, StoreServiceMock } from '@ngxp/store-service/testing';
+import { UserProfileStore } from '@ngxp/user-profile/state';
 import { userProfile } from '@ngxp/user-profile/test';
 import { isNull } from 'lodash-es';
-import { take } from 'rxjs/operators';
 import { NewOrder } from '../../domain';
+import { OrdersStore } from '../../state';
 import { PlaceOrderFormComponent } from './place-order-form.component';
 
 describe('PlaceOrderFormComponent', () => {
     let component: PlaceOrderFormComponent;
     let fixture: ComponentFixture<PlaceOrderFormComponent>;
+
+    let ordersStore: StoreServiceMock<OrdersStore>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -22,18 +26,26 @@ describe('PlaceOrderFormComponent', () => {
             declarations: [
                 PlaceOrderFormComponent
             ],
+            providers: [
+                provideStoreServiceMock(OrdersStore),
+                provideStoreServiceMock(UserProfileStore, {
+                    getAddresses: userProfile.addresses,
+                    getPaymentOptions: userProfile.paymentOptions
+                })
+            ],
             schemas: [
                 CUSTOM_ELEMENTS_SCHEMA
             ]
         })
             .compileComponents();
+
+        ordersStore = TestBed.inject(OrdersStore) as any;
     }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(PlaceOrderFormComponent);
         component = fixture.componentInstance;
         component.orderItems = orderItems;
-        component.userProfile = userProfile;
         fixture.detectChanges();
     });
 
@@ -87,7 +99,8 @@ describe('PlaceOrderFormComponent', () => {
         });
     });
 
-    it('emits a placeOrder event when the form is submitted', () => {
+    it('dispatches a PlaceOrderAction when the form is submitted', async(() => {
+        const placeOrderSpy = spyOn(ordersStore, 'placeOrder');
         const expectedOrder: NewOrder = {
             billingAddress: userProfile.addresses[0],
             shippingAddress: userProfile.addresses[0],
@@ -96,12 +109,8 @@ describe('PlaceOrderFormComponent', () => {
         };
         const form = fixture.debugElement.query(By.css('form'));
 
-        fixture.componentInstance.placeOrder
-            .pipe(take(1))
-            .subscribe(newOrder => {
-                expect(newOrder).toEqual(expectedOrder);
-            })
-
         form.nativeElement.dispatchEvent(new Event('submit'));
-    });
+
+        expect(placeOrderSpy).toHaveBeenCalledWith({ newOrder: expectedOrder });
+    }));
 });
