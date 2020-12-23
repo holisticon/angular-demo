@@ -1,5 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { orderItems } from '@ngxp/orders/test';
@@ -17,7 +17,7 @@ describe('PlaceOrderFormComponent', () => {
 
     let ordersStore: StoreServiceMock<OrdersStore>;
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             imports: [
                 FormsModule,
@@ -99,7 +99,7 @@ describe('PlaceOrderFormComponent', () => {
         });
     });
 
-    it('dispatches a PlaceOrderAction when the form is submitted', async(() => {
+    it('dispatches a PlaceOrderAction when the form is submitted', waitForAsync(() => {
         const placeOrderSpy = spyOn(ordersStore, 'placeOrder');
         const expectedOrder: NewOrder = {
             billingAddress: userProfile.addresses[0],

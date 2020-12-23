@@ -1,5 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { async, ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { ResourceWith } from '@ngxp/resource';
@@ -16,7 +16,7 @@ describe('ShoppingCartComponent', () => {
 
     let shoppingCartStore: StoreServiceMock<ShoppingCartStore>;
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             imports: [
                 FormsModule,
@@ -68,7 +68,7 @@ describe('ShoppingCartComponent', () => {
         expect(placeOrderForm).toBeNull();
     }));
 
-    it('dispatches an UpdateShoppingCartItemQuantityAction when the shopping cart item list emits an updateQuantity event', async(() => {
+    it('dispatches an UpdateShoppingCartItemQuantityAction when the shopping cart item list emits an updateQuantity event', waitForAsync(() => {
         const quantityUpdate: ResourceWith<QuantityUpdate, ShoppingCartItem> = {
             resource: shoppingCartItem,
             with: {
@@ -83,7 +83,7 @@ describe('ShoppingCartComponent', () => {
         expect(updateShoppingCartItemQuantitySpy).toHaveBeenCalledWith({ quantityUpdate });
     }));
 
-    it('dispatches an DeleteShoppingCartItemAction when the shopping cart item list emits a delete event', async(() => {
+    it('dispatches an DeleteShoppingCartItemAction when the shopping cart item list emits a delete event', waitForAsync(() => {
         const deleteShoppingCartItemSpy = spyOn(shoppingCartStore, 'deleteShoppingCartItem');
         const shoppingCartItemList = fixture.debugElement.query(By.css('ngxp-shopping-cart-item-list'));
 

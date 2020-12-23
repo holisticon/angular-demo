@@ -1,5 +1,5 @@
 import { NO_ERRORS_SCHEMA } from '@angular/compiler/src/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { ResourceWith } from '@ngxp/resource';
@@ -13,7 +13,7 @@ describe('ShoppingCartItemListComponent', () => {
     let component: ShoppingCartItemListComponent;
     let fixture: ComponentFixture<ShoppingCartItemListComponent>;
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             imports: [
                 FormsModule,

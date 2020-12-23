@@ -1,5 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { provideStoreServiceMock } from '@ngxp/store-service/testing';
 import { userProfile } from '@ngxp/user-profile/test';
@@ -10,7 +10,7 @@ describe('UserProfileComponent', () => {
     let component: UserProfileComponent;
     let fixture: ComponentFixture<UserProfileComponent>;
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             declarations: [
                 UserProfileComponent

@@ -1,5 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { orderHistory } from '@ngxp/orders/test';
 import { provideStoreServiceMock } from '@ngxp/store-service/testing';
@@ -10,7 +10,7 @@ describe('OrdersComponent', () => {
     let component: OrdersComponent;
     let fixture: ComponentFixture<OrdersComponent>;
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             declarations: [
                 OrdersComponent
