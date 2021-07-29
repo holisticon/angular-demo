@@ -1,8 +1,8 @@
+import { getRandomValue } from '@holisticon/common/test';
+import { Resource } from '@holisticon/resource';
+import { createResourceBlueprintBuilder } from '@holisticon/resource/test';
+import { addressBuilder, paymentOptionBuilder } from '@holisticon/user-profile/test';
 import { BlueprintFactory } from '@ngxp/builder';
-import { getRandomValue } from '@ngxp/common/test';
-import { Resource } from '@ngxp/resource';
-import { createResourceBlueprintBuilder } from '@ngxp/resource/test';
-import { addressBuilder, paymentOptionBuilder } from '@ngxp/user-profile/test';
 import { date } from 'faker';
 import { random } from 'lodash-es';
 import { Order, OrderHistory, OrderStatus } from '../../lib/domain/order';

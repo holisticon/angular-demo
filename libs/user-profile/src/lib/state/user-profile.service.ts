@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Resource } from '@ngxp/resource';
+import { Resource } from '@holisticon/resource';
 import { UserProfile } from '../domain';
 
 @Injectable({

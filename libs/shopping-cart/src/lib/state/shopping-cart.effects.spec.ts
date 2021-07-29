@@ -1,10 +1,10 @@
 import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
+import { OrdersStore } from '@holisticon/orders/state';
+import { order } from '@holisticon/orders/test';
+import { ResourceWith } from '@holisticon/resource';
+import { additionToShoppingCart, shoppingCart, shoppingCartItem } from '@holisticon/shopping-cart/test';
 import { provideMockActions } from '@ngrx/effects/testing';
-import { OrdersStore } from '@ngxp/orders/state';
-import { order } from '@ngxp/orders/test';
-import { ResourceWith } from '@ngxp/resource';
-import { additionToShoppingCart, shoppingCart, shoppingCartItem } from '@ngxp/shopping-cart/test';
 import { provideStoreServiceMock, StoreServiceMock } from '@ngxp/store-service/testing';
 import { hot } from 'jest-marbles';
 import { Observable, of as observableOf } from 'rxjs';

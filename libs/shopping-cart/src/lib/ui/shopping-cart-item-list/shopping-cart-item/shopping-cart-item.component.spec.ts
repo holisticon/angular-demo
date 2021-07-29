@@ -3,8 +3,8 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
-import { ResourceModule, ResourceWith } from '@ngxp/resource';
-import { shoppingCartItem } from '@ngxp/shopping-cart/test';
+import { ResourceModule, ResourceWith } from '@holisticon/resource';
+import { shoppingCartItem } from '@holisticon/shopping-cart/test';
 import { take } from 'rxjs/operators';
 import { QuantityUpdate, ShoppingCartItem } from '../../../domain';
 import { ShoppingCartItemComponent } from './shopping-cart-item.component';
@@ -45,7 +45,7 @@ describe('ShoppingCartItemComponent', () => {
     });
 
     it('renders the update quantity form', () => {
-        const updateQuantityForm = fixture.debugElement.query(By.css('ngxp-update-quantity-form')).nativeElement;
+        const updateQuantityForm = fixture.debugElement.query(By.css('holisticon-update-quantity-form')).nativeElement;
         expect(updateQuantityForm.shoppingCartItem).toBe(shoppingCartItem);
     });
 
@@ -57,7 +57,7 @@ describe('ShoppingCartItemComponent', () => {
             }
         };
 
-        const updateQuantityForm = fixture.debugElement.query(By.css('ngxp-update-quantity-form'));
+        const updateQuantityForm = fixture.debugElement.query(By.css('holisticon-update-quantity-form'));
 
         fixture.componentInstance.updateQuantity
             .pipe(take(1))

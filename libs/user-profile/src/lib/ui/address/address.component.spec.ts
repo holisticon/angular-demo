@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { address } from '@ngxp/user-profile/test';
+import { address } from '@holisticon/user-profile/test';
 import { AddressComponent } from './address.component';
 
 describe('AddressComponent', () => {

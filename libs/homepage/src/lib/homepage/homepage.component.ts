@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ProductsStore } from '@ngxp/products/state';
+import { ProductsStore } from '@holisticon/products/state';
 
 @Component({
-    selector: 'ngxp-homepage',
+    selector: 'holisticon-homepage',
     templateUrl: './homepage.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })

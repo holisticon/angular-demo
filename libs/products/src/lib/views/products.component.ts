@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
-    selector: 'ngxp-products',
+    selector: 'holisticon-products',
     template: '<router-outlet></router-outlet>',
     changeDetection: ChangeDetectionStrategy.OnPush
 })

@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, Input, NgModule } from '@angular/co
 import { PaymentOption } from '../../domain';
 
 @Component({
-    selector: 'ngxp-payment-option',
+    selector: 'holisticon-payment-option',
     templateUrl: './payment-option.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })

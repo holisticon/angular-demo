@@ -6,7 +6,7 @@ import { ProductsStateModule, ProductsStore } from '../../state';
 import { ProductListModule } from '../../ui';
 
 @Component({
-    selector: 'ngxp-search-results',
+    selector: 'holisticon-search-results',
     templateUrl: './search-results.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })

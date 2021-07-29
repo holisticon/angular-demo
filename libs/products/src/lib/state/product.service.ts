@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Resource, ResourceUri } from '@ngxp/resource';
+import { Resource, ResourceUri } from '@holisticon/resource';
 import { isNull } from 'lodash-es';
 import { Product, SearchResults } from '../domain';
 

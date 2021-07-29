@@ -1,12 +1,12 @@
 <h1 class="mb-5">Shopping Cart</h1>
 
-<ngxp-shopping-cart-item-list
+<holisticon-shopping-cart-item-list
     [shoppingCart]="shoppingCart$ | async"
     (updateQuantity)="onUpdateQuantity($event)"
     (delete)="onDelete($event)"
-></ngxp-shopping-cart-item-list>
+></holisticon-shopping-cart-item-list>
 
-<ngxp-place-order-form
+<holisticon-place-order-form
     [orderItems]="(shoppingCart$ | async)?.items"
     *ngIf="!((shoppingCart$ | async) | shoppingCartIsEmpty)"
-></ngxp-place-order-form>
+></holisticon-place-order-form>

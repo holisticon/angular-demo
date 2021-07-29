@@ -1,5 +1,5 @@
+import { Resource } from '@holisticon/resource';
 import { Blueprint, BlueprintFactory, createBlueprintBuilder } from '@ngxp/builder';
-import { Resource } from '@ngxp/resource';
 import { isFunction } from 'lodash-es';
 import { buildResourceUri } from './data/resource.data';
 

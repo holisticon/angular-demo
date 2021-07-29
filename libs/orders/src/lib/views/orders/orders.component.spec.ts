@@ -1,7 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { orderHistory } from '@ngxp/orders/test';
+import { orderHistory } from '@holisticon/orders/test';
 import { provideStoreServiceMock } from '@ngxp/store-service/testing';
 import { OrdersStore } from '../../state';
 import { OrdersComponent } from './orders.component';
@@ -33,8 +33,8 @@ describe('OrdersComponent', () => {
         fixture.detectChanges();
     });
 
-    it('renders a ngxp-order for each order', () => {
-        const orderComponents = fixture.debugElement.queryAll(By.css('ngxp-order'));
+    it('renders a holisticon-order for each order', () => {
+        const orderComponents = fixture.debugElement.queryAll(By.css('holisticon-order'));
 
         expect(orderComponents.length).toBe(orderComponents.length);
 

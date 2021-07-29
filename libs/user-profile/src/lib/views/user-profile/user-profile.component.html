@@ -6,7 +6,7 @@
 
         <ul>
             <li class="mb-3" *ngFor="let address of (addresses$ | async)">
-                <ngxp-address [address]="address"></ngxp-address>
+                <holisticon-address [address]="address"></holisticon-address>
             </li>
         </ul>
     </section>
@@ -16,7 +16,7 @@
 
         <ul>
             <li class="mb-3" *ngFor="let paymentOption of (paymentOptions$ | async)">
-                <ngxp-payment-option [paymentOption]="paymentOption"></ngxp-payment-option>
+                <holisticon-payment-option [paymentOption]="paymentOption"></holisticon-payment-option>
             </li>
         </ul>
     </section>

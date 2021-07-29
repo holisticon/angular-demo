@@ -4,13 +4,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "ngxp",
+      "holisticon",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "ngxp",
+      "holisticon",
       "kebab-case"
     ]
   },

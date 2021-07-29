@@ -1,6 +1,6 @@
+import { RouterStateSnapshot } from '@holisticon/routing';
+import { activatedRouteSnapshotBuilder, routerNavigatedActionBuilder, routerStateSnapshotBuilder } from '@holisticon/routing/test';
 import { RouterNavigatedAction } from '@ngrx/router-store';
-import { RouterStateSnapshot } from '@ngxp/routing';
-import { activatedRouteSnapshotBuilder, routerNavigatedActionBuilder, routerStateSnapshotBuilder } from '@ngxp/routing/test';
 import { OrdersViews } from '../../lib/views/orders.views';
 
 function createOrdersRouteSnapshot() {

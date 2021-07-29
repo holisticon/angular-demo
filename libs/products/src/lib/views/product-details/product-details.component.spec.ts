@@ -2,8 +2,8 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
-import { product } from '@ngxp/products/test';
-import { encodeResourceUriAsRouteParam, getUri } from '@ngxp/resource';
+import { product } from '@holisticon/products/test';
+import { encodeResourceUriAsRouteParam, getUri } from '@holisticon/resource';
 import { provideStoreServiceMock } from '@ngxp/store-service/testing';
 import { ProductsStore } from '../../state';
 import { ProductDetailsComponent } from './product-details.component';
@@ -45,6 +45,6 @@ fdescribe('ProductDetailsComponent', () => {
     });
 
     it('renders the product details', () => {
-        expect(fixture.debugElement.query(By.css('ngxp-product')).nativeElement.product).toBe(product);
+        expect(fixture.debugElement.query(By.css('holisticon-product')).nativeElement.product).toBe(product);
     });
 });

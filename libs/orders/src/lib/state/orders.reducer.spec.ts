@@ -1,5 +1,5 @@
+import { orderHistory } from '@holisticon/orders/test';
 import { Action } from '@ngrx/store';
-import { orderHistory } from '@ngxp/orders/test';
 import { orderHistoryLoaded } from './orders.actions';
 import { initialState, ordersReducer } from './orders.reducer';
 

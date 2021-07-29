@@ -1,6 +1,6 @@
+import { product, productBuilder, products, searchResults } from '@holisticon/products/test';
+import { getUri, getUris, toMap } from '@holisticon/resource';
 import { Action } from '@ngrx/store';
-import { product, productBuilder, products, searchResults } from '@ngxp/products/test';
-import { getUri, getUris, toMap } from '@ngxp/resource';
 import { loadSearchResultsAction, productLoadedAction, searchResultsLoadedAction } from './products.actions';
 import { initialState, productsReducer, ProductsState } from './products.reducer';
 

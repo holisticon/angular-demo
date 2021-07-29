@@ -1,5 +1,5 @@
+import { userProfile } from '@holisticon/user-profile/test';
 import { Action } from '@ngrx/store';
-import { userProfile } from '@ngxp/user-profile/test';
 import { userProfileLoadedAction } from './user-profile.actions';
 import { initialState, userProfileReducer } from './user-profile.reducer';
 

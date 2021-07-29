@@ -1,4 +1,4 @@
-import { Resource } from '@ngxp/resource';
+import { Resource } from '@holisticon/resource';
 
 export interface SearchResults {
     products: Resource<Product>[];

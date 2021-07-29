@@ -6,7 +6,7 @@ import { OrdersStateModule, OrdersStore } from '../../state';
 import { OrderModule } from '../../ui';
 
 @Component({
-    selector: 'ngxp-orders',
+    selector: 'holisticon-orders',
     templateUrl: './orders.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })

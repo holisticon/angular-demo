@@ -1,14 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, NgModule } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { decodeResourceUriFromRouteParam } from '@ngxp/resource';
+import { decodeResourceUriFromRouteParam } from '@holisticon/resource';
 import { Observable } from 'rxjs';
 import { Product } from '../../domain';
 import { ProductsStateModule, ProductsStore } from '../../state';
 import { ProductModule } from '../../ui';
 
 @Component({
-    selector: 'ngxp-product-details',
+    selector: 'holisticon-product-details',
     templateUrl: './product-details.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })

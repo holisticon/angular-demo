@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
+import { decodeResourceUriFromRouteParam } from '@holisticon/resource';
+import { extractQueryParam, extractRouteParam, filterNavigationTo } from '@holisticon/routing';
 import { Actions, createEffect } from '@ngrx/effects';
-import { decodeResourceUriFromRouteParam } from '@ngxp/resource';
-import { extractQueryParam, extractRouteParam, filterNavigationTo } from '@ngxp/routing';
 import { isEmpty, isUndefined } from 'lodash-es';
 import { filter, map, switchMap } from 'rxjs/operators';
 import { loadProductAction, loadSearchResultsAction, ProductsStore } from '../state';

@@ -1,4 +1,4 @@
-import { resource, resources } from '@ngxp/resource/test';
+import { resource, resources } from '@holisticon/resource/test';
 import { getUri, getUris, toMap } from './resource.utils';
 
 describe('resourceUtils', () => {

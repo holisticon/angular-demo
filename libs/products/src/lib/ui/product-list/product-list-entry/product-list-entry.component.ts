@@ -1,14 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ResourceModule } from '@ngxp/resource';
-import { AddToShoppingCartFormModule } from '@ngxp/shopping-cart/ui';
+import { ResourceModule } from '@holisticon/resource';
+import { AddToShoppingCartFormModule } from '@holisticon/shopping-cart/ui';
 import { Product } from '../../../domain';
 import { ProductImageModule } from '../../product-image/product-image.component';
 import { ProductPriceModule } from '../../product-price/product-price.component';
 
 @Component({
-    selector: 'ngxp-product-list-entry',
+    selector: 'holisticon-product-list-entry',
     templateUrl: './product-list-entry.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })

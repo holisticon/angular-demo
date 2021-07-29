@@ -1,4 +1,4 @@
-import { resource } from '@ngxp/resource/test';
+import { resource } from '@holisticon/resource/test';
 import { getUri } from './resource.utils';
 import { ToResourceUriPipe } from './to-resource-uri.pipe';
 

@@ -1,6 +1,6 @@
 // tslint:disable: no-non-null-assertion
 
-import { userProfile } from '@ngxp/user-profile/test';
+import { userProfile } from '@holisticon/user-profile/test';
 import { UserProfileAppState } from './user-profile.reducer';
 import { selectAddresses, selectPaymentOptions, selectUserProfile } from './user-profile.selectors';
 

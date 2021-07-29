@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, Input, NgModule } from '@angular/co
 import { Product } from '../../domain';
 
 @Component({
-    selector: 'ngxp-product-price',
+    selector: 'holisticon-product-price',
     templateUrl: './product-price.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })

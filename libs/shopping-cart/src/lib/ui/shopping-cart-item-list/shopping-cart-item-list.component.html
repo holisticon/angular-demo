@@ -10,7 +10,7 @@
     <tbody>
         <tr
             *ngFor="let shoppingCartItem of shoppingCart.items"
-            ngxp-shopping-cart-item-row
+            holisticon-shopping-cart-item-row
             [shoppingCartItem]="shoppingCartItem"
             (updateQuantity)="onUpdateQuantity($event)"
             (delete)="onDelete($event)"

@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, NgModule, Output } fr
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
-    selector: 'ngxp-product-search-form',
+    selector: 'holisticon-product-search-form',
     templateUrl: './product-search-form.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })

@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, NgModule } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { Address, PaymentOption } from '@ngxp/user-profile/domain';
-import { UserProfileStore } from '@ngxp/user-profile/state';
-import { AddressModule, PaymentOptionModule } from '@ngxp/user-profile/ui';
+import { Address, PaymentOption } from '@holisticon/user-profile/domain';
+import { UserProfileStore } from '@holisticon/user-profile/state';
+import { AddressModule, PaymentOptionModule } from '@holisticon/user-profile/ui';
 import { defaultTo } from 'lodash-es';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -11,7 +11,7 @@ import { OrderItem } from '../../domain';
 import { OrdersStore } from '../../state';
 
 @Component({
-    selector: 'ngxp-place-order-form',
+    selector: 'holisticon-place-order-form',
     templateUrl: './place-order-form.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })

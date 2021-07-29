@@ -1,5 +1,5 @@
+import { Resource, ResourceUri } from '@holisticon/resource';
 import { createAction, props } from '@ngrx/store';
-import { Resource, ResourceUri } from '@ngxp/resource';
 import { Product, SearchResults } from '../domain';
 
 export const searchProductsAction = createAction(

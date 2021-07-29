@@ -104,7 +104,7 @@
           }
         }
       },
-      "prefix": "ngxp"
+      "prefix": "holisticon"
     },
     "common": {
       "root": "libs/common",
@@ -135,7 +135,7 @@
           }
         }
       },
-      "prefix": "ngxp"
+      "prefix": "holisticon"
     },
     "homepage": {
       "root": "libs/homepage",
@@ -166,7 +166,7 @@
           }
         }
       },
-      "prefix": "ngxp"
+      "prefix": "holisticon"
     },
     "orders": {
       "root": "libs/orders",
@@ -197,7 +197,7 @@
           }
         }
       },
-      "prefix": "ngxp"
+      "prefix": "holisticon"
     },
     "products": {
       "root": "libs/products",
@@ -228,7 +228,7 @@
           }
         }
       },
-      "prefix": "ngxp"
+      "prefix": "holisticon"
     },
     "shopping-cart": {
       "root": "libs/shopping-cart",
@@ -259,7 +259,7 @@
           }
         }
       },
-      "prefix": "ngxp"
+      "prefix": "holisticon"
     },
     "user-profile": {
       "root": "libs/user-profile",
@@ -290,13 +290,13 @@
           }
         }
       },
-      "prefix": "ngxp"
+      "prefix": "holisticon"
     },
     "resource": {
       "projectType": "library",
       "root": "libs/resource",
       "sourceRoot": "libs/resource/src",
-      "prefix": "ngxp",
+      "prefix": "holisticon",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
@@ -328,7 +328,7 @@
       "projectType": "library",
       "root": "libs/routing",
       "sourceRoot": "libs/routing/src",
-      "prefix": "ngxp",
+      "prefix": "holisticon",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",

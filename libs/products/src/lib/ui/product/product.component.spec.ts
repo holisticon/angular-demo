@@ -1,8 +1,8 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { product } from '@ngxp/products/test';
-import { getUri, ResourceModule } from '@ngxp/resource';
+import { product } from '@holisticon/products/test';
+import { getUri, ResourceModule } from '@holisticon/resource';
 import { ProductComponent } from './product.component';
 
 describe('ProductComponent', () => {
@@ -49,13 +49,13 @@ describe('ProductComponent', () => {
         });
 
         it('renders the product image', () => {
-            const image = fixture.debugElement.query(By.css('ngxp-product-image')).nativeNode;
+            const image = fixture.debugElement.query(By.css('holisticon-product-image')).nativeNode;
 
             expect(image.product).toBe(product);
         });
 
         it('renders the Add to Shopping Cart form', () => {
-            const addToShoppingCartForm = fixture.debugElement.query(By.css('ngxp-add-to-shopping-cart-form')).nativeNode;
+            const addToShoppingCartForm = fixture.debugElement.query(By.css('holisticon-add-to-shopping-cart-form')).nativeNode;
 
             expect(addToShoppingCartForm.product).toBe(getUri(product));
         });

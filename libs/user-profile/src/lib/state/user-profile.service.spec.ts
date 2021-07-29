@@ -1,6 +1,6 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { userProfile } from '@ngxp/user-profile/test';
+import { userProfile } from '@holisticon/user-profile/test';
 import { UserProfileService } from './user-profile.service';
 
 describe('UserProfileService', () => {

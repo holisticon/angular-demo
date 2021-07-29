@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, NgModule } from '@angular/core';
-import { AddressModule, PaymentOptionModule } from '@ngxp/user-profile/ui';
+import { AddressModule, PaymentOptionModule } from '@holisticon/user-profile/ui';
 import { Order } from '../../domain';
 
 @Component({
-    selector: 'ngxp-order',
+    selector: 'holisticon-order',
     templateUrl: './order.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })

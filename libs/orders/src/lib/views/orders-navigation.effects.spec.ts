@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
+import { ordersNavigationAction } from '@holisticon/orders/test';
+import { routerNavigationAction } from '@holisticon/routing/test';
 import { provideMockActions } from '@ngrx/effects/testing';
-import { ordersNavigationAction } from '@ngxp/orders/test';
-import { routerNavigationAction } from '@ngxp/routing/test';
 import { cold, hot } from 'jest-marbles';
 import { Observable } from 'rxjs';
 import { loadOrderHistoryAction } from '../state';

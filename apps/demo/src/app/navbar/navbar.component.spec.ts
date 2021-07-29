@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { expectElementFromFixture } from '@ngxp/common/test';
+import { expectElementFromFixture } from '@holisticon/common/test';
 import { NavbarComponent } from './navbar.component';
 
 describe('NavbarComponent', () => {

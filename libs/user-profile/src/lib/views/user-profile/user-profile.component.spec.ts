@@ -1,8 +1,8 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { userProfile } from '@holisticon/user-profile/test';
 import { provideStoreServiceMock } from '@ngxp/store-service/testing';
-import { userProfile } from '@ngxp/user-profile/test';
 import { UserProfileStore } from '../../state';
 import { UserProfileComponent } from './user-profile.component';
 
@@ -34,11 +34,11 @@ describe('UserProfileComponent', () => {
         fixture.detectChanges();
     });
 
-    it('renders a ngxp-address for each address', () => {
-        expect(fixture.debugElement.queryAll(By.css('ngxp-address')).length).toBe(userProfile.addresses.length);
+    it('renders a holisticon-address for each address', () => {
+        expect(fixture.debugElement.queryAll(By.css('holisticon-address')).length).toBe(userProfile.addresses.length);
     });
 
-    it('renders a ngxp-payment-option for each payment option', () => {
-        expect(fixture.debugElement.queryAll(By.css('ngxp-payment-option')).length).toBe(userProfile.paymentOptions.length);
+    it('renders a holisticon-payment-option for each payment option', () => {
+        expect(fixture.debugElement.queryAll(By.css('holisticon-payment-option')).length).toBe(userProfile.paymentOptions.length);
     });
 });

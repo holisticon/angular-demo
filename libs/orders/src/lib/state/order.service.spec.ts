@@ -1,6 +1,6 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { newOrder, order, orders } from '@ngxp/orders/test';
+import { newOrder, order, orders } from '@holisticon/orders/test';
 import { toNewOrderRequest } from './new-order-request.mapper';
 import { OrderService } from './order.service';
 

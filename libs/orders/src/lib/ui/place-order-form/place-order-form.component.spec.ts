@@ -2,10 +2,10 @@ import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { orderItems } from '@ngxp/orders/test';
+import { orderItems } from '@holisticon/orders/test';
+import { UserProfileStore } from '@holisticon/user-profile/state';
+import { userProfile } from '@holisticon/user-profile/test';
 import { provideStoreServiceMock, StoreServiceMock } from '@ngxp/store-service/testing';
-import { UserProfileStore } from '@ngxp/user-profile/state';
-import { userProfile } from '@ngxp/user-profile/test';
 import { isNull } from 'lodash-es';
 import { NewOrder } from '../../domain';
 import { OrdersStore } from '../../state';
@@ -51,7 +51,7 @@ describe('PlaceOrderFormComponent', () => {
 
     describe('billingAddress', () => {
         it('renders each address of the given user profile as option for billing address', () => {
-            const billingAddresses = fixture.debugElement.queryAll(By.css('ngxp-address'))
+            const billingAddresses = fixture.debugElement.queryAll(By.css('holisticon-address'))
                 .filter(address => !isNull(address.nativeElement.closest('.billing-address')))
                 .map((address: DebugElement) => address.nativeElement);
 
@@ -68,7 +68,7 @@ describe('PlaceOrderFormComponent', () => {
 
     describe('shippingAddress', () => {
         it('renders each address of the given user profile as option for shipping address', () => {
-            const shippingAddresses = fixture.debugElement.queryAll(By.css('ngxp-address'))
+            const shippingAddresses = fixture.debugElement.queryAll(By.css('holisticon-address'))
                 .filter(address => !isNull(address.nativeElement.closest('.shipping-address')))
                 .map((address: DebugElement) => address.nativeElement);
 
@@ -85,7 +85,7 @@ describe('PlaceOrderFormComponent', () => {
 
     describe('payment', () => {
         it('renders each payment option of the given user profile as option for payment', () => {
-            const paymentOptions = fixture.debugElement.queryAll(By.css('ngxp-payment-option'))
+            const paymentOptions = fixture.debugElement.queryAll(By.css('holisticon-payment-option'))
                 .map((address: DebugElement) => address.nativeElement);
 
             userProfile.paymentOptions.forEach((paymentOption, index) => {

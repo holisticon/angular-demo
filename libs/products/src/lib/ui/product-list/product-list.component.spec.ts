@@ -2,8 +2,8 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { products } from '@ngxp/products/test';
-import { ResourceModule } from '@ngxp/resource';
+import { products } from '@holisticon/products/test';
+import { ResourceModule } from '@holisticon/resource';
 import { ProductListComponent } from './product-list.component';
 
 describe('ProductListComponent', () => {
@@ -35,7 +35,7 @@ describe('ProductListComponent', () => {
     });
 
     it('renders a row for each product', () => {
-        const productListEntries = fixture.debugElement.queryAll(By.css('ngxp-product-list-entry'));
+        const productListEntries = fixture.debugElement.queryAll(By.css('holisticon-product-list-entry'));
 
         expect(productListEntries.length).toBe(products.length);
 

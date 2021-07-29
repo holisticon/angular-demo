@@ -1,6 +1,6 @@
+import { ReducerArgs } from '@holisticon/common';
+import { getUris, ResourceMap, ResourceUri, toMap } from '@holisticon/resource';
 import { createReducer, on } from '@ngrx/store';
-import { ReducerArgs } from '@ngxp/common';
-import { getUris, ResourceMap, ResourceUri, toMap } from '@ngxp/resource';
 import { Product } from '../domain';
 import { loadSearchResultsAction, productLoadedAction, searchResultsLoadedAction } from './products.actions';
 
