@@ -30,7 +30,7 @@ describe('OrderService', () => {
                     expect(returnedOrders).toBe(orders);
                 });
 
-            const request = httpController.expectOne('https://example.hypercontract.org/orders');
+            const request = httpController.expectOne('https://webapp-demos-api.azurewebsites.net/orders');
 
             expect(request.request.method).toEqual('GET');
 
@@ -48,7 +48,7 @@ describe('OrderService', () => {
                     expect(createdOrder).toBe(order);
                 });
 
-            const postRequest = httpController.expectOne('https://example.hypercontract.org/orders');
+            const postRequest = httpController.expectOne('https://webapp-demos-api.azurewebsites.net/orders');
 
             expect(postRequest.request.method).toEqual('POST');
             expect(postRequest.request.body).toEqual(toNewOrderRequest(newOrder));

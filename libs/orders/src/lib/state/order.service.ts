@@ -16,14 +16,14 @@ export class OrderService {
     loadOrderHistory() {
         return this.httpClient
             .get<Resource<OrderHistory>>(
-                'https://example.hypercontract.org/orders'
+                'https://webapp-demos-api.azurewebsites.net/orders'
             );
     }
 
     placeOrder(newOrder: NewOrder) {
         return this.httpClient
             .post<Resource<Order>>(
-                'https://example.hypercontract.org/orders',
+                'https://webapp-demos-api.azurewebsites.net/orders',
                 toNewOrderRequest(newOrder)
             )
     }

@@ -31,7 +31,7 @@ describe('ShoppingCartService', () => {
                     expect(returnedShoppingCart).toBe(shoppingCart);
                 });
 
-            const request = httpController.expectOne('https://example.hypercontract.org/shoppingCart');
+            const request = httpController.expectOne('https://webapp-demos-api.azurewebsites.net/shoppingCart');
 
             expect(request.request.method).toEqual('GET');
 
@@ -93,7 +93,7 @@ describe('ShoppingCartService', () => {
                     expect(returnedShoppingCart).toBe(shoppingCart);
                 });
 
-            const postRequest = httpController.expectOne('https://example.hypercontract.org/shoppingCart/items');
+            const postRequest = httpController.expectOne('https://webapp-demos-api.azurewebsites.net/shoppingCart/items');
 
             expect(postRequest.request.method).toEqual('POST');
             expect(postRequest.request.body).toEqual(additionToShoppingCart);

@@ -15,7 +15,7 @@ export class ShoppingCartService {
     loadShoppingCart() {
         return this.httpClient
             .get<Resource<ShoppingCart>>(
-                'https://example.hypercontract.org/shoppingCart'
+                'https://webapp-demos-api.azurewebsites.net/shoppingCart'
             );
     }
 
@@ -37,7 +37,7 @@ export class ShoppingCartService {
     addToShoppingCart(additionToShoppingCart: AdditionToShoppingCart) {
         return this.httpClient
             .post<Resource<ShoppingCart>>(
-                'https://example.hypercontract.org/shoppingCart/items',
+                'https://webapp-demos-api.azurewebsites.net/shoppingCart/items',
                 additionToShoppingCart
             );
     }
