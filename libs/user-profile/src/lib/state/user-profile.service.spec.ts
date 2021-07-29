@@ -28,7 +28,7 @@ describe('UserProfileService', () => {
                     expect(returnedUserProfile).toBe(userProfile);
                 });
 
-            const request = httpController.expectOne('https://example.hypercontract.org/userProfile');
+            const request = httpController.expectOne('https://webapp-demos-api.azurewebsites.net/userProfile');
 
             expect(request.request.method).toEqual('GET');
 

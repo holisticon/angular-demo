@@ -14,7 +14,7 @@ export class UserProfileService {
 
     loadUserProfile() {
         return this.httpClient
-            .get<Resource<UserProfile>>('https://example.hypercontract.org/userProfile');
+            .get<Resource<UserProfile>>('https://webapp-demos-api.azurewebsites.net/userProfile');
     }
 
 }

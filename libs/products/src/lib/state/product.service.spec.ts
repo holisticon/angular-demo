@@ -31,7 +31,7 @@ describe('ProductService', () => {
                     expect(searchResults).toBe(products);
                 });
 
-            const request = httpController.expectOne(`https://example.hypercontract.org/products?queryString=${queryString}`);
+            const request = httpController.expectOne(`https://webapp-demos-api.azurewebsites.net/products?queryString=${queryString}`);
 
             expect(request.request.method).toEqual('GET');
 
