@@ -24,11 +24,17 @@
     }
   },
   "projects": {
+    "common": {
+      "tags": []
+    },
     "demo": {
       "tags": []
     },
-    "common": {
-      "tags": []
+    "demo-e2e": {
+      "tags": [],
+      "implicitDependencies": [
+        "demo"
+      ]
     },
     "homepage": {
       "tags": []
@@ -39,23 +45,17 @@
     "products": {
       "tags": []
     },
-    "shopping-cart": {
-      "tags": []
-    },
-    "user-profile": {
-      "tags": []
-    },
     "resource": {
       "tags": []
     },
     "routing": {
       "tags": []
     },
-    "demo-e2e": {
-      "tags": [],
-      "implicitDependencies": [
-        "demo"
-      ]
+    "shopping-cart": {
+      "tags": []
+    },
+    "user-profile": {
+      "tags": []
     }
   },
   "affected": {

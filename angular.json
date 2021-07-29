@@ -3,6 +3,37 @@
   "version": 1,
   "newProjectRoot": "",
   "projects": {
+    "common": {
+      "root": "libs/common",
+      "sourceRoot": "libs/common/src",
+      "projectType": "library",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/common/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": [
+            "coverage/libs/common"
+          ]
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/common/tsconfig.lib.json",
+              "libs/common/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/common/**/*"
+            ]
+          }
+        }
+      },
+      "prefix": "ngxp"
+    },
     "demo": {
       "root": "apps/demo",
       "sourceRoot": "apps/demo/src",
@@ -110,36 +141,37 @@
       },
       "prefix": "ngxp"
     },
-    "common": {
-      "root": "libs/common",
-      "sourceRoot": "libs/common/src",
-      "projectType": "library",
+    "demo-e2e": {
+      "root": "apps/demo-e2e",
+      "sourceRoot": "apps/demo-e2e/src",
+      "projectType": "application",
       "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
           "options": {
-            "jestConfig": "libs/common/jest.config.js",
-            "passWithNoTests": true
+            "cypressConfig": "apps/demo-e2e/cypress.json",
+            "tsConfig": "apps/demo-e2e/tsconfig.e2e.json",
+            "devServerTarget": "demo:serve"
           },
-          "outputs": [
-            "coverage/libs/common"
-          ]
+          "configurations": {
+            "production": {
+              "devServerTarget": "demo:serve:production"
+            }
+          }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/common/tsconfig.lib.json",
-              "libs/common/tsconfig.spec.json"
+              "apps/demo-e2e/tsconfig.e2e.json"
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/common/**/*"
+              "!apps/demo-e2e/**/*"
             ]
           }
         }
-      },
-      "prefix": "ngxp"
+      }
     },
     "homepage": {
       "root": "libs/homepage",
@@ -234,68 +266,6 @@
       },
       "prefix": "ngxp"
     },
-    "shopping-cart": {
-      "root": "libs/shopping-cart",
-      "sourceRoot": "libs/shopping-cart/src",
-      "projectType": "library",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/shopping-cart/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/shopping-cart"
-          ]
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/shopping-cart/tsconfig.lib.json",
-              "libs/shopping-cart/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/shopping-cart/**/*"
-            ]
-          }
-        }
-      },
-      "prefix": "ngxp"
-    },
-    "user-profile": {
-      "root": "libs/user-profile",
-      "sourceRoot": "libs/user-profile/src",
-      "projectType": "library",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/user-profile/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/user-profile"
-          ]
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/user-profile/tsconfig.lib.json",
-              "libs/user-profile/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/user-profile/**/*"
-            ]
-          }
-        }
-      },
-      "prefix": "ngxp"
-    },
     "resource": {
       "projectType": "library",
       "root": "libs/resource",
@@ -359,37 +329,67 @@
       },
       "schematics": {}
     },
-    "demo-e2e": {
-      "root": "apps/demo-e2e",
-      "sourceRoot": "apps/demo-e2e/src",
-      "projectType": "application",
+    "shopping-cart": {
+      "root": "libs/shopping-cart",
+      "sourceRoot": "libs/shopping-cart/src",
+      "projectType": "library",
       "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
+        "test": {
+          "builder": "@nrwl/jest:jest",
           "options": {
-            "cypressConfig": "apps/demo-e2e/cypress.json",
-            "tsConfig": "apps/demo-e2e/tsconfig.e2e.json",
-            "devServerTarget": "demo:serve"
+            "jestConfig": "libs/shopping-cart/jest.config.js",
+            "passWithNoTests": true
           },
-          "configurations": {
-            "production": {
-              "devServerTarget": "demo:serve:production"
-            }
-          }
+          "outputs": [
+            "coverage/libs/shopping-cart"
+          ]
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "apps/demo-e2e/tsconfig.e2e.json"
+              "libs/shopping-cart/tsconfig.lib.json",
+              "libs/shopping-cart/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**",
-              "!apps/demo-e2e/**/*"
+              "!libs/shopping-cart/**/*"
             ]
           }
         }
-      }
+      },
+      "prefix": "ngxp"
+    },
+    "user-profile": {
+      "root": "libs/user-profile",
+      "sourceRoot": "libs/user-profile/src",
+      "projectType": "library",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/user-profile/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": [
+            "coverage/libs/user-profile"
+          ]
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/user-profile/tsconfig.lib.json",
+              "libs/user-profile/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/user-profile/**/*"
+            ]
+          }
+        }
+      },
+      "prefix": "ngxp"
     }
   },
   "defaultProject": "demo",
