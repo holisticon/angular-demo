@@ -5,7 +5,7 @@
     },
     "routes": [
         {
-            "route": "/index.html",
+            "route": "/",
             "headers": {
                 "Cache-Control": "no-cache, no-store, must-revalidate"
             }
