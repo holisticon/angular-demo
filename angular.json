@@ -19,15 +19,11 @@
           ]
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "libs/common/tsconfig.lib.json",
-              "libs/common/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/common/**/*"
+            "lintFilePatterns": [
+              "libs/common/src/**/*.ts",
+              "libs/common/src/**/*.html"
             ]
           }
         }
@@ -126,15 +122,11 @@
           ]
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "apps/demo/tsconfig.app.json",
-              "apps/demo/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/demo/**/*"
+            "lintFilePatterns": [
+              "apps/demo/src/**/*.ts",
+              "apps/demo/src/**/*.html"
             ]
           }
         }
@@ -160,14 +152,10 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "apps/demo-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/demo-e2e/**/*"
+            "lintFilePatterns": [
+              "apps/demo-e2e/**/*.{js,ts}"
             ]
           }
         }
@@ -190,15 +178,11 @@
           ]
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "libs/homepage/tsconfig.lib.json",
-              "libs/homepage/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/homepage/**/*"
+            "lintFilePatterns": [
+              "libs/homepage/src/**/*.ts",
+              "libs/homepage/src/**/*.html"
             ]
           }
         }
@@ -221,15 +205,11 @@
           ]
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "libs/orders/tsconfig.lib.json",
-              "libs/orders/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/orders/**/*"
+            "lintFilePatterns": [
+              "libs/orders/src/**/*.ts",
+              "libs/orders/src/**/*.html"
             ]
           }
         }
@@ -252,77 +232,11 @@
           ]
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "libs/products/tsconfig.lib.json",
-              "libs/products/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/products/**/*"
-            ]
-          }
-        }
-      },
-      "prefix": "holisticon"
-    },
-    "shopping-cart": {
-      "root": "libs/shopping-cart",
-      "sourceRoot": "libs/shopping-cart/src",
-      "projectType": "library",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/shopping-cart/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/shopping-cart"
-          ]
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/shopping-cart/tsconfig.lib.json",
-              "libs/shopping-cart/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/shopping-cart/**/*"
-            ]
-          }
-        }
-      },
-      "prefix": "holisticon"
-    },
-    "user-profile": {
-      "root": "libs/user-profile",
-      "sourceRoot": "libs/user-profile/src",
-      "projectType": "library",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/user-profile/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/user-profile"
-          ]
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/user-profile/tsconfig.lib.json",
-              "libs/user-profile/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/user-profile/**/*"
+            "lintFilePatterns": [
+              "libs/products/src/**/*.ts",
+              "libs/products/src/**/*.html"
             ]
           }
         }
@@ -336,15 +250,11 @@
       "prefix": "holisticon",
       "architect": {
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "libs/resource/tsconfig.lib.json",
-              "libs/resource/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/resource/**/*"
+            "lintFilePatterns": [
+              "libs/resource/src/**/*.ts",
+              "libs/resource/src/**/*.html"
             ]
           }
         },
@@ -368,14 +278,11 @@
       "prefix": "holisticon",
       "architect": {
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "libs/routing/tsconfig.lib.json",
-              "libs/routing/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
+            "lintFilePatterns": [
+              "libs/routing/src/**/*.ts",
+              "libs/routing/src/**/*.html"
             ]
           }
         },
@@ -408,15 +315,11 @@
           ]
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "libs/shopping-cart/tsconfig.lib.json",
-              "libs/shopping-cart/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/shopping-cart/**/*"
+            "lintFilePatterns": [
+              "libs/shopping-cart/src/**/*.ts",
+              "libs/shopping-cart/src/**/*.html"
             ]
           }
         }
@@ -439,15 +342,11 @@
           ]
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "libs/user-profile/tsconfig.lib.json",
-              "libs/user-profile/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/user-profile/**/*"
+            "lintFilePatterns": [
+              "libs/user-profile/src/**/*.ts",
+              "libs/user-profile/src/**/*.html"
             ]
           }
         }

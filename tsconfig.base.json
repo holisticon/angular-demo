@@ -24,43 +24,99 @@
     "forceConsistentCasingInFileNames": true,
     "removeComments": true,
     "paths": {
-        "@holisticon/common": ["libs/common/src/index.ts"],
-        "@holisticon/common/test": ["libs/common/src/test/index.ts"],
-
-        "@holisticon/homepage": ["libs/homepage/src/index.ts"],
-
-        "@holisticon/orders": ["libs/orders/src/index.ts"],
-        "@holisticon/orders/test": ["libs/orders/src/test/index.ts"],
-        "@holisticon/orders/views": ["libs/orders/src/lib/views/public-api.ts"],
-        "@holisticon/orders/ui": ["libs/orders/src/lib/ui/public-api.ts"],
-        "@holisticon/orders/state": ["libs/orders/src/lib/state/public-api.ts"],
-        "@holisticon/orders/domain": ["libs/orders/src/lib/domain/public-api.ts"],
-
-        "@holisticon/products": ["libs/products/src/index.ts"],
-        "@holisticon/products/test": ["libs/products/src/test/index.ts"],
-        "@holisticon/products/views": ["libs/products/src/lib/views/public-api.ts"],
-        "@holisticon/products/ui": ["libs/products/src/lib/ui/public-api.ts"],
-        "@holisticon/products/state": ["libs/products/src/lib/state/public-api.ts"],
-        "@holisticon/products/domain": ["libs/products/src/lib/domain/public-api.ts"],
-
-        "@holisticon/resource": ["libs/resource/src/index.ts"],
-        "@holisticon/resource/test": ["libs/resource/src/test/index.ts"],
-        "@holisticon/routing": ["libs/routing/src/index.ts"],
-        "@holisticon/routing/test": ["libs/routing/src/test/index.ts"],
-
-        "@holisticon/shopping-cart": ["libs/shopping-cart/src/index.ts"],
-        "@holisticon/shopping-cart/test": ["libs/shopping-cart/src/test/index.ts"],
-        "@holisticon/shopping-cart/views": ["libs/shopping-cart/src/lib/views/public-api.ts"],
-        "@holisticon/shopping-cart/ui": ["libs/shopping-cart/src/lib/ui/public-api.ts"],
-        "@holisticon/shopping-cart/state": ["libs/shopping-cart/src/lib/state/public-api.ts"],
-        "@holisticon/shopping-cart/domain": ["libs/shopping-cart/src/lib/domain/public-api.ts"],
-
-        "@holisticon/user-profile": ["libs/user-profile/src/index.ts"],
-        "@holisticon/user-profile/test": ["libs/user-profile/src/test/index.ts"],
-        "@holisticon/user-profile/views": ["libs/user-profile/src/lib/views/public-api.ts"],
-        "@holisticon/user-profile/ui": ["libs/user-profile/src/lib/ui/public-api.ts"],
-        "@holisticon/user-profile/state": ["libs/user-profile/src/lib/state/public-api.ts"],
-        "@holisticon/user-profile/domain": ["libs/user-profile/src/lib/domain/public-api.ts"]
+      "@holisticon/common": [
+        "libs/common/src/index.ts"
+      ],
+      "@holisticon/common/test": [
+        "libs/common/src/test/index.ts"
+      ],
+      "@holisticon/homepage": [
+        "libs/homepage/src/index.ts"
+      ],
+      "@holisticon/orders": [
+        "libs/orders/src/index.ts"
+      ],
+      "@holisticon/orders/domain": [
+        "libs/orders/src/lib/domain/public-api.ts"
+      ],
+      "@holisticon/orders/state": [
+        "libs/orders/src/lib/state/public-api.ts"
+      ],
+      "@holisticon/orders/test": [
+        "libs/orders/src/test/index.ts"
+      ],
+      "@holisticon/orders/ui": [
+        "libs/orders/src/lib/ui/public-api.ts"
+      ],
+      "@holisticon/orders/views": [
+        "libs/orders/src/lib/views/public-api.ts"
+      ],
+      "@holisticon/products": [
+        "libs/products/src/index.ts"
+      ],
+      "@holisticon/products/domain": [
+        "libs/products/src/lib/domain/public-api.ts"
+      ],
+      "@holisticon/products/state": [
+        "libs/products/src/lib/state/public-api.ts"
+      ],
+      "@holisticon/products/test": [
+        "libs/products/src/test/index.ts"
+      ],
+      "@holisticon/products/ui": [
+        "libs/products/src/lib/ui/public-api.ts"
+      ],
+      "@holisticon/products/views": [
+        "libs/products/src/lib/views/public-api.ts"
+      ],
+      "@holisticon/resource": [
+        "libs/resource/src/index.ts"
+      ],
+      "@holisticon/resource/test": [
+        "libs/resource/src/test/index.ts"
+      ],
+      "@holisticon/routing": [
+        "libs/routing/src/index.ts"
+      ],
+      "@holisticon/routing/test": [
+        "libs/routing/src/test/index.ts"
+      ],
+      "@holisticon/shopping-cart": [
+        "libs/shopping-cart/src/index.ts"
+      ],
+      "@holisticon/shopping-cart/domain": [
+        "libs/shopping-cart/src/lib/domain/public-api.ts"
+      ],
+      "@holisticon/shopping-cart/state": [
+        "libs/shopping-cart/src/lib/state/public-api.ts"
+      ],
+      "@holisticon/shopping-cart/test": [
+        "libs/shopping-cart/src/test/index.ts"
+      ],
+      "@holisticon/shopping-cart/ui": [
+        "libs/shopping-cart/src/lib/ui/public-api.ts"
+      ],
+      "@holisticon/shopping-cart/views": [
+        "libs/shopping-cart/src/lib/views/public-api.ts"
+      ],
+      "@holisticon/user-profile": [
+        "libs/user-profile/src/index.ts"
+      ],
+      "@holisticon/user-profile/domain": [
+        "libs/user-profile/src/lib/domain/public-api.ts"
+      ],
+      "@holisticon/user-profile/state": [
+        "libs/user-profile/src/lib/state/public-api.ts"
+      ],
+      "@holisticon/user-profile/test": [
+        "libs/user-profile/src/test/index.ts"
+      ],
+      "@holisticon/user-profile/ui": [
+        "libs/user-profile/src/lib/ui/public-api.ts"
+      ],
+      "@holisticon/user-profile/views": [
+        "libs/user-profile/src/lib/views/public-api.ts"
+      ]
     }
   },
   "exclude": [
