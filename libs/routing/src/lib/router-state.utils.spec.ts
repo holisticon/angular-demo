@@ -1,4 +1,4 @@
-import { activatedRouteSnapshot, activatedViews, routeParams } from '@ngxp/routing/test';
+import { activatedRouteSnapshot, activatedViews, routeParams } from '@holisticon/routing/test';
 import { getParams, getViews } from './router-state.utils';
 
 describe('routerStateUtils', () => {

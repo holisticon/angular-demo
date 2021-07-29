@@ -1,5 +1,5 @@
 import { Route, UrlSegment } from '@angular/router';
-import { ActivatedRouteSnapshot } from '@ngxp/routing';
+import { ActivatedRouteSnapshot } from '@holisticon/routing';
 import { isEmpty, isNil, isNull } from 'lodash-es';
 
 export function applyQueryParamsOnChildren(activatedRoute: Partial<ActivatedRouteSnapshot>): Partial<ActivatedRouteSnapshot> {

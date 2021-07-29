@@ -1,6 +1,6 @@
+import { Resource } from '@holisticon/resource';
+import { createResourceBlueprintBuilder } from '@holisticon/resource/test';
 import { BlueprintFactory } from '@ngxp/builder';
-import { Resource } from '@ngxp/resource';
-import { createResourceBlueprintBuilder } from '@ngxp/resource/test';
 import { random } from 'lodash-es';
 import { ShoppingCart } from '../../lib/domain/shopping-cart';
 import { shoppingCartItemBuilder } from './shopping-cart-item.data';

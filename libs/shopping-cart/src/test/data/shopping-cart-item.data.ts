@@ -1,6 +1,6 @@
+import { Resource } from '@holisticon/resource';
+import { createResourceBlueprintBuilder, resourceUri } from '@holisticon/resource/test';
 import { BlueprintFactory } from '@ngxp/builder';
-import { Resource } from '@ngxp/resource';
-import { createResourceBlueprintBuilder, resourceUri } from '@ngxp/resource/test';
 import { commerce, image, lorem, random } from 'faker';
 import { ShoppingCartItem } from '../../lib/domain/shopping-cart';
 

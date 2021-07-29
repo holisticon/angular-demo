@@ -2,8 +2,8 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { ResourceWith } from '@ngxp/resource';
-import { emptyShoppingCart, shoppingCart, shoppingCartItem } from '@ngxp/shopping-cart/test';
+import { ResourceWith } from '@holisticon/resource';
+import { emptyShoppingCart, shoppingCart, shoppingCartItem } from '@holisticon/shopping-cart/test';
 import { provideStoreServiceMock, StoreServiceMock } from '@ngxp/store-service/testing';
 import { QuantityUpdate, ShoppingCartItem } from '../../domain';
 import { ShoppingCartStore } from '../../state';
@@ -46,14 +46,14 @@ describe('ShoppingCartComponent', () => {
         fixture.detectChanges();
     });
 
-    it('renders the shopping cart as ngxp-shopping-cart-item-list', () => {
-        const shoppingCartItemList = fixture.debugElement.query(By.css('ngxp-shopping-cart-item-list')).nativeElement;
+    it('renders the shopping cart as holisticon-shopping-cart-item-list', () => {
+        const shoppingCartItemList = fixture.debugElement.query(By.css('holisticon-shopping-cart-item-list')).nativeElement;
 
         expect(shoppingCartItemList.shoppingCart).toEqual(shoppingCart);
     });
 
     it('renders the place order form when the shopping cart contains items', () => {
-        const placeOrderForm = fixture.debugElement.query(By.css('ngxp-place-order-form')).nativeElement;
+        const placeOrderForm = fixture.debugElement.query(By.css('holisticon-place-order-form')).nativeElement;
 
         expect(placeOrderForm.orderItems).toEqual(shoppingCart.items);
     });
@@ -63,7 +63,7 @@ describe('ShoppingCartComponent', () => {
 
         fixture.detectChanges();
 
-        const placeOrderForm = fixture.debugElement.query(By.css('ngxp-place-order-form'));
+        const placeOrderForm = fixture.debugElement.query(By.css('holisticon-place-order-form'));
 
         expect(placeOrderForm).toBeNull();
     }));
@@ -76,7 +76,7 @@ describe('ShoppingCartComponent', () => {
             }
         };
         const updateShoppingCartItemQuantitySpy = jest.spyOn(shoppingCartStore, 'updateShoppingCartItemQuantity');
-        const shoppingCartItemList = fixture.debugElement.query(By.css('ngxp-shopping-cart-item-list'));
+        const shoppingCartItemList = fixture.debugElement.query(By.css('holisticon-shopping-cart-item-list'));
 
         shoppingCartItemList.triggerEventHandler('updateQuantity', quantityUpdate);
 
@@ -85,7 +85,7 @@ describe('ShoppingCartComponent', () => {
 
     it('dispatches an DeleteShoppingCartItemAction when the shopping cart item list emits a delete event', waitForAsync(() => {
         const deleteShoppingCartItemSpy = jest.spyOn(shoppingCartStore, 'deleteShoppingCartItem');
-        const shoppingCartItemList = fixture.debugElement.query(By.css('ngxp-shopping-cart-item-list'));
+        const shoppingCartItemList = fixture.debugElement.query(By.css('holisticon-shopping-cart-item-list'));
 
         shoppingCartItemList.triggerEventHandler('delete', shoppingCartItem);
 

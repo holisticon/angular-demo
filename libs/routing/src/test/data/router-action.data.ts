@@ -1,6 +1,6 @@
+import { RouterStateSnapshot } from '@holisticon/routing';
 import { RouterNavigatedAction, RouterNavigationPayload, ROUTER_NAVIGATED } from '@ngrx/router-store';
 import { Blueprint, BlueprintBuilder, createBlueprintBuilder } from '@ngxp/builder';
-import { RouterStateSnapshot } from '@ngxp/routing';
 import { random } from 'faker';
 import { isUndefined } from 'lodash-es';
 import { getUrl } from './activated-route-snapshot-data-utils';

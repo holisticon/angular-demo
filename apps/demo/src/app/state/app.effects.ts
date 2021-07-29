@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { ProductsStore } from '@holisticon/products/state';
 import { createEffect } from '@ngrx/effects';
-import { ProductsStore } from '@ngxp/products/state';
 import { map } from 'rxjs/operators';
 
 @Injectable()

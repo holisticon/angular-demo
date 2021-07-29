@@ -6,7 +6,7 @@ import { UserProfileStateModule, UserProfileStore } from '../../state';
 import { AddressModule, PaymentOptionModule } from '../../ui';
 
 @Component({
-    selector: 'ngxp-user-profile',
+    selector: 'holisticon-user-profile',
     templateUrl: './user-profile.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })

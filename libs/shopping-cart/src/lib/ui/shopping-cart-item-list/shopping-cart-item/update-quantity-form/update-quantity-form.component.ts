@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, NgModule, Output } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { OnNonNullChange } from '@ngxp/common';
-import { Resource, ResourceWith } from '@ngxp/resource';
+import { OnNonNullChange } from '@holisticon/common';
+import { Resource, ResourceWith } from '@holisticon/resource';
 import { QuantityUpdate, ShoppingCartItem } from '../../../../domain';
 
 @Component({
-    selector: 'ngxp-update-quantity-form',
+    selector: 'holisticon-update-quantity-form',
     templateUrl: './update-quantity-form.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })

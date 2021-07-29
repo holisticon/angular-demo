@@ -1,4 +1,4 @@
-import { shoppingCart } from '@ngxp/shopping-cart/test';
+import { shoppingCart } from '@holisticon/shopping-cart/test';
 import { ShoppingCartAppState } from './shopping-cart.reducer';
 import { selectShoppingCart } from './shopping-cart.selectors';
 

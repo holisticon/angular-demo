@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
+import { routerNavigationAction } from '@holisticon/routing/test';
+import { shoppingCartNavigationAction } from '@holisticon/shopping-cart/test';
 import { provideMockActions } from '@ngrx/effects/testing';
-import { routerNavigationAction } from '@ngxp/routing/test';
-import { shoppingCartNavigationAction } from '@ngxp/shopping-cart/test';
 import { cold, hot } from 'jest-marbles';
 import { Observable } from 'rxjs';
 import { loadShoppingCartAction } from '../state';

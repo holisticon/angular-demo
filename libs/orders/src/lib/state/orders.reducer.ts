@@ -1,5 +1,5 @@
+import { ReducerArgs } from '@holisticon/common';
 import { createReducer, on } from '@ngrx/store';
-import { ReducerArgs } from '@ngxp/common';
 import { OrderHistory } from '../domain';
 import { orderHistoryLoaded } from './orders.actions';
 

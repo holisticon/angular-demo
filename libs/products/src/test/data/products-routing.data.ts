@@ -1,7 +1,7 @@
+import { encodeResourceUriAsRouteParam, getUri } from '@holisticon/resource';
+import { RouterStateSnapshot } from '@holisticon/routing';
+import { activatedRouteSnapshotBuilder, routerNavigatedActionBuilder, routerStateSnapshotBuilder } from '@holisticon/routing/test';
 import { RouterNavigatedAction } from '@ngrx/router-store';
-import { encodeResourceUriAsRouteParam, getUri } from '@ngxp/resource';
-import { RouterStateSnapshot } from '@ngxp/routing';
-import { activatedRouteSnapshotBuilder, routerNavigatedActionBuilder, routerStateSnapshotBuilder } from '@ngxp/routing/test';
 import { ProductsViews } from '../../lib/views/products.views';
 import { product } from './product.data';
 

@@ -1,6 +1,6 @@
+import { Resource } from '@holisticon/resource';
+import { createResourceBlueprintBuilder } from '@holisticon/resource/test';
 import { Blueprint } from '@ngxp/builder';
-import { Resource } from '@ngxp/resource';
-import { createResourceBlueprintBuilder } from '@ngxp/resource/test';
 import { address as randomAddress, name } from 'faker';
 import { Address } from '../../lib/domain/user-profile';
 

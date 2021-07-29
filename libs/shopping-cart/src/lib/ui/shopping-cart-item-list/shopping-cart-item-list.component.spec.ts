@@ -2,8 +2,8 @@ import { NO_ERRORS_SCHEMA } from '@angular/compiler/src/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { ResourceWith } from '@ngxp/resource';
-import { shoppingCart } from '@ngxp/shopping-cart/test';
+import { ResourceWith } from '@holisticon/resource';
+import { shoppingCart } from '@holisticon/shopping-cart/test';
 import { take } from 'rxjs/operators';
 import { QuantityUpdate, ShoppingCartItem } from '../../domain';
 import { ShoppingCartItemListComponent } from './shopping-cart-item-list.component';
@@ -37,7 +37,7 @@ describe('ShoppingCartItemListComponent', () => {
     });
 
     it('renders a row for each shopping cart item', () => {
-        const shoppingCartItemRows = fixture.debugElement.queryAll(By.css('[ngxp-shopping-cart-item-row]'));
+        const shoppingCartItemRows = fixture.debugElement.queryAll(By.css('[holisticon-shopping-cart-item-row]'));
 
         expect(shoppingCartItemRows.length).toBe(shoppingCart.items.length);
 
@@ -55,7 +55,7 @@ describe('ShoppingCartItemListComponent', () => {
     });
 
     it('emits an updateQuantity event when the shopping cart item row is emits one', () => {
-        const shoppingCartItemRow = fixture.debugElement.query(By.css('[ngxp-shopping-cart-item-row]'));
+        const shoppingCartItemRow = fixture.debugElement.query(By.css('[holisticon-shopping-cart-item-row]'));
 
         const expectedQuantityUpdate: ResourceWith<QuantityUpdate, ShoppingCartItem> = {
             resource: shoppingCartItemRow.nativeElement.shoppingCartItem,
@@ -74,7 +74,7 @@ describe('ShoppingCartItemListComponent', () => {
     });
 
     it('emits an delete event when the shopping cart item row is emits one', () => {
-        const shoppingCartItemRow = fixture.debugElement.query(By.css('[ngxp-shopping-cart-item-row]'));
+        const shoppingCartItemRow = fixture.debugElement.query(By.css('[holisticon-shopping-cart-item-row]'));
 
         fixture.componentInstance.delete
             .pipe(take(1))

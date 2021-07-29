@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { ProductsStateModule } from '@holisticon/products/state';
+import { ProductSearchFormModule } from '@holisticon/products/ui';
 import { StoreModule } from '@ngrx/store';
-import { ProductsStateModule } from '@ngxp/products/state';
-import { ProductSearchFormModule } from '@ngxp/products/ui';
 import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({

@@ -1,5 +1,5 @@
+import { Resource } from '@holisticon/resource';
 import { Blueprint } from '@ngxp/builder';
-import { Resource } from '@ngxp/resource';
 import { internet, lorem, random } from 'faker';
 import { ResourceUri } from '../../lib/resource';
 import { createResourceBlueprintBuilder } from '../resource-builder';

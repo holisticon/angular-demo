@@ -4,7 +4,7 @@ import { Product } from '../../domain';
 import { ProductListEntryModule } from './product-list-entry/product-list-entry.component';
 
 @Component({
-    selector: 'ngxp-product-list',
+    selector: 'holisticon-product-list',
     templateUrl: './product-list.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })

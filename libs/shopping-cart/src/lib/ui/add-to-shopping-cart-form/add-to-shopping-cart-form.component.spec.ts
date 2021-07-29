@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { resourceUri } from '@ngxp/resource/test';
+import { resourceUri } from '@holisticon/resource/test';
 import { provideStoreServiceMock } from '@ngxp/store-service/testing';
 import { AdditionToShoppingCart } from '../../domain';
 import { ShoppingCartStore } from '../../state';

@@ -1,4 +1,4 @@
-import { activatedRouteSnapshot, libraryRootRouteSnapshot, libraryRouteSnapshot, pageRouteParamName, pageRouteParams, pageRouteSnapshot, queryParamName, queryParams, routerNavigatedActionBuilder, routerStateSnapshotBuilder, Views } from '@ngxp/routing/test';
+import { activatedRouteSnapshot, libraryRootRouteSnapshot, libraryRouteSnapshot, pageRouteParamName, pageRouteParams, pageRouteSnapshot, queryParamName, queryParams, routerNavigatedActionBuilder, routerStateSnapshotBuilder, Views } from '@holisticon/routing/test';
 import { hot } from 'jest-marbles';
 import { extractQueryParam, extractRouteParam, filterNavigationTo } from './routing-operators';
 

@@ -1,5 +1,5 @@
-import { newOrder } from '@ngxp/orders/test';
-import { getUri } from '@ngxp/resource';
+import { newOrder } from '@holisticon/orders/test';
+import { getUri } from '@holisticon/resource';
 import { toNewOrderRequest } from './new-order-request.mapper';
 
 describe('toNewOrderRequest', () => {

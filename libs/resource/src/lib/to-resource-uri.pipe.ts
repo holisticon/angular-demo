@@ -1,7 +1,7 @@
 // tslint:disable:use-pipe-transform-interface
 
 import { Pipe } from '@angular/core';
-import { FunctionPipe } from '@ngxp/common';
+import { FunctionPipe } from '@holisticon/common';
 import { getUri } from './resource.utils';
 
 @Pipe({

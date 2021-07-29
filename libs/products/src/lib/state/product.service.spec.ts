@@ -1,7 +1,7 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { product, products } from '@ngxp/products/test';
-import { getUri } from '@ngxp/resource';
+import { product, products } from '@holisticon/products/test';
+import { getUri } from '@holisticon/resource';
 import { ProductService } from './product.service';
 
 describe('ProductService', () => {

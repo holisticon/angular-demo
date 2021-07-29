@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, Input, NgModule } from '@angular/co
 import { Address } from '../../domain';
 
 @Component({
-    selector: 'ngxp-address',
+    selector: 'holisticon-address',
     templateUrl: './address.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })

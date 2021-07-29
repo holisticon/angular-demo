@@ -1,8 +1,8 @@
 import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
+import { product, searchResults } from '@holisticon/products/test';
+import { getUri } from '@holisticon/resource';
 import { provideMockActions } from '@ngrx/effects/testing';
-import { product, searchResults } from '@ngxp/products/test';
-import { getUri } from '@ngxp/resource';
 import { hot } from 'jest-marbles';
 import { Observable, of } from 'rxjs';
 import { ProductService } from './product.service';

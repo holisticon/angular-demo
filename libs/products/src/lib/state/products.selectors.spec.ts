@@ -1,5 +1,5 @@
-import { products, searchResults } from '@ngxp/products/test';
-import { getUri, getUris, toMap } from '@ngxp/resource';
+import { products, searchResults } from '@holisticon/products/test';
+import { getUri, getUris, toMap } from '@holisticon/resource';
 import { ProductsAppState } from './products.reducer';
 import { selectProduct, selectSearchResults } from './products.selectors';
 

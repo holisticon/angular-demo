@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component, Input, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ResourceUri } from '@ngxp/resource';
+import { ResourceUri } from '@holisticon/resource';
 import { toNumber } from 'lodash-es';
 import { AdditionToShoppingCart } from '../../domain';
 import { ShoppingCartStateModule, ShoppingCartStore } from '../../state';
 
 @Component({
-    selector: 'ngxp-add-to-shopping-cart-form',
+    selector: 'holisticon-add-to-shopping-cart-form',
     templateUrl: './add-to-shopping-cart-form.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })

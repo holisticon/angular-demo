@@ -1,4 +1,4 @@
-import { getAllValues } from '@ngxp/common/test';
+import { getAllValues } from '@holisticon/common/test';
 
 export enum Views {
     FeatureRoot = 'featureRoot',

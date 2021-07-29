@@ -1,4 +1,4 @@
-import { emptyShoppingCart, shoppingCart } from '@ngxp/shopping-cart/test';
+import { emptyShoppingCart, shoppingCart } from '@holisticon/shopping-cart/test';
 import { shoppingCartIsEmpty } from './shopping-cart.util';
 
 describe('shoppingCartUtil', () => {

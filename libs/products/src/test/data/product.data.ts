@@ -1,6 +1,6 @@
+import { Resource } from '@holisticon/resource';
+import { createResourceBlueprintBuilder } from '@holisticon/resource/test';
 import { Blueprint } from '@ngxp/builder';
-import { Resource } from '@ngxp/resource';
-import { createResourceBlueprintBuilder } from '@ngxp/resource/test';
 import { commerce, image, lorem, random } from 'faker';
 import { sampleSize } from 'lodash-es';
 import { Product, SearchResults } from '../../lib/domain/product';

@@ -4,10 +4,10 @@
 </td>
 <td class="text-right price">{{ shoppingCartItem.price | number:'1.2' }}</td>
 <td style="width: 15%">
-    <ngxp-update-quantity-form
+    <holisticon-update-quantity-form
         [shoppingCartItem]="shoppingCartItem"
         (updateQuantity)="onUpdateQuantity($event)"
-    ></ngxp-update-quantity-form>
+    ></holisticon-update-quantity-form>
 </td>
 <td>
     <button type="submit" class="btn btn-danger remove" (click)="onDelete()">Remove</button>

@@ -1,9 +1,9 @@
 // tslint:disable: no-non-null-assertion
 
+import { Resource } from '@holisticon/resource';
+import { createResourceBlueprintBuilder } from '@holisticon/resource/test';
+import { userProfile } from '@holisticon/user-profile/test';
 import { BlueprintFactory } from '@ngxp/builder';
-import { Resource } from '@ngxp/resource';
-import { createResourceBlueprintBuilder } from '@ngxp/resource/test';
-import { userProfile } from '@ngxp/user-profile/test';
 import { sample } from 'lodash-es';
 import { NewOrder } from '../../lib/domain/order';
 import { orderItemBuilder } from './order-item.data';

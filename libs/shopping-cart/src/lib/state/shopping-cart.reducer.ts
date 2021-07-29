@@ -1,5 +1,5 @@
+import { ReducerArgs } from '@holisticon/common';
 import { createReducer, on } from '@ngrx/store';
-import { ReducerArgs } from '@ngxp/common';
 import { ShoppingCart } from '../domain';
 import { shoppingCartUpdatedAction } from './shopping-cart.actions';
 

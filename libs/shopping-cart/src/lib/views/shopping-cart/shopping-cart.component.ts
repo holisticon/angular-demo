@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, NgModule } from '@angular/core';
-import { OrdersStateModule } from '@ngxp/orders/state';
-import { PlaceOrderFormModule } from '@ngxp/orders/ui';
-import { ResourceWith } from '@ngxp/resource';
-import { UserProfileStateModule } from '@ngxp/user-profile/state';
+import { OrdersStateModule } from '@holisticon/orders/state';
+import { PlaceOrderFormModule } from '@holisticon/orders/ui';
+import { ResourceWith } from '@holisticon/resource';
+import { UserProfileStateModule } from '@holisticon/user-profile/state';
 import { Observable } from 'rxjs';
 import { QuantityUpdate, ShoppingCart, ShoppingCartItem } from '../../domain';
 import { ShoppingCartStateModule, ShoppingCartStore } from '../../state';
@@ -11,7 +11,7 @@ import { ShoppingCartItemListModule } from '../../ui';
 import { ShoppingCartIsEmptyModule } from './shopping-cart-is-empty.pipe';
 
 @Component({
-    selector: 'ngxp-shopping-cart',
+    selector: 'holisticon-shopping-cart',
     templateUrl: './shopping-cart.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })

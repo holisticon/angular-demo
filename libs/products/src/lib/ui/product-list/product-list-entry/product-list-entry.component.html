@@ -1,12 +1,12 @@
-<ngxp-product-image [product]="product" class="col-2"></ngxp-product-image>
+<holisticon-product-image [product]="product" class="col-2"></holisticon-product-image>
 
 <div class="col-8">
     <h2 class="h5 mb-1"><a [routerLink]="product | toResourceUri | encodeRouteParam">{{ product.productName }}</a></h2>
     <p class="mb-1"><small>{{ product.productDescription }}</small></p>
-    <p><ngxp-product-price [product]="product"></ngxp-product-price></p>
+    <p><holisticon-product-price [product]="product"></holisticon-product-price></p>
 </div>
 
-<ngxp-add-to-shopping-cart-form
+<holisticon-add-to-shopping-cart-form
     class="col-2"
     [product]="product | toResourceUri"
-></ngxp-add-to-shopping-cart-form>
+></holisticon-add-to-shopping-cart-form>

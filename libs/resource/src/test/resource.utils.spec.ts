@@ -1,5 +1,5 @@
-import { Resource } from '@ngxp/resource';
-import { SomeType } from '@ngxp/resource/test';
+import { Resource } from '@holisticon/resource';
+import { SomeType } from '@holisticon/resource/test';
 import { addUri } from './resource.utils';
 
 describe('resourceUtils', () => {

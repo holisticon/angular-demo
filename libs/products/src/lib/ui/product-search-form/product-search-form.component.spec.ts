@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { expectElementFromFixture } from '@ngxp/common/test';
+import { expectElementFromFixture } from '@holisticon/common/test';
 import { take } from 'rxjs/operators';
 import { ProductSearchFormComponent } from './product-search-form.component';
 

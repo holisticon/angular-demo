@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, NgModule, Output } from '@angular/core';
-import { ResourceWith } from '@ngxp/resource';
+import { ResourceWith } from '@holisticon/resource';
 import { QuantityUpdate, ShoppingCart, ShoppingCartItem } from '../../domain';
 import { ShoppingCartItemModule } from './shopping-cart-item/shopping-cart-item.component';
 
 @Component({
-    selector: 'ngxp-shopping-cart-item-list',
+    selector: 'holisticon-shopping-cart-item-list',
     templateUrl: './shopping-cart-item-list.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })

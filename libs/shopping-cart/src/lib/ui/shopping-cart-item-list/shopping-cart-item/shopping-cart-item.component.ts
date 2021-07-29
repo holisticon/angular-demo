@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, NgModule, Output } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ResourceModule, ResourceWith } from '@ngxp/resource';
+import { ResourceModule, ResourceWith } from '@holisticon/resource';
 import { QuantityUpdate, ShoppingCartItem } from '../../../domain';
 import { UpdateQuantityFormModule } from './update-quantity-form/update-quantity-form.component';
 
 @Component({
     // tslint:disable-next-line:component-selector
-    selector: '[ngxp-shopping-cart-item-row]',
+    selector: '[holisticon-shopping-cart-item-row]',
     templateUrl: './shopping-cart-item.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })

@@ -2,8 +2,8 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
-import { expectElementFromFixture } from '@ngxp/common/test';
-import { ProductsStore } from '@ngxp/products/state';
+import { expectElementFromFixture } from '@holisticon/common/test';
+import { ProductsStore } from '@holisticon/products/state';
 import { provideStoreServiceMock } from '@ngxp/store-service/testing';
 import { HomepageComponent } from './homepage.component';
 
@@ -39,13 +39,13 @@ describe('HomepageComponent', () => {
     });
 
     it('renders a product search form', () => {
-        expectElementFromFixture(fixture, 'ngxp-product-search-form').not.toBeNull();
+        expectElementFromFixture(fixture, 'holisticon-product-search-form').not.toBeNull();
     });
 
     it('triggers a search for products with the provided query string when the product search form emits a search event', () => {
         const expectedQueryString = 'query';
         const searchProductsSpy = jest.spyOn(productsStore, 'searchProducts');
-        const productSearchForm = fixture.debugElement.query(By.css('ngxp-product-search-form'));
+        const productSearchForm = fixture.debugElement.query(By.css('holisticon-product-search-form'));
 
         productSearchForm.triggerEventHandler('search', expectedQueryString);
 

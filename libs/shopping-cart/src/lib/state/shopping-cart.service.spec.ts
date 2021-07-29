@@ -1,7 +1,7 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { getUri } from '@ngxp/resource';
-import { additionToShoppingCart, shoppingCart, shoppingCartItem } from '@ngxp/shopping-cart/test';
+import { getUri } from '@holisticon/resource';
+import { additionToShoppingCart, shoppingCart, shoppingCartItem } from '@holisticon/shopping-cart/test';
 import { QuantityUpdate } from '../domain';
 import { ShoppingCartService } from './shopping-cart.service';
 

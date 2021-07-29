@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { shoppingCartItem } from '@ngxp/shopping-cart/test';
+import { shoppingCartItem } from '@holisticon/shopping-cart/test';
 import { take } from 'rxjs/operators';
 import { UpdateQuantityFormComponent } from './update-quantity-form.component';
 

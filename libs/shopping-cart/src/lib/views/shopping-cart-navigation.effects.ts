@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
+import { filterNavigationTo } from '@holisticon/routing';
 import { Actions, createEffect } from '@ngrx/effects';
-import { filterNavigationTo } from '@ngxp/routing';
 import { map } from 'rxjs/operators';
 import { loadShoppingCartAction } from '../state';
 import { ShoppingCartViews } from './shopping-cart.views';

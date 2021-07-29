@@ -1,7 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { expectElementFromFixture } from '@ngxp/common/test';
+import { expectElementFromFixture } from '@holisticon/common/test';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
@@ -31,6 +31,6 @@ describe('AppComponent', () => {
     });
 
     it('renders the navbar', () => {
-        expectElementFromFixture(fixture, 'ngxp-navbar').not.toBeNull();
+        expectElementFromFixture(fixture, 'holisticon-navbar').not.toBeNull();
     });
 });

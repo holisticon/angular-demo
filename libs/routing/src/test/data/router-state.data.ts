@@ -1,5 +1,5 @@
+import { RouterState } from '@holisticon/routing';
 import { Blueprint, createBlueprintBuilder } from '@ngxp/builder';
-import { RouterState } from '@ngxp/routing';
 import { random } from 'faker';
 import { routerStateSnapshot } from './router-state-snapshot.data';
 

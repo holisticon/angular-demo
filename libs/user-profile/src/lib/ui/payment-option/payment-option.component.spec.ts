@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { paymentOption } from '@ngxp/user-profile/test';
+import { paymentOption } from '@holisticon/user-profile/test';
 import { PaymentOptionComponent } from './payment-option.component';
 
 describe('PaymentOptionComponent', () => {
