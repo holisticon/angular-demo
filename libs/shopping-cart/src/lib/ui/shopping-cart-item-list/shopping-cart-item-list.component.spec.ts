@@ -1,4 +1,7 @@
+import { registerLocaleData } from '@angular/common';
+import localeDe from '@angular/common/locales/de';
 import { NO_ERRORS_SCHEMA } from '@angular/compiler/src/core';
+import { LOCALE_ID } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -8,6 +11,8 @@ import { take } from 'rxjs/operators';
 import { QuantityUpdate, ShoppingCartItem } from '../../domain';
 import { ShoppingCartItemListComponent } from './shopping-cart-item-list.component';
 import { ShoppingCartItemComponent } from './shopping-cart-item/shopping-cart-item.component';
+
+registerLocaleData(localeDe, 'de');
 
 describe('ShoppingCartItemListComponent', () => {
     let component: ShoppingCartItemListComponent;
@@ -24,6 +29,9 @@ describe('ShoppingCartItemListComponent', () => {
             ],
             schemas: [
                 NO_ERRORS_SCHEMA
+            ],
+            providers: [
+                { provide: LOCALE_ID, useValue: 'de' }
             ]
         })
             .compileComponents();
