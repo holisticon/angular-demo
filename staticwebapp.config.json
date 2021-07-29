@@ -2,5 +2,25 @@
     "navigationFallback": {
         "rewrite": "index.html",
         "exclude": ["/assets/*.{png,jpg,gif}", "/*.css"]
-    }
+    },
+    "routes": [
+        {
+            "route": "/index.html",
+            "headers": {
+                "Cache-Control": "no-cache, no-store, must-revalidate"
+            }
+        },
+        {
+            "route": "*.{js,css}",
+            "headers": {
+                "Cache-Control": "public, max-age=31536000"
+            }
+        },
+        {
+            "route": "/assets/*",
+            "headers": {
+                "Cache-Control": "public, max-age=31536000"
+            }
+        }
+    ]
 }
