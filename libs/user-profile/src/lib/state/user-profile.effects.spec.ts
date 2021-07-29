@@ -31,7 +31,7 @@ describe('UserProfileEffects', () => {
 
     describe('loadUserProfile', () => {
         it('dispatches a UserProfileLoadedAction with the user profile returned by the service', () => {
-            spyOn(userProfileService, 'loadUserProfile').and.returnValue(observableOf(userProfile));
+            jest.spyOn(userProfileService, 'loadUserProfile').mockReturnValue(observableOf(userProfile));
 
             actions$ = hot('-a-|', { a: loadUserProfileAction() });
 

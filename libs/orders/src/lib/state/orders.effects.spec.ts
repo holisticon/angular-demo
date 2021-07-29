@@ -32,7 +32,7 @@ describe('OrdersEffects', () => {
 
     describe('loadOrderHistory', () => {
         it('dispatches a OrderLoadedAction with the orders returned by the service', () => {
-            spyOn(orderService, 'loadOrderHistory').and.returnValue(observableOf(orderHistory));
+            jest.spyOn(orderService, 'loadOrderHistory').mockReturnValue(observableOf(orderHistory));
 
             actions$ = hot('-a-|', { a: loadOrderHistoryAction() });
 
@@ -45,7 +45,7 @@ describe('OrdersEffects', () => {
 
     describe('placeOrder', () => {
         it('calls the service with the given new order and dispatches a OrderPlacedAction with the created order', () => {
-            const placeOrderSpy = spyOn(orderService, 'placeOrder').and.returnValue(observableOf(order));
+            const placeOrderSpy = jest.spyOn(orderService, 'placeOrder').mockReturnValue(observableOf(order));
 
             actions$ = hot('-a-|', {
                 a: placeOrderAction({ newOrder })

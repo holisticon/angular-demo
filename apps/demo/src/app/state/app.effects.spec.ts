@@ -31,7 +31,7 @@ describe('AppEffects', () => {
     describe('navigateToProductSearchResults', () => {
         it('redirects to the products view passing the query as query param', () => {
             const expectedQuery = 'query';
-            const navigateSpy = spyOn(router, 'navigate');
+            const navigateSpy = jest.spyOn(router, 'navigate').mockImplementation(async () => true);
 
             productsStore.searchProducts$.next(expectedQuery);
 

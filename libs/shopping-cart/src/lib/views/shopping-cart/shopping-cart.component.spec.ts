@@ -75,7 +75,7 @@ describe('ShoppingCartComponent', () => {
                 quantity: 2
             }
         };
-        const updateShoppingCartItemQuantitySpy = spyOn(shoppingCartStore, 'updateShoppingCartItemQuantity');
+        const updateShoppingCartItemQuantitySpy = jest.spyOn(shoppingCartStore, 'updateShoppingCartItemQuantity');
         const shoppingCartItemList = fixture.debugElement.query(By.css('ngxp-shopping-cart-item-list'));
 
         shoppingCartItemList.triggerEventHandler('updateQuantity', quantityUpdate);
@@ -84,7 +84,7 @@ describe('ShoppingCartComponent', () => {
     }));
 
     it('dispatches an DeleteShoppingCartItemAction when the shopping cart item list emits a delete event', waitForAsync(() => {
-        const deleteShoppingCartItemSpy = spyOn(shoppingCartStore, 'deleteShoppingCartItem');
+        const deleteShoppingCartItemSpy = jest.spyOn(shoppingCartStore, 'deleteShoppingCartItem');
         const shoppingCartItemList = fixture.debugElement.query(By.css('ngxp-shopping-cart-item-list'));
 
         shoppingCartItemList.triggerEventHandler('delete', shoppingCartItem);

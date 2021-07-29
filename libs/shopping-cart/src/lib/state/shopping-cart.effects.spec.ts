@@ -44,7 +44,7 @@ describe('ShoppingCartEffects', () => {
 
     describe('addToShoppingCart', () => {
         it('calls the service with the given addition to shopping cart and dispatches a ItemAddedToShoppingCartAction with the updated shopping cart', () => {
-            const addToShoppingCartSpy = spyOn(shoppingCartService, 'addToShoppingCart').and.returnValue(observableOf(shoppingCart));
+            const addToShoppingCartSpy = jest.spyOn(shoppingCartService, 'addToShoppingCart').mockReturnValue(observableOf(shoppingCart));
 
             actions$ = hot('-a-|', {
                 a: addToShoppingCartAction({ additionToShoppingCart })
@@ -74,7 +74,7 @@ describe('ShoppingCartEffects', () => {
 
     describe('loadShoppingCart', () => {
         it('dispatches a ShoppingCartUpdatedAction with the shopping cart returned by the service', () => {
-            spyOn(shoppingCartService, 'loadShoppingCart').and.returnValue(observableOf(shoppingCart));
+            jest.spyOn(shoppingCartService, 'loadShoppingCart').mockReturnValue(observableOf(shoppingCart));
 
             actions$ = hot('-a-|', { a: loadShoppingCartAction() });
 
@@ -93,7 +93,7 @@ describe('ShoppingCartEffects', () => {
                 }
             };
 
-            const updateQuantitySpy = spyOn(shoppingCartService, 'updateShoppingCartItemQuantity').and.returnValue(observableOf(shoppingCart));
+            const updateQuantitySpy = jest.spyOn(shoppingCartService, 'updateShoppingCartItemQuantity').mockReturnValue(observableOf(shoppingCart));
 
             actions$ = hot('-a-|', {
                 a: updateShoppingCartItemQuantityAction({ quantityUpdate })
@@ -116,7 +116,7 @@ describe('ShoppingCartEffects', () => {
 
     describe('deleteShoppingCartItem', () => {
         it('calls the service with the given shopping cart item and dispatches a ShoppingCartUpdatedAction with the updated shopping cart', () => {
-            const deleteShoppingCartItemSpy = spyOn(shoppingCartService, 'deleteShoppingCartItem').and.returnValue(observableOf(shoppingCart));
+            const deleteShoppingCartItemSpy = jest.spyOn(shoppingCartService, 'deleteShoppingCartItem').mockReturnValue(observableOf(shoppingCart));
 
             actions$ = hot('-a-|', {
                 a: deleteShoppingCartItemAction({ shoppingCartItem })

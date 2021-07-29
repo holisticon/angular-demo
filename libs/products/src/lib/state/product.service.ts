@@ -16,7 +16,7 @@ export class ProductService {
     searchProducts(queryString: string | null) {
         const queryParams = isNull(queryString) ? '' : `?queryString=${encodeURIComponent(queryString)}`
         return this.httpClient
-            .get<Resource<SearchResults>>(`https://webapp-demos-api.azurewebsites.net/products${queryParams}`);
+            .get<SearchResults>(`https://webapp-demos-api.azurewebsites.net/products${queryParams}`);
     }
 
     loadProduct(id: ResourceUri) {

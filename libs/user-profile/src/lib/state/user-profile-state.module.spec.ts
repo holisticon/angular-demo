@@ -6,7 +6,7 @@ import { UserProfileStore } from './user-profile-store.service';
 describe('UserProfileStateModule', () => {
     it('dispatches a LoadUserProfileAction on initialization', fakeAsync(() => {
         const userProfileStore = createStoreServiceMock(UserProfileStore);
-        const loadUserProfileSpy = spyOn(userProfileStore, 'loadUserProfile');
+        const loadUserProfileSpy = jest.spyOn(userProfileStore, 'loadUserProfile');
 
         // tslint:disable-next-line: no-unused-expression
         new UserProfileStateModule(userProfileStore);

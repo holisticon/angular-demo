@@ -15,7 +15,7 @@ export class OrderService {
 
     loadOrderHistory() {
         return this.httpClient
-            .get<Resource<OrderHistory>>(
+            .get<OrderHistory>(
                 'https://webapp-demos-api.azurewebsites.net/orders'
             );
     }

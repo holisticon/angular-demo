@@ -100,7 +100,7 @@ describe('PlaceOrderFormComponent', () => {
     });
 
     it('dispatches a PlaceOrderAction when the form is submitted', waitForAsync(() => {
-        const placeOrderSpy = spyOn(ordersStore, 'placeOrder');
+        const placeOrderSpy = jest.spyOn(ordersStore, 'placeOrder');
         const expectedOrder: NewOrder = {
             billingAddress: userProfile.addresses[0],
             shippingAddress: userProfile.addresses[0],

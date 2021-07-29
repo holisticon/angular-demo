@@ -32,7 +32,7 @@ describe('ProductsEffects', () => {
 
     describe('loadSearchResults$', () => {
         it('dispatches a SearchResultsLoadedAction with the search results returned by the service', () => {
-            spyOn(productService, 'searchProducts').and.returnValue(of(searchResults));
+            jest.spyOn(productService, 'searchProducts').mockReturnValue(of(searchResults));
 
             actions$ = hot('-a-|', { a: loadSearchResultsAction({ queryString: 'query' }) });
 
@@ -44,7 +44,7 @@ describe('ProductsEffects', () => {
 
     describe('loadProduct$', () => {
         it('dispatches a ProductLoadedAction with the product returned by the service', () => {
-            spyOn(productService, 'loadProduct').and.returnValue(of(product));
+            jest.spyOn(productService, 'loadProduct').mockReturnValue(of(product));
 
             actions$ = hot('-a-|', { a: loadProductAction({ id: getUri(product) }) });
 

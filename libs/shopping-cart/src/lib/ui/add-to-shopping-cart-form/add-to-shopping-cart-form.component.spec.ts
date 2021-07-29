@@ -42,7 +42,7 @@ describe('AddToShoppingCartFormComponent', () => {
     });
 
     it('dispatches an addToShoppingCart action when the form is submitted', () => {
-        const addToShoppingCartSpy = spyOn(shoppingCartStore, 'addToShoppingCart');
+        const addToShoppingCartSpy = jest.spyOn(shoppingCartStore, 'addToShoppingCart');
         const form = fixture.debugElement.query(By.css('form'));
         const expectedQuantity = 2;
         fixture.componentInstance.quantity = expectedQuantity;

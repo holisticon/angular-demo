@@ -44,7 +44,7 @@ describe('HomepageComponent', () => {
 
     it('triggers a search for products with the provided query string when the product search form emits a search event', () => {
         const expectedQueryString = 'query';
-        const searchProductsSpy = spyOn(productsStore, 'searchProducts');
+        const searchProductsSpy = jest.spyOn(productsStore, 'searchProducts');
         const productSearchForm = fixture.debugElement.query(By.css('ngxp-product-search-form'));
 
         productSearchForm.triggerEventHandler('search', expectedQueryString);
