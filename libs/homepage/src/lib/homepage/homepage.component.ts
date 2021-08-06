@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ProductsStore } from '@holisticon/products/state';
+import { ProductsStore } from '@holisticon/products';
 
 @Component({
     selector: 'holisticon-homepage',

@@ -1,9 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, NgModule } from '@angular/core';
-import { OrdersStateModule } from '@holisticon/orders/state';
-import { PlaceOrderFormModule } from '@holisticon/orders/ui';
+import { OrdersStateModule, PlaceOrderFormModule } from '@holisticon/orders';
 import { ResourceWith } from '@holisticon/resource';
-import { UserProfileStateModule } from '@holisticon/user-profile/state';
+import { UserProfileStateModule } from '@holisticon/user-profile';
 import { Observable } from 'rxjs';
 import { QuantityUpdate, ShoppingCart, ShoppingCartItem } from '../../domain';
 import { ShoppingCartStateModule, ShoppingCartStore } from '../../state';

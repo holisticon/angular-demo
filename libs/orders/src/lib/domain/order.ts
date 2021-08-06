@@ -1,5 +1,5 @@
 import { Resource, ResourceUri } from '@holisticon/resource';
-import { Address, PaymentOption } from '@holisticon/user-profile/domain';
+import { Address, PaymentOption } from '@holisticon/user-profile';
 
 export interface OrderHistory {
     orders: Resource<Order>[];

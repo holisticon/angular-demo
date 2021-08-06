@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { orderItems } from '@holisticon/orders/test';
-import { UserProfileStore } from '@holisticon/user-profile/state';
+import { UserProfileStore } from '@holisticon/user-profile';
 import { userProfile } from '@holisticon/user-profile/test';
 import { provideStoreServiceMock, StoreServiceMock } from '@ngxp/store-service/testing';
 import { isNull } from 'lodash-es';

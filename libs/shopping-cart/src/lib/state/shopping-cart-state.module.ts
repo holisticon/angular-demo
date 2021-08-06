@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { OrdersStateModule } from '@holisticon/orders/state';
+import { OrdersStateModule } from '@holisticon/orders';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { ShoppingCartEffects } from './shopping-cart.effects';

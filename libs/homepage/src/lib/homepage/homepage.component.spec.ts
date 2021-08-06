@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { expectElementFromFixture } from '@holisticon/common/test';
-import { ProductsStore } from '@holisticon/products/state';
+import { ProductsStore } from '@holisticon/products';
 import { provideStoreServiceMock } from '@ngxp/store-service/testing';
 import { HomepageComponent } from './homepage.component';
 

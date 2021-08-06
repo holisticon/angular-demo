@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ResourceModule } from '@holisticon/resource';
-import { AddToShoppingCartFormModule } from '@holisticon/shopping-cart/ui';
+import { AddToShoppingCartFormModule } from '@holisticon/shopping-cart';
 import { Product } from '../../../domain';
 import { ProductImageModule } from '../../product-image/product-image.component';
 import { ProductPriceModule } from '../../product-price/product-price.component';

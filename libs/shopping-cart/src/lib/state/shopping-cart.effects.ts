@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { OrdersStore } from '@holisticon/orders/state';
+import { OrdersStore } from '@holisticon/orders';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, switchMap } from 'rxjs/operators';
 import { ShoppingCartStore } from './shopping-cart-store.service';

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { ProductsStateModule } from '@holisticon/products/state';
+import { ProductsStateModule } from '@holisticon/products';
 import { EffectsModule } from '@ngrx/effects';
 import { routerReducer, RouterState, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
@@ -18,12 +18,12 @@ import { AppEffects } from './state/app.effects';
         BrowserModule,
         HttpClientModule, // see https://github.com/angular/angular-cli/issues/10170
         RouterModule.forRoot([
-    { path: '', loadChildren: () => import('@holisticon/homepage').then(m => m.HomepageModule) },
-    { path: 'products', loadChildren: () => import('@holisticon/products/views').then(m => m.ProductsRoutingModule) },
-    { path: 'shopping-cart', loadChildren: () => import('@holisticon/shopping-cart/views').then(m => m.ShoppingCartRoutingModule) },
-    { path: 'user-profile', loadChildren: () => import('@holisticon/user-profile/views').then(m => m.UserProfileRoutingModule) },
-    { path: 'orders', loadChildren: () => import('@holisticon/orders/views').then(m => m.OrdersRoutingModule) }
-], { relativeLinkResolution: 'legacy' }),
+            { path: '', loadChildren: () => import('@holisticon/homepage').then(m => m.HomepageModule) },
+            { path: 'products', loadChildren: () => import('@holisticon/products').then(m => m.ProductsRoutingModule) },
+            { path: 'shopping-cart', loadChildren: () => import('@holisticon/shopping-cart').then(m => m.ShoppingCartRoutingModule) },
+            { path: 'user-profile', loadChildren: () => import('@holisticon/user-profile').then(m => m.UserProfileRoutingModule) },
+            { path: 'orders', loadChildren: () => import('@holisticon/orders').then(m => m.OrdersRoutingModule) }
+        ], { relativeLinkResolution: 'legacy' }),
         StoreModule.forRoot(
             { router: routerReducer },
             {

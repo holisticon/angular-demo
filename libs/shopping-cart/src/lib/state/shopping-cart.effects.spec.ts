@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
-import { OrdersStore } from '@holisticon/orders/state';
+import { OrdersStore } from '@holisticon/orders';
 import { order } from '@holisticon/orders/test';
 import { ResourceWith } from '@holisticon/resource';
 import { additionToShoppingCart, shoppingCart, shoppingCartItem } from '@holisticon/shopping-cart/test';
