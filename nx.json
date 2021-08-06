@@ -6,9 +6,9 @@
       "dependencies": "*",
       "devDependencies": "*"
     },
-    "tslint.json": "*",
     "nx.json": "*",
-    "tsconfig.base.json": "*"
+    "tsconfig.base.json": "*",
+    ".eslintrc.json": "*"
   },
   "tasksRunnerOptions": {
     "default": {
@@ -61,7 +61,6 @@
   "affected": {
     "defaultBase": "master"
   },
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "newProjectRoot": "",
   "targetDependencies": {
     "build": [
