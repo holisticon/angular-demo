@@ -7,7 +7,7 @@ export const loadShoppingCartAction = createAction(
 
 export const updateShoppingCartItemQuantityAction = createAction(
     '[Shopping Cart] update shopping cart item quantity',
-    props<{ quantityUpdate: ResourceWith<QuantityUpdate> }>()
+    props<{ quantityUpdate: ResourceWith<QuantityUpdate, ShoppingCartItem> }>()
 );
 
 export const deleteShoppingCartItemAction = createAction(

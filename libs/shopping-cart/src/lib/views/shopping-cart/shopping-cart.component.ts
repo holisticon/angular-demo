@@ -24,7 +24,7 @@ export class ShoppingCartComponent {
         this.shoppingCart$ = this.shoppingCartStore.getShoppingCart();
     }
 
-    onUpdateQuantity(quantityUpdate: ResourceWith<QuantityUpdate>) {
+    onUpdateQuantity(quantityUpdate: ResourceWith<QuantityUpdate, ShoppingCartItem>) {
         this.shoppingCartStore.updateShoppingCartItemQuantity({ quantityUpdate });
     }
 

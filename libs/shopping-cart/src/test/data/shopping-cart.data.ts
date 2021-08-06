@@ -1,4 +1,4 @@
-import { Resource } from '@holisticon/resource';
+import { ResourcePayload } from '@holisticon/resource';
 import { createResourceBlueprintBuilder } from '@holisticon/resource/test';
 import { BlueprintFactory } from '@ngxp/builder';
 import { random } from 'lodash-es';
@@ -8,7 +8,7 @@ import { shoppingCartItemBuilder } from './shopping-cart-item.data';
 const minItemCount = 1;
 const maxItemCount = 3;
 
-const shoppingCartBlueprintFactory: BlueprintFactory<ShoppingCart> = () => {
+const shoppingCartBlueprintFactory: BlueprintFactory<ResourcePayload<ShoppingCart>> = () => {
     const items = shoppingCartItemBuilder().freeze().buildMany(random(minItemCount, maxItemCount));
 
     const totalPrice = items.reduce(
@@ -23,8 +23,8 @@ const shoppingCartBlueprintFactory: BlueprintFactory<ShoppingCart> = () => {
 };
 export const shoppingCartBuilder = createResourceBlueprintBuilder(shoppingCartBlueprintFactory);
 
-export const shoppingCart: Resource<ShoppingCart> = shoppingCartBuilder().freeze().build();
-export const emptyShoppingCart: Resource<ShoppingCart> = shoppingCartBuilder()
+export const shoppingCart: ShoppingCart = shoppingCartBuilder().freeze().build();
+export const emptyShoppingCart: ShoppingCart = shoppingCartBuilder()
     .items([])
     .totalPrice(0)
     .freeze().build();

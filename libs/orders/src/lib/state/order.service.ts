@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Resource } from '@holisticon/resource';
 import { NewOrder, Order, OrderHistory } from '../domain';
 import { toNewOrderRequest } from './new-order-request.mapper';
 
@@ -22,7 +21,7 @@ export class OrderService {
 
     placeOrder(newOrder: NewOrder) {
         return this.httpClient
-            .post<Resource<Order>>(
+            .post<Order>(
                 'https://webapp-demos-api.azurewebsites.net/orders',
                 toNewOrderRequest(newOrder)
             )

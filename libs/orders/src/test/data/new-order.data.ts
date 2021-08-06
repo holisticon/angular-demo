@@ -1,4 +1,3 @@
-import { Resource } from '@holisticon/resource';
 import { createResourceBlueprintBuilder } from '@holisticon/resource/test';
 import { Address, PaymentOption } from '@holisticon/user-profile';
 import { userProfile } from '@holisticon/user-profile/test';
@@ -18,5 +17,5 @@ const newOrderBlueprint: BlueprintFactory<NewOrder> = () => {
 
 export const newOrderBuilder = createResourceBlueprintBuilder(newOrderBlueprint);
 
-export const newOrder: Resource<NewOrder> = newOrderBuilder().freeze().build();
-export const newOrders: Resource<NewOrder>[] = newOrderBuilder().freeze().buildMany(20);
+export const newOrder: NewOrder = newOrderBuilder().freeze().build();
+export const newOrders: NewOrder[] = newOrderBuilder().freeze().buildMany(20);

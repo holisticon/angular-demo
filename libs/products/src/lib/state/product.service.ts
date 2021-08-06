@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Resource, ResourceUri } from '@holisticon/resource';
+import { ResourceUri } from '@holisticon/resource';
 import { isNull } from 'lodash-es';
 import { Product, SearchResults } from '../domain';
 
@@ -21,7 +21,7 @@ export class ProductService {
 
     loadProduct(id: ResourceUri) {
         return this.httpClient
-            .get<Resource<Product>>(id);
+            .get<Product>(id);
     }
 
 }

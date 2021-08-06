@@ -3,7 +3,7 @@ import { Resource } from '../lib/resource';
 import { addUri } from './resource.utils';
 
 describe('resourceUtils', () => {
-    const object: SomeType = {
+    const object = {
         value: 'some value'
     };
 

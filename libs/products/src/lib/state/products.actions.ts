@@ -1,4 +1,4 @@
-import { Resource, ResourceUri } from '@holisticon/resource';
+import { ResourceUri } from '@holisticon/resource';
 import { createAction, props } from '@ngrx/store';
 import { Product, SearchResults } from '../domain';
 
@@ -24,5 +24,5 @@ export const loadProductAction = createAction(
 
 export const productLoadedAction = createAction(
     '[Products] product loaded',
-    props<{ product: Resource<Product> }>()
+    props<{ product: Product }>()
 );

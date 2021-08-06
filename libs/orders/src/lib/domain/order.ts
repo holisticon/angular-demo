@@ -2,25 +2,25 @@ import { Resource, ResourceUri } from '@holisticon/resource';
 import { Address, PaymentOption } from '@holisticon/user-profile';
 
 export interface OrderHistory {
-    orders: Resource<Order>[];
+    orders: Order[];
 }
 
-export interface Order {
+export type Order = Resource<{
     orderStatus: OrderStatus;
     orderItems: OrderItem[];
     billingAddress: Address;
     shippingAddress: Address;
     payment: PaymentOption;
     orderDate: string;
-}
+}>
 
-export interface OrderItem {
+export type OrderItem = Resource<{
     productName: string;
     productDescription: string;
     price: number;
     quantity: number;
     product: string;
-}
+}>
 
 export interface NewOrder {
     orderItems: OrderItem[];

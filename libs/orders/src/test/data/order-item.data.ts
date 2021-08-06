@@ -1,4 +1,4 @@
-import { Resource } from '@holisticon/resource';
+import { ResourcePayload } from '@holisticon/resource';
 import { createResourceBlueprintBuilder, resourceUri } from '@holisticon/resource/test';
 import { BlueprintFactory } from '@ngxp/builder';
 import { commerce, image, lorem, random } from 'faker';
@@ -7,7 +7,7 @@ import { OrderItem } from '../../lib/domain/order';
 const minItemQty = 1;
 const maxItemQty = 5;
 
-const orderItemBlueprintFactory: BlueprintFactory<OrderItem> = () => {
+const orderItemBlueprintFactory: BlueprintFactory<ResourcePayload<OrderItem>> = () => {
     return {
         productName: () => commerce.productName(),
         productDescription: () => lorem.paragraph(),
@@ -19,5 +19,5 @@ const orderItemBlueprintFactory: BlueprintFactory<OrderItem> = () => {
 };
 export const orderItemBuilder = createResourceBlueprintBuilder(orderItemBlueprintFactory);
 
-export const orderItem: Resource<OrderItem> = orderItemBuilder().freeze().build();
-export const orderItems: Resource<OrderItem>[] = orderItemBuilder().freeze().buildMany(5);
+export const orderItem: OrderItem = orderItemBuilder().freeze().build();
+export const orderItems: OrderItem[] = orderItemBuilder().freeze().buildMany(5);

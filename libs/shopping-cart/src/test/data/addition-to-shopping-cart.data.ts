@@ -1,6 +1,5 @@
-import { Resource } from '@holisticon/resource';
-import { createResourceBlueprintBuilder, resourceUri } from '@holisticon/resource/test';
-import { Blueprint } from '@ngxp/builder';
+import { resourceUri } from '@holisticon/resource/test';
+import { Blueprint, createBlueprintBuilder } from '@ngxp/builder';
 import { random } from 'lodash-es';
 import { AdditionToShoppingCart } from '../../lib/domain/shopping-cart';
 
@@ -11,6 +10,6 @@ const additionToShoppingCartBlueprintFactory: Blueprint<AdditionToShoppingCart> 
     product: () => resourceUri,
     quantity: () => random(minItemQty, maxItemQty)
 };
-export const additionToShoppingCartBuilder = createResourceBlueprintBuilder(additionToShoppingCartBlueprintFactory);
+export const additionToShoppingCartBuilder = createBlueprintBuilder(additionToShoppingCartBlueprintFactory);
 
-export const additionToShoppingCart: Resource<AdditionToShoppingCart> = additionToShoppingCartBuilder().freeze().build();
+export const additionToShoppingCart: AdditionToShoppingCart = additionToShoppingCartBuilder().freeze().build();

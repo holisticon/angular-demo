@@ -1,13 +1,13 @@
 import { Resource } from '@holisticon/resource';
 
 export interface SearchResults {
-    products: Resource<Product>[];
+    products: Product[];
     totalResults: number;
 }
 
-export interface Product {
+export type Product = Resource<{
     productName: string;
     productDescription: string;
     price: number;
     image: string;
-}
+}>

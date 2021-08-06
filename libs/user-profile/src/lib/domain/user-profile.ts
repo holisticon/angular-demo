@@ -1,18 +1,20 @@
-export interface UserProfile {
+import { Resource } from "@holisticon/resource"
+
+export type UserProfile = Resource<{
     addresses: Address[];
     paymentOptions: PaymentOption[]
-}
+}>
 
-export interface Address {
+export type Address = Resource<{
     name: string;
     street: string;
     zipCode: string;
     city: string;
     country: string;
-}
+}>
 
-export interface PaymentOption {
+export type PaymentOption = Resource<{
     accountOwner: string;
     iban: string;
     bic: string;
-}
+}>

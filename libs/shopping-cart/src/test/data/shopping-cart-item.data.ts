@@ -1,4 +1,4 @@
-import { Resource } from '@holisticon/resource';
+import { ResourcePayload } from '@holisticon/resource';
 import { createResourceBlueprintBuilder, resourceUri } from '@holisticon/resource/test';
 import { BlueprintFactory } from '@ngxp/builder';
 import { commerce, image, lorem, random } from 'faker';
@@ -7,7 +7,7 @@ import { ShoppingCartItem } from '../../lib/domain/shopping-cart';
 const minItemQty = 1;
 const maxItemQty = 5;
 
-const shoppingCartItemBlueprintFactory: BlueprintFactory<ShoppingCartItem> = () => {
+const shoppingCartItemBlueprintFactory: BlueprintFactory<ResourcePayload<ShoppingCartItem>> = () => {
     return {
         productName: () => commerce.productName(),
         productDescription: () => lorem.paragraph(),
@@ -19,4 +19,4 @@ const shoppingCartItemBlueprintFactory: BlueprintFactory<ShoppingCartItem> = () 
 };
 export const shoppingCartItemBuilder = createResourceBlueprintBuilder(shoppingCartItemBlueprintFactory);
 
-export const shoppingCartItem: Resource<ShoppingCartItem> = shoppingCartItemBuilder().freeze().build();
+export const shoppingCartItem: ShoppingCartItem = shoppingCartItemBuilder().freeze().build();

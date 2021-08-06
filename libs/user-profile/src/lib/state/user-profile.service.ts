@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Resource } from '@holisticon/resource';
 import { UserProfile } from '../domain';
 
 @Injectable({
@@ -14,7 +13,7 @@ export class UserProfileService {
 
     loadUserProfile() {
         return this.httpClient
-            .get<Resource<UserProfile>>('https://webapp-demos-api.azurewebsites.net/userProfile');
+            .get<UserProfile>('https://webapp-demos-api.azurewebsites.net/userProfile');
     }
 
 }

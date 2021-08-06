@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, NgModule, Output } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OnNonNullChange } from '@holisticon/common';
-import { Resource, ResourceWith } from '@holisticon/resource';
+import { ResourceWith } from '@holisticon/resource';
 import { QuantityUpdate, ShoppingCartItem } from '../../../../domain';
 
 @Component({
@@ -13,7 +13,7 @@ export class UpdateQuantityFormComponent {
 
     @Input()
     @OnNonNullChange()
-    shoppingCartItem!: Resource<ShoppingCartItem>;
+    shoppingCartItem!: ShoppingCartItem;
 
     @Output()
     updateQuantity = new EventEmitter<ResourceWith<QuantityUpdate, ShoppingCartItem>>();

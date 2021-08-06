@@ -22,7 +22,7 @@ export class ShoppingCartItemComponent {
     @Output()
     delete = new EventEmitter<ShoppingCartItem>();
 
-    onUpdateQuantity(quantityUpdate: ResourceWith<QuantityUpdate>) {
+    onUpdateQuantity(quantityUpdate: ResourceWith<QuantityUpdate, ShoppingCartItem>) {
         this.updateQuantity.emit(quantityUpdate);
     }
 

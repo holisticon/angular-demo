@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { getUri, Resource } from '@holisticon/resource';
+import { getUri } from '@holisticon/resource';
 import { AdditionToShoppingCart, QuantityUpdate, ShoppingCart, ShoppingCartItem } from '../domain';
 
 @Injectable({
@@ -14,14 +14,14 @@ export class ShoppingCartService {
 
     loadShoppingCart() {
         return this.httpClient
-            .get<Resource<ShoppingCart>>(
+            .get<ShoppingCart>(
                 'https://webapp-demos-api.azurewebsites.net/shoppingCart'
             );
     }
 
     updateShoppingCartItemQuantity(shoppingCartItem: ShoppingCartItem, quantityUpdate: QuantityUpdate) {
         return this.httpClient
-            .patch<Resource<ShoppingCart>>(
+            .patch<ShoppingCart>(
                 getUri(shoppingCartItem),
                 quantityUpdate
             );
@@ -29,14 +29,14 @@ export class ShoppingCartService {
 
     deleteShoppingCartItem(shoppingCartItem: ShoppingCartItem) {
         return this.httpClient
-            .delete<Resource<ShoppingCart>>(
+            .delete<ShoppingCart>(
                 getUri(shoppingCartItem)
             );
     }
 
     addToShoppingCart(additionToShoppingCart: AdditionToShoppingCart) {
         return this.httpClient
-            .post<Resource<ShoppingCart>>(
+            .post<ShoppingCart>(
                 'https://webapp-demos-api.azurewebsites.net/shoppingCart/items',
                 additionToShoppingCart
             );
