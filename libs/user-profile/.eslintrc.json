@@ -14,17 +14,12 @@
         "plugin:@nrwl/nx/angular",
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
-      "parserOptions": {
-        "project": [
-          "libs/user-profile/tsconfig.*?.json"
-        ]
-      },
       "rules": {
         "@angular-eslint/directive-selector": [
           "error",
           {
             "type": "attribute",
-            "prefix": "ngxp",
+            "prefix": "holisticon",
             "style": "camelCase"
           }
         ],
@@ -32,7 +27,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "ngxp",
+            "prefix": "holisticon",
             "style": "kebab-case"
           }
         ]
