@@ -19,7 +19,15 @@
           "error",
           {
             "enforceBuildableLibDependency": true,
-            "allow": [],
+            "allow": [
+                "@holisticon/common/test",
+                "@holisticon/orders/test",
+                "@holisticon/products/test",
+                "@holisticon/resource/test",
+                "@holisticon/routing/test",
+                "@holisticon/shopping-cart/test",
+                "@holisticon/user-profile/test"
+            ],
             "depConstraints": [
               {
                 "sourceTag": "*",
