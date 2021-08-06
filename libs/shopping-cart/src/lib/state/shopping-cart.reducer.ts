@@ -1,4 +1,3 @@
-import { ReducerArgs } from '@holisticon/common';
 import { createReducer, on } from '@ngrx/store';
 import { ShoppingCart } from '../domain';
 import { shoppingCartUpdatedAction } from './shopping-cart.actions';
@@ -17,13 +16,9 @@ export const initialState: ShoppingCartState = {
     shoppingCart: null
 };
 
-export const reducer = createReducer(initialState,
+export const shoppingCartReducer = createReducer(initialState,
     on(shoppingCartUpdatedAction, (state, { shoppingCart }) => ({
         ...state,
         shoppingCart
     }))
 );
-
-// neccessary for AOT support
-// see https://ngrx.io/guide/store/reducers#creating-the-reducer-function
-export function shoppingCartReducer(...args: ReducerArgs<ShoppingCartState>) { return reducer(...args); }

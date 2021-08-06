@@ -1,6 +1,6 @@
-import { Resource } from '@holisticon/resource';
 import { Blueprint, BlueprintFactory, createBlueprintBuilder } from '@ngxp/builder';
 import { isFunction } from 'lodash-es';
+import { Resource } from '../lib/resource';
 import { buildResourceUri } from './data/resource.data';
 
 export function createResourceBlueprintBuilder<T>(blueprint: Blueprint<T> | BlueprintFactory<T>) {
@@ -11,7 +11,7 @@ function toResourceBlueprint<T>(blueprint: Blueprint<T> | BlueprintFactory<T>): 
     const blueprintFn = isFunction(blueprint) ? blueprint : () => blueprint;
 
     return () => ({
-        ...<any>blueprintFn(),
+        ...blueprintFn() as Blueprint<Resource<T>>,
         _id: () => buildResourceUri()
     });
 }

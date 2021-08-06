@@ -84,7 +84,7 @@ describe('PropertyDecorators', () => {
             }
 
             expect(() => {
-                const test = new InvalidMethodTest();
+                new InvalidMethodTest();
             }).toThrowError();
         });
     });
@@ -120,7 +120,7 @@ describe('PropertyDecorators', () => {
             }
 
             expect(() => {
-                const test = new InvalidMethodTest();
+                new InvalidMethodTest();
             }).toThrowError();
         });
 
@@ -181,7 +181,7 @@ describe('PropertyDecorators', () => {
             }
 
             expect(() => {
-                const test = new InvalidMethodTest();
+                new InvalidMethodTest();
             }).toThrowError();
         });
 

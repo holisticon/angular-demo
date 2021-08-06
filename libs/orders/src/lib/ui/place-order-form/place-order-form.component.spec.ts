@@ -39,7 +39,7 @@ describe('PlaceOrderFormComponent', () => {
         })
             .compileComponents();
 
-        ordersStore = TestBed.inject(OrdersStore) as any;
+        ordersStore = TestBed.inject(OrdersStore) as unknown as StoreServiceMock<OrdersStore>;
     }));
 
     beforeEach(() => {

@@ -1,4 +1,3 @@
-import { ReducerArgs } from '@holisticon/common';
 import { createReducer, on } from '@ngrx/store';
 import { UserProfile } from '../domain';
 import { userProfileLoadedAction } from './user-profile.actions';
@@ -17,13 +16,9 @@ export const initialState: UserProfileState = {
     userProfile: null
 };
 
-export const reducer = createReducer(initialState,
+export const userProfileReducer = createReducer(initialState,
     on(userProfileLoadedAction, (state, { userProfile }) => ({
         ...state,
         userProfile
     }))
 );
-
-// neccessary for AOT support
-// see https://ngrx.io/guide/store/reducers#creating-the-reducer-function
-export function userProfileReducer(...args: ReducerArgs<UserProfileState>) { return reducer(...args); }

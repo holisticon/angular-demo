@@ -7,7 +7,6 @@ import { OrdersStore } from '../../state';
 import { OrdersComponent } from './orders.component';
 
 describe('OrdersComponent', () => {
-    let component: OrdersComponent;
     let fixture: ComponentFixture<OrdersComponent>;
 
     beforeEach(waitForAsync(() => {
@@ -29,7 +28,6 @@ describe('OrdersComponent', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(OrdersComponent);
-        component = fixture.componentInstance;
         fixture.detectChanges();
     });
 

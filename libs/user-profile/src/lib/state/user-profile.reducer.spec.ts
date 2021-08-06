@@ -6,7 +6,7 @@ import { initialState, userProfileReducer } from './user-profile.reducer';
 describe('userProfileReducer', () => {
     it('returns the same state if the action is not applicable', () => {
         const action: Action = { type: 'some-action' };
-        const state = userProfileReducer(initialState, <any>action);
+        const state = userProfileReducer(initialState, action);
         expect(state).toBe(initialState);
     });
 

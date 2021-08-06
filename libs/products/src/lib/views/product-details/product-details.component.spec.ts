@@ -9,10 +9,9 @@ import { ProductsStore } from '../../state';
 import { ProductDetailsComponent } from './product-details.component';
 
 fdescribe('ProductDetailsComponent', () => {
-    let component: ProductDetailsComponent;
     let fixture: ComponentFixture<ProductDetailsComponent>;
 
-    const activatedRoute: any = {
+    const activatedRoute = {
         snapshot: {
             params: {
                 product: encodeResourceUriAsRouteParam(getUri(product))
@@ -40,7 +39,6 @@ fdescribe('ProductDetailsComponent', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(ProductDetailsComponent);
-        component = fixture.componentInstance;
         fixture.detectChanges();
     });
 

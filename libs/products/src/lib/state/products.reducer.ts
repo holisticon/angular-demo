@@ -1,4 +1,3 @@
-import { ReducerArgs } from '@holisticon/common';
 import { getUris, ResourceMap, ResourceUri, toMap } from '@holisticon/resource';
 import { createReducer, on } from '@ngrx/store';
 import { Product } from '../domain';
@@ -25,7 +24,7 @@ export const initialState: ProductsState = {
     products: {}
 };
 
-const reducer = createReducer(initialState,
+export const productsReducer = createReducer(initialState,
     on(loadSearchResultsAction, (state, { queryString: query }) => ({
         ...state,
         query,
@@ -50,7 +49,3 @@ const reducer = createReducer(initialState,
         }
     }))
 );
-
-// neccessary for AOT support
-// see https://ngrx.io/guide/store/reducers#creating-the-reducer-function
-export function productsReducer(...args: ReducerArgs<ProductsState>) { return reducer(...args); }

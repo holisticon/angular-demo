@@ -6,7 +6,6 @@ import { take } from 'rxjs/operators';
 import { ProductSearchFormComponent } from './product-search-form.component';
 
 describe('ProductSearchFormComponent', () => {
-    let component: ProductSearchFormComponent;
     let fixture: ComponentFixture<ProductSearchFormComponent>;
 
     beforeEach(
@@ -25,7 +24,6 @@ describe('ProductSearchFormComponent', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(ProductSearchFormComponent);
-        component = fixture.componentInstance;
         fixture.detectChanges();
     });
 
@@ -36,7 +34,7 @@ describe('ProductSearchFormComponent', () => {
     it('emits a search event with the query on sumbit', () => {
         const expectedQuery = 'query';
         const form = fixture.debugElement.query(By.css('form'));
-        const quantityFormControl = fixture.componentInstance.queryString.setValue(expectedQuery);
+        fixture.componentInstance.queryString.setValue(expectedQuery);
 
         fixture.componentInstance.search
             .pipe(take(1))

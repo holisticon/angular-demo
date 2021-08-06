@@ -1,6 +1,6 @@
-import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@holisticon/routing';
 import { Blueprint, BlueprintBuilder, createBlueprintBuilder } from '@ngxp/builder';
 import { isUndefined } from 'lodash-es';
+import { ActivatedRouteSnapshot, RouterStateSnapshot } from '../../lib/router-state.model';
 import { getUrl } from './activated-route-snapshot-data-utils';
 import { activatedRouteSnapshot, activatedRouteUrl } from './activated-route-snapshot.data';
 

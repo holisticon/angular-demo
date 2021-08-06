@@ -1,7 +1,6 @@
-// tslint:disable: no-non-null-assertion
-
 import { Resource } from '@holisticon/resource';
 import { createResourceBlueprintBuilder } from '@holisticon/resource/test';
+import { Address, PaymentOption } from '@holisticon/user-profile';
 import { userProfile } from '@holisticon/user-profile/test';
 import { BlueprintFactory } from '@ngxp/builder';
 import { sample } from 'lodash-es';
@@ -10,10 +9,10 @@ import { orderItemBuilder } from './order-item.data';
 
 const newOrderBlueprint: BlueprintFactory<NewOrder> = () => {
     return {
-        billingAddress: () => sample(userProfile.addresses)!,
-        shippingAddress: () => sample(userProfile.addresses)!,
+        billingAddress: () => sample(userProfile.addresses) as Address,
+        shippingAddress: () => sample(userProfile.addresses) as Address,
         orderItems: () => orderItemBuilder().buildMany(10),
-        payment: () => sample(userProfile.paymentOptions)!
+        payment: () => sample(userProfile.paymentOptions) as PaymentOption
     };
 };
 

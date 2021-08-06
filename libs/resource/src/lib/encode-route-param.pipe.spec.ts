@@ -12,13 +12,13 @@ describe('EncodeRouteParam', () => {
 
     it('returns the given value if the value is not a string', () => {
         const obj = {};
-        const arr: any[] = [];
+        const arr: unknown[] = [];
 
-        expect(pipe.transform(<any> null)).toBe(<any> null);
-        expect(pipe.transform(<any> 1)).toBe(<any> 1);
-        expect(pipe.transform(<any> undefined)).toBe(<any> undefined);
-        expect(pipe.transform(<any> obj)).toBe(<any> obj);
-        expect(pipe.transform(<any> arr)).toBe(<any> arr);
+        expect(pipe.transform(<unknown>null)).toBe(<unknown>null);
+        expect(pipe.transform(<unknown>1)).toBe(<unknown>1);
+        expect(pipe.transform(<unknown>undefined)).toBe(<unknown>undefined);
+        expect(pipe.transform(<unknown>obj)).toBe(<unknown>obj);
+        expect(pipe.transform(<unknown>arr)).toBe(<unknown>arr);
     });
 
 });

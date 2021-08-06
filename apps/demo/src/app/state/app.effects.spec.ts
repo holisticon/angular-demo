@@ -25,7 +25,7 @@ describe('AppEffects', () => {
 
         appEffects = TestBed.inject(AppEffects);
         router = TestBed.inject(Router);
-        productsStore = TestBed.inject(ProductsStore) as any;
+        productsStore = TestBed.inject(ProductsStore) as unknown as StoreServiceMock<ProductsStore>;
     });
 
     describe('navigateToProductSearchResults', () => {

@@ -1,4 +1,3 @@
-// tslint:disable: no-non-null-assertion
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -34,16 +33,16 @@ describe('OrderComponent', () => {
 
     it('renders the billing address as holisticon-address', () => {
         const billingAddress = fixture.debugElement.queryAll(By.css('holisticon-address'))
-            .find(address => address.parent!.nativeElement.classList.contains('billing-address'))!
-            .nativeElement;
+            .find(address => address.parent?.nativeElement.classList.contains('billing-address'))
+            ?.nativeElement;
 
         expect(billingAddress.address).toBe(order.billingAddress);
     });
 
     it('renders the shipping address as holisticon-address', () => {
         const shippingAddress = fixture.debugElement.queryAll(By.css('holisticon-address'))
-            .find(address => address.parent!.nativeElement.classList.contains('shipping-address'))!
-            .nativeElement;
+            .find(address => address.parent?.nativeElement.classList.contains('shipping-address'))
+            ?.nativeElement;
 
         expect(shippingAddress.address).toBe(order.shippingAddress);
     });

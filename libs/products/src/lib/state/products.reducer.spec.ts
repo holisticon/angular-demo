@@ -10,7 +10,7 @@ describe('productsReducer', () => {
 
     it('returns the same state if the action is not applicable', () => {
         const action: Action = { type: 'some-action' };
-        const state = productsReducer(initialState, <any>action);
+        const state = productsReducer(initialState, action);
         expect(state).toBe(initialState);
     });
 
@@ -47,10 +47,8 @@ describe('productsReducer', () => {
 
             const updatedState = productsReducer(state, action);
 
-            // tslint:disable-next-line: no-non-null-assertion
-            expect(updatedState.searchResults!.products).toEqual(searchResultUris);
-            // tslint:disable-next-line: no-non-null-assertion
-            expect(updatedState.searchResults!.totalResults).toEqual(searchResultUris.length);
+            expect(updatedState.searchResults?.products).toEqual(searchResultUris);
+            expect(updatedState.searchResults?.totalResults).toEqual(searchResultUris.length);
             expect(updatedState.products[getUri(product)]).toBe(product);
             expect(Object.values(updatedState.products).length).toBe(searchResults.products.length + preloadedProducts.length);
 
@@ -74,7 +72,6 @@ describe('productsReducer', () => {
 
             const updatedState = productsReducer(state, action);
 
-            // tslint:disable-next-line: no-non-null-assertion
             expect(updatedState.products[getUri(product)]).toBe(product);
             expect(Object.values(updatedState.products).length).toBe(preloadedProducts.length + 1);
 

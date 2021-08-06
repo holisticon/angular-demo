@@ -1,4 +1,3 @@
-import { ReducerArgs } from '@holisticon/common';
 import { createReducer, on } from '@ngrx/store';
 import { OrderHistory } from '../domain';
 import { orderHistoryLoaded } from './orders.actions';
@@ -17,13 +16,9 @@ export const initialState: OrdersState = {
     orderHistory: null
 };
 
-const reducer = createReducer(initialState,
+export const ordersReducer = createReducer(initialState,
     on(orderHistoryLoaded, (state, { orderHistory }) => ({
         ...state,
         orderHistory
     }))
 );
-
-// neccessary for AOT support
-// see https://ngrx.io/guide/store/reducers#creating-the-reducer-function
-export function ordersReducer(...args: ReducerArgs<OrdersState>) { return reducer(...args); }

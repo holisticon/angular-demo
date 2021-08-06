@@ -2,13 +2,14 @@ import { TestBed } from '@angular/core/testing';
 import { ordersNavigationAction } from '@holisticon/orders/test';
 import { routerNavigationAction } from '@holisticon/routing/test';
 import { provideMockActions } from '@ngrx/effects/testing';
+import { Action } from '@ngrx/store';
 import { cold, hot } from 'jest-marbles';
 import { Observable } from 'rxjs';
 import { loadOrderHistoryAction } from '../state';
 import { OrdersNavigationEffects } from './orders-navigation.effects';
 
 describe('OrdersNavigationEffects', () => {
-    let actions$: Observable<any>;
+    let actions$: Observable<Action>;
     let effects$: OrdersNavigationEffects;
 
     beforeEach(() => {

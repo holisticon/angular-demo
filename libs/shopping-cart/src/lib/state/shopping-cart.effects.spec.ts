@@ -5,6 +5,7 @@ import { order } from '@holisticon/orders/test';
 import { ResourceWith } from '@holisticon/resource';
 import { additionToShoppingCart, shoppingCart, shoppingCartItem } from '@holisticon/shopping-cart/test';
 import { provideMockActions } from '@ngrx/effects/testing';
+import { Action } from '@ngrx/store';
 import { provideStoreServiceMock, StoreServiceMock } from '@ngxp/store-service/testing';
 import { hot } from 'jest-marbles';
 import { Observable, of as observableOf } from 'rxjs';
@@ -16,7 +17,7 @@ import { ShoppingCartEffects } from './shopping-cart.effects';
 import { ShoppingCartService } from './shopping-cart.service';
 
 describe('ShoppingCartEffects', () => {
-    let actions$: Observable<any>;
+    let actions$: Observable<Action>;
     let effects$: ShoppingCartEffects;
     let shoppingCartService: ShoppingCartService;
     let ordersStore: StoreServiceMock<OrdersStore>;
@@ -38,8 +39,8 @@ describe('ShoppingCartEffects', () => {
 
         effects$ = TestBed.inject(ShoppingCartEffects);
         shoppingCartService = TestBed.inject(ShoppingCartService);
-        ordersStore = TestBed.inject(OrdersStore) as any;
-        shoppingCartStore = TestBed.inject(ShoppingCartStore) as any;
+        ordersStore = TestBed.inject(OrdersStore) as unknown as StoreServiceMock<OrdersStore>;
+        shoppingCartStore = TestBed.inject(ShoppingCartStore) as unknown as StoreServiceMock<ShoppingCartStore>;
     });
 
     describe('addToShoppingCart', () => {

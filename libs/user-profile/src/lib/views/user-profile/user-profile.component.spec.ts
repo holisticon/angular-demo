@@ -7,7 +7,6 @@ import { UserProfileStore } from '../../state';
 import { UserProfileComponent } from './user-profile.component';
 
 describe('UserProfileComponent', () => {
-    let component: UserProfileComponent;
     let fixture: ComponentFixture<UserProfileComponent>;
 
     beforeEach(waitForAsync(() => {
@@ -30,7 +29,6 @@ describe('UserProfileComponent', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(UserProfileComponent);
-        component = fixture.componentInstance;
         fixture.detectChanges();
     });
 

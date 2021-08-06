@@ -8,7 +8,6 @@ describe('UserProfileStateModule', () => {
         const userProfileStore = createStoreServiceMock(UserProfileStore);
         const loadUserProfileSpy = jest.spyOn(userProfileStore, 'loadUserProfile');
 
-        // tslint:disable-next-line: no-unused-expression
         new UserProfileStateModule(userProfileStore);
 
         tick();

@@ -1,5 +1,3 @@
-// tslint:disable: no-non-null-assertion
-
 import { userProfile } from '@holisticon/user-profile/test';
 import { UserProfileAppState } from './user-profile.reducer';
 import { selectAddresses, selectPaymentOptions, selectUserProfile } from './user-profile.selectors';
@@ -29,7 +27,7 @@ describe('userProfileSelectors', () => {
 
     describe('selectAddresses', () => {
         it('returns the addresses of the user profile', () => {
-            const expectedValue = state.userProfile.userProfile!.addresses;
+            const expectedValue = state.userProfile.userProfile?.addresses;
 
             expect(selectAddresses(state)).toBe(expectedValue);
         });
@@ -44,7 +42,7 @@ describe('userProfileSelectors', () => {
 
     describe('selectPaymentOptions', () => {
         it('returns the payment options of the user profile', () => {
-            const expectedValue = state.userProfile.userProfile!.paymentOptions;
+            const expectedValue = state.userProfile.userProfile?.paymentOptions;
 
             expect(selectPaymentOptions(state)).toBe(expectedValue);
         });

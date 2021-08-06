@@ -5,7 +5,6 @@ import { expectElementFromFixture } from '@holisticon/common/test';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
-    let component: AppComponent;
     let fixture: ComponentFixture<AppComponent>;
 
     beforeEach(
@@ -26,7 +25,6 @@ describe('AppComponent', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(AppComponent);
-        component = fixture.componentInstance;
         fixture.detectChanges();
     });
 

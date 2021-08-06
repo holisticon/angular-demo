@@ -1,11 +1,11 @@
 import { isString, zipObject } from 'lodash-es';
 import { Resource, ResourceUri } from './resource';
 
-export function getUri(resource: Resource<any>): ResourceUri {
+export function getUri(resource: Resource<unknown>): ResourceUri {
     return resource['_id'];
 }
 
-export function getUris(resources: Resource<any>[]) {
+export function getUris(resources: Resource<unknown>[]) {
     return resources.map(resource => getUri(resource));
 }
 

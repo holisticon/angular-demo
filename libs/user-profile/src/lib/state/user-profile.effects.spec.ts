@@ -2,6 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { userProfile } from '@holisticon/user-profile/test';
 import { provideMockActions } from '@ngrx/effects/testing';
+import { Action } from '@ngrx/store';
 import { hot } from 'jest-marbles';
 import { Observable, of as observableOf } from 'rxjs';
 import { loadUserProfileAction, userProfileLoadedAction } from './user-profile.actions';
@@ -9,7 +10,7 @@ import { UserProfileEffects } from './user-profile.effects';
 import { UserProfileService } from './user-profile.service';
 
 describe('UserProfileEffects', () => {
-    let actions$: Observable<any>;
+    let actions$: Observable<Action>;
     let effects$: UserProfileEffects;
     let userProfileService: UserProfileService;
 

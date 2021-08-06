@@ -1,9 +1,11 @@
 import { isFunction, isNull, isUndefined, upperFirst } from 'lodash-es';
 
-export function OnNonNullChange(onNonNullChange?: string | Function) {
-    return function (target: any, key: string) {
+type AnyFunction = (...args: unknown[]) => unknown;
+
+export function OnNonNullChange(onNonNullChange?: string | AnyFunction) {
+    return function <T>(target: T, key: keyof T) {
         return OnChange(
-            function(this: typeof target, newValue: any, oldValue: any) {
+            function (this: typeof target, newValue: unknown, oldValue: unknown) {
                 if (!isNull(newValue)) {
                     resolveMethod(this, key, onNonNullChange)(newValue, oldValue);
                 }
@@ -12,10 +14,10 @@ export function OnNonNullChange(onNonNullChange?: string | Function) {
     }
 }
 
-export function OnChange(onChangeCallback?: string | Function) {
-    return function (target: any, key: string) {
+export function OnChange(onChangeCallback?: string | AnyFunction) {
+    return function <T>(target: T, key: keyof T) {
         return OnAssignment(
-            function(this: typeof target, newValue: any, oldValue: any) {
+            function (this: typeof target, newValue: unknown, oldValue: unknown) {
                 if (newValue !== oldValue) {
                     resolveMethod(this, key, onChangeCallback)(newValue, oldValue);
                 }
@@ -24,8 +26,8 @@ export function OnChange(onChangeCallback?: string | Function) {
     }
 }
 
-export function OnAssignment(onSetCallback?: string | Function) {
-    return function (target: any, key: string) {
+export function OnAssignment(onSetCallback?: string | AnyFunction) {
+    return function <T>(target: T, key: keyof T) {
         const valueKey = `_${key}`;
 
         Object.defineProperty(target, key, {
@@ -44,12 +46,12 @@ export function OnAssignment(onSetCallback?: string | Function) {
     };
 }
 
-function resolveMethod(context: any, key: string, methodOrName?: string | Function) {
+function resolveMethod<Ctx>(context: Ctx, key: keyof Ctx, methodOrName?: string | AnyFunction) {
     if (isUndefined(methodOrName)) {
-        methodOrName = `onChange${upperFirst(key)}`;
+        methodOrName = `onChange${upperFirst(key as string)}`;
     }
 
-    const method = isFunction(methodOrName) ? methodOrName : context[<string> methodOrName];
+    const method = isFunction(methodOrName) ? methodOrName : context[methodOrName as keyof Ctx];
 
     if (!isFunction(method)) {
         throw new Error(`Error while calling ${methodOrName} for ${key}. ${methodOrName} is not a method`);

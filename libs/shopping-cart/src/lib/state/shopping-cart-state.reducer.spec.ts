@@ -6,7 +6,7 @@ import { initialState, shoppingCartReducer } from './shopping-cart.reducer';
 describe('shoppingCartReducer', () => {
     it('returns the same state if the action is not applicable', () => {
         const action: Action = { type: 'some-action' };
-        const state = shoppingCartReducer(initialState, <any>action);
+        const state = shoppingCartReducer(initialState, action);
         expect(state).toBe(initialState);
     });
 

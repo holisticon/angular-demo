@@ -1,5 +1,5 @@
-import { Resource } from '@holisticon/resource';
 import { SomeType } from '@holisticon/resource/test';
+import { Resource } from '../lib/resource';
 import { addUri } from './resource.utils';
 
 describe('resourceUtils', () => {

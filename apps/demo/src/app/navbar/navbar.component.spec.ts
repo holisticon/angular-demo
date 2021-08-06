@@ -3,7 +3,6 @@ import { expectElementFromFixture } from '@holisticon/common/test';
 import { NavbarComponent } from './navbar.component';
 
 describe('NavbarComponent', () => {
-    let component: NavbarComponent;
     let fixture: ComponentFixture<NavbarComponent>;
 
     beforeEach(
@@ -18,7 +17,6 @@ describe('NavbarComponent', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(NavbarComponent);
-        component = fixture.componentInstance;
         fixture.detectChanges();
     });
 

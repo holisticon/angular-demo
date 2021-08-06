@@ -1,7 +1,7 @@
-import { ActivatedRouteSnapshot } from '@holisticon/routing';
 import { Blueprint, BlueprintBuilder, createBlueprintBuilder } from '@ngxp/builder';
 import { lorem } from 'faker';
 import { defaultTo } from 'lodash-es';
+import { ActivatedRouteSnapshot } from '../../lib/router-state.model';
 import { applyChildren, applyQueryParamsOnChildren, applyUrlAndRouteConfig, getUrl } from './activated-route-snapshot-data-utils';
 import { Views } from './views.data';
 

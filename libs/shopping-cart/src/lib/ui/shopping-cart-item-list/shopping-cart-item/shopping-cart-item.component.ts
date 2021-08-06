@@ -6,7 +6,7 @@ import { QuantityUpdate, ShoppingCartItem } from '../../../domain';
 import { UpdateQuantityFormModule } from './update-quantity-form/update-quantity-form.component';
 
 @Component({
-    // tslint:disable-next-line:component-selector
+    // eslint-disable-next-line @angular-eslint/component-selector
     selector: '[holisticon-shopping-cart-item-row]',
     templateUrl: './shopping-cart-item.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush

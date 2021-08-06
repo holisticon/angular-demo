@@ -1,5 +1,5 @@
 import { encodeResourceUriAsRouteParam, getUri } from '@holisticon/resource';
-import { RouterStateSnapshot } from '@holisticon/routing';
+import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@holisticon/routing';
 import { activatedRouteSnapshotBuilder, routerNavigatedActionBuilder, routerStateSnapshotBuilder } from '@holisticon/routing/test';
 import { RouterNavigatedAction } from '@ngrx/router-store';
 import { ProductsViews } from '../../lib/views/products.views';
@@ -39,7 +39,7 @@ export const searchResultsNavigationAction = buildSearchResultsNavigationAction(
 
 export const productDetailsParams = { product: encodeResourceUriAsRouteParam(getUri(product)) };
 
-function createProductDetailsRouteSnapshot(params: {}) {
+function createProductDetailsRouteSnapshot(params: Partial<ActivatedRouteSnapshot>) {
     return activatedRouteSnapshotBuilder('', {
         children: [
             activatedRouteSnapshotBuilder('products', {

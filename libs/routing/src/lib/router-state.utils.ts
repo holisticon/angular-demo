@@ -4,7 +4,7 @@ import { ActivatedRouteSnapshot } from './router-state.model';
 
 type NotUndefined = (value: string | undefined) => value is string;
 
-export function getViews(activatedRoute: ActivatedRouteSnapshot): string[] {
+export function getViews(activatedRoute: ActivatedRouteSnapshot | null | undefined): string[] {
     if (isNil(activatedRoute)) {
         return [];
     }

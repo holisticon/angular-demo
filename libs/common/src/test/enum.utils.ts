@@ -3,7 +3,7 @@ import { isUndefined, sample } from 'lodash-es';
 export function getAllValues<T>(enumeration: T): T[keyof T][] {
     return Object
         .keys(enumeration)
-        .map(key => (<any> enumeration)[key]);
+        .map(key => enumeration[key as keyof T]);
 }
 
 export function getRandomValue<T>(enumeration: T): T[keyof T] {

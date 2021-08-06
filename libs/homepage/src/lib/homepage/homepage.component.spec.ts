@@ -8,7 +8,6 @@ import { provideStoreServiceMock } from '@ngxp/store-service/testing';
 import { HomepageComponent } from './homepage.component';
 
 describe('HomepageComponent', () => {
-    let component: HomepageComponent;
     let fixture: ComponentFixture<HomepageComponent>;
     let productsStore: ProductsStore;
 
@@ -29,12 +28,11 @@ describe('HomepageComponent', () => {
         })
             .compileComponents();
 
-        productsStore = TestBed.inject(ProductsStore) as any;
+        productsStore = TestBed.inject(ProductsStore);
     }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(HomepageComponent);
-        component = fixture.componentInstance;
         fixture.detectChanges();
     });
 

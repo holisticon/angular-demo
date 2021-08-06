@@ -3,6 +3,7 @@ import { buildProductDetailsNavigationAction, buildSearchResultsNavigationAction
 import { getUri } from '@holisticon/resource';
 import { routerNavigationAction } from '@holisticon/routing/test';
 import { provideMockActions } from '@ngrx/effects/testing';
+import { Action } from '@ngrx/store';
 import { provideStoreServiceMock, StoreServiceMock } from '@ngxp/store-service/testing';
 import { cold, hot } from 'jest-marbles';
 import { Observable } from 'rxjs';
@@ -10,7 +11,7 @@ import { loadProductAction, loadSearchResultsAction, ProductsStore } from '../st
 import { ProductsNavigationEffects } from './products-navigation.effects';
 
 describe('ProductsNavigationEffects', () => {
-    let actions$: Observable<any>;
+    let actions$: Observable<Action>;
     let effects$: ProductsNavigationEffects;
     let productsStore: StoreServiceMock<ProductsStore>;
 
@@ -24,7 +25,7 @@ describe('ProductsNavigationEffects', () => {
         });
 
         effects$ = TestBed.inject(ProductsNavigationEffects);
-        productsStore = TestBed.inject(ProductsStore) as any;
+        productsStore = TestBed.inject(ProductsStore) as unknown as StoreServiceMock<ProductsStore>;
     });
 
     describe('loadSearchResultsOnNavigate$', () => {

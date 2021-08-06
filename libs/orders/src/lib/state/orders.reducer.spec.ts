@@ -6,7 +6,7 @@ import { initialState, ordersReducer } from './orders.reducer';
 describe('ordersReducer', () => {
     it('returns the same state if the action is not applicable', () => {
         const action: Action = { type: 'some-action' };
-        const state = ordersReducer(initialState, <any>action);
+        const state = ordersReducer(initialState, action);
         expect(state).toBe(initialState);
     });
 

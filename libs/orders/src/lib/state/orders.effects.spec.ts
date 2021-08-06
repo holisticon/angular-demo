@@ -2,6 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { newOrder, order, orderHistory } from '@holisticon/orders/test';
 import { provideMockActions } from '@ngrx/effects/testing';
+import { Action } from '@ngrx/store';
 import { hot } from 'jest-marbles';
 import { Observable, of as observableOf } from 'rxjs';
 import { take } from 'rxjs/operators';
@@ -10,7 +11,7 @@ import { loadOrderHistoryAction, orderHistoryLoaded, orderPlacedAction, placeOrd
 import { OrdersEffects } from './orders.effects';
 
 describe('OrdersEffects', () => {
-    let actions$: Observable<any>;
+    let actions$: Observable<Action>;
     let effects$: OrdersEffects;
     let orderService: OrderService;
 

@@ -1,5 +1,5 @@
-import { RouterAppState } from '@holisticon/routing';
 import { Blueprint, createBlueprintBuilder } from '@ngxp/builder';
+import { RouterAppState } from '../../lib/router-state.model';
 import { routerState } from './router-state.data';
 
 const routerAppStateBlueprint: Blueprint<RouterAppState> = {

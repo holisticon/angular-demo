@@ -11,7 +11,6 @@ import { ShoppingCartIsEmptyPipe } from './shopping-cart-is-empty.pipe';
 import { ShoppingCartComponent } from './shopping-cart.component';
 
 describe('ShoppingCartComponent', () => {
-    let component: ShoppingCartComponent;
     let fixture: ComponentFixture<ShoppingCartComponent>;
 
     let shoppingCartStore: StoreServiceMock<ShoppingCartStore>;
@@ -37,12 +36,11 @@ describe('ShoppingCartComponent', () => {
         })
             .compileComponents();
 
-        shoppingCartStore = TestBed.inject(ShoppingCartStore) as any;
+        shoppingCartStore = TestBed.inject(ShoppingCartStore) as unknown as StoreServiceMock<ShoppingCartStore>;
     }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(ShoppingCartComponent);
-        component = fixture.componentInstance;
         fixture.detectChanges();
     });
 

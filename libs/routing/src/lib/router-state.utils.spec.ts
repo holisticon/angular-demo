@@ -8,10 +8,8 @@ describe('routerStateUtils', () => {
         });
 
         it('returns an empty array if null or undefined is given', () => {
-            // tslint:disable-next-line: no-non-null-assertion
-            expect(getViews(null!)).toEqual([]);
-            // tslint:disable-next-line: no-non-null-assertion
-            expect(getViews(undefined!)).toEqual([]);
+            expect(getViews(null)).toEqual([]);
+            expect(getViews(undefined)).toEqual([]);
         });
     });
 

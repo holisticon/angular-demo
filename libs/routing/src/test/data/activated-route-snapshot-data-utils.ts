@@ -1,6 +1,6 @@
 import { Route, UrlSegment } from '@angular/router';
-import { ActivatedRouteSnapshot } from '@holisticon/routing';
 import { isEmpty, isNil, isNull } from 'lodash-es';
+import { ActivatedRouteSnapshot } from '../../lib/router-state.model';
 
 export function applyQueryParamsOnChildren(activatedRoute: Partial<ActivatedRouteSnapshot>): Partial<ActivatedRouteSnapshot> {
     if (isEmpty(activatedRoute.children)) {
@@ -9,8 +9,7 @@ export function applyQueryParamsOnChildren(activatedRoute: Partial<ActivatedRout
 
     return {
         ...activatedRoute,
-        // tslint:disable-next-line: no-non-null-assertion
-        children: activatedRoute.children!.map(
+        children: activatedRoute.children?.map(
             child => ({
                 ...child,
                 queryParams: {
@@ -44,10 +43,10 @@ function toUrlSegments(paths: string[] | null): UrlSegment[] {
         return [];
     }
 
-    return paths.map(path => (<any>{
+    return paths.map(path => ({
         path,
         parameters: {}
-    }));
+    } as UrlSegment));
 }
 
 function toRouteConfig(paths: string[] | null): Route | null {

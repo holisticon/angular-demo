@@ -2,13 +2,14 @@ import { TestBed } from '@angular/core/testing';
 import { routerNavigationAction } from '@holisticon/routing/test';
 import { shoppingCartNavigationAction } from '@holisticon/shopping-cart/test';
 import { provideMockActions } from '@ngrx/effects/testing';
+import { Action } from '@ngrx/store';
 import { cold, hot } from 'jest-marbles';
 import { Observable } from 'rxjs';
 import { loadShoppingCartAction } from '../state';
 import { ShoppingCartNavigationEffects } from './shopping-cart-navigation.effects';
 
 describe('ShoppingCartNavigationEffects', () => {
-    let actions$: Observable<any>;
+    let actions$: Observable<Action>;
     let effects$: ShoppingCartNavigationEffects;
 
     beforeEach(() => {

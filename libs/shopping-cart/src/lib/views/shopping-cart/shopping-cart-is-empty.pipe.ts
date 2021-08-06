@@ -1,13 +1,11 @@
-// tslint:disable:use-pipe-transform-interface
-
-import { NgModule, Pipe } from '@angular/core';
+import { NgModule, Pipe, PipeTransform } from '@angular/core';
 import { FunctionPipe } from '@holisticon/common';
 import { shoppingCartIsEmpty } from '../../domain';
 
 @Pipe({
     name: 'shoppingCartIsEmpty'
 })
-export class ShoppingCartIsEmptyPipe extends FunctionPipe {
+export class ShoppingCartIsEmptyPipe extends FunctionPipe implements PipeTransform {
     constructor() {
         super(shoppingCartIsEmpty);
     }

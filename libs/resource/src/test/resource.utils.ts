@@ -1,8 +1,8 @@
-import { Resource, ResourceUri } from '@holisticon/resource';
+import { Resource, ResourceUri } from "../lib/resource";
 
-export function addUri<T extends object>(obj: T, uri: ResourceUri): Resource<T> {
+export function addUri<T extends Record<string, unknown>>(obj: T, uri: ResourceUri): Resource<T> {
     return {
         _id: uri,
-        ...(<any> obj)
+        ...obj
     };
 }
