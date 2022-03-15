@@ -46,7 +46,7 @@
     "@ngxp/store-service": "8.0.0",
     "bootstrap": "4.5.0",
     "core-js": "2.6.5",
-    "lodash-es": "4.17.14",
+    "lodash-es": "4.17.21",
     "rxjs": "6.6.2",
     "tslib": "^2.0.0",
     "zone.js": "0.11.4"
